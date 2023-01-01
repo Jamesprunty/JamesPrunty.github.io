@@ -62,6 +62,8 @@ h1 {
     
     font-weight: bold;
     font-size: 400%;
+    margin: auto;
+    text-align: center;
 }
 
 ul {
