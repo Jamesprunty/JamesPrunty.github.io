@@ -58,6 +58,17 @@ body {
     
 }
 
+.content{
+    
+    margin: 0;
+  position: absolute;
+    margin: auto;
+    border: black solid 1px;
+    width: 100%;
+    text-align: center;
+    
+}
+
 h1 {
     
     font-weight: bold;
