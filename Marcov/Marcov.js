@@ -118,11 +118,21 @@ function main() {
         var text = document.getElementById('text').value;
         //train(text);
         console.log(text);
+
     });
+    
+   
+            
     
     var suggestButton = document.getElementById('suggestBtn');
     suggestButton.addEventListener('click', function () {
-        var suggestion = generateChain(20, 'is');
+        var feed = document.getElementById('feed').value;
+        if (feed != null){
+        var suggestion = generateChain(20, feed);
+        } else if (feed == null)
+            {
+               var suggestion = generateChain(20, 'this'); 
+            }
         var outputEle = document.getElementById('outputEle');
         outputEle.innerText = suggestion;
     })
