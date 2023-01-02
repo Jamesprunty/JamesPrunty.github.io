@@ -116,7 +116,7 @@ function main() {
     console.log(btn);
     btn.addEventListener('click', function (){
         var text = document.getElementById('text').value;
-        //train(text);
+        train(text);
         console.log(text);
 
     });
@@ -127,12 +127,22 @@ function main() {
     var suggestButton = document.getElementById('suggestBtn');
     suggestButton.addEventListener('click', function () {
         var feed = document.getElementById('feed').value;
-        if (feed != null){
-        var suggestion = generateChain(20, feed);
-        } else if (feed == null)
-            {
-               var suggestion = generateChain(20, 'this'); 
-            }
+        var number = document.getElementById('number').value;
+        
+        if(feed == null){
+            
+            feed = 'is';
+        }
+        
+        if (number == null){
+            
+            number = "10";
+        }
+        
+        
+        
+        var suggestion = generateChain(number, feed);
+        
         var outputEle = document.getElementById('outputEle');
         outputEle.innerText = suggestion;
     })
