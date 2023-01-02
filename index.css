@@ -1,9 +1,52 @@
+@media only screen and (max-width: 900px) {
+  body {
+    background-color: lightblue;
+
+  }
+    #bg{
+        content: url("BackgroundBlank.jpg");    
+    }
+    
+    #Menu {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    
+    }
+    #MenuContainer {
+    
+        margin: auto;
+        position: inherit;
+        width: 60%;
+        height: 30%;
+        text-align: center;
+        bottom: 30%;
+        padding: 10px;
+  
+        
+        
+    }
+    h1 {
+    
+    font-weight: bold;
+    font-size: 100%;
+    margin: auto;
+    text-align: center;
+    }
+}
+    
+    
+}
+
+
 body {
     
     height: 100%;
   margin: 0;
     
 }
+
+
 
 #bg {
     
