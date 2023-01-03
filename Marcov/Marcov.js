@@ -118,6 +118,7 @@ function main() {
         var text = document.getElementById('text').value;
         train(text);
         console.log(text);
+        document.getElementById('text').value = "";
 
     });
     

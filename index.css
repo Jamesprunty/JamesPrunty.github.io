@@ -181,8 +181,13 @@ li a:hover {
     font-family: 'fantasy', papyrus;
     font-size: 40px;
     text-align: center;
+    text-decoration: none;
     
     
+}
+
+ a:hover {
+  text-decoration: underline;
 }
 
 .HomeContainer{
@@ -241,7 +246,7 @@ input[type=text]{
     
     text-align: center;
     list-style-type: none;
-  margin: auto;
+    margin: auto;
     width 50%;
     border: solid black 1px;
 }
