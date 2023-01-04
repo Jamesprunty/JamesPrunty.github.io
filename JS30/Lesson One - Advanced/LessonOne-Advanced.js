@@ -25,11 +25,13 @@ function playSound(e) {
     key.classList.add('playing');
 }
 
+
+
 function playText(){
 const sentance =  document.getElementById('textToPlay').value;
-const tempo =  document.getElementById('speed').value;
+const tempo =  document.getElementById('speed').value * 110;
 
-if (speed.value < 50 || speed.value > 300){
+if (speed.value < 1 || speed.value > 5){
 
     console.log("not within range");
 
@@ -51,8 +53,34 @@ console.log (sentance);
         charCodes.push(char.charCodeAt(0));
         console.log(charCodes);
 
+
+
     }
 
+    var i = 0;
+
+    function playNotes(){
+        setTimeout(function(){
+        const audio = document.querySelector(`audio[data-key="${charCodes[i]}"]`);
+        const key = document.querySelector(`.key[data-key="${charCodes[i]}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+        i++;
+        setTimeout(function(){key.classList.remove('playing');}, tempo);
+        if(i<charCodes.length){
+            playNotes();
+        }
+
+        }, tempo)
+
+
+
+
+    }
+
+    playNotes();
 
 
 
