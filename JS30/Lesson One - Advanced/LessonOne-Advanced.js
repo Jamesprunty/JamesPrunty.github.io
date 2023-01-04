@@ -24,6 +24,41 @@ function playSound(e) {
     //We then add the class "playing" to the key with "classList.add"
     key.classList.add('playing');
 }
+
+function playText(){
+const sentance =  document.getElementById('textToPlay').value;
+const tempo =  document.getElementById('speed').value;
+
+if (speed.value < 50 || speed.value > 300){
+
+    console.log("not within range");
+
+}else {
+
+console.log("within range");
+console.log (sentance);
+
+    let strUpper = sentance.toUpperCase();
+    var sentanceStr = strUpper.split('');
+    console.log(sentanceStr);
+    const charCodes = [];
+    
+
+    for (var i = 0; i < sentanceStr.length; ++i){
+
+        const char = sentanceStr[i];
+        console.log(char);
+        charCodes.push(char.charCodeAt(0));
+        console.log(charCodes);
+
+    }
+
+
+
+
+}
+
+}
 //To remove the class we have to add a transition end event
 //This meand we are listening for when the transition finishes (which is after the time set in css)
 //We need to look at all the keys so we add "querySelectorAll" in the class of Key.
@@ -41,11 +76,32 @@ function removeTransition(e) {
 }
 //This is selecting all that have the class "key".
 const keys = document.querySelectorAll('.key');
-//For each key in keys add an event listener that will look out for transitions.
-//Then run the function "removeTransition".
-keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-//There are different elements we could be looking for. Window is the one we are looking for here.
-//The event we are looking for, is keydown.
-//"e" in the function is for the event that takes place when you press a key down. 
-window.addEventListener('keydown', playSound);
+const checked = document.querySelector("input[name=playType]");
+const playBtn = document.getElementById('play');
+
+playBtn.addEventListener("click", playText);
+checked.addEventListener('change', function(){
+
+    if (this.checked){
+        //For each key in keys add an event listener that will look out for transitions.
+        //Then run the function "removeTransition".
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        //There are different elements we could be looking for. Window is the one we are looking for here.
+        //The event we are looking for, is keydown.
+        //"e" in the function is for the event that takes place when you press a key down. 
+        window.addEventListener('keydown', playSound);
+
+
+    } else {
+        keys.forEach(key => key.removeEventListener('transitionend', removeTransition));
+        window.removeEventListener('keydown', playSound);
+    }
+
+
+});
+
+
+
+
+
 

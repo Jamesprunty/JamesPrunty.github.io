@@ -128,6 +128,7 @@
     <!-- data attributes are like "src" or "class" so  if you want a new one that is not there already-->
     <!-- you have to put it behind a "data-" so the fata-key keycode can be matched-->
 
+    <audio data-key="65" src="./sounds/448614__tedagame__e3.ogg"></audio>
     <audio data-key="66" src="./sounds/448584__tedagame__f-3.ogg"></audio>
     <audio data-key="67" src="./sounds/448559__tedagame__g3.ogg"></audio>
     <audio data-key="68" src="./sounds/448562__tedagame__a3.ogg"></audio>
@@ -162,7 +163,7 @@
        </label>
       </div>
 
-      <div id="textToPlay">
+      <div id="textBox">
         <label for="textToPlay">
           <input type="text" id="textToPlay" name="textToPlay" placeholder="Type a message here to play"> 
        </label>
@@ -170,7 +171,7 @@
 
       <div id="playSpeed">
         <label for="speed">
-          <input type="text" id="speed" name="speed" placeholder="Type in a number from 50 - 300"> 
+          <input type="number" id="speed" name="speed" placeholder="Type in a number from 50 - 300" value="60"> 
        </label>
       </div>
 
