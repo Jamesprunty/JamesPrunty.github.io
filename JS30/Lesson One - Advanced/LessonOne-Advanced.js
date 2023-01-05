@@ -29,9 +29,9 @@ function playSound(e) {
 
 function playText(){
 const sentance =  document.getElementById('textToPlay').value;
-const tempo =  document.getElementById('speed').value * 110;
+const tempo =  document.getElementById('speed').value * 50;
 
-if (speed.value < 1 || speed.value > 5){
+if (speed.value < 1 || speed.value > 10){
 
     console.log("not within range");
 
@@ -69,6 +69,7 @@ console.log (sentance);
         key.classList.add('playing');
         i++;
         setTimeout(function(){key.classList.remove('playing');}, tempo);
+        //setTimeout(function(){audio.pause()}, 500);
         if(i<charCodes.length){
             playNotes();
         }
