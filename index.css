@@ -156,7 +156,6 @@ ul {
     text-align: center;
     list-style-type: none;
     font-family: 'fantasy', papyrus;
-    width 100%;
   
 }
 
@@ -192,7 +191,7 @@ li a:hover {
 
 .HomeContainer{
     
-    text-align: center;
+
     width: 100%;
     
     
@@ -247,8 +246,14 @@ input[type=text]{
     text-align: center;
     list-style-type: none;
     margin: auto;
-    width 50%;
     border: solid black 1px;
+    align-items: center;
+}
+
+#lessonList{
+
+  display: inline-block;
+
 }
 
 
