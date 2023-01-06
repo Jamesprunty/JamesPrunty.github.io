@@ -1,0 +1,4 @@
+Fix the jitter when seconds goes past 12
+
+Add time zones
+Add Alarm

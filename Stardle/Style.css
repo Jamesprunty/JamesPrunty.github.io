@@ -1,0 +1,75 @@
+h1 {
+
+    color: Black;
+    text-align: center;
+}
+
+h2 {
+    
+    text-align: center;
+    
+}
+
+.hide {
+    
+    display:none;
+}
+
+.show {
+    
+    display:block;
+    border-style: solid;
+    
+    
+}
+
+.tableDiv {
+    
+    
+    display:inline;
+    align-content: center;
+    border-style: solid, 1px;
+    margin: auto;
+    text-align: center;
+}
+
+tr{
+    
+    border-style: solid, 1px
+    
+}
+
+tableGuess {
+    
+    empty-cells: show;
+    
+}
+
+.ActorImage1 {
+    
+    
+    height: 100px;
+    width: 80px;
+    
+}
+
+.ActorImage2 {
+    
+    
+    height: 100px;
+    width: 80px;
+    
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}

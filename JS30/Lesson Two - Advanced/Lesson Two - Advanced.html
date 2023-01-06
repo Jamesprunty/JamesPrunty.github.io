@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="stylesheet" href="../Lesson Two - Advanced/Style.css">
+</head>
+
+<body>
+
+
+  <div class="clock">
+    <div class="clock-face">
+      <!--Looking at the css we can see they are all stacked on each other-->
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div id="Time Zones">
+      <label for="UK">
+        <input type="button" id="UK" name="UK" value="UK Time">
+      </label>
+      <label for="CA">
+        <input type="button" id="CA" name="CA" value="California Time">
+      </label>
+      <label for="AU">
+        <input type="button" id="AU" name="AU" value="Australia Time">
+      </label>
+      <label for="IT">
+        <input type="button" id="IT" name="IT" value="Italy Time">
+      </label>
+    </div>
+    <div id="setTime">
+      <label for="hours">
+        <input type="number" id="hours" name="hours" value="00" min="00" max ="12">
+      </label>
+      <label for="minutes">
+        <input type="number" id="minutes" name="minutes" value="00" min="00" max ="60">
+      </label>
+      <label for="seconds">
+        <input type="number" id="seconds" name="seconds" value="00" min="00" max ="60">
+      </label>
+    </div>
+    <div id="alarmTime">
+      <label for="alarmHours">
+        <input type="number" id="alarmHours" name="alarmHours" value="00" min="00" max ="12">
+      </label>
+      <label for="alarmMinutes">
+        <input type="number" id="alarmMinutes" name="alarmMinutes" value="00" min="00" max ="60">
+      </label>
+      <label for="alarmSeconds">
+        <input type="number" id="alarmSeconds" name="alarmSeconds" value="00" min="00" max ="60">
+      </label>
+      <div id="buttons">
+        <label for="SetTimeBtn">
+          <input type="button" id="SetTimeBtn" name="SetTimeBtn" value="set time">
+        </label>
+        <label for="setAlarmBtn">
+          <input type="button" id="setAlarmBtn" name="setAlarmBtn" value="Set Alarm">
+        </label>
+        <div id="enableAlarmDiv">
+        <label for="enableAlarm">
+          <input type="checkbox" id="enableAlarm" name="enableAlarm" value="Enable Alarm"> Enable Alarm
+        </label>
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <script type="application/javascript" src="../Lesson Two - Advanced/LessonTwo-Advanced.js"></script>
+
+
+  <div class="HomeContainer">
+    <a href="../../index.html" class="HomeLink">Home</a>
+    <a href="../JS30.html" class="HomeLink">JS30</a>
+  </div>
+</body>
+
+</html>

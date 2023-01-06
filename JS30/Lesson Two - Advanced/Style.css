@@ -120,7 +120,18 @@ html {
     height: 10%;
     align-items: center;
    position: absolute;
-   bottom: 10%;
+   bottom: 0%;
   
   }
+
+  .controls{
+
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    position: absolute;
+    bottom: 10%;
+    border: black solid 1px;
+  }  
 
