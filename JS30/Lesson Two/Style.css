@@ -37,7 +37,7 @@ html {
     transform: translateY(-3px); /* account for the height of the clock hands */
   }
 
-  .hand {
+  .min-hand {
     width: 50%;
     height: 6px;
     background: black;
@@ -53,5 +53,46 @@ html {
     transition: all 0.05s;
     /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
     /* You can change all the divs and see what styles are effecting them */
-    transition-timing-function: cubic-bezier(0, 0.54, 0.82, 1.29);
+    transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
+  }
+
+  .second-hand{
+
+    width: 50%;
+    height: 3px;
+    background: rgb(255, 0, 0);
+    position: absolute;
+    top: 50%;
+
+    /* This changes the point of transform, by default it's 50% (the middle) */
+    /* By changing it to 100% we are putting it on the right side to pivot */
+    transform-origin: 100%;
+    /* This will start the clock at 12 */
+    transform: rotate(90deg);
+    /* This will make it so all transitions will take 0.5 seconds */
+    transition: all 0.05s;
+    /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
+    /* You can change all the divs and see what styles are effecting them */
+    transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
+  }
+
+  .hour-hand{
+
+    width: 40%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+
+    /* This changes the point of transform, by default it's 50% (the middle) */
+    /* By changing it to 100% we are putting it on the right side to pivot */
+    transform-origin: 100%;
+    /* This will start the clock at 12 */
+    transform: rotate(90deg);
+    /* This will make it so all transitions will take 0.5 seconds */
+    transition: all 0.05s;
+    /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
+    /* You can change all the divs and see what styles are effecting them */
+    transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
   }
