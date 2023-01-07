@@ -1,0 +1,26 @@
+/*
+      misc styles, nothing to do with CSS variables
+    */
+
+    html {
+        background: #018DED url(../../BackgroundBlank.jpg);
+        background-size: cover;
+        font-family: 'helvetica neue';
+        text-align: center;
+        font-size: 10px;
+      }
+
+    body {
+        text-align: center;
+        font-family: 'fantasy', papyrus;
+        font-weight: 100;
+        font-size: 50px;
+      }
+  
+      .controls {
+        margin-bottom: 50px;
+      }
+  
+      input {
+        width: 100px;
+      }
