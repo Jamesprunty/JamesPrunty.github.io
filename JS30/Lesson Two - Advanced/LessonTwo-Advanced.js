@@ -5,6 +5,19 @@ const minuteHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
 var setTimeEnable = false;
 var alarmEnabled = false;
+var firstSet = false;
+var sec = "0";
+var min = "0";
+var hour = "0";
+var secDiff = "0";
+var minDiff = "0";
+var hourDiff = "0";
+
+//Sets the showSec to whatever the time is set to for the alarm
+var showSec = "0";
+var showMin = "0";
+var showHour = "0"; 
+
 
 
 
@@ -14,31 +27,73 @@ UKBtn = document.getElementById("UK");
 CABtn = document.getElementById("CA");
 AUBtn = document.getElementById("AU");
 ITBtn = document.getElementById("IT");
-setBtn = document.getElementById("SetTimeBtn");
+setBtn = document.querySelector("input[name=SetTimeBtn]");
 alarmBtn = document.querySelector("input[name=enableAlarm]");
+const alarmSound = document.querySelector(`audio[data-key="${sound}"]`);
+
 
 UKBtn.addEventListener("click", event => current = "UK");
 CABtn.addEventListener("click", event => current = "CA");
 AUBtn.addEventListener("click", event => current = "AU");
 ITBtn.addEventListener("click", event => current = "IT");
-setBtn.addEventListener("click", event => current = "custom");
-alarmBtn.addEventListener('change', function(){
+setBtn.addEventListener('change', function () {
+
+    
+
+    if (this.checked) {
 
 
-    if(this.checked){
+        setTimeEnable = true;
+        console.log("Set True");
+        current = "custom";
+
+
+    } else {
+
+        setTimeEnable = false;
+        console.log("Set False");
+        current = "UK";
+        firstSet = false;
+        sec = "0";
+        min = "0";
+        hour = "0";
+        secDiff = "0";
+        minDiff = "0";
+        hourDiff = "0";
+
+
+    }
+
+
+
+});
+
+
+
+
+
+
+
+
+
+alarmBtn.addEventListener('change', function () {
+
+
+    if (this.checked) {
 
         alarmEnabled = true;
 
-    }else{
+    } else {
 
         alarmEnabled = false;
+        
 
     }
 
 });
 
 
-
+//Checks alarm every second
 setInterval(alarm, 1000);
 
 
@@ -56,18 +111,20 @@ function alarm() {
     const minNow = setDate.getMinutes();
     const hourNow = setDate.getHours();
 
-    console.log("alarm has started");
+
 
     if (alarmEnabled) {
-        if (hour == hourNow && min == minNow) {
+        if (hour == showHour && min == showMin) {
 
             console.log("alarm");
-            clock.classList.add('alarm');
+            alarmSound.play();
             
+
 
         } else {
 
             console.log("Not the right time");
+            alarmSound.compareDocumentPosition();
         }
     }
 
@@ -76,6 +133,9 @@ function alarm() {
 
 
 function setDate(TZ) {
+
+
+
 
     if (TZ == "UK") {
         //Gets the current date and sets to "now"
@@ -93,8 +153,13 @@ function setDate(TZ) {
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        setBtn.checked = false;
 
-        console.log(seconds);
+        showSec = seconds;
+        showMin = minutes;
+        showHour = hours;
+
+
 
     } else if (TZ == "CA") {
 
@@ -113,8 +178,12 @@ function setDate(TZ) {
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        setBtn.checked = false;
 
-        console.log(seconds);
+        showSec = seconds;
+        showMin = minutes;
+        showHour = hours + 8;
+
 
 
     } else if (TZ == "AU") {
@@ -134,8 +203,13 @@ function setDate(TZ) {
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        setBtn.checked = false;
 
-        console.log(seconds);
+        showSec = seconds;
+        showMin = minutes;
+        showHour = hours + 11;
+
+
     } else if (TZ == "IT") {
 
         //Gets the current date and sets to "now"
@@ -153,33 +227,60 @@ function setDate(TZ) {
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        setBtn.checked = false;
 
-        console.log(seconds);
-    } else if (TZ == "custom") {
+        showSec = seconds;
+        showMin = minutes;
+        showHour = hours + 1;
 
-        var sec = document.getElementById('seconds').value;
-        var min = document.getElementById('minutes').value;
-        var hour = document.getElementById('hours').value;
-        console.log("true");
 
-        const seconds = sec;
-        const minutes = min;
-        const hours = hour;
+    } else if (TZ == "custom" && setTimeEnable == true) {
+
+        const now = new Date();
+        const secondsNow = now.getSeconds();
+        const minutesNow = now.getMinutes();
+        const hoursNow = now.getHours() + 1;
+
+        if (!firstSet) {
+
+            sec = document.getElementById('seconds').value;
+            min = document.getElementById('minutes').value;
+            hour = document.getElementById('hours').value;
+            secDiff = secondsNow - sec;
+            minDiff = minutesNow - min;
+            hourDiff = hoursNow - hour;
+
+            firstSet = true;
+        }
+
+
+        console.log(secondsNow);
+        console.log(sec);
+        console.log(secDiff);
+
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
         //We add 90 degress to offset the default 90 we put in.
-        const secondsDegrees = ((seconds / 60) * 360) + 90;
-        const minutesDegrees = ((minutes / 60) * 360) + 90;
-        const hoursDegrees = ((hours / 12) * 360) + 90;
+        const secondsDegrees = (((secondsNow - secDiff) / 60) * 360) + 90;
+        const minutesDegrees = (((minutesNow - minDiff) / 60) * 360) + 90;
+        const hoursDegrees = (((hoursNow - hourDiff) / 12) * 360) + 90;
         //Set the secondhand rotate to the seconds degrees
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
+        showSec = secondsNow - secDiff;
+        showMin = minutesNow - minDiff;
+        showHour = hoursNow - hourDiff;
 
+    } else if (setTimeEnable == false) {
 
-
-
-
+        firstSet = false;
+        sec = "0";
+        min = "0";
+        hour = "0";
+        secDiff = "0";
+        minDiff = "0";
+        hourDiff = "0";
 
     }
 
@@ -189,7 +290,7 @@ if (setTimeEnable) {
     var sec = document.getElementById('seconds').value;
     var min = document.getElementById('minutes').value;
     var hour = document.getElementById('hours').value;
-    console.log("true");
+
     setInterval(function () { setCurrent(sec, min, hour) }, 1000);
 
 } else {

@@ -135,31 +135,5 @@ html {
     border: black solid 1px;
   }  
 
-  .alarm {
-
-    animation: blink 5s infinite;
-
-  }
-
-  @keyframes alarm{
-    0% {
-      background: red;
-    }
-    20% {
-      background: green;
-    }
-    40% {
-      background: yellow;
-    }
-    60% {
-      background: blue;
-    }
-    80% {
-      background: orange;
-    }
-    100% {
-      background: red;
-    }
-  }
   
 

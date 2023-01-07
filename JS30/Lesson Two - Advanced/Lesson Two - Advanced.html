@@ -37,29 +37,30 @@
     </div>
     <div id="setTime">
       <label for="hours">
-        <input type="number" id="hours" name="hours" value="00" min="00" max ="12">
+        <input type="number" id="hours" name="hours" value="01" min="01" max ="12">
       </label>
       <label for="minutes">
-        <input type="number" id="minutes" name="minutes" value="00" min="00" max ="60">
+        <input type="number" id="minutes" name="minutes" value="01" min="01" max ="60">
       </label>
       <label for="seconds">
-        <input type="number" id="seconds" name="seconds" value="00" min="00" max ="60">
+        <input type="number" id="seconds" name="seconds" value="01" min="01" max ="60">
       </label>
     </div>
     <div id="alarmTime">
       <label for="alarmHours">
-        <input type="number" id="alarmHours" name="alarmHours" value="00" min="00" max ="12">
+        <input type="number" id="alarmHours" name="alarmHours" value="01" min="01" max ="12">
       </label>
       <label for="alarmMinutes">
-        <input type="number" id="alarmMinutes" name="alarmMinutes" value="00" min="00" max ="60">
+        <input type="number" id="alarmMinutes" name="alarmMinutes" value="01" min="01" max ="60">
       </label>
       <div id="buttons">
         <label for="SetTimeBtn">
-          <input type="button" id="SetTimeBtn" name="SetTimeBtn" value="show time">
+          <input type="checkbox" id="SetTimeBtn" name="SetTimeBtn" value="Set time"> Enable set time
         <div id="enableAlarmDiv">
         <label for="enableAlarm">
           <input type="checkbox" id="enableAlarm" name="enableAlarm" value="Enable Alarm"> Enable Alarm
         </label>
+        <audio data-key ="sound" id="alarmSound" src="../Lesson Two - Advanced/Sounds/AlarmSound.wav"></audio>
       </div>
       </div>
 
