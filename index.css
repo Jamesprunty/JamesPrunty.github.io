@@ -248,6 +248,7 @@ input[type=text]{
     margin: auto;
     border: solid black 1px;
     align-items: center;
+    font-size: 20px;
 }
 
 #lessonList{
