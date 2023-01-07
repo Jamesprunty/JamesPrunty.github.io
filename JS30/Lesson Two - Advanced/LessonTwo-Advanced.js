@@ -29,7 +29,7 @@ AUBtn = document.getElementById("AU");
 ITBtn = document.getElementById("IT");
 setBtn = document.querySelector("input[name=SetTimeBtn]");
 alarmBtn = document.querySelector("input[name=enableAlarm]");
-const alarmSound = document.querySelector(`audio[data-key="${sound}"]`);
+const alarmSound = document.getElementById("alarmSound");
 
 
 UKBtn.addEventListener("click", event => current = "UK");
@@ -69,13 +69,6 @@ setBtn.addEventListener('change', function () {
 });
 
 
-
-
-
-
-
-
-
 alarmBtn.addEventListener('change', function () {
 
 
@@ -86,6 +79,8 @@ alarmBtn.addEventListener('change', function () {
     } else {
 
         alarmEnabled = false;
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
         
 
     }
@@ -107,6 +102,11 @@ function alarm() {
     var clock = document.querySelector('clock-face');
     const setDate = new Date();
 
+    console.log(showHour);
+    console.log(hour);
+    console.log(showMin);
+    console.log(min);
+
 
     const minNow = setDate.getMinutes();
     const hourNow = setDate.getHours();
@@ -124,7 +124,8 @@ function alarm() {
         } else {
 
             console.log("Not the right time");
-            alarmSound.compareDocumentPosition();
+            alarmSound.pause();
+            alarmSound.currentTime = 0;
         }
     }
 
@@ -182,7 +183,7 @@ function setDate(TZ) {
 
         showSec = seconds;
         showMin = minutes;
-        showHour = hours + 8;
+        showHour = hours - 24;
 
 
 
@@ -207,7 +208,7 @@ function setDate(TZ) {
 
         showSec = seconds;
         showMin = minutes;
-        showHour = hours + 11;
+        showHour = hours - 24;
 
 
     } else if (TZ == "IT") {
@@ -231,7 +232,7 @@ function setDate(TZ) {
 
         showSec = seconds;
         showMin = minutes;
-        showHour = hours + 1;
+        showHour = hours - 12;
 
 
     } else if (TZ == "custom" && setTimeEnable == true) {
@@ -254,9 +255,6 @@ function setDate(TZ) {
         }
 
 
-        console.log(secondsNow);
-        console.log(sec);
-        console.log(secDiff);
 
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
         //We add 90 degress to offset the default 90 we put in.
