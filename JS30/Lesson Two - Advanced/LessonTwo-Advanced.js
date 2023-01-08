@@ -69,6 +69,8 @@ setBtn.addEventListener('change', function () {
 });
 
 
+
+
 alarmBtn.addEventListener('change', function () {
 
 
@@ -138,6 +140,7 @@ function setDate(TZ) {
 
 
 
+
     if (TZ == "UK") {
         //Gets the current date and sets to "now"
         const now = new Date();
@@ -145,11 +148,33 @@ function setDate(TZ) {
         const seconds = now.getSeconds();
         const minutes = now.getMinutes();
         const hours = now.getHours();
+
+        if (seconds == "0"){
+
+            document.getElementById("second-hand").style.transitionDuration = "0s";
+        
+        } else {
+        
+            document.getElementById("second-hand").style.transitionDuration = "0.05s";
+        
+        }
+
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
         //We add 90 degress to offset the default 90 we put in.
         const secondsDegrees = ((seconds / 60) * 360) + 90;
         const minutesDegrees = ((minutes / 60) * 360) + 90;
         const hoursDegrees = ((hours / 12) * 360) + 90;
+
+        if (seconds == "0"){
+
+            document.getElementById("second-hand").style.transitionDuration = "0s";
+        
+        } else {
+        
+            document.getElementById("second-hand").style.transitionDuration = "0.05s";
+        
+        }
+
         //Set the secondhand rotate to the seconds degrees
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
@@ -162,6 +187,10 @@ function setDate(TZ) {
 
 
 
+
+
+
+
     } else if (TZ == "CA") {
 
         //Gets the current date and sets to "now"
@@ -170,6 +199,17 @@ function setDate(TZ) {
         const seconds = now.getSeconds();
         const minutes = now.getMinutes();
         const hours = now.getHours() + 8;
+
+        if (seconds == "0"){
+
+            document.getElementById("second-hand").style.transitionDuration = "0s";
+        
+        } else {
+        
+            document.getElementById("second-hand").style.transitionDuration = "0.05s";
+        
+        }
+
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
         //We add 90 degress to offset the default 90 we put in.
         const secondsDegrees = ((seconds / 60) * 360) + 90;
@@ -195,6 +235,18 @@ function setDate(TZ) {
         const seconds = now.getSeconds();
         const minutes = now.getMinutes();
         const hours = now.getHours() + 11;
+
+        if (seconds == "0"){
+
+            document.getElementById("second-hand").style.transitionDuration = "0s";
+        
+        } else {
+        
+            document.getElementById("second-hand").style.transitionDuration = "0.05s";
+        
+        }
+
+
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
         //We add 90 degress to offset the default 90 we put in.
         const secondsDegrees = ((seconds / 60) * 360) + 90;
@@ -219,6 +271,18 @@ function setDate(TZ) {
         const seconds = now.getSeconds();
         const minutes = now.getMinutes();
         const hours = now.getHours() + 1;
+
+        if (seconds == "0"){
+
+            document.getElementById("second-hand").style.transitionDuration = "0s";
+        
+        } else {
+        
+            document.getElementById("second-hand").style.transitionDuration = "0.05s";
+        
+        }
+
+
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
         //We add 90 degress to offset the default 90 we put in.
         const secondsDegrees = ((seconds / 60) * 360) + 90;
@@ -241,6 +305,18 @@ function setDate(TZ) {
         const secondsNow = now.getSeconds();
         const minutesNow = now.getMinutes();
         const hoursNow = now.getHours() + 1;
+
+        if (seconds == "0"){
+
+            document.getElementById("second-hand").style.transitionDuration = "0s";
+        
+        } else {
+        
+            document.getElementById("second-hand").style.transitionDuration = "0.05s";
+        
+        }
+
+
 
         if (!firstSet) {
 

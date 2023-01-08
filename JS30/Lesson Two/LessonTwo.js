@@ -24,6 +24,17 @@ function setDate() {
     hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
     console.log(seconds);
+
+    if (seconds == "0"){
+
+        document.getElementById("second-hand").style.transitionDuration = "0s";
+
+    } else {
+
+        document.getElementById("second-hand").style.transitionDuration = "0.05s";
+
+    }
+
 }
 
 
