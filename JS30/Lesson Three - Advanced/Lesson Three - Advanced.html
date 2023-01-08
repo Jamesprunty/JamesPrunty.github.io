@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Scoped CSS Variables and JS</title>
-  <link rel="stylesheet" href="../Lesson Three/style.css">
+  <link rel="stylesheet" href="../Lesson Three - Advanced/style.css">
 </head>
 <body>
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
@@ -17,15 +17,20 @@
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
-
     <label for="base">Base Color</label>
     <!-- Type color give you the color picker-->
     <input id="base" type="color" name="base" value="#eb0101">
+
+    <label for="treesSelect"></label>
+    <input id="treesSelect" type="checkbox" name="treesSelect">
+    <label for="mountainSelect"></label>
+    <input id="mountainSelect" type="checkbox" name="mountainSelect">
   </div>
 
   <div>
 
-    <img src=".//images/Trees.jpg">
+    <img id ="trees" src="../Lesson Three - Advanced/images/Trees.jpg">
+    <img id="mountains" src="../Lesson Three - Advanced/images/Mountain.jfif">
 
 
 
