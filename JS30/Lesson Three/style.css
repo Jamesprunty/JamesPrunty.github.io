@@ -1,6 +1,37 @@
+/* root is the root element, like the "html" tag */
+:root {
+
+  /* the "--" is the variable */
+--base: #eb0101;
+--spacing: 10px;
+--blur: 10px;
+
+}
+
+img {
+
+  /* to access a varibale, use "var" */
+  /* the "--" is like the "$" in powershell */
+  padding: var(--spacing);
+  border: 1px solid black;
+  background: var(--base);
+  filter: blur(var(--blur));
+}
+
+.hl{
+  color: var(--base);
+}
+
+
+
 /*
       misc styles, nothing to do with CSS variables
     */
+
+    h2{
+
+      font-size: 30px;
+    }
 
     html {
         background: #018DED url(../../BackgroundBlank.jpg);
@@ -14,7 +45,8 @@
         text-align: center;
         font-family: 'fantasy', papyrus;
         font-weight: 100;
-        font-size: 50px;
+        font-size: 20px;
+        
       }
   
       .controls {
@@ -23,4 +55,30 @@
   
       input {
         width: 100px;
+      }
+      .HomeLink{
+    
+        font-family: 'fantasy', papyrus;
+        font-size: 40px;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px;
+      
+        
+        
+      }
+      
+      a:hover {
+      text-decoration: underline;
+      }
+      
+      .HomeContainer{
+        
+        text-align: center;
+        width: 100%;
+        height: 20%;
+        align-items: center;
+       position: absolute;
+       bottom: 0%;
+      
       }
