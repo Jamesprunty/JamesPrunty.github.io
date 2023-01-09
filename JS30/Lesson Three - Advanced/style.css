@@ -2,22 +2,36 @@
 :root {
 
   /* the "--" is the variable */
---base: #eb0101;
---spacing: 10px;
---blur: 10px;
+
+  --tBase: #eb0101;
+  --tSpacing: 10px;
+  --tBlur: 0px;
+
+  --mBase: #eb0101;
+  --mSpacing: 20px;
+  --mBlur: 10px;
+
 
 }
 
-img {
+#trees{
 
   /* to access a varibale, use "var" */
   /* the "--" is like the "$" in powershell */
-  padding: var(--spacing);
-  background: var(--base);
-  filter: blur(var(--blur));
+  padding: var(--tSpacing);
+  background: var(--tBase);
+  filter: blur(var(--tBlur));
 }
 
-.hl{
+#mountains{
+
+  padding: var(--mSpacing);
+  background: var(--mBase);
+  filter: blur(var(--mBlur));
+
+}
+
+.hl {
   color: var(--base);
 }
 
@@ -27,56 +41,62 @@ img {
       misc styles, nothing to do with CSS variables
     */
 
-    h2{
+h2 {
 
-      font-size: 30px;
-    }
+  font-size: 30px;
+}
 
-    html {
-        background: #018DED url(../../BackgroundBlank.jpg);
-        background-size: cover;
-        font-family: 'helvetica neue';
-        text-align: center;
-        font-size: 10px;
-      }
+html {
+  background: #018DED url(../../BackgroundBlank.jpg);
+  background-size: cover;
+  font-family: 'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
 
-    body {
-        text-align: center;
-        font-family: 'fantasy', papyrus;
-        font-weight: 100;
-        font-size: 20px;
-        
-      }
-  
-      .controls {
-        margin-bottom: 50px;
-      }
-  
-      input {
-        width: 100px;
-      }
-      .HomeLink{
-    
-        font-family: 'fantasy', papyrus;
-        font-size: 40px;
-        text-align: center;
-        text-decoration: none;
-        padding: 10px;
-        
-      }
-      
-      a:hover {
-      text-decoration: underline;
-      }
-      
-      .HomeContainer{
-        
-        text-align: center;
-        width: 100%;
-        height: 20%;
-        align-items: center;
-       position: relative;
-       bottom: 0%;
-       padding: 20px;
-      
-      }
+body {
+  text-align: center;
+  font-family: 'fantasy', papyrus;
+  font-weight: 100;
+  font-size: 20px;
+
+}
+
+.controls {
+  margin-bottom: 50px;
+}
+
+input {
+  width: 100px;
+}
+
+.HomeLink {
+
+  font-family: 'fantasy', papyrus;
+  font-size: 40px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.HomeContainer {
+
+  text-align: center;
+  width: 100%;
+  height: 20%;
+  align-items: center;
+  position: relative;
+  bottom: 0%;
+  padding: 20px;
+
+}
+
+#checkBoxes {
+
+  padding: 10px;
+}

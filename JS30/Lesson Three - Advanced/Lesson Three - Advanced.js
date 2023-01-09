@@ -9,16 +9,86 @@
 
 //This will create a node list of all inputs in .controls class
 const inputs = document.querySelectorAll('.controls input');
+var treeCheck = document.getElementById("treesSelect");
+var mountCheck = document.querySelector("#mountainSelect");
+var selected = "trees";
+
+treeCheck.addEventListener('change', function (){
+
+if (this.checked){
+
+    mountCheck.checked = false;
+    selected = "trees";
+    
+}else{
+
+    
+
+}});
+
+treeCheck.checked = true;
+
+mountCheck.addEventListener('change', function (){
+
+    if (this.checked){
+    
+        treeCheck.checked = false;
+        selected = "mountains";
+        
+    }else{
+    
+        
+    
+    }});
+
+
+
+
+
 
 function handleUpdate(){
 
-    //datset is an object that will contain all data attributes (For us this would just be sizing)
-    //Some don't have a data tag and so you have to add the "|| ''" so it doesnt return undefined
-    const suffix = this.dataset.sizing || '';
 
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    if (treeCheck.checked){
+
+
+        var name = ("t" + this.name);
+
+        console.log(name);
+        console.log(this.name);
+        console.log(this.value);
+
+    
+        //datset is an object that will contain all data attributes (For us this would just be sizing)
+        //Some don't have a data tag and so you have to add the "|| ''" so it doesnt return undefined
+        const suffix = this.dataset.sizing || '';
+    
+        document.documentElement.style.setProperty(`--${name}`, this.value + suffix);
+
+    } else if (mountCheck.checked) {
+
+
+        var name = ("m" + this.name);
+        
+    
+        //datset is an object that will contain all data attributes (For us this would just be sizing)
+        //Some don't have a data tag and so you have to add the "|| ''" so it doesnt return undefined
+        const suffix = this.dataset.sizing || '';
+    
+        document.documentElement.style.setProperty(`--${name}`, this.value + suffix);
+
+
+
+
+
+    }
+
+
+
+
 
 }
+
 
 //This will go through each input and add an eventlistener. 
 //The event listener will run handleUpdate when something changes
