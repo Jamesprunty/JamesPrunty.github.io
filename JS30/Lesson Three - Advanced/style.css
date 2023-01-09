@@ -3,11 +3,11 @@
 
   /* the "--" is the variable */
 
-  --tbase: #eb0101;
+  --tbase: #000000;
   --tspacing: 10px;
   --tblur: 0px;
 
-  --mbase: #eb0101;
+  --mbase: #000000;
   --mspacing: 20px;
   --mblur: 10px;
 

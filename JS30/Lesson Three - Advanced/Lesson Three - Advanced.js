@@ -30,12 +30,21 @@ treeCheck.addEventListener('change', function () {
 
     if (this.checked) {
 
+        mDetails[0] = blurSet.value;
+        mDetails[1] = spacingSet.value;
+        mDetails[2] = baseSet.value;
+
+        console.log(mDetails)
+
+        blurSet.value = tDetails[0];
+        spacingSet.value = tDetails[1];
+        baseSet.value = tDetails[2];
+
+        console.log(tDetails);
+
         mountCheck.checked = false;
         selected = "trees";
-        blurSet.value = getComputedStyle(document.getElementById("blur")).getPropertyValue('--tblur.value');
-        baseSet.value = getComputedStyle(document.getElementById("base")).getPropertyValue('--tbase');
-        spacingSet.value = getComputedStyle(document.getElementById("spacing")).getPropertyValue('--tspacing');
-
+        
         console.log(blurSet.value);
 
 
@@ -52,12 +61,19 @@ mountCheck.addEventListener('change', function () {
 
     if (this.checked) {
 
+        tDetails[0] = blurSet.value;
+        tDetails[1] = spacingSet.value;
+        tDetails[2] = baseSet.value;
+
+        console.log(tDetails)
+
+        blurSet.value = mDetails[0];
+        spacingSet.value = mDetails[1];
+        baseSet.value = mDetails[2];
+
         treeCheck.checked = false;
         selected = "mountains";
-        blurSet.value = getComputedStyle(document.getElementById("blur")).getPropertyValue('--mblur');
-        baseSet.value = getComputedStyle(document.getElementById("base")).getPropertyValue('--mbase');
-        spacingSet.value = getComputedStyle(document.getElementById("spacing")).getPropertyValue('--mspacing');
-
+        
         console.log(blurSet.value);
 
     } else {
