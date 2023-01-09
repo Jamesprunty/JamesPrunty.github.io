@@ -12,71 +12,97 @@ const inputs = document.querySelectorAll('.controls input');
 var treeCheck = document.getElementById("treesSelect");
 var mountCheck = document.querySelector("#mountainSelect");
 var selected = "trees";
+var r = document.querySelector(':root');
+const blurSet = document.getElementById("blur");
+const spacingSet = document.getElementById("spacing");
+const baseSet = document.getElementById("base");
+var baseKeep = "";
+var blurKeep = "";
+var spacingKeep = "";
 
-treeCheck.addEventListener('change', function (){
+var tDetails = [];
+var mDetails = [];
 
-if (this.checked){
 
-    mountCheck.checked = false;
-    selected = "trees";
-    
-}else{
 
-    
 
-}});
+treeCheck.addEventListener('change', function () {
+
+    if (this.checked) {
+
+        mountCheck.checked = false;
+        selected = "trees";
+        blurSet.value = getComputedStyle(document.getElementById("blur")).getPropertyValue('--tblur.value');
+        baseSet.value = getComputedStyle(document.getElementById("base")).getPropertyValue('--tbase');
+        spacingSet.value = getComputedStyle(document.getElementById("spacing")).getPropertyValue('--tspacing');
+
+        console.log(blurSet.value);
+
+
+    } else {
+
+
+
+    }
+});
 
 treeCheck.checked = true;
 
-mountCheck.addEventListener('change', function (){
+mountCheck.addEventListener('change', function () {
 
-    if (this.checked){
-    
+    if (this.checked) {
+
         treeCheck.checked = false;
         selected = "mountains";
-        
-    }else{
-    
-        
-    
-    }});
+        blurSet.value = getComputedStyle(document.getElementById("blur")).getPropertyValue('--mblur');
+        baseSet.value = getComputedStyle(document.getElementById("base")).getPropertyValue('--mbase');
+        spacingSet.value = getComputedStyle(document.getElementById("spacing")).getPropertyValue('--mspacing');
+
+        console.log(blurSet.value);
+
+    } else {
+
+
+
+    }
+});
 
 
 
 
 
 
-function handleUpdate(){
+function handleUpdate() {
 
 
-    if (treeCheck.checked){
+    if (treeCheck.checked) {
 
 
         var name = ("t" + this.name);
+        var nameVar = "--" + name;
 
-        console.log(name);
-        console.log(this.name);
-        console.log(this.value);
 
-    
+
+
         //datset is an object that will contain all data attributes (For us this would just be sizing)
         //Some don't have a data tag and so you have to add the "|| ''" so it doesnt return undefined
         const suffix = this.dataset.sizing || '';
-    
+
+
+
         document.documentElement.style.setProperty(`--${name}`, this.value + suffix);
 
     } else if (mountCheck.checked) {
 
 
         var name = ("m" + this.name);
-        
-    
+
+
         //datset is an object that will contain all data attributes (For us this would just be sizing)
         //Some don't have a data tag and so you have to add the "|| ''" so it doesnt return undefined
         const suffix = this.dataset.sizing || '';
-    
-        document.documentElement.style.setProperty(`--${name}`, this.value + suffix);
 
+        document.documentElement.style.setProperty(`--${name}`, this.value + suffix);
 
 
 

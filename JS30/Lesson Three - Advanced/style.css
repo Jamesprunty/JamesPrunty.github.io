@@ -3,13 +3,13 @@
 
   /* the "--" is the variable */
 
-  --tBase: #eb0101;
-  --tSpacing: 10px;
-  --tBlur: 0px;
+  --tbase: #eb0101;
+  --tspacing: 10px;
+  --tblur: 0px;
 
-  --mBase: #eb0101;
-  --mSpacing: 20px;
-  --mBlur: 10px;
+  --mbase: #eb0101;
+  --mspacing: 20px;
+  --mblur: 10px;
 
 
 }
@@ -18,16 +18,16 @@
 
   /* to access a varibale, use "var" */
   /* the "--" is like the "$" in powershell */
-  padding: var(--tSpacing);
-  background: var(--tBase);
-  filter: blur(var(--tBlur));
+  padding: var(--tspacing);
+  background: var(--tbase);
+  filter: blur(var(--tblur));
 }
 
 #mountains{
 
-  padding: var(--mSpacing);
-  background: var(--mBase);
-  filter: blur(var(--mBlur));
+  padding: var(--mspacing);
+  background: var(--mbase);
+  filter: blur(var(--mblur));
 
 }
 
