@@ -13,7 +13,19 @@ const button = document.getElementById("btn");
 
 // Provide 3 arguments (GET/POST, The URL, Async True/False)
 
+function GetInfo(search){
 
+
+    
+    searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
+    var url = (searchURLTemplate + search + "'")
+    console.log(searchInput);
+    console.log(url);
+
+    xhr.open('GET', url, true);
+    
+    xhr.send();
+// Send request to the server asynchronously
 
 // Once request has loaded...
 xhr.onload = function() {
@@ -131,16 +143,11 @@ xhr2.onload = function() {
 
     
 }
+}
 
 button.addEventListener('click', function(){
     
     searchInput = document.getElementById("input").value;
-    searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
-    var url = (searchURLTemplate + searchInput + "'")
-    console.log(searchInput);
-    console.log(url);
 
-    xhr.open('GET', url, true);
-    
-    xhr.send()})
-// Send request to the server asynchronously
+    GetInfo(searchInput);
+});
