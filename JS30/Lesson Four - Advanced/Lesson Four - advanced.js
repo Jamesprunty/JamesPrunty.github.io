@@ -8,6 +8,8 @@ var age = "";
 const button = document.getElementById("btn");
 var peopleArray = [];
 var searchInput;
+var Table = "<table><tr>";
+var cells = 5;
 
 var firstName;
 var lastName;
@@ -124,14 +126,16 @@ function GetInfo(search) {
             death = "alive"
             let now = Date.now();
             let birth = new Date(bDaySection).getTime();
-            var diff = (now - birth) / 1000;
-            diff /= (60 * 60 * 24);
-            var years = Math.abs(Math.round(diff / 365));
+            var diff = (now - birth);
+            diff_dt = new Date(diff);
+            years = diff_dt.getUTCFullYear();
+            age = Math.abs(years - 1970);
 
-            console.log(years);
+
+            console.log(age + "!!!!!!!");
             console.log(death);
 
-            age = years - 1;
+
 
             birthDay = birth;
 
@@ -142,11 +146,12 @@ function GetInfo(search) {
             let deathDateRaw = JString.substring(dDayStart, dDayEnd);
             let deathDate = new Date(deathDateRaw).getTime();
             let birth = new Date(bDaySection).getTime();
-            var diff = (deathDate - birth) / 1000;
-            diff /= (60 * 60 * 24);
-            var years = Math.abs(Math.round(diff / 365));
+            var diff = (deathDate - birth);
+            var diff_dt = new Date(diff);
+            years = diff_dt.getUTCFullYear();
+            age = Math.abs(years - 1970);
 
-            console.log(years);
+            console.log(age);
             console.log(death);
 
             age = years - 1;
@@ -162,7 +167,7 @@ function GetInfo(search) {
         console.log(birthDay);
         console.log(bDaySection);
 
-        peopleArray.push([{f_name: firstName}, {l_name: lastName}, {bDay: bDaySection}, {ageYears: age}]);
+        peopleArray.push([{f_name: firstName}, {l_name: lastName}, {bDay: bDaySection}, {alive: death}, {ageYears: age}]);
         console.log(peopleArray);
 
         searchInput = "";
@@ -184,4 +189,6 @@ button.addEventListener('click', function () {
     searchInput = document.getElementById("input").value;
 
     GetInfo(searchInput);
+
+
 });
