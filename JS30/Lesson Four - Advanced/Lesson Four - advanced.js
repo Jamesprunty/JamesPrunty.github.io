@@ -169,6 +169,7 @@ function GetInfo(search) {
 
         peopleArray.push([{f_name: firstName}, {l_name: lastName}, {bDay: bDaySection}, {alive: death}, {ageYears: age}]);
         console.log(peopleArray);
+        generateTable();
 
         searchInput = "";
         page = "";
@@ -189,6 +190,21 @@ button.addEventListener('click', function () {
     searchInput = document.getElementById("input").value;
 
     GetInfo(searchInput);
+    
+
 
 
 });
+
+function generateTable(){
+
+    //Access the container using "belittlement()" 
+    //Then use "insertAdjacementHTML()" to add the table tags
+    //Use "Object.Keys()" to access the keys in the object
+    //Then use the "join()" method to put them in <TH> as the titles
+    //Once you have the titles you close them with </th>
+    //Then use "map()" and "Object.values()" to go through the values and use "join()" to put them in the row
+
+    document.getElementById('container').insertAdjacentHTML('afterend',`<table><tr><th>${Object.keys(peopleArray[0]).join('<th>')}</th><tr><TD>${peopleArray.map(e=>Object.values(e).join('<TD>')).join('<tr><TD>')}</table>`)
+
+}
