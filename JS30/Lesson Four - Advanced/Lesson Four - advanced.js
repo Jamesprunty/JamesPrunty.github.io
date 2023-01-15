@@ -6,7 +6,11 @@ var page = "";
 var death = "";
 var age = "";
 const button = document.getElementById("btn");
+const filter = document.getElementById("filter");
 let peopleArray = [];
+let peopleArrayData = [];
+let peopleFilter = [];
+let peopleArrayHeadings = [{ "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": ""}];
 var searchInput;
 var Table = "<table><tr>";
 var cells = 5;
@@ -28,14 +32,13 @@ rowCount = "0";
 function GetInfo(search) {
 
 
-    
-    console.log (search);
+
+
 
 
     searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
     var url = (searchURLTemplate + search + "'")
-    console.log(searchInput);
-    console.log(url);
+
 
     xhr.open('GET', url, true);
 
@@ -65,7 +68,7 @@ function GetInfo(search) {
 
         }
         page = pages[0];
-        console.log(page);
+
 
 
 
@@ -74,7 +77,7 @@ function GetInfo(search) {
         const ResulturlEnd = "&format=json"
 
         var url2 = (ResulturlStart + page + ResulturlEnd);
-        console.log(url2);
+
 
 
         xhr2.open('GET', url2, true);
@@ -137,8 +140,6 @@ function GetInfo(search) {
             age = Math.abs(years - 1970);
 
 
-            console.log(age + "!!!!!!!");
-            console.log(death);
 
 
 
@@ -154,51 +155,45 @@ function GetInfo(search) {
             var diff = (deathDate - birth);
             var diff_dt = new Date(diff);
             years = diff_dt.getUTCFullYear();
+            console.log(diff_dt);
+
             age = Math.abs(years - 1970);
 
             console.log(age);
             console.log(death);
 
-            age = years - 1;
             birthDay = birth;
 
 
 
         }
 
-        console.log(age);
-        console.log(firstName);
-        console.log(lastName);
+        console.log(age + "!!!!!!");
+        birthFormat = bDaySection.split('-');
+        birthDayNew = birthFormat[2] + "/" + birthFormat[1] + "/" + birthFormat[0];
         console.log(birthDay);
-        console.log(bDaySection);
 
 
+     
+        peopleArrayData.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
+        peopleArray.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
 
-        peopleArray.push({"First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age});
         console.log(peopleArray);
-      
+
         generateTable();
 
-        
-    searchInput = "";
-    page = "";
-    url = "";
-    url2 = "";
-    pages = [];
-        
+
+        searchInput = "";
+        page = "";
+        url = "";
+        url2 = "";
+        pages = [];
+
 
 
     }
 
-    
 
-
-
-
-
-
-
-    
 }
 
 button.addEventListener('click', function () {
@@ -207,14 +202,37 @@ button.addEventListener('click', function () {
     searchInputArray = searchInput.split(',');
     console.log(searchInputArray);
 
+    if (tableMade) {
+
+        document.getElementById("table").remove();
+
+    }
+
     GetInfo(searchInputArray);
-    
+});
+
+filter.addEventListener('click', function(){
+
+    if(tableMade){
+
+        filterAge = document.getElementById("filterAge").value;
+        console.log(filterAge);
+
+        console.log(peopleArray);
+        document.getElementById("table").remove();
+
+        filterList(filterAge, peopleArray);
+
+    }
+
+
+
 
 
 
 });
 
-function generateTable(){
+function generateTable() {
 
     //Access the container using "belittlement()" 
     //Then use "insertAdjacementHTML()" to add the table tags
@@ -223,46 +241,79 @@ function generateTable(){
     //Once you have the titles you close them with </th>
     //Then use "map()" and "Object.values()" to go through the values and use "join()" to put them in the row
 
-    
-   // document.getElementById('container').insertAdjacentHTML('afterend',`<table><tr><th>${peopleArray.map(Object.keys).join('<th>')}</th><tr><TD>${peopleArray.map(e=>Object.values(e).join('<TD>')).join('<tr><TD>')}</table>`)
 
-   let table = document.getElementById('container');
+    // document.getElementById('container').insertAdjacentHTML('afterend',`<table><tr><th>${peopleArray.map(Object.keys).join('<th>')}</th><tr><TD>${peopleArray.map(e=>Object.values(e).join('<TD>')).join('<tr><TD>')}</table>`)
+
+    let table = document.getElementById('container');
 
 
-   if(!tableMade){
+
 
     document.querySelector('h1').insertAdjacentHTML('afterend',
-    `<table id="table"><thead><tr><th>
+        `<table id="table"><thead><tr><th>
      ${Object.keys(peopleArray[0]).join('<th>')}
-    </thead><tbody><tr><td>${peopleArray.map(e=>Object.values(e)
-  .join('<td>')).join('<tr><td>')}</table>`)
+    </thead><tbody><tr><td>${peopleArray.map(e => Object.values(e)
+            .join('<td>')).join('<tr><td>')}</table>`)
 
-  tableMade = true;
-  rowCount++
-
-
-    }else{
-
-        for(var i = 0; i < rowCount.length; ++i){
+    tableMade = true;
+    rowCount++
 
 
-            document.querySelector('table').deleteRow(i);
+}
 
-        }
-     
+function filterList(filterAge, peopleArray){
 
-        document.querySelector('tr').insertAdjacentHTML('afterend',
-        `
-        </thead><tbody><tr><td>${peopleArray.map(e=>Object.values(e)
-      .join('<td>')).join('<tr><td>')}</table>`)
+    var peopleFilter = peopleArray.filter(function(itm){
+        return itm.Age > filterAge; 
+        
+    
+});
 
-      rowCount++
-      console.log(rowCount + "!");
 
+    peopleArray.length = peopleFilter.length;
+    peopleArray = peopleFilter;
+
+    
+    console.log(peopleArray);
+
+    let table = document.getElementById('container');
+
+    if(peopleFilter.length > 0){
+
+        document.querySelector('h1').insertAdjacentHTML('afterend',
+        `<table id="table"><thead><tr><th>
+        ${Object.keys(peopleArray[0]).join('<th>')}
+        </thead><tbody><tr><td>${peopleArray.map(e => Object.values(e)
+        .join('<td>')).join('<tr><td>')}</table>`)
+
+
+    } else {
+
+
+        document.querySelector('h1').insertAdjacentHTML('afterend',
+        `<table id="table"><thead><tr><th>
+        ${Object.keys(peopleArrayHeadings[0]).join('<th>')}</table>`)
+
+    }
+    
+
+
+}
+
+function sort(){
 
 
 
 
 
 }
+
+function map(){
+
+
+
+
+
+
+
 }
