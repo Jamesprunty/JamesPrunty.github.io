@@ -13,10 +13,11 @@ let peopleArray = [];
 let peopleArrayData = [];
 let peopleFilter = [];
 let ordered = [];
-let peopleArrayHeadings = [{ "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": ""}];
+let peopleArrayHeadings = [{ "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": "" }];
 var searchInput;
 var Table = "<table><tr>";
 var cells = 5;
+
 
 var firstName;
 var lastName;
@@ -26,7 +27,9 @@ rowCount = "0";
 
 
 
-
+document.querySelector('h1').insertAdjacentHTML('afterend',
+            `<table id="tableStart"><thead><tr><th>
+        ${Object.keys(peopleArrayHeadings[0]).join('<th>')}</table>`)
 
 
 
@@ -177,7 +180,7 @@ function GetInfo(search) {
         console.log(birthDay);
 
 
-     
+
         peopleArrayData.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
         peopleArray.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
 
@@ -201,6 +204,14 @@ function GetInfo(search) {
 
 button.addEventListener('click', function () {
 
+
+    if(!tableMade){
+
+        document.getElementById("tableStart").remove();
+
+    }
+   
+
     searchInput = document.getElementById("input").value;
     searchInputArray = searchInput.split(',');
     console.log(searchInputArray);
@@ -214,9 +225,9 @@ button.addEventListener('click', function () {
     GetInfo(searchInputArray);
 });
 
-filter.addEventListener('click', function(){
+filter.addEventListener('click', function () {
 
-    if(tableMade){
+    if (tableMade) {
 
         filterAge = document.getElementById("filterAge").value;
         console.log(filterAge);
@@ -227,14 +238,17 @@ filter.addEventListener('click', function(){
     }
 });
 
-sortLast.addEventListener('click', function(){
+sortLast.addEventListener('click', function () {
 
-sort("last");
+
+    document.getElementById("table").remove();
+    console.log("testing Working");
+    sort("last");
 
 
 });
 
-sortAge.addEventListener('click', function(){
+sortAge.addEventListener('click', function () {
 
     document.getElementById("table").remove();
     console.log("testing Working");
@@ -273,13 +287,13 @@ function generateTable() {
 
 }
 
-function filterList(filterAge, peopleArray){
+function filterList(filterAge, peopleArray) {
 
-    var peopleFilter = peopleArray.filter(function(itm){
-        return itm.Age > filterAge; 
-        
-    
-});
+    var peopleFilter = peopleArray.filter(function (itm) {
+        return itm.Age > filterAge;
+
+
+    });
 
 
     //resets array
@@ -287,58 +301,87 @@ function filterList(filterAge, peopleArray){
     //copies all of "poepleFilter" to "peopleArray" so the add person uses the filtered table
     Array.prototype.push.apply(peopleArray, peopleFilter);
 
-    
+
     console.log(peopleArray);
 
     let table = document.getElementById('container');
 
-    if(peopleFilter.length > 0){
+    if (peopleFilter.length > 0) {
 
         document.querySelector('h1').insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+            `<table id="table"><thead><tr><th>
         ${Object.keys(peopleArray[0]).join('<th>')}
         </thead><tbody><tr><td>${peopleArray.map(e => Object.values(e)
-        .join('<td>')).join('<tr><td>')}</table>`)
+                .join('<td>')).join('<tr><td>')}</table>`)
 
 
     } else {
 
 
         document.querySelector('h1').insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+            `<table id="table"><thead><tr><th>
         ${Object.keys(peopleArrayHeadings[0]).join('<th>')}</table>`)
 
     }
-    
+
 
 
 }
 
-function sort(sortType){
+function sort(sortType) {
 
 
 
-    console.log("test123");
+    if (sortType == "age") {
+
+        //console.log("test123");
+
+        peopleArray.sort(function (a, b) {
+
+            var keyA = a.Age;
+            var keyB = b.Age;
+
+            if (keyA < keyB) return -1;
+            if (keyA > keyB) return 1;
+
+        });
+
+    } else {
 
 
-    const ordered = peopleArray.sort((a, b) => a.Age - b.Age);
 
-    peopleArray.length = 0;
-    //Array.prototype.push.apply(peopleArray, ordered);
+        peopleArray.sort(function (a, b) {
 
-   /* document.querySelector('h1').insertAdjacentHTML('afterend',
+            var name = "Last name";
+
+            var keyA = a["Last Name"];
+            var keyB = b["Last Name"];
+
+            if (keyA < keyB) return -1;
+            if (keyA > keyB) return 1;
+
+        });
+
+        console.log(peopleArray);
+
+    }
+
+    //peopleArray.length = 0;
+
+    Array.prototype.push.apply(peopleArray, ordered);
+
+    document.querySelector('h1').insertAdjacentHTML('afterend',
         `<table id="table"><thead><tr><th>
         ${Object.keys(peopleArray[0]).join('<th>')}
         </thead><tbody><tr><td>${peopleArray.map(e => Object.values(e)
-        .join('<td>')).join('<tr><td>')}</table>`)
-*/
-    console.log(ordered);
+            .join('<td>')).join('<tr><td>')}</table>`)
+
 
 };
 
 
 
-function map(){
+function map() {
 
 
 
