@@ -236,6 +236,7 @@ sort("last");
 
 sortAge.addEventListener('click', function(){
 
+    document.getElementById("table").remove();
     console.log("testing Working");
     sort("age");
 
@@ -319,18 +320,21 @@ function sort(sortType){
 
     console.log("test123");
 
-    const ordered = peopleArray.sort(function(a, b){
 
-        if (a.Age > b.Age) {
-      
-          return 1;
-        } else {
-          return -1;
-        }
+    const ordered = peopleArray.sort((a, b) => a.Age - b.Age);
 
-        console.log(ordered);
+    peopleArray.length = 0;
+    //Array.prototype.push.apply(peopleArray, ordered);
 
-})};
+   /* document.querySelector('h1').insertAdjacentHTML('afterend',
+        `<table id="table"><thead><tr><th>
+        ${Object.keys(peopleArray[0]).join('<th>')}
+        </thead><tbody><tr><td>${peopleArray.map(e => Object.values(e)
+        .join('<td>')).join('<tr><td>')}</table>`)
+*/
+    console.log(ordered);
+
+};
 
 
 
