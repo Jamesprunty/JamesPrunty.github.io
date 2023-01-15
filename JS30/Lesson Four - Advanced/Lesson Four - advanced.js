@@ -270,8 +270,10 @@ function filterList(filterAge, peopleArray){
 });
 
 
-    peopleArray.length = peopleFilter.length;
-    peopleArray = peopleFilter;
+    //resets array
+    peopleArray.length = 0;
+    //copies all of "poepleFilter" to "peopleArray" so the add person uses the filtered table
+    Array.prototype.push.apply(peopleArray, peopleFilter);
 
     
     console.log(peopleArray);
