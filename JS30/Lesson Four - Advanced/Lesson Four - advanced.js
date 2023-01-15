@@ -6,7 +6,7 @@ var page = "";
 var death = "";
 var age = "";
 const button = document.getElementById("btn");
-var peopleArray = [];
+let peopleArray = [];
 var searchInput;
 var Table = "<table><tr>";
 var cells = 5;
@@ -14,6 +14,8 @@ var cells = 5;
 var firstName;
 var lastName;
 var birthDay;
+tableMade = false;
+rowCount = "0";
 
 
 
@@ -25,6 +27,9 @@ var birthDay;
 
 function GetInfo(search) {
 
+
+    
+    console.log (search);
 
 
     searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
@@ -52,8 +57,8 @@ function GetInfo(search) {
         // Pulling out the titles of each page
 
 
-        for (var i in data.query.pages) {
-            pages.push(data.query.pages[i].pageid);
+        for (var j in data.query.pages) {
+            pages.push(data.query.pages[j].pageid);
             //console.log(pages);
             //console.log(data.query.pages[i].pageid);
 
@@ -167,20 +172,31 @@ function GetInfo(search) {
         console.log(birthDay);
         console.log(bDaySection);
 
-        peopleArray.push([{f_name: firstName}, {l_name: lastName}, {bDay: bDaySection}, {alive: death}, {ageYears: age}]);
+
+
+        peopleArray.push({"First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age});
         console.log(peopleArray);
+      
         generateTable();
 
-        searchInput = "";
-        page = "";
-        url = "";
-        url2 = "";
-        pages = [];
-
+        
+    searchInput = "";
+    page = "";
+    url = "";
+    url2 = "";
+    pages = [];
         
 
 
     }
+
+    
+
+
+
+
+
+
 
     
 }
@@ -188,8 +204,10 @@ function GetInfo(search) {
 button.addEventListener('click', function () {
 
     searchInput = document.getElementById("input").value;
+    searchInputArray = searchInput.split(',');
+    console.log(searchInputArray);
 
-    GetInfo(searchInput);
+    GetInfo(searchInputArray);
     
 
 
@@ -205,6 +223,46 @@ function generateTable(){
     //Once you have the titles you close them with </th>
     //Then use "map()" and "Object.values()" to go through the values and use "join()" to put them in the row
 
-    document.getElementById('container').insertAdjacentHTML('afterend',`<table><tr><th>${Object.keys(peopleArray[0]).join('<th>')}</th><tr><TD>${peopleArray.map(e=>Object.values(e).join('<TD>')).join('<tr><TD>')}</table>`)
+    
+   // document.getElementById('container').insertAdjacentHTML('afterend',`<table><tr><th>${peopleArray.map(Object.keys).join('<th>')}</th><tr><TD>${peopleArray.map(e=>Object.values(e).join('<TD>')).join('<tr><TD>')}</table>`)
 
+   let table = document.getElementById('container');
+
+
+   if(!tableMade){
+
+    document.querySelector('h1').insertAdjacentHTML('afterend',
+    `<table id="table"><thead><tr><th>
+     ${Object.keys(peopleArray[0]).join('<th>')}
+    </thead><tbody><tr><td>${peopleArray.map(e=>Object.values(e)
+  .join('<td>')).join('<tr><td>')}</table>`)
+
+  tableMade = true;
+  rowCount++
+
+
+    }else{
+
+        for(var i = 0; i < rowCount.length; ++i){
+
+
+            document.querySelector('table').deleteRow(i);
+
+        }
+     
+
+        document.querySelector('tr').insertAdjacentHTML('afterend',
+        `
+        </thead><tbody><tr><td>${peopleArray.map(e=>Object.values(e)
+      .join('<td>')).join('<tr><td>')}</table>`)
+
+      rowCount++
+      console.log(rowCount + "!");
+
+
+
+
+
+
+}
 }
