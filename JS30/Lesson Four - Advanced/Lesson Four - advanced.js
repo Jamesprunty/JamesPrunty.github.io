@@ -7,9 +7,12 @@ var death = "";
 var age = "";
 const button = document.getElementById("btn");
 const filter = document.getElementById("filter");
+const sortLast = document.getElementById("sortLast");
+const sortAge = document.getElementById("sortAge");
 let peopleArray = [];
 let peopleArrayData = [];
 let peopleFilter = [];
+let ordered = [];
 let peopleArrayHeadings = [{ "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": ""}];
 var searchInput;
 var Table = "<table><tr>";
@@ -217,20 +220,28 @@ filter.addEventListener('click', function(){
 
         filterAge = document.getElementById("filterAge").value;
         console.log(filterAge);
-
         console.log(peopleArray);
         document.getElementById("table").remove();
-
         filterList(filterAge, peopleArray);
 
     }
+});
 
+sortLast.addEventListener('click', function(){
 
-
-
+sort("last");
 
 
 });
+
+sortAge.addEventListener('click', function(){
+
+    console.log("testing Working");
+    sort("age");
+
+});
+
+
 
 function generateTable() {
 
@@ -302,13 +313,26 @@ function filterList(filterAge, peopleArray){
 
 }
 
-function sort(){
+function sort(sortType){
 
 
 
+    console.log("test123");
+
+    const ordered = peopleArray.sort(function(a, b){
+
+        if (a.Age > b.Age) {
+      
+          return 1;
+        } else {
+          return -1;
+        }
+
+        console.log(ordered);
+
+})};
 
 
-}
 
 function map(){
 
