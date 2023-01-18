@@ -15,11 +15,11 @@ function toggleOpen(panelNo) {
     switch (panelNo) {
 
         case "panel1":
-            panel3.classList.toggle('open1');
+            panel1.classList.toggle('open1');
             break;
 
         case "panel2":
-            panel3.classList.toggle('open2');
+            panel2.classList.toggle('open2');
             break;
 
         case "panel3":
@@ -27,11 +27,11 @@ function toggleOpen(panelNo) {
             break;
 
         case "panel4":
-            panel3.classList.toggle('open4');
+            panel4.classList.toggle('open4');
             break;
 
         case "panel5":
-            panel3.classList.toggle('open5');
+            panel5.classList.toggle('open5');
             break;
     }
 

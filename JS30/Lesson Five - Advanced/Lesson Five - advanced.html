@@ -48,6 +48,9 @@
         font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         background 0.2s;
+        
+
+      
       font-size: 20px;
       background-size: cover;
       background-position: center;
@@ -122,13 +125,23 @@
       font-size: 4em;
     }
 
+    .panel1{
+
+      transition-duration: 5s;
+      transition: transform 5s;
+
+    }
+
     .panel.open1 {
 
-  
+      
+      flex: 10;
+      font-size: 80;
     }
 
     .panel.open2{
 
+      flex-grow: initial;
 
     }
 
@@ -141,6 +154,9 @@
 
     .panel.open4{
 
+      transform: rotate(180deg);
+      flex: 10;
+      font-size: 80;
 
     }
 
