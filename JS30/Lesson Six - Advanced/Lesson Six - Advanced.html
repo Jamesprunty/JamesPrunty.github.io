@@ -11,8 +11,15 @@
 
   <div id="container">
     <h1>Famous People Sorter</h1>
-
-
+    <div id="search">
+      <form class="search-form">
+        
+      <label for="btn"></label>
+      <input id="btn" type="button" name="btn" value="Add person">
+        <input type="text" class="search" placeholder="Person's name">
+        <ul class="suggestions"></ul>
+      </form>
+    </div>
 
   </div>
 
@@ -20,22 +27,12 @@
 
     <p>Type in a person's name and press "Add person" to add them to the table</p>
 
-    <div>
-
-      <label for="btn"></label>
-      <input id="btn" type="button" name="btn" value="Add person">
-  
-      <label for="input"></label>
-      <input id="input" type="text" name="input" placeholder="e.g. Jeremy Clarkson">
-  
-    </div>
-
 
     <div id="filterDiv">
 
       <label for="filter"></label>
       <input id="filter" type="button" name="filter" value="Filter by Age">
-  
+
       <label for="filterAge"></label>
       <input id="filterAge" type="number" name="filterAge" placeholder="Enter Min age">
 
