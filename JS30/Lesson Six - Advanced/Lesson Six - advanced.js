@@ -29,11 +29,13 @@ function findMatches(wordToMatch, names) {
 function displayMatches() {
     const matchArray = findMatches(this.value, names);
     //console.log(matchArray);
-    const html = matchArray.map(name => {
+
+    let html = matchArray.map(name => {
+
         const regex = new RegExp(this.value, 'gi');
         const fullName = name.FullName.replace(regex, `<span class="hl">${this.value}</span>`);
        
-    
+        
         return ` 
         <li>
             <span class="name">${fullName}</span>
@@ -41,7 +43,9 @@ function displayMatches() {
         `;
     }).join('');
 
+
     suggestions.innerHTML = html;
+    
 
 }
 
