@@ -1,5 +1,14 @@
-import{people} from './/Names';
+const endpoint = ".//Names.json";
 
-peopleArray = people;
+const names = [];
 
-console.log(peopleArray);
+fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => names.push(...data))
+
+console.log(names);
+
+
+
+
+
