@@ -1,4 +1,4 @@
-[
+const people = [
  {
    "First": "Adele",
    "Second": "",
@@ -24569,4 +24569,8 @@
    "Second2": "",
    "Second3": ""
  }
-]
+];
+
+
+//Do this so the other JS can import it
+export {people};
