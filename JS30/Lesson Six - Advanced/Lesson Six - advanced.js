@@ -3,6 +3,7 @@ const endpoint = ".//Names.json";
 let names = [];
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
+const searchBox = document.getElementById ("searchBox");
 
 
 
@@ -34,26 +35,53 @@ function findMatches(wordToMatch, names) {
 
 function displayMatches() {
     const matchArray = findMatches(this.value, names);
+
+
     //console.log(matchArray);
+
+    document.getElementById("suggestions").classList.remove("hidden");
+    document.getElementById("suggestions").classList.add("suggestions");
+
+    
 
     let html = matchArray.map(name => {
 
         const regex = new RegExp(this.value, 'gi');
+
         const fullName = name.FullName.replace(regex, `<span class="hl">${this.value}</span>`);
        
         
-        return ` 
-        <li class="item">
-            <span class="name">${fullName}</span>
-        </>       
-        `;
+
+
+            return ` 
+            <li class="item">
+                <span class="name">${fullName}</span>
+            </>       
+            `;
+
+
+        
+
+
     }).join('');
 
 
     suggestions.innerHTML = html;
 
-    itemSelector();
+    liList = document.querySelectorAll('.suggestions li');
+    var i, n = liList.length;
+    for (i=0; i<n; i++)
+    liList[i].addEventListener('click', function() { 
     
+    console.log(this.innerText);
+    let value = this.innerText;
+    document.getElementById("searchBox").value = value;
+    document.getElementById("suggestions").classList.add("hidden");
+    document.getElementById("suggestions").classList.remove("suggestions");
+    
+   });
+
+   
 
 }
 
