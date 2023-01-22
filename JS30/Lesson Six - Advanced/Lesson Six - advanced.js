@@ -4,10 +4,16 @@ let names = [];
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
+
+
+
+
 //Add the event listener for the search box
 searchInput.addEventListener('change', displayMatches);
 //We also want this to change when a key comes up, not only when you click outside of the box
 searchInput.addEventListener('keyup', displayMatches);
+
+
 
 
 
@@ -37,7 +43,7 @@ function displayMatches() {
        
         
         return ` 
-        <li>
+        <li class="item">
             <span class="name">${fullName}</span>
         </>       
         `;
@@ -45,6 +51,8 @@ function displayMatches() {
 
 
     suggestions.innerHTML = html;
+
+    itemSelector();
     
 
 }
