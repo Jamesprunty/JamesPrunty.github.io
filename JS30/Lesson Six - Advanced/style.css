@@ -99,6 +99,8 @@ p {
   position: relative;
   /*perspective: 20px;*/
 
+  display: flex;
+  flex-direction: column;
   text-align: center;
   align-items: center;
 }
@@ -116,6 +118,8 @@ p {
   text-transform: capitalize;
   font-family: 'fantasy', papyrus;
   width: 35%;
+  text-align: center;
+  align-items: center;
 
 }
 
@@ -152,4 +156,10 @@ ul {
 
   display: none;
   
+}
+
+#error{
+
+color: red;
+
 }
