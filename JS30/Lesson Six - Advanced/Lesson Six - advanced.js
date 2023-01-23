@@ -11,12 +11,9 @@ const searchBox = document.getElementById ("searchBox");
 
 //Add the event listener for the search box
 searchInput.addEventListener('change', displayMatches);
+   
 //We also want this to change when a key comes up, not only when you click outside of the box
 searchInput.addEventListener('keyup', displayMatches);
-
-
-
-
 
     fetch(endpoint)
     .then(blob => blob.json())
@@ -27,22 +24,35 @@ console.log (names);
 
 function findMatches(wordToMatch, names) {
 
-    return names.filter(name => {
-        const regex = new RegExp(wordToMatch, 'gi');
-        return name.FullName.match(regex);
-    });
+
+        return names.filter(name => {
+            const regex = new RegExp(wordToMatch, 'gi');
+            return name.FullName.match(regex);
+        });
+
 }
 
 function displayMatches() {
+
+if (this.value == ''){
+
+    document.getElementById("suggestions").classList.add("hidden");
+        document.getElementById("suggestions").classList.remove("suggestions");
+
+
+}else{
+
     const matchArray = findMatches(this.value, names);
+
 
 
     //console.log(matchArray);
 
-    document.getElementById("suggestions").classList.remove("hidden");
-    document.getElementById("suggestions").classList.add("suggestions");
+   
 
-    
+        document.getElementById("suggestions").classList.remove("hidden");
+        document.getElementById("suggestions").classList.add("suggestions");
+
 
     let html = matchArray.map(name => {
 
@@ -83,7 +93,7 @@ function displayMatches() {
 
    
 
-}
+}}
 
 
 //console.log(names);
