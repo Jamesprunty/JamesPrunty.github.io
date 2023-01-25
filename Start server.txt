@@ -1,6 +1,6 @@
 Load up cmd
 
-Cd directory 
+Cd C:\Users\Administrator\OneDrive - George Abbot School\Personal\JamesPrunty\JamesPrunty.github.io\JamesPrunty.github.io
 
 python -m http.server 8080
 
