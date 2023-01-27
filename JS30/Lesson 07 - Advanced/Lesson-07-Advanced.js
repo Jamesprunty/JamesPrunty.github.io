@@ -275,7 +275,6 @@ function GetInfo(search) {
         url2 = "";
         pages = [];
         document.getElementById("searchBox").value = ""
-        id = "0";
 
 
 
