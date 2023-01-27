@@ -21,10 +21,11 @@ let peopleArray = [];
 let peopleArrayData = [];
 let peopleFilter = [];
 let ordered = [];
-let peopleArrayHeadings = [{ "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": "" }];
+let peopleArrayHeadings = [{"ID": "", "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": "" }];
 var searchInput;
 var Table = "<table><tr>";
 var cells = 5;
+var id = "0";
 
 
 var firstName;
@@ -208,7 +209,7 @@ function GetInfo(search) {
 
 
         let bDaySection = JString.substring(bDayStart, bDayEnd);
- 
+
 
         if (JString.search(/>Died</) < 1) {
 
@@ -221,6 +222,8 @@ function GetInfo(search) {
             age = Math.abs(years - 1970);
 
             birthDay = birth;
+
+            ++id;
 
         } else {
 
@@ -238,38 +241,32 @@ function GetInfo(search) {
 
             birthDay = birth;
 
+            ++id;
 
         }
 
-        if (!age){
+        if (!age) {
 
-     
+
             document.getElementById("error").classList.remove("hidden");
 
-            peopleArrayData.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": "n/a", "Alive": "n/a" ,"Age": "0" });
-            peopleArray.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": "n/a", "Alive": "n/a" ,"Age": "0" });
+            peopleArrayData.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": "n/a", "Alive": "n/a", "Age": "0" });
+            peopleArray.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": "n/a", "Alive": "n/a", "Age": "0" });
 
-        }else{
+        } else {
 
-            
-        
-
-  
-        birthFormat = bDaySection.split('-');
-        birthDayNew = birthFormat[2] + "/" + birthFormat[1] + "/" + birthFormat[0];
+            birthFormat = bDaySection.split('-');
+            birthDayNew = birthFormat[2] + "/" + birthFormat[1] + "/" + birthFormat[0];
 
 
+            peopleArrayData.push({ "ID": id,  "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
+            peopleArray.push({ "ID": id,  "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
 
-
-        peopleArrayData.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
-        peopleArray.push({ "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
-
-        console.log(peopleArray);
+            console.log(peopleArray);
 
         }
 
-
-            generateTable();
+        generateTable();
 
 
         searchInput = "";
@@ -278,6 +275,7 @@ function GetInfo(search) {
         url2 = "";
         pages = [];
         document.getElementById("searchBox").value = ""
+        id = "0";
 
 
 
