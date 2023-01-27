@@ -11,6 +11,8 @@ const idSelector = document.getElementById("idSelectorBtn");
 
 var xhr = new XMLHttpRequest();
 var xhr2 = new XMLHttpRequest();
+var xhr3 = new XMLHttpRequest();
+var xhr4 = new XMLHttpRequest();
 var pages = [];
 var page = "";
 var death = "";
@@ -23,7 +25,7 @@ let peopleArray = [];
 let peopleArrayData = [];
 let peopleFilter = [];
 let ordered = [];
-let peopleArrayHeadings = [{"ID": "", "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": "" }];
+let peopleArrayHeadings = [{ "ID": "", "First Name": "", "Last Name": "", "Birth Day": "", "Alive": "", "Age": "" }];
 var searchInput;
 var Table = "<table><tr>";
 var cells = 5;
@@ -134,8 +136,6 @@ function GetInfo(search) {
 
 
 
-
-
     searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
     var url = (searchURLTemplate + search + "'")
 
@@ -197,7 +197,7 @@ function GetInfo(search) {
         lastName = nameSplit[1];
 
         var JString = JSON.stringify(text);
-        //console.log(JString);
+        console.log(JString);
 
         var bDayStart = JString.search(/bday/) + 7;
         var bDayEnd = bDayStart + 10;
@@ -264,8 +264,8 @@ function GetInfo(search) {
             birthDayNew = birthFormat[2] + "/" + birthFormat[1] + "/" + birthFormat[0];
 
 
-            peopleArrayData.push({ "ID": id,  "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
-            peopleArray.push({ "ID": id,  "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
+            peopleArrayData.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
+            peopleArray.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
 
             console.log(peopleArray);
 
@@ -340,11 +340,11 @@ sortAge.addEventListener('click', function () {
     console.log("testing Working");
     sort("age");
 
-  
+
 
 });
 
-idSelector.addEventListener('click', function (){
+idSelector.addEventListener('click', function () {
 
     var idSelected = document.getElementById("idSelectorInput").value;
     const idInfo = peopleArrayData.find(person => person.ID == idSelected);
@@ -355,12 +355,74 @@ idSelector.addEventListener('click', function (){
     var personLName = idInfo[`Last Name`];
     var personName = (personFName + " " + personLName);
 
-
-
     document.getElementById("personTitle").innerHTML = personName;
 
 
-});
+    searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
+    var url = (searchURLTemplate + personName + "'")
+
+    xhr3.open('GET', url, true);
+
+
+    xhr3.send();
+  
+    xhr3.onload = function () {
+       
+        var data = JSON.parse(this.response);
+
+        for (var j in data.query.pages) {
+            pages.push(data.query.pages[j].pageid);
+        
+        }
+        page = pages[0];
+
+        const ResulturlStart = "https://en.wikipedia.org/w/api.php?action=parse&origin=*&prop=text&pageid=";
+        const ResulturlEnd = "&format=json"
+
+        var url2 = (ResulturlStart + page + ResulturlEnd);
+
+        xhr4.open('GET', url2, true);
+        xhr4.send();
+
+    }
+
+
+    xhr4.onload = function () {
+
+
+        // Parse the request into JSON
+        var data = JSON.parse(this.response);
+
+
+        var text = data.parse.text;
+        var name = data.parse.title;
+
+        var nameSplit = name.split(" ");
+        firstName = nameSplit[0];
+        lastName = nameSplit[1];
+
+        var JString = JSON.stringify(text);
+
+
+        var bioStart = JString.search(/birthplace/);
+        var bioEnd = JString.search(/title=/);
+
+        let bio = JString.substring(bioStart, bioEnd);
+
+        console.log(bio);
+
+        searchInput = "";
+        page = "";
+        url = "";
+        url2 = "";
+        pages = [];
+        document.getElementById("searchBox").value = ""
+
+
+
+
+
+}});
 
 
 function generateTable() {
