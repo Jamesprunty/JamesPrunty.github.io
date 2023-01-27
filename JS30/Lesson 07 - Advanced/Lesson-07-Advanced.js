@@ -4,6 +4,8 @@ let names = [];
 const searchInputData = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 const searchBox = document.getElementById("searchBox");
+const idSelector = document.getElementById("idSelectorBtn");
+
 
 //Lesson 4 - advanced
 
@@ -41,6 +43,8 @@ searchInputData.addEventListener('change', displayMatches);
 //We also want this to change when a key comes up, not only when you click outside of the box
 searchInputData.addEventListener('keyup', displayMatches);
 
+
+
 fetch(endpoint)
     .then(blob => blob.json())
     .then(data => names.push(...data))
@@ -57,6 +61,7 @@ function findMatches(wordToMatch, names) {
     });
 
 }
+
 
 function displayMatches() {
 
@@ -335,8 +340,27 @@ sortAge.addEventListener('click', function () {
     console.log("testing Working");
     sort("age");
 
+  
+
 });
 
+idSelector.addEventListener('click', function (){
+
+    var idSelected = document.getElementById("idSelectorInput").value;
+    const idInfo = peopleArrayData.find(person => person.ID == idSelected);
+    console.log(idSelected);
+    console.log(idInfo);
+
+    var personFName = idInfo[`First Name`];
+    var personLName = idInfo[`Last Name`];
+    var personName = (personFName + " " + personLName);
+
+
+
+    document.getElementById("personTitle").innerHTML = personName;
+
+
+});
 
 
 function generateTable() {
