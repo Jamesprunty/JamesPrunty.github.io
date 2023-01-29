@@ -258,6 +258,10 @@ function GetInfo(search) {
             peopleArrayData.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": "n/a", "Alive": "n/a", "Age": "0" });
             peopleArray.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": "n/a", "Alive": "n/a", "Age": "0" });
 
+
+            
+
+
         } else {
 
             birthFormat = bDaySection.split('-');
@@ -267,7 +271,7 @@ function GetInfo(search) {
             peopleArrayData.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": bDaySection, "Alive": death, "Age": age });
             peopleArray.push({ "ID": id, "First Name": firstName, "Last Name": lastName, "Birth Day": birthDayNew, "Alive": death, "Age": age });
 
-            console.log(peopleArray);
+
 
         }
 
@@ -287,6 +291,8 @@ function GetInfo(search) {
 
 
 }
+
+
 
 button.addEventListener('click', function () {
 
@@ -348,14 +354,17 @@ idSelector.addEventListener('click', function () {
 
     var idSelected = document.getElementById("idSelectorInput").value;
     const idInfo = peopleArrayData.find(person => person.ID == idSelected);
-    console.log(idSelected);
-    console.log(idInfo);
+
 
     var personFName = idInfo[`First Name`];
     var personLName = idInfo[`Last Name`];
+    var personLiving = idInfo[`Alive`];
     var personName = (personFName + " " + personLName);
 
+
     document.getElementById("personTitle").innerHTML = personName;
+    document.getElementById("personAge").innerHTML = personLiving;
+    
 
 
     searchURLTemplate = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='";
@@ -365,14 +374,14 @@ idSelector.addEventListener('click', function () {
 
 
     xhr3.send();
-  
+
     xhr3.onload = function () {
-       
+
         var data = JSON.parse(this.response);
 
         for (var j in data.query.pages) {
             pages.push(data.query.pages[j].pageid);
-        
+
         }
         page = pages[0];
 
@@ -403,14 +412,6 @@ idSelector.addEventListener('click', function () {
 
         var JString = JSON.stringify(text);
 
-
-        var bioStart = JString.search(/birthplace/);
-        var bioEnd = JString.search(/title=/);
-
-        let bio = JString.substring(bioStart, bioEnd);
-
-        console.log(bio);
-
         searchInput = "";
         page = "";
         url = "";
@@ -422,7 +423,8 @@ idSelector.addEventListener('click', function () {
 
 
 
-}});
+    }
+});
 
 
 function generateTable() {
@@ -547,6 +549,8 @@ function sort(sortType) {
 };
 function map() {
 }
+
+
 
 
 
