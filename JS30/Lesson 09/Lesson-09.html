@@ -9,11 +9,111 @@
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <script type="script/javascript" src="Lesson-09.js"></script>
+  <script>
 
-  <div class="HomeContainer">
-    <a href="../../index.html" class="HomeLink">Home</a>
-    <a href="../JS30.html" class="HomeLink">JS30</a>
-  </div>
+const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+function makeGreen() {
+  const p = document.querySelector('p');
+  p.style.color = '#BADA55';
+  p.style.fontSize = '50px';
+}
+
+//To find out what code is editing our elements, we can inspect the element
+//Right click then select "break on" then "Attribute modifications"
+//This will then pause exactly where this code takes place and show us where it is
+//Remember to remove this
+
+
+// Regular
+console.log("hello");
+
+// Interpolated
+
+//This is a way of putting variables from other languages into console
+console.log('Hello I am a %s string!', 'very simple');
+//This has been taken over by the backtick method
+/* console.log(`Hello I am ${var}`) */
+
+// Styled
+//You can style your logs with "%c" ('%c The thing you want to say','The style')
+console.log('%c This is a test', 'color:red');
+
+// warning!
+//This will give us a warning
+//This will give us where this was
+console.warn("This is a warning");
+
+// Error :|
+//This will give us an error
+//This will tell us where this happened
+console.error("This is an error");
+
+// Info
+//This will give us some info
+console.info("this is some info")
+
+// Testing
+//Console.assert can be used to test if something is true. 
+//If the classlist does not contain it will fail. If it is true, nothing will happen.
+const p = document.querySelector('p');
+console.assert(p.classList.contains('ouch'), "This is not right");
+
+// clearing
+//This will clear the console
+console.clear(); 
+
+// Viewing DOM Elements
+//If you console.log an element, you get the contents.
+//By doing this you can see all the methods (in prototype) and information
+console.log(p);
+console.dir(p);
+
+// Grouping together
+//Use this to group things together. This makes it much easier to read and manage
+//Start the group with "console.group" and end with "console.groupEnd" and the same parameter as the start
+//You can use "groupCollapsed" to have it automatically be collapsed
+dogs.forEach(dog => {
+
+  console.groupCollapsed(`${dog.name}`);
+  console.log(`This is ${dog.name}`);
+  console.log(`${dog.name} is ${dog.age} years old`);
+  console.groupEnd(`${dog.name}`);
+
+})
+
+// counting
+//This will count as many times we use a specific word or number etc
+console.count('console');
+console.count('log');
+console.count('log');
+
+// timing
+//See how long something takes. 
+//Start the timer, run code, end the timer
+
+/*console.time('fetch Data');
+fetch('https://api.github.com/users/wesbos')
+    .then(data => data,json())
+    .then(data => {
+        console.timeEnd('fetching Data');
+        console.log(data);
+    });*/
+
+//table
+//Look at array in table format
+
+console.table(dogs);
+
+
+
+  </script>
+
+
+<div class="HomeContainer">
+  <a href="../../index.html" class="HomeLink">Home</a>
+  <a href="../JS30.html" class="HomeLink">JS30</a>
+</div>
+
 </body>
 </html>
