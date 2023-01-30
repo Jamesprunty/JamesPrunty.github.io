@@ -16,21 +16,17 @@
     <input id="strokeColour" type="color" name="strokeColour">
 
     <label for="strokeSize">Stroke Size:</label>
-    <input id="strokeSize" type="range" name="strokeSize">
+    <input id="strokeSize" type="range" name="strokeSize" min="1" max="70" value="10">
 
-    <label for="save">
-      <input id="save" type="button" name="save" value="Save" class="button">
+    <label for="reset"></label>
+    <input id="reset" type="button" name="reset" class="button" value="Reset">
 
-      <label for="reset">
-        <input id="reset" type="button" name="reset" class="button" value="Reset">
+    <label for="save"></label>
+    <input id="save" type="button" name="save" value="Save" class="button">
 
-        <label for="recallNo">Recall Number:</label>
-        <input id="recallNo" type="number" name="recallNo">
-
-
-        <label for="recall">
-          <input id="recall" type="button" name="recall" class="button" value="Recall">
-      
+    <div id="link">
+      <a id="linkText" class="hidden">Right Click here to save image As</a>
+    </div>
 
 
 

@@ -1,4 +1,12 @@
 const canvas = document.querySelector('#draw');
+const StorkeColour = document.querySelector('#strokeColour');
+const strokeSize = document.querySelector('#strokeSize');
+const reset = document.querySelector('#reset');
+const save = document.querySelector('#save');
+
+
+let SC = "#000000";
+let SS = "10";
 
 //We dont draw on the canvas but instead draw on the context 
 //We need to get the context (we want 2D)
@@ -15,11 +23,11 @@ canvas.height = heightNo;
 //Canvas settings
 
 //When we start we need a colour
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = SC;
 //Is the stroke rounded?
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 30;
+ctx.lineWidth = SS;
 
 //We can use global composite oportator to do different things
 
@@ -33,10 +41,9 @@ function draw(e) {
     //stop function from running when mouse is not down
     if (!isDrawing) return;
 
-    console.log(e);
-
     //This will change the hue as we go. 
-    ctx.strokeStyle = `0, 100%, 0%)`;
+    ctx.strokeStyle = SC;
+    ctx.lineWidth = SS;
 
 
     //start path
@@ -48,12 +55,34 @@ function draw(e) {
     //Draw Line
     ctx.stroke();
 
+    ctx.fillStyle = "red";
+    ctx.fill();
+
     //update the start position
     /*lastX = e.offsetX;
     lastY = e.offsetY;*/
     //We can do the previous code in one line. This is destructuring an array
 
     [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    reset.addEventListener('click', function(){
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById("linkText").href = "";
+        document.getElementById("linkText").classList.add("hidden");
+        document.getElementById("linkText").classList.remove("show");
+    
+    
+    })
+
+    save.addEventListener('click', function(){
+
+        const imageURL = canvas.toDataURL("image/jpg");
+        document.getElementById("linkText").href = imageURL;
+        document.getElementById("linkText").classList.add("show");
+        document.getElementById("linkText").classList.remove("hidden");
+
+    })
 
 
 
@@ -71,6 +100,22 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('mouseup', () => isDrawing = false);
 //We need this listener so if the mouse leaves the canvas it turns off
 canvas.addEventListener('mouseout', () => isDrawing = false);
+
+StorkeColour.addEventListener('change', function(){
+
+    console.log(this.value);
+    SC = this.value;
+})
+
+strokeSize.addEventListener('change', function(){
+
+    console.log(this.value);
+    SS = this.value;
+});
+
+
+
+
 
 
 
