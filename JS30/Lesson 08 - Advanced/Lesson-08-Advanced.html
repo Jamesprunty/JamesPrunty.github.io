@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
   <link rel="stylesheet" href="Lesson-08-Advanced.css">
 </head>
+
 <body>
-<canvas id="draw" width="800" height="800"></canvas>
+  <canvas id="draw" width="800" height="800"></canvas>
 
-<div class="HomeContainer">
-  <a href="../../index.html" class="HomeLink">Home</a>
-  <a href="../JS30.html" class="HomeLink">JS30</a>
-</div>
+  <div id="controls" class="controls">
+
+    <label for="strokeColour">Stroke Color:</label>
+    <input id="strokeColour" type="color" name="strokeColour">
+
+    <label for="strokeSize">Stroke Size:</label>
+    <input id="strokeSize" type="range" name="strokeSize">
+
+    <label for="save">
+      <input id="save" type="button" name="save" value="Save" class="button">
+
+      <label for="reset">
+        <input id="reset" type="button" name="reset" class="button" value="Reset">
+
+        <label for="recallNo">Recall Number:</label>
+        <input id="recallNo" type="number" name="recallNo">
 
 
-<script type="application/javascript" src="Lesson-08-Advanced.js">
-</script>
+        <label for="recall">
+          <input id="recall" type="button" name="recall" class="button" value="Recall">
+      
+
+
+
+  </div>
+
+  <div class="HomeContainer">
+    <a href="../../index.html" class="HomeLink">Home</a>
+    <a href="../JS30.html" class="HomeLink">JS30</a>
+  </div>
+
+
+  <script type="application/javascript" src="Lesson-08-Advanced.js">
+  </script>
 
 
 </body>
+
 </html>

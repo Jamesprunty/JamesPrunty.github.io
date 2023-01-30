@@ -39,3 +39,30 @@ html {
   border: 1px black solid;
 
   }
+
+  
+.controls {
+  margin-bottom: 50px;
+  font-family: 'fantasy', papyrus;
+  text-align: center;
+  align-items: center;
+}
+
+input {
+  width: 100px;
+}
+
+.button{
+
+  font-size: 20px;
+  font-family: 'fantasy', papyrus;
+  font-weight: bold;
+
+}
+
+label{
+
+font-size: 25px;
+padding: 2px;
+
+}
