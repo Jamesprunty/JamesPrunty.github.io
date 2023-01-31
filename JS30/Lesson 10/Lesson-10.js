@@ -7,7 +7,7 @@ inbox.forEach(element => {
     addEventListener('change', handleChange);    
 });
 
-handleChange(){
+function handleChange () {
 
 console.log(this.name);
 
