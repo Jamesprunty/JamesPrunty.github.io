@@ -4,21 +4,11 @@ console.log(inbox);
 
 inbox.forEach(element => {
 
-    addEventListener('change', function(){
-
-        console.log(this);
-
-        if(this.checked){
-
-            console.log("Checkbox Checked");
-
-        }else{
-
-            console.log("Checkbox unchecked");
-
-        }
-        
-
-    })
-    
+    addEventListener('change', handleChange);    
 });
+
+handleChange(){
+
+console.log(this.name);
+
+}
