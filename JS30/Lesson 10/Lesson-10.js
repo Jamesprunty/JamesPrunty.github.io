@@ -16,22 +16,41 @@ inbox.forEach(element => {
 
 function handleChange(e) {
 
-    //newchecked = e.target;
-    //console.log('%c' + newchecked, 'color:red');
+    if (e.target.checked){
+
+        e.target.classList.add('current');
+        console.log("Checked");
+
+    } else {
+
+        e.target.classList.remove('current');
+        console.log("UnChecked");
+    }
+
+    
+
+    newchecked = e.target.outerHTML;
+
+    console.log('%c' + newchecked, 'color:red');
 
     console.log(e.target);
-    console.log(inbox[0]);
-    
-    if (lastchecked == null){
 
-        newchecked = lastchecked;
+    console.log(inbox[0]);
+
+    
+    
+
+
+    if (lastchecked == ""){
+
+       
         return;
 
     }
 
     if (shiftDown) {
 
-
+        
 
 
 
