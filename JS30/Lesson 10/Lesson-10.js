@@ -14,9 +14,9 @@ inbox.forEach(element => {
 });
 
 
-function handleChange() {
+function handleChange(e) {
 
-    console.log(this.input);
+    console.log(e);
     console.log(inbox[0]);
     
 
