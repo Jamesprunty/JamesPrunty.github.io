@@ -16,7 +16,7 @@ inbox.forEach(element => {
 
 function handleChange(e) {
 
-    console.log(e);
+    console.log(e.target);
     console.log(inbox[0]);
     
 
