@@ -3,6 +3,9 @@ let shiftDown = false;
 let pressed = "0";
 let lastchecked;
 let newchecked;
+let remove;
+let previous;
+let CheckedArray = [];
 
 
 console.log(inbox);
@@ -16,49 +19,98 @@ inbox.forEach(element => {
 
 function handleChange(e) {
 
+    for(i=0;i<inbox.length;i++){
+
+        if(e.target == inbox[i]){
+
+            console.log(i);
+
+        }
+
+    }
+
+
+}
+
+
+    /*backup
+    
+    
+    
+    if (e.target.checked){
+        CheckedArray.push(e.target);
+        console.log(CheckedArray);
+    }else{
+        console.log("This is not checked");
+        console.log(CheckedArray);
+        }
+    }
+    
     if (e.target.checked){
 
         e.target.classList.add('current');
-        console.log("Checked");
+
 
     } else {
 
         e.target.classList.remove('current');
-        console.log("UnChecked");
+        e.target.classList.remove('previous');
+
+
     }
 
-    
-
-    newchecked = e.target.outerHTML;
-
-    console.log('%c' + newchecked, 'color:red');
-
-    console.log(e.target);
-
-    console.log(inbox[0]);
-
-    
-    
-
-
-    if (lastchecked == ""){
-
-       
-        return;
-
-    }
 
     if (shiftDown) {
 
-        
+        let remove = document.querySelector('.previous')
+        let previous = document.querySelector('.current')
+        previous.classList.add('previous');
+        previous.classList.remove('current');
+        e.target.classList.add('current');        
+        remove.classList.remove('previous');
+
+        for (i=0;i<inbox.length;i++){
+
+            if (inbox[i].classList.contains('current')){
+
+                console.log(i);
+
+            }
+            if (inbox[i].classList.contains('previous')){
+
+                console.log(i);
+
+            }
 
 
 
 
+        }
 
 
     } else {
 
+        remove = document.querySelector('.previous')
+        previous = document.querySelector('.current')
+
+        previous.classList.add('previous');
+        previous.classList.remove('current');
+        e.target.classList.add('current');
+        
+        if(previous.classList.contains('current') && previous.classList.contains('previous') ){
+
+            previous.classList.remove('previous');
+
+        }
+
+        remove.classList.remove('previous');
+
+        remove = "";
+        previous = "";
+
+  
+        
+
 
         return;
 
@@ -68,16 +120,8 @@ function handleChange(e) {
 
 
 
-    }
+    }*/
 
-
-
-
-
-
-
-
-}
 
 window.addEventListener('keydown', function (e) {
 
