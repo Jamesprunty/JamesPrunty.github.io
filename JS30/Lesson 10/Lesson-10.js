@@ -16,10 +16,18 @@ inbox.forEach(element => {
 
 function handleChange(e) {
 
+    //newchecked = e.target;
+    //console.log('%c' + newchecked, 'color:red');
+
     console.log(e.target);
     console.log(inbox[0]);
     
+    if (lastchecked == null){
 
+        newchecked = lastchecked;
+        return;
+
+    }
 
     if (shiftDown) {
 
