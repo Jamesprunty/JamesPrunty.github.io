@@ -78,95 +78,6 @@ function handleChange(e) {
 }
 
 
-/*backup
- 
- 
- 
-if (e.target.checked){
-    CheckedArray.push(e.target);
-    console.log(CheckedArray);
-}else{
-    console.log("This is not checked");
-    console.log(CheckedArray);
-    }
-}
- 
-if (e.target.checked){
-
-    e.target.classList.add('current');
-
-
-} else {
-
-    e.target.classList.remove('current');
-    e.target.classList.remove('previous');
-
-
-}
-
-
-if (shiftDown) {
-
-    let remove = document.querySelector('.previous')
-    let previous = document.querySelector('.current')
-    previous.classList.add('previous');
-    previous.classList.remove('current');
-    e.target.classList.add('current');        
-    remove.classList.remove('previous');
-
-    for (i=0;i<inbox.length;i++){
-
-        if (inbox[i].classList.contains('current')){
-
-            console.log(i);
-
-        }
-        if (inbox[i].classList.contains('previous')){
-
-            console.log(i);
-
-        }
-
-
-
-
-    }
-
-
-} else {
-
-    remove = document.querySelector('.previous')
-    previous = document.querySelector('.current')
-
-    previous.classList.add('previous');
-    previous.classList.remove('current');
-    e.target.classList.add('current');
-    
-    if(previous.classList.contains('current') && previous.classList.contains('previous') ){
-
-        previous.classList.remove('previous');
-
-    }
-
-    remove.classList.remove('previous');
-
-    remove = "";
-    previous = "";
-
- 
-    
-
-
-    return;
-
-
-
-
-
-
-
-}*/
-
 
 window.addEventListener('keydown', function (e) {
 
@@ -193,19 +104,6 @@ window.addEventListener('keyup', function (e) {
     }
 });
 
-
-
-
-
-//Get whether the shift button is down - DONE
-
-//Get which box is checked
-
-//Get which box is being checked
-
-//Find all the boxes in between
-
-//Check those boxes
 
 
 
