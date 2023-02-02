@@ -23,7 +23,22 @@ function handleChange(e) {
 
         if(e.target == inbox[i]){
 
-            console.log(i);
+            if (inbox[i].checked){
+
+                CheckedArray.push(i);
+            console.log('%c'+CheckedArray,'color:red');
+
+
+            }else{
+
+                const index = CheckedArray.indexOf(i);
+                if(index > -1){CheckedArray.splice(index, 1)};
+                console.log('%c'+CheckedArray,'color:blue');
+
+            }
+
+
+            
 
         }
 
