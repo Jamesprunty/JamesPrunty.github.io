@@ -19,28 +19,58 @@ inbox.forEach(element => {
 
 function handleChange(e) {
 
-    for(i=0;i<inbox.length;i++){
+    for (i = 0; i < inbox.length; i++) {
 
-        if(e.target == inbox[i]){
+        if (e.target == inbox[i]) {
 
-            if (inbox[i].checked){
+            if (inbox[i].checked) {
 
                 CheckedArray.push(i);
-            console.log('%c'+CheckedArray,'color:red');
+                console.log('%c' + CheckedArray, 'color:red');
 
 
-            }else{
+            } else {
 
                 const index = CheckedArray.indexOf(i);
-                if(index > -1){CheckedArray.splice(index, 1)};
-                console.log('%c'+CheckedArray,'color:blue');
+                if (index > -1) { CheckedArray.splice(index, 1) };
+                console.log('%c' + CheckedArray, 'color:blue');
 
             }
 
 
-            
+
 
         }
+
+    }
+
+    if(shiftDown){
+
+        previous = CheckedArray[CheckedArray.length - 2];
+        current = CheckedArray[CheckedArray.length - 1];
+
+        console.log('%c'+previous,'color:red');
+        console.log('%c'+current,'color:green');
+
+        for(i=previous;i<current;i++){
+
+            inbox[i].checked = true;
+
+
+        }
+
+        if(previous>current){
+
+            for(i=current;i<previous;i++){
+
+                inbox[i].checked = true;
+    
+    
+            }
+
+
+        }
+
 
     }
 
@@ -48,86 +78,86 @@ function handleChange(e) {
 }
 
 
-    /*backup
-    
-    
-    
-    if (e.target.checked){
-        CheckedArray.push(e.target);
-        console.log(CheckedArray);
-    }else{
-        console.log("This is not checked");
-        console.log(CheckedArray);
-        }
+/*backup
+ 
+ 
+ 
+if (e.target.checked){
+    CheckedArray.push(e.target);
+    console.log(CheckedArray);
+}else{
+    console.log("This is not checked");
+    console.log(CheckedArray);
     }
-    
-    if (e.target.checked){
+}
+ 
+if (e.target.checked){
 
-        e.target.classList.add('current');
+    e.target.classList.add('current');
 
 
-    } else {
+} else {
 
-        e.target.classList.remove('current');
-        e.target.classList.remove('previous');
+    e.target.classList.remove('current');
+    e.target.classList.remove('previous');
+
+
+}
+
+
+if (shiftDown) {
+
+    let remove = document.querySelector('.previous')
+    let previous = document.querySelector('.current')
+    previous.classList.add('previous');
+    previous.classList.remove('current');
+    e.target.classList.add('current');        
+    remove.classList.remove('previous');
+
+    for (i=0;i<inbox.length;i++){
+
+        if (inbox[i].classList.contains('current')){
+
+            console.log(i);
+
+        }
+        if (inbox[i].classList.contains('previous')){
+
+            console.log(i);
+
+        }
+
+
 
 
     }
 
 
-    if (shiftDown) {
+} else {
 
-        let remove = document.querySelector('.previous')
-        let previous = document.querySelector('.current')
-        previous.classList.add('previous');
-        previous.classList.remove('current');
-        e.target.classList.add('current');        
-        remove.classList.remove('previous');
+    remove = document.querySelector('.previous')
+    previous = document.querySelector('.current')
 
-        for (i=0;i<inbox.length;i++){
+    previous.classList.add('previous');
+    previous.classList.remove('current');
+    e.target.classList.add('current');
+    
+    if(previous.classList.contains('current') && previous.classList.contains('previous') ){
 
-            if (inbox[i].classList.contains('current')){
+        previous.classList.remove('previous');
 
-                console.log(i);
+    }
 
-            }
-            if (inbox[i].classList.contains('previous')){
+    remove.classList.remove('previous');
 
-                console.log(i);
+    remove = "";
+    previous = "";
 
-            }
-
-
-
-
-        }
+ 
+    
 
 
-    } else {
-
-        remove = document.querySelector('.previous')
-        previous = document.querySelector('.current')
-
-        previous.classList.add('previous');
-        previous.classList.remove('current');
-        e.target.classList.add('current');
-        
-        if(previous.classList.contains('current') && previous.classList.contains('previous') ){
-
-            previous.classList.remove('previous');
-
-        }
-
-        remove.classList.remove('previous');
-
-        remove = "";
-        previous = "";
-
-  
-        
-
-
-        return;
+    return;
 
 
 
@@ -135,7 +165,7 @@ function handleChange(e) {
 
 
 
-    }*/
+}*/
 
 
 window.addEventListener('keydown', function (e) {
