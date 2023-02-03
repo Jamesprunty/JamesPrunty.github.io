@@ -1,115 +1,40 @@
-const inbox = document.querySelectorAll('input[type="checkbox"]')
-let shiftDown = false;
-let pressed = "0";
-let lastchecked;
-let newchecked;
-let remove;
-let previous;
-let CheckedArray = [];
+const checkBoxes =document.querySelectorAll('.inbox input[type="checkbox"]');
+let lastChecked;
+function handleCheck(e){
 
+    let inBetween = false;
 
-console.log(inbox);
+//Check if shift is down && check they are checking it
+if(e.shiftKey && this.checked){
 
-inbox.forEach(element => {
+    checkBoxes.forEach(checkbox => {
 
-    addEventListener('click', handleChange);
+        console.log(checkbox);
 
-});
+        if(checkbox === this || checkbox === lastChecked){
 
-
-function handleChange(e) {
-
-    for (i = 0; i < inbox.length; i++) {
-
-        if (e.target == inbox[i]) {
-
-            if (inbox[i].checked) {
-
-                CheckedArray.push(i);
-                console.log('%c' + CheckedArray, 'color:red');
-
-
-            } else {
-
-                const index = CheckedArray.indexOf(i);
-                if (index > -1) { CheckedArray.splice(index, 1) };
-                console.log('%c' + CheckedArray, 'color:blue');
-
-            }
-
-
-
+            console.log("start");
+            //Turn on inbetween variable and toggle the ones inbetween
+            //This will make sure it only gets the ones inbetween
+            inBetween = !inBetween;
 
         }
 
-    }
-
-    if(shiftDown){
-
-        previous = CheckedArray[CheckedArray.length - 2];
-        current = CheckedArray[CheckedArray.length - 1];
-
-        console.log('%c'+previous,'color:red');
-        console.log('%c'+current,'color:green');
-
-        for(i=previous;i<current;i++){
-
-            inbox[i].checked = true;
-
-
+        if(inBetween){
+            checkbox.checked = true;
         }
 
-        if(previous>current){
-
-            for(i=current;i<previous;i++){
-
-                inbox[i].checked = true;
-    
-    
-            }
-
-
-        }
-
-
-    }
+    })
 
 
 }
 
 
 
-window.addEventListener('keydown', function (e) {
-
-    if (pressed == "0") {
-
-        if (e.key == "Shift") {
-
-            shiftDown = true;
-            console.log("ShiftDown");
-
-            pressed++;
-        }
-    }
-});
-
-window.addEventListener('keyup', function (e) {
-
-    if (e.key == "Shift") {
-
-        shiftDown = false;
-        console.log("ShiftUp");
-
-        pressed = "0";
-    }
-});
+lastChecked = this;
+}
 
 
 
 
-
-
-
-
-
-
+checkBoxes.forEach(element => element.addEventListener('click', handleCheck));
