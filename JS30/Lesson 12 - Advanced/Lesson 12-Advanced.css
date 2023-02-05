@@ -24,8 +24,58 @@ h1{
 
 }
 
-    .image1 { background-image:var(--image1); }
-    .image2 { background-image:var(--image2); }
-    .image3 { background-image:var(--image3); }
-    .image4 { background-image:var(--image4); }
-    .image5 { background-image:var(--image5); }
+div{
+
+    background-size: contain;
+}
+
+.hidden{
+
+    display:none;
+}
+.display{
+
+    display:inline-block;
+    flex: 1;
+    position: absolute;
+    height:300px;
+    width: 250px;
+    top: 20%;
+    left:35%;
+
+    
+}
+
+.win{
+
+    
+    background-image: url(".//Images/win.jpg");
+    align-items: center;
+    text-align: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.winImage{
+
+    align-items: center;
+    text-align: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+img{
+
+    align-items: center;
+    text-align: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.flex{
+    text-align: center;
+    align-items: center;
+
+}
+.homeContainer{
+
+    bottom:50%;
+}
+

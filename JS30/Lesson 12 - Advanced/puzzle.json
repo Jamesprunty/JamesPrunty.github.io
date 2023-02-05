@@ -1,5 +1,4 @@
 [
-    
     {
         "Secret": "optimization",
         "ID": "1",
@@ -9,13 +8,14 @@
         "Image_4": ".//Images/Say.jpg",
         "Image_5": ".//Images/shin.jpg"
     },
-    {
-        "Secret": "diabolical",
-        "ID": "2",
-        "Image_1": ".//Images/dye.jfif",
-        "Image_2": ".//Images/abs.jpg",
-        "Image_3": ".//Images/ball.jpg",
-        "Image_4": ".//Images/lick.jpg",
-        "Image_5": ".//Images/call.jpg"
-    }
+    
+        {
+            "Secret": "diabolical",
+            "ID": "2",
+            "Image_1": ".//Images/dye.jfif",
+            "Image_2": ".//Images/abs.jpg",
+            "Image_3": ".//Images/ball.jpg",
+            "Image_4": ".//Images/lick.jpg",
+            "Image_5": ".//Images/call.jpg"
+        }
 ]

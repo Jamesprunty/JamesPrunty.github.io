@@ -1,53 +1,60 @@
 const endpoint = "puzzle.json"
 let secrets = [];
 const pressed = [];
-const secretCode = '';
+let secretCode = '';
 const puzzleContainer = document.querySelector('.puzzleContainer');
-window.addEventListener('resize', setHeight);
-document.documentElement.style.setProperty(`--height`, (puzzleContainer.offsetWidth / 5) + "px");
+
+var testArray = [
+    
+    {
+        "Secret": "optimization",
+        "ID": "1",
+        "Image_1": ".//Images/op.jfif",
+        "Image_2": ".//Images/Tea.png",
+        "Image_3": ".//Images/Mi.png",
+        "Image_4": ".//Images/Say.jpg",
+        "Image_5": ".//Images/shin.jpg"
+    },
+    {
+        "Secret": "diabolical",
+        "ID": "2",
+        "Image_1": ".//Images/dye.jfif",
+        "Image_2": ".//Images/abs.jpg",
+        "Image_3": ".//Images/ball.jpg",
+        "Image_4": ".//Images/lick.jpg",
+        "Image_5": ".//Images/call.jpg"
+    }
+];
+
 
 fetch(endpoint)
     .then(blob => blob.json())
     .then(data => secrets.push(...data))
 
-let random = Math.floor(Math.random() * 2)
+
+let random = Math.floor(Math.random() * 2 + 1)
 console.log(random);
-console.log(secrets);
-console.log();
+let pickSecret = testArray.find(element => element.ID == random);
+console.log(pickSecret.Secret);
 
-let secretWord = secrets.filter(name => { return secrets.ID > 0});
-
-
+secretCode = pickSecret.Secret;
 
 
-console.log("%c" + secretWord, "color:red");
+window.addEventListener('resize', setPuzzle);
+document.documentElement.style.setProperty(`--height`, (puzzleContainer.offsetWidth / 5) + "px");
+document.getElementById("image1").style.backgroundImage=`url(${pickSecret.Image_1})`;
+document.getElementById("image2").style.backgroundImage=`url(${pickSecret.Image_2})`;
+document.getElementById("image3").style.backgroundImage=`url(${pickSecret.Image_3})`;
+document.getElementById("image4").style.backgroundImage=`url(${pickSecret.Image_4})`;
+document.getElementById("image5").style.backgroundImage=`url(${pickSecret.Image_5})`;
 
 
-function setHeight(){
+function setPuzzle(){
 
-console.log(puzzleContainer.offsetWidth/5);
 document.documentElement.style.setProperty(`--height`, (puzzleContainer.offsetWidth / 5) + "px");
 
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 window.addEventListener('keyup', (e) => {
@@ -65,7 +72,13 @@ window.addEventListener('keyup', (e) => {
     //This changes "pressed" into a string and checks it. 
     if(pressed.join('').includes(secretCode)){
 
+        console.log("This is done");
+        document.getElementById("win").classList.add("display");
+        document.getElementById("win").classList.remove("hidden");
+        document.getElementById("puzzleContainer").classList.add("hidden");
 
+
+        
 
     }
 

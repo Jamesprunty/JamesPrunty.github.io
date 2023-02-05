@@ -50,6 +50,7 @@ searchInputData.addEventListener('keyup', displayMatches);
 fetch(endpoint)
     .then(blob => blob.json())
     .then(data => names.push(...data))
+    
 
 console.log(names);
 
