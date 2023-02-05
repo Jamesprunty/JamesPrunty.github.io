@@ -65,8 +65,8 @@ function handleProgress() {
 function scrub(e) {
 
     //offsetX tells us where we clicked in the progress bar divided by the width to give us a percentage. 
-    const scrubtime = (e.offsitex / progress.offsetWidth) * video.duration;
-    video.currentTime = scrubtime;
+    const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = scrubTime;
 
 }
 
