@@ -1,6 +1,6 @@
 //The debounce function stops the function event running too many times
 //Pass it a function, it will run debounce all the time. But it will only run the function once every 2o miliseconds
-function debounce(func, wait = 20, immediate = true) {
+function debounce(func, wait = 10, immediate = true) {
   var timeout;
   return function () {
     var context = this, args = arguments;
@@ -51,10 +51,7 @@ function checkSlide(e) {
       sliderImage.classList.remove('active');
 
     }
-
   })
-
-
 }
 
 //This checks for scrolling
