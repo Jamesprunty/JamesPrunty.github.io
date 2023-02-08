@@ -10,7 +10,7 @@ const data = [{
 }];
 
 
-document.querySelector('h1').insertAdjacentHTML('afterend',
+document.querySelector("#originalTable").insertAdjacentHTML('afterend',
         `<table id="table"><thead><tr><th>
      ${Object.keys(data[0]).join('<th>')}
     </thead><tbody><tr><td>${data.map(e => Object.values(e)
@@ -18,3 +18,13 @@ document.querySelector('h1').insertAdjacentHTML('afterend',
 
     tableMade = true;
     rowCount++
+
+
+    function processData (){
+
+
+
+
+
+        
+    }

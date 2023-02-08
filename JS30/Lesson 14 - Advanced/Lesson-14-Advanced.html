@@ -13,29 +13,52 @@
 
   <div class="Tables">
 
-    <div id="originalArray">
-      <h1>Original Data</h1>
+    <div id="originalArray" class="table">
+      <h1 id="originalTable">Original Data</h1>
 
     </div>
-    <div id="display">
+
+    <div id="cahngedData" class="table">
+      <h1 id="newTable">New Data</h1>
+
 
     </div>
+
   </div>
 
+  <div class="instructions">
+    <h2>Press the buttons below to see what happens when we run the code and then display the original array and the
+      copied array</h2>
+  </div>
   <div id="controls">
 
-    <label for="reference">
-      <input type="button" name="reference" id="reference" value="reference"></label>
-    <label for="splice">
-      <input type="button" name="splice" id="splice" value="splice"></label>
-    <label for="concat">
-      <input type="button" name="concat" id="concat" value="concat"></label>
-    <label for="spread">
-      <input type="button" name="spread" id="spread" value="spread"></label>
-    <label for="assign">
-      <input type="button" name="assign" id="assign" value="assign"></label>
 
-
+    <div class="controlOption">
+      <p>Reference is run through "newArray = Array"</p>
+      <label for="reference">
+        <input type="button" name="reference" id="reference" value="reference">
+    </div>
+    <div class="controlOption">
+      <p>Splice is run with "array.splice()"</p>
+      <label for="splice">
+        <input type="button" name="splice" id="splice" value="splice"></label>
+    </div>
+    <div class="controlOption">
+      <label for="concat">
+        <input type="button" name="concat" id="concat" value="concat"></label>
+    </div>
+    <div class="controlOption">
+      <label for="spread">
+        <input type="button" name="spread" id="spread" value="spread"></label>
+    </div>
+    <div class="controlOption">
+      <label for="assign">
+        <input type="button" name="assign" id="assign" value="assign"></label>
+    </div>
+    <div class="controlOption">
+      <label for="refresh">
+        <input type="button" name="refresh" id="refresh" value="refresh"></label>
+    </div>
 
   </div>
 
