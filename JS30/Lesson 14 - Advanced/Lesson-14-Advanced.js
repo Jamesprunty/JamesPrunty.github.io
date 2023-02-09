@@ -1,4 +1,18 @@
 let table = document.getElementById('container');
+
+let buttons = document.querySelectorAll(".controlOption");
+
+let referenceBtn = document.querySelector("#reference");
+let spliceBtn = document.querySelector("#splice");
+let concatBtn = document.querySelector("#concat");
+let spreadBtn = document.querySelector("#spread");
+let assignBtn = document.querySelector("#assign");
+let resetBtn = document.querySelector("#reset");
+
+
+
+
+
 let tableMade = false;
 rowCount = 0;
 const data = [{
@@ -20,11 +34,22 @@ document.querySelector("#originalTable").insertAdjacentHTML('afterend',
     rowCount++
 
 
-    function processData (){
+    function processData (e){
+
+        console.log(e);
+        console.log(this);
+
 
         console.log(this);
 
 
 
-        
     }
+
+    buttons.forEach(element => {
+        
+        element.addEventListener('click', processData);
+
+    });
+
+   
