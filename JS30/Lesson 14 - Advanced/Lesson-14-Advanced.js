@@ -22,7 +22,7 @@ document.querySelector("#originalTable").insertAdjacentHTML('afterend',
 
     function processData (){
 
-
+        console.log(this);
 
 
 
