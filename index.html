@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./index.css">
-  </head>
-  <body>
-   
-      <img src="Background.jpg" id="bg" alt="">
-      
-      <div class="Title">
-      
-          <h1 class="Heading" id="PageTitle">James Prunty</h1>
-          <h2 class="Heading" id="PageSubTitle">Scripting Projects</h2>
-      
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+  <div id="page">
+    <div class="centre titleContainer">
+      <div class="centreText">
+        <h1 class="Heading" id="PageTitle">James Prunty</h1>
       </div>
-      
-      
-      
-      <div class="Menu" id="Menu">
-          <div class="MenuContainer" id="MenuContainer">
-              <ul>
+    </div>
+
+    <div id="SHDiv">
+      <div id="controlLeft"></div>
+      <div id="controlCentre">
+        <div class="Menu" id="Menu">
+          <div class="MenuContainer hidden" id="MenuContainer">
+            <ul>
               <li><a href="Marcov/Marcov.html">Marcov Model</a></li>
               <li><a href="JS30/JS30.html">JS30 Project</a></li>
-              </ul>
+            </ul>
           </div>
+        </div>
       </div>
-      
-  </body>
+      <div id="controlRight" class="flex1"></div>
+
+    </div>
+  </div>
+
+
+
+  <script type="application/javascript" src="index.js"></script>
+
+</body>
+
 </html>
