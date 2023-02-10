@@ -20,10 +20,10 @@ const dataArray = ["SJames", "Prunty", "28"]
 
 
 document.querySelector("#originalTable").insertAdjacentHTML('afterend',
-  `<table id="table"><thead><tr><th>
+        `<table id="table" class="ogTable"><thead><tr><th>
      ${Object.keys(data[0]).join('<th>')}
     </thead><tbody><tr><td>${data.map(e => Object.values(e)
-    .join('<td>')).join('<tr><td>')}</table>`)
+          .join('<td>')).join('<tr><td>')}</table>`)
 
 
 
@@ -35,14 +35,19 @@ function processData(e) {
 
   let func = this.value;
 
+  console.log(document.querySelector(".ogTable") + "!!!!!!!")
 
-  if (tableMade) {
+  let isTable = document.querySelector(".ogTable");
+  let isTable2 = document.querySelector(".newTable");
+
+
+  if (isTable) {
 
 
     document.getElementById("table").remove();
   }
 
-  if (table2Made) {
+  if (isTable2) {
 
     document.getElementById("table2").remove();
 
@@ -58,13 +63,13 @@ function processData(e) {
       console.log(newData);
 
       document.querySelector("#originalTable").insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+        `<table id="table" class="ogTable" ><thead><tr><th>
      ${Object.keys(data[0]).join('<th>')}
     </thead><tbody><tr><td>${data.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
 
       document.querySelector("#newTable").insertAdjacentHTML('afterend',
-        `<table id="table2"><thead><tr><th>
+        `<table id="table2" class="newTable" ><thead><tr><th>
        ${Object.keys(newData[0]).join('<th>')}
       </thead><tbody><tr><td>${newData.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
@@ -82,13 +87,13 @@ function processData(e) {
       console.log(data);
 
       document.querySelector("#originalTable").insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+        `<table id="table" class="ogTable" ><thead><tr><th>
        ${Object.keys(data[0]).join('<th>')}
       </thead><tbody><tr><td>${data.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
 
       document.querySelector("#newTable").insertAdjacentHTML('afterend',
-        `<table id="table2"><thead><tr><th>
+        `<table id="table2" class="newTable" ><thead><tr><th>
          ${Object.keys(newData2[0]).join('<th>')}
         </thead><tbody><tr><td>${newData2.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
@@ -105,13 +110,13 @@ function processData(e) {
       console.log(data);
 
       document.querySelector("#originalTable").insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+        `<table id="table" class="ogTable" ><thead><tr><th>
        ${Object.keys(data[0]).join('<th>')}
       </thead><tbody><tr><td>${data.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
 
       document.querySelector("#newTable").insertAdjacentHTML('afterend',
-        `<table id="table2"><thead><tr><th>
+        `<table id="table2" class="newTable" ><thead><tr><th>
          ${Object.keys(newData3[0]).join('<th>')}
         </thead><tbody><tr><td>${newData3.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
@@ -128,13 +133,13 @@ function processData(e) {
       console.log(data);
 
       document.querySelector("#originalTable").insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+        `<table id="table" class="ogTable" ><thead><tr><th>
        ${Object.keys(data[0]).join('<th>')}
       </thead><tbody><tr><td>${data.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
 
       document.querySelector("#newTable").insertAdjacentHTML('afterend',
-        `<table id="table2"><thead><tr><th>
+        `<table id="table2" class="newTable" ><thead><tr><th>
          ${Object.keys(newData4[0]).join('<th>')}
         </thead><tbody><tr><td>${newData4.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
@@ -147,13 +152,13 @@ function processData(e) {
       console.log(data);
 
       document.querySelector("#originalTable").insertAdjacentHTML('afterend',
-        `<table id="table"><thead><tr><th>
+        `<table id="table" class="ogTable" ><thead><tr><th>
        ${Object.keys(data[0]).join('<th>')}
       </thead><tbody><tr><td>${data.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
 
       document.querySelector("#newTable").insertAdjacentHTML('afterend',
-        `<table id="table2"><thead><tr><th>
+        `<table id="table2" class="newTable" ><thead><tr><th>
          ${Object.keys(newData5[0]).join('<th>')}
         </thead><tbody><tr><td>${newData5.map(e => Object.values(e)
           .join('<td>')).join('<tr><td>')}</table>`)
