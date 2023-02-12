@@ -9,6 +9,7 @@ const item2 = document.querySelector("#item2");
 const item3 = document.querySelector("#item3");
 const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
+let click = "";
 
 let rootElement = document.querySelector(':root');
 let delay = 1.2;
@@ -57,7 +58,10 @@ title.addEventListener('click', openMenu);
 
 function moveItems() {
     delay = 0;
-    duration = 0.5;
+    duration = 2;
+
+    root.style.setProperty('--delay', delay + "s");
+    root.style.setProperty('--duration', duration + "s");
 
 
 
@@ -105,8 +109,7 @@ function moveItems() {
 
 
 
-    root.style.setProperty('--delay', delay + "s");
-    root.style.setProperty('--duration', duration + "s");
+
 
     console.log(this.id);
 
@@ -116,6 +119,13 @@ function moveItems() {
     if (this.id == "item1") {
 
         console.log("Click 1")
+        click = "left";
+
+        
+        item1.classList.add("LTM");
+        item2.classList.add("MTR");
+        item3.classList.add("moveRight");
+        item0.classList.add("moveRight");
 
 
     }
@@ -131,7 +141,14 @@ function moveItems() {
     if (this.id == "item3") {
 
         console.log("Click 3")
+        click = "right";
 
+        item3.classList.add("RTM");
+        item2.classList.add("MTL");
+        item1.classList.add("moveLeft");
+        item4.classList.add("moveLeft");
+        
+        
 
 
     }
@@ -214,9 +231,9 @@ if (rotations > 1){
     
     setTimeout(() => {
         
-        resetDivs();
+        resetDivs(click);
 
-    }, duration * 1000);
+    }, duration * 5000);
 
 }
 
@@ -258,7 +275,7 @@ function openMenu() {
 
 }
 
-function resetDivs() {
+function resetDivs(click) {
 
     console.log("THIS IS WORKING");
     console.log(rotations);
@@ -294,19 +311,22 @@ function resetDivs() {
         if (document.querySelector(".firstOTR")) {
             document.querySelector(".firstOTR").classList.remove("firstOTR");
         }
-    
-
-
-
 
     }
 
-    
+    if(click == "left"){
 
 
+        console.log("LEFT MOVE");
+
+    }
+
+    if(click == "right"){
 
 
+        console.log("RIGHT MOVE");
 
+    }
 
 
 
