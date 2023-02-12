@@ -1,3 +1,12 @@
+html,body{
+  height:100%;
+  padding:0;
+  margin:0;
+}
+*{
+  box-sizing:border-box;
+}
+
 #page {
 
   position: absolute;
@@ -50,223 +59,6 @@
   animation-fill-mode: forwards;
 
 }
-
-
-.start{
-
-  position: absolute;
-  border: black solid 2px;
-  height: 2rem;
-  width: 2rem;
-  right: 5%;
-  top: 50%;
-
-  animation-duration: var(--duration);
-  animation-fill-mode: forwards;
-
-}
-
-.farStart{
-
-  position: absolute;
-  border: black solid 2px;
-  height: 2rem;
-  width: 2rem;
-  right: -100%;
-  top: 50%;
-
-  animation-duration: var(--duration);
-  animation-fill-mode: forwards;
-
-}
-
-.right{
-
-  position: absolute;
-  border: black solid 2px;
-  height: 2rem;
-  width: 2rem;
-  right: 5%;
-  top: 50%;
-
-  animation-duration: var(--duration);
-  animation-fill-mode: forwards;
-
-}
-
-.middle{
-
-  position: absolute;
-  border: black solid 2px;
-  width: 15rem;
-  height: 15rem;
-  right: 35%;
-  opacity: 100;
-  top: 40%;
-
-  animation-duration: var(--duration);
-  animation-fill-mode: forwards;
-
-}
-
-.left{
-
-  position: absolute;
-  border: black solid 2px;
-  height: 2rem;
-  width: 2rem;
-  right: 95%;
-  top: 50%;
-
-  animation-duration: var(--duration);
-  animation-fill-mode: forwards;
-
-}
-
-
-
-
-
-#item1{
-
-  opacity: 0;
-
-}
-
-.OTR{
-
-  animation-name: OTR;
-  animation-delay: var(--delay);
-
-}
-
-.RTM{
-
-  animation-name: RTM;
-  animation-delay: var(--delay);
-
-}
-
-.MTL{
-
-  animation-name: MTL;
-  animation-delay: var(--delay);
-}
-
-.LTM{
-
-  animation-name: LTM;
-  animation-delay: var(--delay);
-}
-
-.MTR{
-
-  animation-name: MTR;
-  animation-delay: var(--delay);
-}
-
-.RTO{
-
-  animation-name: RTO;
-  animation-delay: var(--delay);
-}
-
-.LTO{
-
-  animation-name: LTO;
-  animation-delay: var(--delay);
-}
-
-
-@keyframes OTR {
-  0% {
-  }
-  100%{
-    width: 2rem;
-    height: 2rem;
-    right: 5%;
-  }
-}
-
-@keyframes RTM {
-  0% {
-
-  }
-  100%{
-
-    width: 15rem;
-    height: 15rem;
-    right: 35%;
-    opacity: 100;
-    top: 40%;
-  }
-}
-
-@keyframes MTL {
-  0% {
-  }
-  100%{
-    width: 2rem;
-    height: 2rem;
-    right: 95%;
-    opacity: 100;
-    top: 50%
-  }
-}
-
-@keyframes LTM {
-  0% {
-
-    width: 2rem;
-    height: 2rem;
-    right: 95%;
-    opacity: 100;
-    top: 50%
-  }
-  100%{
-    width: 15rem;
-    height: 15rem;
-    right: 30%;
-    top: 50%;
-    opacity: 100;
-  }
-}
-
-@keyframes MTR {
-  0% {
-  }
-  100%{
-    width: 2rem;
-    height: 2rem;
-    right: 5%;
-    top:50%
-  }
-}
-
-@keyframes RTO {
-  0% {
-  }
-  100%{
-    width: 2rem;
-    height: 2rem;
-    right: -100%;
-  }
-}
-
-@keyframes LTO {
-  0% {
-  }
-  100%{
-    width: 2rem;
-    height: 2rem;
-    right: 200%;
-  }
-}
-
-
-
-
-
 
 @keyframes title {
   0% {
@@ -344,3 +136,404 @@
 }
 
 
+.menuContainer{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height: 100vh;
+
+}
+
+.item{
+
+  flex: 1;
+  margin: auto;
+  padding: auto;
+  height: 40vh;
+border: black solid 2px;
+align-items: flex-start;
+
+transition:
+      font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+      flex 1s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+      background 0.2s;
+}
+
+.item:hover{
+
+  flex:2;
+  box-shadow:20px 20px 50px rgb(0, 0, 0);
+  z-index: 9;
+
+
+
+}
+
+
+
+
+
+
+/*
+.start{
+
+  position: absolute;
+  border: black solid 2px;
+  height: 2rem;
+  width: 2rem;
+  right: 5%;
+  top: 50%;
+
+  animation-duration: var(--duration);
+  animation-fill-mode: forwards;
+
+}
+
+.four{
+
+  position: absolute;
+  border: black solid 2px;
+  height: 2rem;
+  width: 2rem;
+  right: -100%;
+  top: 50%;
+
+  animation-duration: var(--duration);
+  animation-fill-mode: forwards;
+
+}
+
+.three{
+
+  position: absolute;
+  border: black solid 2px;
+  height: 2rem;
+  width: 2rem;
+  right: 5%;
+  top: 50%;
+
+  animation-duration: var(--duration);
+  animation-fill-mode: forwards;
+
+}
+
+.two{
+
+  position: absolute;
+  border: black solid 2px;
+  width: 15rem;
+  height: 15rem;
+  right: 35%;
+  opacity: 100;
+  top: 40%;
+
+  animation-duration: var(--duration);
+  animation-fill-mode: forwards;
+
+}
+
+.one{
+
+  position: absolute;
+  border: black solid 2px;
+  height: 2rem;
+  width: 2rem;
+  right: 95%;
+  top: 50%;
+
+  animation-duration: var(--duration);
+  animation-fill-mode: forwards;
+
+}
+
+.zero{
+
+  position: absolute;
+  border: black solid 2px;
+  height: 2rem;
+  width: 2rem;
+  right: 200%;
+  top: 50%;
+
+  animation-duration: var(--duration);
+  animation-fill-mode: forwards;
+
+}
+
+
+
+
+
+#item1{
+
+  opacity: 0;
+
+}
+
+.OTR{
+
+  animation-name: OTR;
+  animation-delay: var(--delay);
+
+}
+
+.RTM{
+
+  animation-name: RTM;
+  animation-delay: var(--delay);
+
+}
+
+.MTL{
+
+  animation-name: MTL;
+  animation-delay: var(--delay);
+}
+
+.LTM{
+
+  animation-name: LTM;
+  animation-delay: var(--delay);
+}
+
+.MTR{
+
+  animation-name: MTR;
+  animation-delay: var(--delay);
+}
+
+.RTO{
+
+  animation-name: RTO;
+  animation-delay: var(--delay);
+}
+
+.LTO{
+
+  animation-name: LTO;
+  animation-delay: var(--delay);
+}
+
+
+@keyframes OTR {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    height: 2rem;
+    width: 2rem;
+    right: -100%;
+    top: 50%;
+
+
+  }
+  100%{
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    right: 5%;
+    top: 50%;
+  }
+}
+
+@keyframes RTM {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    height: 2rem;
+    width: 2rem;
+    right: 5%;
+    top: 50%;
+
+  }
+  100%{
+
+    width: 15rem;
+    height: 15rem;
+    right: 35%;
+    opacity: 100;
+    top: 40%;
+  }
+}
+
+@keyframes MTL {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    width: 15rem;
+    height: 15rem;
+    right: 35%;
+    opacity: 100;
+    top: 40%;
+  }
+  100%{
+    width: 2rem;
+    height: 2rem;
+    right: 95%;
+    opacity: 100;
+    top: 50%
+  }
+}
+
+@keyframes LTM {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    height: 2rem;
+    width: 2rem;
+    right: 95%;
+    top: 50%;
+
+  }
+  100%{
+    width: 15rem;
+    height: 15rem;
+    right: 50%;
+    top: 40%;
+    opacity: 100;
+  }
+}
+
+@keyframes MTR {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    width: 15rem;
+    height: 15rem;
+    right: 35%;
+    opacity: 100;
+    top: 40%;
+  }
+  100%{
+    width: 2rem;
+    height: 2rem;
+    right: 5%;
+    top:50%
+  }
+}
+
+@keyframes RTO {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    height: 2rem;
+    width: 2rem;
+    right: 5%;
+    top: 50%;
+  }
+  100%{
+    width: 2rem;
+    height: 2rem;
+    right: -100%;
+  }
+}
+
+@keyframes LTO {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    height: 2rem;
+    width: 2rem;
+    right: 95%;
+    top: 50%;
+  }
+  100%{
+    width: 2rem;
+    height: 2rem;
+    right: 200%;
+  }
+}
+
+@keyframes OTL {
+  0% {
+    position: absolute;
+    border: black solid 2px;
+    height: 2rem;
+    width: 2rem;
+    right: 200%;
+    top: 50%;
+  }
+  100%{
+    width: 2rem;
+    height: 2rem;
+    right: 200%;
+  }
+}
+
+
+@keyframes title {
+  0% {
+
+
+  }
+
+  10%{
+
+    top: 51%;
+
+  }
+
+  50% {
+    top: 15%;
+    width: 15rem;
+    height: 15rem;
+
+  }
+
+
+  /*66%{
+
+    top: 10%;
+    width: 99%;
+    height: 10rem;
+
+  }
+
+
+
+  100% {
+    top: 5%;
+    width: 99%;
+    height: 7rem;
+  }
+}
+
+
+@keyframes backgroundC {
+  0% {
+    background-color: rgb(223, 223, 223);
+  }
+  60%{
+
+    background-color: rgb(223, 223, 223);
+
+  }
+  100% {
+    background-color: gray;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.titleAnimate {
+
+  animation-name: title;
+}
+
+.subtitleAnimate {
+
+  animation-name: subtitle;
+  animation-delay: 1.2s;
+
+}
+
+.backgroundAnimate {
+
+  animation-name: backgroundC;
+
+
+}
+
+*/
