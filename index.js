@@ -10,7 +10,8 @@ const item3 = document.querySelector("#item3");
 const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
 let click = "";
-let diff = 1;
+let diff = 0;
+let overflow = 0;
 
 let rootElement = document.querySelector(':root');
 let delay = 1.2;
@@ -30,42 +31,32 @@ item1.classList.add("noShow");
 
 const projects = [
     {
+
         name: "JS30 Project"
     },
     {
+
         name: "Marcov Model"
     },
     {
+
         name: "Blog"
     },
     {
+
         name: "Other Projects to come"
     }
 
 ];
 
-item1.innerHTML = projects[0].name;
-item2.innerHTML = projects[1].name;
-item3.innerHTML = projects[2].name;
+for (i = 0; i < projects.length - 1; i++) {
 
-if(projects[3] != null){
+    items[i + 1].innerHTML = projects[i].name;
+    items[0].innerHTML = projects[projects.length-1].name;
 
-    item4.innerHTML = projects[3].name;
-
-}else{
-
-    item4.innerHTML = projects[0].name;
 }
 
-item0.innerHTML = projects[projects.length -1].name;
 
-
-
-
-console.log(projects);
-
-
-console.log(items);
 
 title.addEventListener('click', openMenu);
 
@@ -85,7 +76,7 @@ function moveItems() {
 
         if (this.classList.contains("startRTM")) {
 
-            console.log("MOVE TO JS30");
+
 
             menuContainer.classList.add("moveTop");
 
@@ -109,63 +100,51 @@ function moveItems() {
         }
 
         setTimeout(() => {
-        
+
             resetDivs();
-    
-        }, duration * 5000);
+
+        }, duration * 1000);
 
 
 
-    }else{
+    } else {
+
+
+
+        if (this.id == "item1") {
+
+            click = "left";
+
+
+            item1.classList.add("LTM");
+            item2.classList.add("MTR");
+            item3.classList.add("moveRight");
+            item0.classList.add("moveRight");
+
+
+        }
+
+        if (this.id == "item2") {
 
 
 
 
+        }
+
+        if (this.id == "item3") {
+
+            click = "right";
+
+            item3.classList.add("RTM");
+            item2.classList.add("MTL");
+            item1.classList.add("moveLeft");
+            item4.classList.add("moveLeft");
 
 
 
-    console.log(this.id);
 
-
-
-
-    if (this.id == "item1") {
-
-        console.log("Click 1")
-        click = "left";
-
-        
-        item1.classList.add("LTM");
-        item2.classList.add("MTR");
-        item3.classList.add("moveRight");
-        item0.classList.add("moveRight");
-
-
+        }
     }
-
-    if (this.id == "item2") {
-
-        console.log("Click 2")
-
-
-
-    }
-
-    if (this.id == "item3") {
-
-        console.log("Click 3")
-        click = "right";
-
-        item3.classList.add("RTM");
-        item2.classList.add("MTL");
-        item1.classList.add("moveLeft");
-        item4.classList.add("moveLeft");
-        
-        
-
-
-    }
-}
 
 
 
@@ -239,20 +218,18 @@ function moveItems() {
 
 
     }*/
-if (rotations > 0){
+    if (rotations > 0) {
 
-    
-    setTimeout(() => {
-        
-        console.log("ReserDive start");
-        console.log("click");
-        resetDivs(click);
 
-    }, duration * 2000);
+        setTimeout(() => {
 
-}
+            resetDivs(click);
 
-rotations++;
+        }, duration * 1000);
+
+    }
+
+    rotations++;
 
 
 
@@ -283,21 +260,13 @@ function openMenu() {
 
 
 
-
-
-    console.log("Menu Open");
-
-
 }
 
 function resetDivs(click) {
 
-    console.log("THIS IS WORKING");
-    console.log(rotations);
-
     duration = 0;
 
-    if(rotations == 1){
+    if (rotations == 1) {
 
         item1.classList.add("side");
         item3.classList.add("side");
@@ -327,29 +296,75 @@ function resetDivs(click) {
             document.querySelector(".firstOTR").classList.remove("firstOTR");
         }
 
-         
+
 
 
 
     }
 
-    if(click == "left"){
+    if (click == "left") {
+
+        diff--
 
 
-        console.log("LEFT MOVE");
+        for (i = 0; i < items.length; i++) {
 
-        for(i=0;i<items.length;i++){
-            console.log("test");
+            test = i + diff;
+            console.log("%c" + test, "color=yellow");
 
-            items[i].innerHTML = projects[i + diff].name;
+            if (test < 0) {
+                k = projects.length + diff;
+                items[i].innerHTML = projects[k].name
+                console.log("%c" + k, "color:red");
+                console.log(items[i]);
+                console.log("%c" + projects[k].name, "color:red");
+            } else {
 
+            j = i + diff;
+            items[i].innerHTML = projects[j].name;
+            console.log("%c" + j, "color:green")
+            console.log(items[i]);
+            console.log("%c" + projects[j].name, "color:green");
+
+            }
+            
 
         }
 
 
+
+
+
+            item0.classList.add("resetSmall");
+            item1.classList.add("resetSmall");
+            item2.classList.add("resetBig");
+            item3.classList.add("resetSmall");
+            item4.classList.add("resetSmall");
+
+/*
+
+            if (document.querySelector(".moveRight")) {
+                document.querySelector(".moveRight").classList.remove("moveRight");
+            }
+            if (document.querySelector(".LTM")) {
+                document.querySelector(".LTM").classList.remove("LTM");
+            }
+            let resetSmall = document.querySelectorAll(".resetSmall")
+            resetSmall.forEach(element => {
+                element.classList.remove("resetSmall");
+            });
+            if (document.querySelector(".MTR")) {
+                document.querySelector(".MTR").classList.remove("MTR");
+            }
+            if (document.querySelector(".resetBig")) {
+                document.querySelector(".resetBig").classList.remove("resetBig");
+            }
+
+*/
+
     }
 
-    if(click == "right"){
+    if (click == "right") {
 
 
         console.log("RIGHT MOVE");

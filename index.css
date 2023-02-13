@@ -331,6 +331,24 @@ visibility: hidden;
 
 }
 
+.resetSmall{
+
+  animation-name: resetSmall;
+  animation-duration: 0;
+  animation-fill-mode: both;
+
+}
+.resetBig{
+  animation-name: resetBig;
+  animation-duration: 0;
+  animation-fill-mode: both;
+
+}
+
+
+
+
+
 .moveTop{
 
   animation-name: moveTop;
@@ -338,6 +356,40 @@ visibility: hidden;
   animation-fill-mode: both;
 
 }
+
+
+@keyframes resetSmall {
+  0% {
+
+
+
+  }
+
+
+  100% {
+    transform: translateX(0);
+    height: 10vw;
+    width: 10vw;
+  }
+}
+
+@keyframes resetBig {
+  0% {
+
+
+
+  }
+
+
+  100% {
+    transform: translateX(0);
+    height: 30vw;
+    width: 30vw;
+  }
+}
+
+
+
 @keyframes moveLeft {
   0% {
 
@@ -400,7 +452,7 @@ visibility: hidden;
 
     height: 30vw;
     width: 30vw;
-    transform: translateX(100%);
+    transform: translateX(86%);
   }
 }
 @keyframes MTL {
@@ -521,6 +573,7 @@ visibility: hidden;
 
   }
 }
+
 
 
 
