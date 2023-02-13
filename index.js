@@ -45,6 +45,10 @@ const projects = [
     {
 
         name: "Other Projects to come"
+    },
+    {
+
+        name: "NEW PROJECT"
     }
 
 ];
@@ -305,16 +309,26 @@ function resetDivs(click) {
     if (click == "left") {
 
         diff--
+        console.log(-projects.length);
+        
+        let reset = projects.length + 1; 
+        console.log(reset);
+        if(diff == -reset){diff = -1};
+
+        let length = projects.length;
+        let k = length + diff;
 
 
         for (i = 0; i < items.length; i++) {
 
-            test = i + diff;
-            console.log("%c" + test, "color=yellow");
 
-            if (test < 0) {
-                k = projects.length + diff;
-                items[i].innerHTML = projects[k].name
+
+            //console.log("%c" + test, "color=yellow");
+
+            if (i + diff < 0) {
+
+                items[i].innerHTML = projects[k].name;
+
                 console.log("%c" + k, "color:red");
                 console.log(items[i]);
                 console.log("%c" + projects[k].name, "color:red");
@@ -328,6 +342,8 @@ function resetDivs(click) {
 
             }
             
+            k++;
+
 
         }
 
@@ -335,11 +351,11 @@ function resetDivs(click) {
 
 
 
-            item0.classList.add("resetSmall");
-            item1.classList.add("resetSmall");
-            item2.classList.add("resetBig");
-            item3.classList.add("resetSmall");
-            item4.classList.add("resetSmall");
+           // item0.classList.add("resetSmall");
+            //item1.classList.add("resetSmall");
+            //item2.classList.add("resetBig");
+            //item3.classList.add("resetSmall");
+            //item4.classList.add("resetSmall");
 
 /*
 
