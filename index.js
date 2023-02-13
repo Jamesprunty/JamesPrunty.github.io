@@ -10,6 +10,7 @@ const item3 = document.querySelector("#item3");
 const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
 let click = "";
+let diff = 1;
 
 let rootElement = document.querySelector(':root');
 let delay = 1.2;
@@ -46,6 +47,18 @@ const projects = [
 item1.innerHTML = projects[0].name;
 item2.innerHTML = projects[1].name;
 item3.innerHTML = projects[2].name;
+
+if(projects[3] != null){
+
+    item4.innerHTML = projects[3].name;
+
+}else{
+
+    item4.innerHTML = projects[0].name;
+}
+
+item0.innerHTML = projects[projects.length -1].name;
+
 
 
 
@@ -226,14 +239,16 @@ function moveItems() {
 
 
     }*/
-if (rotations > 1){
+if (rotations > 0){
 
     
     setTimeout(() => {
         
+        console.log("ReserDive start");
+        console.log("click");
         resetDivs(click);
 
-    }, duration * 5000);
+    }, duration * 2000);
 
 }
 
@@ -312,12 +327,25 @@ function resetDivs(click) {
             document.querySelector(".firstOTR").classList.remove("firstOTR");
         }
 
+         
+
+
+
     }
 
     if(click == "left"){
 
 
         console.log("LEFT MOVE");
+
+        for(i=0;i<items.length;i++){
+            console.log("test");
+
+            items[i].innerHTML = projects[i + diff].name;
+
+
+        }
+
 
     }
 
