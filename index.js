@@ -9,9 +9,18 @@ const item2 = document.querySelector("#item2");
 const item3 = document.querySelector("#item3");
 const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
+let SF = 2;
+let BF = 6;
+
+
+
+root.style.setProperty('--fontSmall', SF + "vw");
+root.style.setProperty('--fontBig', BF + "vw");
+
+
+
 let click = "";
 let start = 0;
-currentWidth
 
 let rootElement = document.querySelector(':root');
 let delay = 1.2;
@@ -24,13 +33,7 @@ items.forEach(item => {
     item.addEventListener('click', moveItems);
 });
 
-const ro = new ResizeObserver(entries => {
 
-
-
-
-
-})
 
 item1.classList.add("noShow");
 
@@ -52,16 +55,25 @@ const projects = [
     },
     {
 
-        name: "Other Projects to come"
+        name: "New Project1"
     },
     {
 
-        name: "NEW PROJECT"
+        name: "New Project2"
+    },
+    {
+        name: "New Project3"
+    },
+    {
+        name: "New Project4"
     }
+
 
 ];
 
-for (i = 0; i < projects.length - 1; i++) {
+console.log(projects);
+
+for (i = 0; i < items.length-1; i++) {
 
     items[i + 1].innerHTML = projects[i].name;
     items[0].innerHTML = projects[projects.length - 1].name;
