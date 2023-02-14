@@ -56,7 +56,7 @@ const projects = [
 for (i = 0; i < projects.length - 1; i++) {
 
     items[i + 1].innerHTML = projects[i].name;
-    items[0].innerHTML = projects[projects.length-1].name;
+    items[0].innerHTML = projects[projects.length - 1].name;
 
 }
 
@@ -144,13 +144,8 @@ function moveItems() {
             item1.classList.add("moveLeft");
             item4.classList.add("moveLeft");
 
-
-
-
         }
     }
-
-
 
 
     /*
@@ -308,12 +303,14 @@ function resetDivs(click) {
 
     if (click == "left") {
 
+        
+
         diff--
         console.log(-projects.length);
-        
-        let reset = projects.length + 1; 
+
+        let reset = projects.length + 1;
         console.log(reset);
-        if(diff == -reset){diff = -1};
+        if (diff == -reset) { diff = -1 };
 
         let length = projects.length;
         let k = length + diff;
@@ -332,61 +329,191 @@ function resetDivs(click) {
                 console.log("%c" + k, "color:red");
                 console.log(items[i]);
                 console.log("%c" + projects[k].name, "color:red");
-            } else {
+                
+            } else if (i + diff > projects.length) {
 
-            j = i + diff;
-            items[i].innerHTML = projects[j].name;
-            console.log("%c" + j, "color:green")
-            console.log(items[i]);
-            console.log("%c" + projects[j].name, "color:green");
+                overflow = (i + diff) - (projects.length);
+                items[i].innerHTML = projects[overflow].name;
+
+
+            }else {
+
+                j = i + diff;
+                items[i].innerHTML = projects[j].name;
+                console.log("%c" + j, "color:green")
+                console.log(items[i]);
+                console.log("%c" + projects[j].name, "color:green");
 
             }
-            
+
             k++;
 
 
         }
 
 
+        item0.classList.add("resetSmall");
+        item1.classList.add("resetSmall");
+        item2.classList.add("resetBig");
+        item3.classList.add("resetSmallRight");
+        item4.classList.add("resetSmall");
+
+        item3.innerHTML = item2.innerHTML;
+        item2.innerHTML = item1.innerHTML;
+        item1.innerHTML = item0.innerHTML;
+
+        let index = 0;
+
+        for (i = 0; i < projects.length; i++) {
+
+            if (projects[i].name == item1.innerHTML) { index = i - 1 };
+
+            if (index < 0) { index = projects.length - 1 };
+
+            item0.innerHTML = projects[index].name;
+        }
 
 
 
-           // item0.classList.add("resetSmall");
-            //item1.classList.add("resetSmall");
-            //item2.classList.add("resetBig");
-            //item3.classList.add("resetSmall");
-            //item4.classList.add("resetSmall");
 
-/*
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.remove("LTM");
+        }
 
-            if (document.querySelector(".moveRight")) {
-                document.querySelector(".moveRight").classList.remove("moveRight");
-            }
-            if (document.querySelector(".LTM")) {
-                document.querySelector(".LTM").classList.remove("LTM");
-            }
-            let resetSmall = document.querySelectorAll(".resetSmall")
-            resetSmall.forEach(element => {
-                element.classList.remove("resetSmall");
-            });
-            if (document.querySelector(".MTR")) {
-                document.querySelector(".MTR").classList.remove("MTR");
-            }
-            if (document.querySelector(".resetBig")) {
-                document.querySelector(".resetBig").classList.remove("resetBig");
-            }
+        if (document.querySelector(".resetSmallRight")) {
+            document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+        }
+        let resetSmall = document.querySelectorAll(".resetSmall")
+        resetSmall.forEach(element => {
+            element.classList.remove("resetSmall");
+        });
+        let removeRight = document.querySelectorAll(".moveRight")
+        removeRight.forEach(element => {
+            element.classList.remove("moveRight");
+        });
+        if (document.querySelector(".MTR")) {
+            document.querySelector(".MTR").classList.remove("MTR");
+        }
+        if (document.querySelector(".resetBig")) {
+            document.querySelector(".resetBig").classList.remove("resetBig");
+        }
 
-*/
+
 
     }
 
     if (click == "right") {
 
+        /*
 
-        console.log("RIGHT MOVE");
+        console.log(diff);
+
+        diff++
+
+        console.log(-projects.length);
+
+        let reset = projects.length + 1;
+        console.log(reset);
+        if (diff == -reset) { diff = -1 };
+
+        let length = projects.length;
+        let k = length + diff;
+
+
+        for (i = 0; i < items.length; i++) {
+
+
+
+            //console.log("%c" + test, "color=yellow");
+
+            if (i + diff < 0) {
+
+                items[i].innerHTML = projects[k].name;
+
+                console.log("%c" + k, "color:red");
+                console.log(items[i]);
+                console.log("%c" + projects[k].name, "color:red");
+                
+            } else if (i + diff > projects.length) {
+
+                overflow = (i + diff) - (projects.length);
+                items[i].innerHTML = projects[overflow].name;
+
+
+            }else {
+
+                j = i + diff;
+                items[i].innerHTML = projects[j].name;
+                console.log("%c" + j, "color:green")
+                console.log(items[i]);
+                console.log("%c" + projects[j].name, "color:green");
+
+            }
+
+
+        }
+
+        k++;
+
+
+
 
     }
 
 
+    item0.classList.add("resetSmall");
+    item1.classList.add("resetSmall");
+    item2.classList.add("resetBig");
+    item3.classList.add("resetSmallRight");
+    item4.classList.add("resetSmall");
+
+    item1.innerHTML = item2.innerHTML;
+    item2.innerHTML = item3.innerHTML;
+    item3.innerHTML = item4.innerHTML;
+
+    let index = 0;
+
+    for (i = 0; i < projects.length; i++) {
+
+        if (projects[i].name == item3.innerHTML) { index = i + 1 };
+
+        if (index > projects.length) { index = 0 };
+
+        item4.innerHTML = projects[index].name;
+    }
+
+
+
+
+    if (document.querySelector(".RTM")) {
+        document.querySelector(".RTM").classList.remove("RTM");
+    }
+
+    if (document.querySelector(".resetSmallRight")) {
+        document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+    }
+    let resetSmall = document.querySelectorAll(".resetSmall")
+    resetSmall.forEach(element => {
+        element.classList.remove("resetSmall");
+    });
+    let removeLeft = document.querySelectorAll(".moveLeft")
+    removeLeft.forEach(element => {
+        element.classList.remove("moveLeft");
+    });
+    if (document.querySelector(".MTL")) {
+        document.querySelector(".MTL").classList.remove("MTL");
+    }
+    if (document.querySelector(".resetBig")) {
+        document.querySelector(".resetBig").classList.remove("resetBig");
+    }
+
+
+
+*/
 
 }
+}
+
+
+
+

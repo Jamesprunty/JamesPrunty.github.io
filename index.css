@@ -291,6 +291,7 @@ visibility: hidden;
 
 }
 
+
 .RTM {
 
   animation-name: RTM;
@@ -357,6 +358,12 @@ visibility: hidden;
 
 }
 
+.resetSmallRight{
+  animation-name: resetSmallRight;
+  animation-fill-mode: both;
+
+}
+
 
 @keyframes resetSmall {
   0% {
@@ -368,6 +375,21 @@ visibility: hidden;
 
   100% {
     transform: translateX(0);
+    height: 10vw;
+    width: 10vw;
+  }
+}
+
+@keyframes resetSmallRight {
+  0% {
+
+
+
+  }
+
+
+  100% {
+    transform: translateX(-300);
     height: 10vw;
     width: 10vw;
   }
@@ -418,11 +440,12 @@ visibility: hidden;
 
 
   100% {
-    transform: translateX(300%);
+    transform: translateX(260%);
     height: 10vw;
     width: 10vw;
   }
 }
+
 
 @keyframes RTM {
   0% {
@@ -485,7 +508,7 @@ visibility: hidden;
 
     height: 10vw;
     width: 10vw;
-    transform: translateX(300%);
+    transform: translateX(260%);
   }
 }
 
