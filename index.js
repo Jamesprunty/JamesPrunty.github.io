@@ -11,6 +11,7 @@ const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
 let click = "";
 let start = 0;
+currentWidth
 
 let rootElement = document.querySelector(':root');
 let delay = 1.2;
@@ -22,6 +23,14 @@ let rotations = 0;
 items.forEach(item => {
     item.addEventListener('click', moveItems);
 });
+
+const ro = new ResizeObserver(entries => {
+
+
+
+
+
+})
 
 item1.classList.add("noShow");
 
@@ -380,6 +389,8 @@ function resetDivs(click) {
 
     }
 }
+
+
 
 
 
