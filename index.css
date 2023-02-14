@@ -423,7 +423,7 @@ visibility: hidden;
 
 
   100% {
-    transform: translateX(-300%);
+    transform: translateX(-260%);
     height: 10vw;
     width: 10vw;
   }
@@ -459,7 +459,7 @@ visibility: hidden;
 
     height: 30vw;
     width: 30vw;
-    transform: translateX(-100%);
+    transform: translateX(-86.5%);
   }
 }
 
@@ -475,7 +475,7 @@ visibility: hidden;
 
     height: 30vw;
     width: 30vw;
-    transform: translateX(86%);
+    transform: translateX(86.5%);
   }
 }
 @keyframes MTL {
@@ -491,7 +491,7 @@ visibility: hidden;
 
     height: 10vw;
     width: 10vw;
-    transform: translateX(-300%);
+    transform: translateX(-260%);
   }
 }
 

@@ -341,4 +341,1067 @@ function openMenu() {
     console.log("Menu Open");
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ------------------------------------------------------------------------
+
+    14/02/2023
+
+    const title = document.querySelector(".titleContainer");
+const menuContainer = document.querySelector("#MenuContainer");
+const SHDiv = document.querySelector("#SHDiv");
+const page = document.querySelector("#page");
+const items = document.querySelectorAll(".item");
+const root = document.documentElement;
+const item1 = document.querySelector("#item1");
+const item2 = document.querySelector("#item2");
+const item3 = document.querySelector("#item3");
+const item4 = document.querySelector("#item4");
+const item0 = document.querySelector("#item0");
+let click = "";
+let diff = 0;
+let overflow = 0;
+let rightLast = false;
+let leftLast = true;
+
+let rootElement = document.querySelector(':root');
+let delay = 1.2;
+let duration = 2.5;
+root.style.setProperty('--delay', delay + "s");
+root.style.setProperty('--duration', duration + "s");
+let rotations = 0;
+
+items.forEach(item => {
+    item.addEventListener('click', moveItems);
+});
+
+item1.classList.add("noShow");
+
+
+
+
+const projects = [
+    {
+
+        name: "JS30 Project"
+    },
+    {
+
+        name: "Marcov Model"
+    },
+    {
+
+        name: "Blog"
+    },
+    {
+
+        name: "Other Projects to come"
+    },
+    {
+
+        name: "NEW PROJECT"
+    }
+
+];
+
+for (i = 0; i < projects.length - 1; i++) {
+
+    items[i + 1].innerHTML = projects[i].name;
+    items[0].innerHTML = projects[projects.length - 1].name;
+
 }
+
+
+
+title.addEventListener('click', openMenu);
+
+function moveItems() {
+    delay = 0;
+    duration = 2;
+
+    root.style.setProperty('--delay', delay + "s");
+    root.style.setProperty('--duration', duration + "s");
+
+
+
+    if (rotations == 0) {
+
+
+
+
+        if (this.classList.contains("startRTM")) {
+
+
+
+            menuContainer.classList.add("moveTop");
+
+        }
+
+        if (this.classList.contains("startMoveLeft")) {
+
+
+            item1.classList.add("two");
+            item1.classList.remove("start");
+
+
+            setTimeout(() => {
+
+                item1.classList.add("firstMTL");
+                item2.classList.add("firstRTM");
+                item3.classList.add("firstOTR");
+
+            }, 100);
+
+        }
+
+        setTimeout(() => {
+
+            resetDivs();
+
+        }, duration * 1000);
+
+
+
+    } else {
+
+
+
+        if (this.id == "item1") {
+
+            click = "left";
+
+            console.log("1 has been clicked");
+
+
+            item1.classList.add("LTM");
+            item2.classList.add("MTR");
+            item3.classList.add("moveRight");
+            item0.classList.add("moveRight");
+
+
+        }
+
+        if (this.id == "item2") {
+
+            console.log("2 has been clicked");
+            menuContainer.classList.add("hidden", "noShow");
+
+
+        }
+
+        if (this.id == "item3") {
+
+            console.log("3 has been clicked");
+            click = "right";
+
+            item3.classList.add("RTM");
+            item2.classList.add("MTL");
+            item1.classList.add("moveLeft");
+            item4.classList.add("moveLeft");
+
+        }
+    }
+
+
+    /*
+    if (document.querySelector(".farStart")) {
+        document.querySelector(".farStart").classList.remove("farStart");
+    }
+    if (document.querySelector(".start")) {
+        document.querySelector(".start").classList.remove("start");
+    }
+
+
+    if (this.classList.contains("OTR") || this.classList.contains("MTR")) {
+
+
+        this.classList.add("right");
+        this.classList.remove("middle");
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".RTM")){        
+            document.querySelector(".RTM").classList.remove("RTM");
+            }
+
+        document.querySelector(".middle").classList.add("MTL");
+
+        this.classList.add("RTM");
+        this.classList.remove("MTR");
+        this.classList.remove("OTR");
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.remove("LTM");
+        }
+
+
+    }
+
+    if (this.classList.contains("MTL") || this.classList.contains("OTL")) {
+
+        this.classList.add("left");
+        this.classList.remove("middle");
+
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".LTM")){        
+            document.querySelector(".LTM").classList.remove("LTM");
+            }
+
+        document.querySelector(".middle").classList.add("MTR");
+
+        this.classList.add("LTM");
+        this.classList.remove("MTL");
+        this.classList.remove("OTL");
+
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.remove("RTM");
+        }
+
+
+    }*/
+    if (rotations > 0) {
+
+
+        setTimeout(() => {
+
+            resetDivs(click);
+
+        }, duration * 1000);
+
+    }
+
+    rotations++;
+
+
+
+
+}
+
+function openMenu() {
+
+    title.classList.add("titleAnimate");
+    menuContainer.classList.remove("hidden");
+    SHDiv.classList.add("subtitleAnimate");
+    page.classList.add("backgroundAnimate");
+
+    setTimeout(() => {
+
+        item1.classList.add("startRTM");
+        item1.classList.remove("noShow");
+        setTimeout(() => {
+
+            item2.classList.add("startMoveLeft");
+
+
+
+        }, 600);
+
+
+    }, duration * 300);
+
+
+
+}
+
+function resetDivs(click) {
+
+    duration = 0;
+
+    if (rotations == 1) {
+
+        item1.classList.add("side");
+        item3.classList.add("side");
+        item1.classList.remove("two");
+
+        item2.classList.add("two");
+
+        if (document.querySelector(".startRTM")) {
+            document.querySelector(".startRTM").classList.remove("startRTM");
+        }
+        if (document.querySelector(".firstMTL")) {
+            document.querySelector(".firstMTL").classList.remove("firstMTL");
+        }
+
+        let starts = document.querySelectorAll(".start");
+        starts.forEach(element => {
+            element.classList.remove("start");
+        });
+
+        if (document.querySelector(".startMoveLeft")) {
+            document.querySelector(".startMoveLeft").classList.remove("startMoveLeft");
+        }
+        if (document.querySelector(".firstRTM")) {
+            document.querySelector(".firstRTM").classList.remove("firstRTM");
+        }
+        if (document.querySelector(".firstOTR")) {
+            document.querySelector(".firstOTR").classList.remove("firstOTR");
+        }
+
+
+
+
+
+    }
+
+    if (click == "left") {
+
+        if (leftLast == false){
+
+            diff = diff  
+        }
+        leftLast = true;
+
+        rightLast = false;
+
+        diff--
+
+        let reset = projects.length + 1;
+        if (diff == -reset) { diff = -1 };
+
+        let length = projects.length;
+        let k = length + diff;
+
+
+        for (i = 0; i < items.length; i++) {
+
+
+
+            //console.log("%c" + test, "color=yellow");
+
+            if (i + diff < 0) {
+
+                items[i].innerHTML = projects[k].name;
+                
+            } else if (i + diff > projects.length) {
+
+     
+                overflow = (i + diff) - (projects.length);
+
+                
+                
+                console.log("overflow = " + overflow)
+                
+                if (overflow == projects.length -1){diff = 0};
+
+                items[i].innerHTML = projects[overflow].name;
+                console.log("%c" + overflow, "color:green");
+
+            }else {
+
+                j = i + diff;
+                items[i].innerHTML = projects[j].name;
+                console.log("%c" + j, "color:green");
+
+            }
+
+            k++;
+
+
+        }
+
+
+        item0.classList.add("resetSmall");
+        item1.classList.add("resetSmall");
+        item2.classList.add("resetBig");
+        item3.classList.add("resetSmallRight");
+        item4.classList.add("resetSmall");
+
+        item3.innerHTML = item2.innerHTML;
+        item2.innerHTML = item1.innerHTML;
+        item1.innerHTML = item0.innerHTML;
+
+        let index = 0;
+
+        for (i = 0; i < projects.length; i++) {
+
+            if (projects[i].name == item1.innerHTML) { index = i - 1 };
+
+            if (index < 0) { index = projects.length - 1 };
+
+            item0.innerHTML = projects[index].name;
+        }
+
+
+
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.remove("LTM");
+        }
+
+        if (document.querySelector(".resetSmallRight")) {
+            document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+        }
+        let resetSmall = document.querySelectorAll(".resetSmall")
+        resetSmall.forEach(element => {
+            element.classList.remove("resetSmall");
+        });
+        let removeRight = document.querySelectorAll(".moveRight")
+        removeRight.forEach(element => {
+            element.classList.remove("moveRight");
+        });
+        if (document.querySelector(".MTR")) {
+            document.querySelector(".MTR").classList.remove("MTR");
+        }
+        if (document.querySelector(".resetBig")) {
+            document.querySelector(".resetBig").classList.remove("resetBig");
+        }
+
+
+
+    }
+
+    if (click == "right") {
+
+
+        if (rightLast == false){
+
+            diff = diff -2;
+        }
+        rightLast = true;
+        leftLast = true;
+        
+
+        diff++
+
+        console.log("RIGHT");
+
+       
+
+        let reset = projects.length + 1;
+        if (diff == -reset) { diff = -1 };
+
+        let length = projects.length;
+        let k = length + diff;
+
+
+        for (i = 0; i < items.length; i++) {
+
+
+
+            //console.log("%c" + test, "color=yellow");
+
+            if (i + diff < 0) {
+
+                items[i].innerHTML = projects[k].name;
+                
+            } else if (i + diff > projects.length) {
+
+     
+                overflow = (i + diff) - (projects.length);
+
+                
+                
+                console.log("overflow = " + overflow)
+                
+                if (overflow == projects.length -1){diff = 0};
+
+                items[i].innerHTML = projects[overflow].name;
+                console.log("%c" + overflow, "color:green");
+
+            }else {
+
+                j = i + diff;
+                items[i].innerHTML = projects[j].name;
+                console.log("%c" + j, "color:green");
+
+            }
+
+            k++;
+
+
+        }
+
+       
+
+
+    item0.classList.add("resetSmall");
+    item1.classList.add("resetSmall");
+    item2.classList.add("resetBig");
+    item3.classList.add("resetSmallRight");
+    item4.classList.add("resetSmall");
+
+    item1.innerHTML = item2.innerHTML;
+    item2.innerHTML = item3.innerHTML;
+    item3.innerHTML = item4.innerHTML;
+
+    let index = 0;
+
+    for (i = 0; i < projects.length; i++) {
+
+        if (projects[i].name == item3.innerHTML) { index = i + 1 };
+
+        if (index >= projects.length) { index = 0 };
+
+        item4.innerHTML = projects[index].name;
+    }
+
+
+
+
+    if (document.querySelector(".RTM")) {
+        document.querySelector(".RTM").classList.remove("RTM");
+    }
+
+    if (document.querySelector(".resetSmallRight")) {
+        document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+    }
+    let resetSmall = document.querySelectorAll(".resetSmall")
+    resetSmall.forEach(element => {
+        element.classList.remove("resetSmall");
+    });
+    let removeLeft = document.querySelectorAll(".moveLeft")
+    removeLeft.forEach(element => {
+        element.classList.remove("moveLeft");
+    });
+    if (document.querySelector(".MTL")) {
+        document.querySelector(".MTL").classList.remove("MTL");
+    }
+    if (document.querySelector(".resetBig")) {
+        document.querySelector(".resetBig").classList.remove("resetBig");
+    }
+
+
+
+
+
+}
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+----------------------------------------------------------------
+
+14/02/2023 - Blog
+
+const title = document.querySelector(".titleContainer");
+const menuContainer = document.querySelector("#MenuContainer");
+const SHDiv = document.querySelector("#SHDiv");
+const page = document.querySelector("#page");
+const items = document.querySelectorAll(".item");
+const root = document.documentElement;
+const item1 = document.querySelector("#item1");
+const item2 = document.querySelector("#item2");
+const item3 = document.querySelector("#item3");
+const item4 = document.querySelector("#item4");
+const item0 = document.querySelector("#item0");
+let click = "";
+let diff = 0;
+let overflow = 0;
+let rightLast = false;
+let lastClick;
+
+let rootElement = document.querySelector(':root');
+let delay = 1.2;
+let duration = 2.5;
+root.style.setProperty('--delay', delay + "s");
+root.style.setProperty('--duration', duration + "s");
+let rotations = 0;
+
+items.forEach(item => {
+    item.addEventListener('click', moveItems);
+});
+
+item1.classList.add("noShow");
+
+
+
+
+const projects = [
+    {
+
+        name: "JS30 Project"
+    },
+    {
+
+        name: "Marcov Model"
+    },
+    {
+
+        name: "Blog"
+    },
+    {
+
+        name: "Other Projects to come"
+    },
+    {
+
+        name: "NEW PROJECT"
+    }
+
+];
+
+for (i = 0; i < projects.length - 1; i++) {
+
+    items[i + 1].innerHTML = projects[i].name;
+    items[0].innerHTML = projects[projects.length - 1].name;
+
+}
+
+
+
+title.addEventListener('click', openMenu);
+
+function moveItems() {
+    delay = 0;
+    duration = 2;
+
+    root.style.setProperty('--delay', delay + "s");
+    root.style.setProperty('--duration', duration + "s");
+
+
+
+    if (rotations == 0) {
+
+
+
+
+        if (this.classList.contains("startRTM")) {
+
+
+
+            menuContainer.classList.add("moveTop");
+
+        }
+
+        if (this.classList.contains("startMoveLeft")) {
+
+
+            item1.classList.add("two");
+            item1.classList.remove("start");
+
+
+            setTimeout(() => {
+
+                item1.classList.add("firstMTL");
+                item2.classList.add("firstRTM");
+                item3.classList.add("firstOTR");
+
+            }, 100);
+
+        }
+
+        setTimeout(() => {
+
+            resetDivs();
+
+        }, duration * 1000);
+
+
+
+    } else {
+
+
+
+        if (this.id == "item1") {
+
+            click = "left";
+
+            console.log("1 has been clicked");
+
+
+            item1.classList.add("LTM");
+            item2.classList.add("MTR");
+            item3.classList.add("moveRight");
+            item0.classList.add("moveRight");
+
+
+        }
+
+        if (this.id == "item2") {
+
+            console.log("2 has been clicked");
+            menuContainer.classList.add("hidden", "noShow");
+
+
+        }
+
+        if (this.id == "item3") {
+
+            console.log("3 has been clicked");
+            click = "right";
+
+            item3.classList.add("RTM");
+            item2.classList.add("MTL");
+            item1.classList.add("moveLeft");
+            item4.classList.add("moveLeft");
+
+        }
+    }
+
+
+    /*
+    if (document.querySelector(".farStart")) {
+        document.querySelector(".farStart").classList.remove("farStart");
+    }
+    if (document.querySelector(".start")) {
+        document.querySelector(".start").classList.remove("start");
+    }
+
+
+    if (this.classList.contains("OTR") || this.classList.contains("MTR")) {
+
+
+        this.classList.add("right");
+        this.classList.remove("middle");
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".RTM")){        
+            document.querySelector(".RTM").classList.remove("RTM");
+            }
+
+        document.querySelector(".middle").classList.add("MTL");
+
+        this.classList.add("RTM");
+        this.classList.remove("MTR");
+        this.classList.remove("OTR");
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.remove("LTM");
+        }
+
+
+    }
+
+    if (this.classList.contains("MTL") || this.classList.contains("OTL")) {
+
+        this.classList.add("left");
+        this.classList.remove("middle");
+
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.add("middle");
+        }
+
+        if (document.querySelector(".LTM")){        
+            document.querySelector(".LTM").classList.remove("LTM");
+            }
+
+        document.querySelector(".middle").classList.add("MTR");
+
+        this.classList.add("LTM");
+        this.classList.remove("MTL");
+        this.classList.remove("OTL");
+
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.remove("RTM");
+        }
+
+
+    }*/
+    if (rotations > 0) {
+
+
+        setTimeout(() => {
+
+            resetDivs(click);
+
+        }, duration * 1000);
+
+    }
+
+    rotations++;
+
+
+
+
+}
+
+function openMenu() {
+
+    title.classList.add("titleAnimate");
+    menuContainer.classList.remove("hidden");
+    SHDiv.classList.add("subtitleAnimate");
+    page.classList.add("backgroundAnimate");
+
+    setTimeout(() => {
+
+        item1.classList.add("startRTM");
+        item1.classList.remove("noShow");
+        setTimeout(() => {
+
+            item2.classList.add("startMoveLeft");
+
+
+
+        }, 600);
+
+
+    }, duration * 300);
+
+
+
+}
+
+function resetDivs(click) {
+
+    duration = 0;
+    console.clear;
+
+
+    if (rotations == 1) {
+
+        item1.classList.add("side");
+        item3.classList.add("side");
+        item1.classList.remove("two");
+
+        item2.classList.add("two");
+
+        if (document.querySelector(".startRTM")) {
+            document.querySelector(".startRTM").classList.remove("startRTM");
+        }
+        if (document.querySelector(".firstMTL")) {
+            document.querySelector(".firstMTL").classList.remove("firstMTL");
+        }
+
+        let starts = document.querySelectorAll(".start");
+        starts.forEach(element => {
+            element.classList.remove("start");
+        });
+
+        if (document.querySelector(".startMoveLeft")) {
+            document.querySelector(".startMoveLeft").classList.remove("startMoveLeft");
+        }
+        if (document.querySelector(".firstRTM")) {
+            document.querySelector(".firstRTM").classList.remove("firstRTM");
+        }
+        if (document.querySelector(".firstOTR")) {
+            document.querySelector(".firstOTR").classList.remove("firstOTR");
+        }
+
+
+
+
+    }
+
+    if(rotations > 1){
+
+    if (click == "left") {
+
+        console.log("LEFT CLICK");
+
+        diff--
+
+        rightLast = false;
+
+    }
+    if (click == "right") {
+
+
+        console.log("RIGHT CLICK");
+
+        if (rightLast == false){
+
+           // diff = diff - 2;
+        }
+        rightLast = true;
+        diff++
+    }
+    
+
+    let reset = projects.length + 1;
+    if (diff == -reset) { diff = -1 };
+
+    let length = projects.length;
+    let k = length + diff;
+
+
+
+
+        for (i = 0; i < items.length; i++) {
+
+
+
+            //console.log("%c" + test, "color=yellow");
+
+            if (i + diff < 0) {
+
+                items[i].innerHTML = projects[k].name;
+                pName = projects[k].name;
+                
+
+                console.log("%c" + diff, "color:green");
+                console.log("%c" + k, "color:green");
+                console.log("%c" + pName, "color:green");
+                
+                k++;
+            } else if (i + diff > projects.length -1) {
+
+     
+                overflow = (i + diff) - (projects.length);
+                           
+                if (overflow == projects.length -1){diff = 0};
+
+                items[i].innerHTML = projects[overflow].name;
+                console.log("%c" + diff, "color:red");
+                console.log("%c" + overflow, "color:red");
+                console.log("%c" + projects[overflow].name, "color:red");
+
+            }else {
+
+                j = i + diff;
+                items[i].innerHTML = projects[j].name;
+                console.log("%c" + diff, "color:black");
+                console.log("%c" + j, "color:black");
+                console.log("%c" + projects[j].name, "color:black");
+
+            }
+
+            
+
+
+        }
+
+
+if (click == "left"){
+
+    item0.classList.add("resetSmall");
+    item1.classList.add("resetSmall");
+    item2.classList.add("resetBig");
+    item3.classList.add("resetSmallRight");
+    item4.classList.add("resetSmall");
+
+    item3.innerHTML = item2.innerHTML;
+    item2.innerHTML = item1.innerHTML;
+    item1.innerHTML = item0.innerHTML;
+
+    let index = 0;
+
+    for (i = 0; i < projects.length; i++) {
+
+        if (projects[i].name == item1.innerHTML) { index = i - 1 };
+
+        if (index < 0) { index = projects.length - 1 };
+
+        item0.innerHTML = projects[index].name;
+
+        item4.innerHTML = projects[index].name;
+    }
+}
+
+if(click == "right"){
+
+console.log("RIGHT");
+
+item1.innerHTML = item2.innerHTML;
+item2.innerHTML = item3.innerHTML;
+item3.innerHTML = item4.innerHTML;
+
+let index = 0;
+
+for (i = 0; i < projects.length; i++) {
+
+    if (projects[i].name == item3.innerHTML) { index = i + 1 };
+
+    if (index >= projects.length) { index = 0 };
+
+    item4.innerHTML = projects[index].name;
+
+    item0.innerHTML = projects[index].name;
+}
+
+}
+
+
+
+
+        if (document.querySelector(".LTM")) {
+            document.querySelector(".LTM").classList.remove("LTM");
+        }
+
+        if (document.querySelector(".resetSmallRight")) {
+            document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+        }
+        let resetSmall = document.querySelectorAll(".resetSmall")
+        resetSmall.forEach(element => {
+            element.classList.remove("resetSmall");
+        });
+        let removeRight = document.querySelectorAll(".moveRight")
+        removeRight.forEach(element => {
+            element.classList.remove("moveRight");
+        });
+        if (document.querySelector(".MTR")) {
+            document.querySelector(".MTR").classList.remove("MTR");
+        }
+        if (document.querySelector(".resetBig")) {
+            document.querySelector(".resetBig").classList.remove("resetBig");
+        }
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.remove("RTM");
+        }
+    
+        if (document.querySelector(".resetSmallRight")) {
+            document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+        }
+        
+        let removeLeft = document.querySelectorAll(".moveLeft")
+        removeLeft.forEach(element => {
+            element.classList.remove("moveLeft");
+        });
+        if (document.querySelector(".MTL")) {
+            document.querySelector(".MTL").classList.remove("MTL");
+        }
+        if (document.querySelector(".resetBig")) {
+            document.querySelector(".resetBig").classList.remove("resetBig");
+        }
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

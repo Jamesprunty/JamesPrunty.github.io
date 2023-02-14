@@ -10,8 +10,7 @@ const item3 = document.querySelector("#item3");
 const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
 let click = "";
-let diff = 0;
-let overflow = 0;
+let start = 0;
 
 let rootElement = document.querySelector(':root');
 let delay = 1.2;
@@ -119,6 +118,8 @@ function moveItems() {
 
             click = "left";
 
+            console.log("1 has been clicked");
+
 
             item1.classList.add("LTM");
             item2.classList.add("MTR");
@@ -130,13 +131,15 @@ function moveItems() {
 
         if (this.id == "item2") {
 
-
+            console.log("2 has been clicked");
+            menuContainer.classList.add("hidden", "noShow");
 
 
         }
 
         if (this.id == "item3") {
 
+            console.log("3 has been clicked");
             click = "right";
 
             item3.classList.add("RTM");
@@ -264,6 +267,8 @@ function openMenu() {
 function resetDivs(click) {
 
     duration = 0;
+    console.clear;
+
 
     if (rotations == 1) {
 
@@ -296,84 +301,39 @@ function resetDivs(click) {
         }
 
 
-
-
+        start = projects.length-1;
 
     }
 
+    if(rotations > 1){
+
     if (click == "left") {
 
-        
+        start--
+        if(start < 0){start = projects.length-1 }
 
-        diff--
-        console.log(-projects.length);
+    }
+    if (click == "right") {
 
-        let reset = projects.length + 1;
-        console.log(reset);
-        if (diff == -reset) { diff = -1 };
+        start++
+        if(start == projects.length){start = 0}
 
-        let length = projects.length;
-        let k = length + diff;
+    }
 
+    j = start;
+    
+    for (i=0;i<items.length;i++){
 
-        for (i = 0; i < items.length; i++) {
+     if (j == projects.length){
+        j = 0;
+     }
 
+            items[i].innerHTML = projects[j].name;
 
+        j++
 
-            //console.log("%c" + test, "color=yellow");
-
-            if (i + diff < 0) {
-
-                items[i].innerHTML = projects[k].name;
-
-                console.log("%c" + k, "color:red");
-                console.log(items[i]);
-                console.log("%c" + projects[k].name, "color:red");
-                
-            } else if (i + diff > projects.length) {
-
-                overflow = (i + diff) - (projects.length);
-                items[i].innerHTML = projects[overflow].name;
-
-
-            }else {
-
-                j = i + diff;
-                items[i].innerHTML = projects[j].name;
-                console.log("%c" + j, "color:green")
-                console.log(items[i]);
-                console.log("%c" + projects[j].name, "color:green");
-
-            }
-
-            k++;
-
-
-        }
-
-
-        item0.classList.add("resetSmall");
-        item1.classList.add("resetSmall");
-        item2.classList.add("resetBig");
-        item3.classList.add("resetSmallRight");
-        item4.classList.add("resetSmall");
-
-        item3.innerHTML = item2.innerHTML;
-        item2.innerHTML = item1.innerHTML;
-        item1.innerHTML = item0.innerHTML;
-
-        let index = 0;
-
-        for (i = 0; i < projects.length; i++) {
-
-            if (projects[i].name == item1.innerHTML) { index = i - 1 };
-
-            if (index < 0) { index = projects.length - 1 };
-
-            item0.innerHTML = projects[index].name;
-        }
-
-
+    }
+    
 
 
         if (document.querySelector(".LTM")) {
@@ -397,122 +357,38 @@ function resetDivs(click) {
         if (document.querySelector(".resetBig")) {
             document.querySelector(".resetBig").classList.remove("resetBig");
         }
-
-
-
-    }
-
-    if (click == "right") {
-
-        /*
-
-        console.log(diff);
-
-        diff++
-
-        console.log(-projects.length);
-
-        let reset = projects.length + 1;
-        console.log(reset);
-        if (diff == -reset) { diff = -1 };
-
-        let length = projects.length;
-        let k = length + diff;
-
-
-        for (i = 0; i < items.length; i++) {
-
-
-
-            //console.log("%c" + test, "color=yellow");
-
-            if (i + diff < 0) {
-
-                items[i].innerHTML = projects[k].name;
-
-                console.log("%c" + k, "color:red");
-                console.log(items[i]);
-                console.log("%c" + projects[k].name, "color:red");
-                
-            } else if (i + diff > projects.length) {
-
-                overflow = (i + diff) - (projects.length);
-                items[i].innerHTML = projects[overflow].name;
-
-
-            }else {
-
-                j = i + diff;
-                items[i].innerHTML = projects[j].name;
-                console.log("%c" + j, "color:green")
-                console.log(items[i]);
-                console.log("%c" + projects[j].name, "color:green");
-
-            }
-
-
+        if (document.querySelector(".RTM")) {
+            document.querySelector(".RTM").classList.remove("RTM");
+        }
+    
+        if (document.querySelector(".resetSmallRight")) {
+            document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
+        }
+        
+        let removeLeft = document.querySelectorAll(".moveLeft")
+        removeLeft.forEach(element => {
+            element.classList.remove("moveLeft");
+        });
+        if (document.querySelector(".MTL")) {
+            document.querySelector(".MTL").classList.remove("MTL");
+        }
+        if (document.querySelector(".resetBig")) {
+            document.querySelector(".resetBig").classList.remove("resetBig");
         }
 
-        k++;
-
-
 
 
     }
-
-
-    item0.classList.add("resetSmall");
-    item1.classList.add("resetSmall");
-    item2.classList.add("resetBig");
-    item3.classList.add("resetSmallRight");
-    item4.classList.add("resetSmall");
-
-    item1.innerHTML = item2.innerHTML;
-    item2.innerHTML = item3.innerHTML;
-    item3.innerHTML = item4.innerHTML;
-
-    let index = 0;
-
-    for (i = 0; i < projects.length; i++) {
-
-        if (projects[i].name == item3.innerHTML) { index = i + 1 };
-
-        if (index > projects.length) { index = 0 };
-
-        item4.innerHTML = projects[index].name;
-    }
-
-
-
-
-    if (document.querySelector(".RTM")) {
-        document.querySelector(".RTM").classList.remove("RTM");
-    }
-
-    if (document.querySelector(".resetSmallRight")) {
-        document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
-    }
-    let resetSmall = document.querySelectorAll(".resetSmall")
-    resetSmall.forEach(element => {
-        element.classList.remove("resetSmall");
-    });
-    let removeLeft = document.querySelectorAll(".moveLeft")
-    removeLeft.forEach(element => {
-        element.classList.remove("moveLeft");
-    });
-    if (document.querySelector(".MTL")) {
-        document.querySelector(".MTL").classList.remove("MTL");
-    }
-    if (document.querySelector(".resetBig")) {
-        document.querySelector(".resetBig").classList.remove("resetBig");
-    }
-
-
-
-*/
-
 }
-}
+
+
+
+
+
+
+
+
+
 
 
 
