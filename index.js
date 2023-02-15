@@ -71,12 +71,124 @@ const projects = [
 
 ];
 
-console.log(projects);
+const Lessons = [
+    {
+        name: "Lesson-1"
+    },
+    {
+        name: "Lesson-1-Advanced"
+    },
+    {
+        name: "Lesson-2"
+    },
+    {
+        name: "Lesson-2-Advanced"
+    },
+    {
+        name: "Lesson-3"
+    },
+    {
+        name: "Lesson-3-Advanced"
+    },
+    {
+        name: "Lesson-4"
+    },
+    {
+        name: "Lesson-4-Advanced"
+    },
+    {
+        name: "Lesson-5"
+    },
+    {
+        name: "Lesson-5-Advanced"
+    },
+    {
+        name: "Lesson-6"
+    },
+    {
+        name: "Lesson-6-Advanced"
+    },
+    {
+        name: "Lesson-7"
+    },
+    {
+        name: "Lesson-7-Advanced"
+    },
+    {
+        name: "Lesson-8"
+    },
+    {
+        name: "Lesson-8-Advanced"
+    },
+    {
+        name: "Lesson-9"
+    },
+    {
+        name: "Lesson-9-Advanced"
+    },
+    {
+        name: "Lesson-10"
+    },
+    {
+        name: "Lesson-10-Advanced"
+    },
+    {
+        name: "Lesson-11"
+    },
+    {
+        name: "Lesson-11-Advanced"
+    },
+    {
+        name: "Lesson-12"
+    },
+    {
+        name: "Lesson-12-Advanced"
+    },
+    {
+        name: "Lesson-13"
+    },
+    {
+        name: "Lesson-13-Advanced"
+    },
+    {
+        name: "Lesson-14"
+    },
+    {
+        name: "Lesson-14-Advanced"
+    },
+    {
+        name: "Lesson-15"
+    },
+    {
+        name: "Lesson-15-Advanced"
+    },
+    {
+        name: "Lesson-16"
+    },
+    {
+        name: "Lesson-16-Advanced"
+    },
+    {
+        name: "Lesson-17"
+    },
+    {
+        name: "Lesson-17-Advanced"
+    },
 
-for (i = 0; i < items.length-1; i++) {
 
-    items[i + 1].innerHTML = projects[i].name;
-    items[0].innerHTML = projects[projects.length - 1].name;
+
+
+
+];
+
+let menuArray = projects;
+
+console.log(menuArray);
+
+for (i = 0; i < items.length - 1; i++) {
+
+    items[i + 1].innerHTML = menuArray[i].name;
+    items[0].innerHTML = menuArray[menuArray.length - 1].name;
 
 }
 
@@ -102,7 +214,40 @@ function moveItems() {
 
 
 
+            console.log("2 has been clicked");
             menuContainer.classList.add("moveTop");
+            menuContainer.classList.remove("staerRTM");
+
+            setTimeout(() => {
+
+                duration = 0;
+
+                menuContainer.classList.add("moveBottom");
+               menuContainer.classList.remove("moveTop");
+    
+                menuArray = Lessons;
+                
+
+                setTimeout(() => {
+
+                    start = menuArray.length - 2;
+
+                    console.log(menuArray);
+                    duration = 1.2;
+
+                    menuContainer.classList.add("recenter");
+        
+                    menuContainer.classList.remove("moveBottom");
+                    
+                    
+                }, 700);
+    
+   
+    
+                
+            }, 400);
+
+ 
 
         }
 
@@ -155,6 +300,48 @@ function moveItems() {
             console.log("2 has been clicked");
             menuContainer.classList.add("moveTop");
 
+            setTimeout(() => {
+
+                duration = 0;
+
+                menuContainer.classList.add("moveBottom");
+               menuContainer.classList.remove("moveTop");
+    
+                menuArray = Lessons;
+                
+
+                setTimeout(() => {
+
+                    start = 0;
+                    item0.innerHTML = menuArray[menuArray.length - 1].name;
+                    item1.innerHTML = menuArray[0].name
+                    item2.innerHTML = menuArray[1].name
+                    item3.innerHTML = menuArray[2].name
+                    item4.innerHTML = menuArray[3].name
+
+                    console.log(start);
+                    console.log(item1.innerHTML);
+                    console.log(menuArray[0].name);
+                    console.log(menuArray);
+
+                    duration = 1.2;
+
+                    menuContainer.classList.add("recenter");
+        
+                    menuContainer.classList.remove("moveBottom");
+                    
+                    
+                }, 700);
+    
+   
+    
+                
+            }, 400);
+
+ 
+
+
+
 
 
         }
@@ -173,75 +360,6 @@ function moveItems() {
     }
 
 
-    /*
-    if (document.querySelector(".farStart")) {
-        document.querySelector(".farStart").classList.remove("farStart");
-    }
-    if (document.querySelector(".start")) {
-        document.querySelector(".start").classList.remove("start");
-    }
-
-
-    if (this.classList.contains("OTR") || this.classList.contains("MTR")) {
-
-
-        this.classList.add("right");
-        this.classList.remove("middle");
-
-        if (document.querySelector(".LTM")) {
-            document.querySelector(".LTM").classList.add("middle");
-        }
-
-        if (document.querySelector(".RTM")) {
-            document.querySelector(".RTM").classList.add("middle");
-        }
-
-        if (document.querySelector(".RTM")){        
-            document.querySelector(".RTM").classList.remove("RTM");
-            }
-
-        document.querySelector(".middle").classList.add("MTL");
-
-        this.classList.add("RTM");
-        this.classList.remove("MTR");
-        this.classList.remove("OTR");
-
-        if (document.querySelector(".LTM")) {
-            document.querySelector(".LTM").classList.remove("LTM");
-        }
-
-
-    }
-
-    if (this.classList.contains("MTL") || this.classList.contains("OTL")) {
-
-        this.classList.add("left");
-        this.classList.remove("middle");
-
-        if (document.querySelector(".RTM")) {
-            document.querySelector(".RTM").classList.add("middle");
-        }
-
-        if (document.querySelector(".LTM")) {
-            document.querySelector(".LTM").classList.add("middle");
-        }
-
-        if (document.querySelector(".LTM")){        
-            document.querySelector(".LTM").classList.remove("LTM");
-            }
-
-        document.querySelector(".middle").classList.add("MTR");
-
-        this.classList.add("LTM");
-        this.classList.remove("MTL");
-        this.classList.remove("OTL");
-
-        if (document.querySelector(".RTM")) {
-            document.querySelector(".RTM").classList.remove("RTM");
-        }
-
-
-    }*/
     if (rotations > 0) {
 
 
@@ -323,39 +441,39 @@ function resetDivs(click) {
         }
 
 
-        start = projects.length-1;
+        start = menuArray.length - 1;
 
     }
 
-    if(rotations > 1){
+    if (rotations > 1) {
 
-    if (click == "left") {
+        if (click == "left") {
 
-        start--
-        if(start < 0){start = projects.length-1 }
+            start--
+            if (start < 0) { start = menuArray.length - 1 }
 
-    }
-    if (click == "right") {
+        }
+        if (click == "right") {
 
-        start++
-        if(start == projects.length){start = 0}
+            start++
+            if (start == menuArray.length) { start = 0 }
 
-    }
+        }
 
-    j = start;
-    
-    for (i=0;i<items.length;i++){
+        j = start;
 
-     if (j == projects.length){
-        j = 0;
-     }
+        for (i = 0; i < items.length; i++) {
 
-            items[i].innerHTML = projects[j].name;
+            if (j == menuArray.length) {
+                j = 0;
+            }
 
-        j++
+            items[i].innerHTML = menuArray[j].name;
 
-    }
-    
+            j++
+
+        }
+
 
 
         if (document.querySelector(".LTM")) {
@@ -382,11 +500,11 @@ function resetDivs(click) {
         if (document.querySelector(".RTM")) {
             document.querySelector(".RTM").classList.remove("RTM");
         }
-    
+
         if (document.querySelector(".resetSmallRight")) {
             document.querySelector(".resetSmallRight").classList.remove("resetSmallRight");
         }
-        
+
         let removeLeft = document.querySelectorAll(".moveLeft")
         removeLeft.forEach(element => {
             element.classList.remove("moveLeft");

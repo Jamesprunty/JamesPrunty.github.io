@@ -381,12 +381,25 @@ body {
 }
 
 
-
-
-
 .moveTop {
 
   animation-name: moveTop;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+
+}
+
+.moveBottom {
+
+  animation-name: moveBottom;
+  animation-duration:  0;
+  animation-fill-mode: both;
+
+}
+
+.recenter{
+
+  animation-name: recenter;
   animation-duration: var(--duration);
   animation-fill-mode: both;
 
@@ -855,5 +868,37 @@ body {
 @keyframes moveTop {
   0% {}
 
-  100% {}
+
+  99%{
+    transform: translateX(-17%);
+    transform: translateY(-300vw);
+  }
+
+  100% {
+
+    transform: translateY(-300vw);
+
+  }
+}
+
+@keyframes moveBottom {
+  0% { transform: translateY(-300vw);}
+
+  100% {
+
+    transform: translateY(300vw);
+
+  }
+}
+
+@keyframes recenter {
+  0% {  transform: translateY(300vw);}
+
+  100% {
+
+    transform: translateY(0%);
+    transform: translateX(-17%);
+    
+
+  }
 }
