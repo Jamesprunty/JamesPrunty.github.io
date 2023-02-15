@@ -153,7 +153,8 @@ function moveItems() {
         if (this.id == "item2") {
 
             console.log("2 has been clicked");
-            menuContainer.classList.add("hidden", "noShow");
+            menuContainer.classList.add("moveTop");
+
 
 
         }
