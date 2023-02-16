@@ -197,6 +197,15 @@ body {
 
 }
 
+.startLeft {
+
+  height: 10vw;
+  width: 10vw;
+
+  transform: translateX(-600%);
+
+}
+
 .startRTM {
 
   animation-name: startRTM;

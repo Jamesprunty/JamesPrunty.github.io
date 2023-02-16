@@ -204,6 +204,7 @@ function moveItems() {
     root.style.setProperty('--duration', duration + "s");
 
 
+   
 
     if (rotations == 0) {
 
@@ -224,16 +225,58 @@ function moveItems() {
 
                 menuContainer.classList.add("moveBottom");
                menuContainer.classList.remove("moveTop");
+
+               item1.classList.add("side");
+        item3.classList.add("side");
+        item1.classList.remove("two");
+
+        item2.classList.add("two");
+
+        if (document.querySelector(".startRTM")) {
+            document.querySelector(".startRTM").classList.remove("startRTM");
+        }
+        if (document.querySelector(".firstMTL")) {
+            document.querySelector(".firstMTL").classList.remove("firstMTL");
+        }
+
+        let starts = document.querySelectorAll(".start");
+        starts.forEach(element => {
+            element.classList.remove("start");
+        });
+
+        if (document.querySelector(".startMoveLeft")) {
+            document.querySelector(".startMoveLeft").classList.remove("startMoveLeft");
+        }
+        if (document.querySelector(".firstRTM")) {
+            document.querySelector(".firstRTM").classList.remove("firstRTM");
+        }
+        if (document.querySelector(".firstOTR")) {
+            document.querySelector(".firstOTR").classList.remove("firstOTR");
+        }
+
     
                 menuArray = Lessons;
                 
 
                 setTimeout(() => {
 
-                    start = menuArray.length - 2;
+                
 
                     console.log(menuArray);
                     duration = 1.2;
+
+
+
+                    start = menuArray.length - 2;
+                    item0.innerHTML = menuArray[menuArray.length - 2].name;
+                    item1.innerHTML = menuArray[menuArray.length - 2].name
+                    item2.innerHTML = menuArray[0].name
+                    item3.innerHTML = menuArray[1].name
+                    item4.innerHTML = menuArray[2].name
+                    rotations = 2;
+                    resetDivs();
+
+                    
 
                     menuContainer.classList.add("recenter");
         
@@ -298,9 +341,14 @@ function moveItems() {
         if (this.id == "item2") {
 
             console.log("2 has been clicked");
-            menuContainer.classList.add("moveTop");
+
+            if (this.innerHTML == "JS30 Project"){
+
+                menuContainer.classList.add("moveTop");
 
             setTimeout(() => {
+
+                
 
                 duration = 0;
 
@@ -312,7 +360,7 @@ function moveItems() {
 
                 setTimeout(() => {
 
-                    start = 0;
+                    start = menuArray.length - 1;
                     item0.innerHTML = menuArray[menuArray.length - 1].name;
                     item1.innerHTML = menuArray[0].name
                     item2.innerHTML = menuArray[1].name
@@ -340,9 +388,7 @@ function moveItems() {
 
  
 
-
-
-
+            }
 
         }
 
