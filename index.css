@@ -131,6 +131,14 @@ body {
 
 }
 
+
+.itemDesc{
+
+  display: block;
+  border: solid black 1px;
+
+}
+
 .noShow {
 
   visibility: hidden;
@@ -409,6 +417,30 @@ body {
 .recenter{
 
   animation-name: recenter;
+  animation-duration: var(--duration);
+  animation-fill-mode: both;
+
+}
+
+.moveTop {
+
+  animation-name: moveTopR;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+
+}
+
+.moveBottom {
+
+  animation-name: moveBottomR;
+  animation-duration:  0;
+  animation-fill-mode: both;
+
+}
+
+.recenter{
+
+  animation-name: recenterR;
   animation-duration: var(--duration);
   animation-fill-mode: both;
 
@@ -889,6 +921,21 @@ body {
 
   }
 }
+@keyframes moveTopR {
+  0% {}
+
+
+  99%{
+    transform: translateX(-17%);
+    transform: translateY(-300vw);
+  }
+
+  100% {
+
+    transform: translateY(-300vw);
+
+  }
+}
 
 @keyframes moveBottom {
   0% { transform: translateY(-300vw);}
@@ -899,8 +946,29 @@ body {
 
   }
 }
+@keyframes moveBottomR {
+  0% { transform: translateY(0);}
+
+  100% {
+
+    transform: translateY(3000%);
+
+  }
+}
 
 @keyframes recenter {
+  0% {  transform: translateY(300vw);}
+
+  100% {
+
+    transform: translateY(0%);
+    transform: translateX(-17%);
+    
+
+  }
+}
+
+@keyframes recenterR {
   0% {  transform: translateY(300vw);}
 
   100% {

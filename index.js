@@ -3,19 +3,32 @@ const menuContainer = document.querySelector("#MenuContainer");
 const SHDiv = document.querySelector("#SHDiv");
 const page = document.querySelector("#page");
 const items = document.querySelectorAll(".item");
+const itemDescs = document.querySelectorAll(".itemDesc");
 const root = document.documentElement;
 const item1 = document.querySelector("#item1");
 const item2 = document.querySelector("#item2");
 const item3 = document.querySelector("#item3");
 const item4 = document.querySelector("#item4");
 const item0 = document.querySelector("#item0");
-let SF = 2;
-let BF = 6;
+const item1Desc = document.querySelector("#item1Desc");
+const item2Desc = document.querySelector("#item2Desc");
+const item3Desc = document.querySelector("#item3Desc");
+const item4Desc = document.querySelector("#item4Desc");
+const item0Desc = document.querySelector("#item0Desc");
+
+let SS = 10;
+let SL = SS * 3;
+
+
+let SF = SS / 5;
+let BF = SF * 3;
 
 
 
-root.style.setProperty('--fontSmall', SF + "vw");
-root.style.setProperty('--fontBig', BF + "vw");
+root.style.setProperty('--fontSmall', SF + "vh");
+root.style.setProperty('--fontBig', BF + "vh");
+root.style.setProperty('--sizeS', SS + "vh");
+root.style.setProperty('--sizeL', SL + "vh");
 
 
 
@@ -35,37 +48,42 @@ items.forEach(item => {
 
 
 
-item1.classList.add("noShow");
-
 
 
 
 const projects = [
     {
 
-        name: "JS30 Project"
+        name: "JS30 Project",
+        sub: "WesBos 30 day course"
     },
     {
 
-        name: "Marcov Model"
+        name: "Marcov Model",
+        sub: "A test of marcov's Model"
     },
     {
 
-        name: "Blog"
+        name: "Blog",
+        sub: "Coding Blog"
     },
     {
 
-        name: "New Project1"
+        name: "Stardle",
+        sub: "A movie guessing game inspired by Wordle"
     },
     {
 
-        name: "New Project2"
+        name: "New Project2",
+        sub: "NewProject"
     },
     {
-        name: "New Project3"
+        name: "New Project3",
+        sub: "NewProject"
     },
     {
-        name: "New Project4"
+        name: "New Project4",
+        sub: "NewProject"
     }
 
 
@@ -174,6 +192,9 @@ const Lessons = [
     {
         name: "Lesson-17-Advanced"
     },
+    {
+        name: "return to Main Menu"
+    },
 
 
 
@@ -269,10 +290,11 @@ function moveItems() {
 
                     start = menuArray.length - 2;
                     item0.innerHTML = menuArray[menuArray.length - 2].name;
-                    item1.innerHTML = menuArray[menuArray.length - 2].name
-                    item2.innerHTML = menuArray[0].name
-                    item3.innerHTML = menuArray[1].name
-                    item4.innerHTML = menuArray[2].name
+                    item1.innerHTML = menuArray[menuArray.length - 2].name;
+                    item2.innerHTML = menuArray[0].name;
+                    item3.innerHTML = menuArray[1].name;
+                    item4.innerHTML = menuArray[2].name;
+
                     rotations = 2;
                     resetDivs();
 
@@ -362,10 +384,12 @@ function moveItems() {
 
                     start = menuArray.length - 1;
                     item0.innerHTML = menuArray[menuArray.length - 1].name;
+                    
                     item1.innerHTML = menuArray[0].name
                     item2.innerHTML = menuArray[1].name
                     item3.innerHTML = menuArray[2].name
                     item4.innerHTML = menuArray[3].name
+
 
                     console.log(start);
                     console.log(item1.innerHTML);
@@ -377,6 +401,66 @@ function moveItems() {
                     menuContainer.classList.add("recenter");
         
                     menuContainer.classList.remove("moveBottom");
+
+
+                  
+                   
+                 
+
+
+                    
+                    
+                }, 700);
+    
+   
+    
+                
+            }, 400);
+
+         
+
+            }
+
+            if (this.innerHTML == "return to Main Menu"){
+
+                console.log("RETURN TO MAIN MENU");
+                menuContainer.classList.remove("recenter");
+
+                menuContainer.classList.add("moveBottomR");
+
+            setTimeout(() => {
+
+                
+
+                duration = 0;
+
+                menuContainer.classList.add("moveTopR");
+               menuContainer.classList.remove("moveBottomR");
+    
+                menuArray = projects;
+                
+
+                setTimeout(() => {
+
+                    start = menuArray.length - 1;
+                    item0.innerHTML = menuArray[menuArray.length - 1].name;
+                    
+                    item1.innerHTML = menuArray[0].name
+                    item2.innerHTML = menuArray[1].name
+                    item3.innerHTML = menuArray[2].name
+                    item4.innerHTML = menuArray[3].name
+
+
+                    console.log(start);
+                    console.log(item1.innerHTML);
+                    console.log(menuArray[0].name);
+                    console.log(menuArray);
+
+                    duration = 1.2;
+
+                    menuContainer.classList.add("recenterR");
+        
+                    menuContainer.classList.remove("moveTopR");
                     
                     
                 }, 700);
@@ -389,6 +473,9 @@ function moveItems() {
  
 
             }
+
+
+
 
         }
 
@@ -515,6 +602,7 @@ function resetDivs(click) {
             }
 
             items[i].innerHTML = menuArray[j].name;
+
 
             j++
 
