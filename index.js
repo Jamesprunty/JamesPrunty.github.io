@@ -91,7 +91,8 @@ const projects = [
 
 const Lessons = [
     {
-        name: "Lesson-1"
+        name: "Lesson-1",
+        sub: "Drumkit"
     },
     {
         name: "Lesson-1-Advanced"
