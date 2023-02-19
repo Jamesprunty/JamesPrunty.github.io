@@ -15,6 +15,7 @@ const item2Desc = document.querySelector("#item2Desc");
 const item3Desc = document.querySelector("#item3Desc");
 const item4Desc = document.querySelector("#item4Desc");
 const item0Desc = document.querySelector("#item0Desc");
+let item2Toggle = false;
 
 let SS = 10;
 let SL = SS * 3;
@@ -226,7 +227,7 @@ function moveItems() {
     root.style.setProperty('--duration', duration + "s");
 
 
-   
+
 
     if (rotations == 0) {
 
@@ -246,43 +247,43 @@ function moveItems() {
                 duration = 0;
 
                 menuContainer.classList.add("moveBottom");
-               menuContainer.classList.remove("moveTop");
+                menuContainer.classList.remove("moveTop");
 
-               item1.classList.add("side");
-        item3.classList.add("side");
-        item1.classList.remove("two");
+                item1.classList.add("side");
+                item3.classList.add("side");
+                item1.classList.remove("two");
 
-        item2.classList.add("two");
+                item2.classList.add("two");
 
-        if (document.querySelector(".startRTM")) {
-            document.querySelector(".startRTM").classList.remove("startRTM");
-        }
-        if (document.querySelector(".firstMTL")) {
-            document.querySelector(".firstMTL").classList.remove("firstMTL");
-        }
+                if (document.querySelector(".startRTM")) {
+                    document.querySelector(".startRTM").classList.remove("startRTM");
+                }
+                if (document.querySelector(".firstMTL")) {
+                    document.querySelector(".firstMTL").classList.remove("firstMTL");
+                }
 
-        let starts = document.querySelectorAll(".start");
-        starts.forEach(element => {
-            element.classList.remove("start");
-        });
+                let starts = document.querySelectorAll(".start");
+                starts.forEach(element => {
+                    element.classList.remove("start");
+                });
 
-        if (document.querySelector(".startMoveLeft")) {
-            document.querySelector(".startMoveLeft").classList.remove("startMoveLeft");
-        }
-        if (document.querySelector(".firstRTM")) {
-            document.querySelector(".firstRTM").classList.remove("firstRTM");
-        }
-        if (document.querySelector(".firstOTR")) {
-            document.querySelector(".firstOTR").classList.remove("firstOTR");
-        }
+                if (document.querySelector(".startMoveLeft")) {
+                    document.querySelector(".startMoveLeft").classList.remove("startMoveLeft");
+                }
+                if (document.querySelector(".firstRTM")) {
+                    document.querySelector(".firstRTM").classList.remove("firstRTM");
+                }
+                if (document.querySelector(".firstOTR")) {
+                    document.querySelector(".firstOTR").classList.remove("firstOTR");
+                }
 
-    
+
                 menuArray = Lessons;
-                
+
 
                 setTimeout(() => {
 
-                
+
 
                     console.log(menuArray);
                     duration = 1.2;
@@ -299,21 +300,21 @@ function moveItems() {
                     rotations = 2;
                     resetDivs();
 
-                    
+
 
                     menuContainer.classList.add("recenter");
-        
+
                     menuContainer.classList.remove("moveBottom");
-                    
-                    
+
+
                 }, 700);
-    
-   
-    
-                
+
+
+
+
             }, 400);
 
- 
+
 
         }
 
@@ -363,64 +364,86 @@ function moveItems() {
 
         if (this.id == "item2") {
 
+            item2Toggle = true;
+
             duration = 1.2;
+
+            menuContainer.classList.remove("recenter");
 
             console.log("2 has been clicked");
 
-            if (this.innerHTML == "JS30 Project" || this.innerHTML == "Return to Main Menu"){
+            if (this.innerHTML == "JS30 Project" || this.innerHTML == "Return to Main Menu") {
 
                 menuContainer.classList.add("moveTop");
 
-            setTimeout(() => {
-
-                
-
-                duration = 0;
-
-                menuContainer.classList.add("moveBottom");
-               menuContainer.classList.remove("moveTop");
-
-               if (this.innerHTML == "JS30 Project"){
-                menuArray = Lessons;
-               }else if (this.innerHTML == "Return to Main Menu"){
-                menuArray = projects;
-               }
-    
-                
-                
-
                 setTimeout(() => {
 
-                    start = menuArray.length - 1;
-                    item0.innerHTML = menuArray[menuArray.length - 1].name;
-                    
-                    item1.innerHTML = menuArray[0].name
-                    item2.innerHTML = menuArray[1].name
-                    item3.innerHTML = menuArray[2].name
-                    item4.innerHTML = menuArray[3].name
+                    duration = 0;
+
+                    menuContainer.classList.add("moveBottom");
+                    menuContainer.classList.remove("moveTop");
+
+                    if (this.innerHTML == "JS30 Project") {
+                        menuArray = Lessons;
+                    } else if (this.innerHTML == "Return to Main Menu") {
+                        menuArray = projects;
+                    }
+
+                    setTimeout(() => {
+
+                        start = menuArray.length - 1;
+                        item0.innerHTML = menuArray[menuArray.length - 1].name;
+
+                        item1.innerHTML = menuArray[0].name
+                        item2.innerHTML = menuArray[1].name
+                        item3.innerHTML = menuArray[2].name
+                        item4.innerHTML = menuArray[3].name
 
 
-                    console.log(start);
-                    console.log(item1.innerHTML);
-                    console.log(menuArray[0].name);
-                    console.log(menuArray);
+                        console.log(start);
+                        console.log(item1.innerHTML);
+                        console.log(menuArray[0].name);
+                        console.log(menuArray);
 
-                    duration = 1.2;
+                        duration = 1.2;
 
-                    menuContainer.classList.add("recenter");
-        
-                    menuContainer.classList.remove("moveBottom");
+                        menuContainer.classList.add("recenter");
+
+                        menuContainer.classList.remove("moveBottom");
 
 
-                }, 700);
-    
-   
-    
-                
-            }, 400);
+                    }, 700);
 
-         
 
+                }, 400);
+
+            }
+
+
+            if (this.innerHTML != "JS30 Project" && this.innerHTML != "Return to Main Menu") {
+
+                console.log("THIS IS A TEST");
+
+                item2.classList.add("enlarge");
+
+                if (this.innerHTML.indexOf("lesson") !== -1) {
+
+                    let directory = "../JS30" + this.innerHTML + "/" + this.innerHTML + ".html";
+
+                    item2.innerHTML = `<object type="text/html" data=` + directory + `></object>`
+
+
+                }
+
+                if (this.innerHTML == "Blog") {
+
+                    item2.innerHTML = '<object type="text/html" data="../Blog/blog.html" ><input type="button" name="return" id="return"</object> >'
+                }
+
+                if (this.innerHTML == "Marcov Model") {
+
+                    item2.innerHTML = '<object type="text/html" data="../Marcov/Marcov.html" ></object>'
+                }
             }
 
         }
@@ -441,14 +464,19 @@ function moveItems() {
 
     if (rotations > 0) {
 
+        if (!item2Toggle) {
 
-        setTimeout(() => {
+            setTimeout(() => {
 
-            resetDivs(click);
+                resetDivs(click);
 
-        }, duration * 1000);
+            }, duration * 1000);
+
+        }
 
     }
+
+    item2Toggle = false;
 
     rotations++;
 
