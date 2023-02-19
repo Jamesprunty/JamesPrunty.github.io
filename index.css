@@ -430,7 +430,7 @@ body {
 
 }
 
-.moveBottom {
+.moveBottomR {
 
   animation-name: moveBottomR;
   animation-duration:  0;
@@ -947,11 +947,11 @@ body {
   }
 }
 @keyframes moveBottomR {
-  0% { transform: translateY(0);}
+  0% { }
 
   100% {
 
-    transform: translateY(3000%);
+    transform: translateY(300vw);
 
   }
 }

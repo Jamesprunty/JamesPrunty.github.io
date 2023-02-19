@@ -194,7 +194,7 @@ const Lessons = [
         name: "Lesson-17-Advanced"
     },
     {
-        name: "return to Main Menu"
+        name: "Return to Main Menu"
     },
 
 
@@ -363,9 +363,11 @@ function moveItems() {
 
         if (this.id == "item2") {
 
+            duration = 1.2;
+
             console.log("2 has been clicked");
 
-            if (this.innerHTML == "JS30 Project"){
+            if (this.innerHTML == "JS30 Project" || this.innerHTML == "Return to Main Menu"){
 
                 menuContainer.classList.add("moveTop");
 
@@ -377,8 +379,14 @@ function moveItems() {
 
                 menuContainer.classList.add("moveBottom");
                menuContainer.classList.remove("moveTop");
-    
+
+               if (this.innerHTML == "JS30 Project"){
                 menuArray = Lessons;
+               }else if (this.innerHTML == "Return to Main Menu"){
+                menuArray = projects;
+               }
+    
+                
                 
 
                 setTimeout(() => {
@@ -404,13 +412,6 @@ function moveItems() {
                     menuContainer.classList.remove("moveBottom");
 
 
-                  
-                   
-                 
-
-
-                    
-                    
                 }, 700);
     
    
@@ -421,62 +422,6 @@ function moveItems() {
          
 
             }
-
-            if (this.innerHTML == "return to Main Menu"){
-
-                console.log("RETURN TO MAIN MENU");
-                menuContainer.classList.remove("recenter");
-
-                menuContainer.classList.add("moveBottomR");
-
-            setTimeout(() => {
-
-                
-
-                duration = 0;
-
-                menuContainer.classList.add("moveTopR");
-               menuContainer.classList.remove("moveBottomR");
-    
-                menuArray = projects;
-                
-
-                setTimeout(() => {
-
-                    start = menuArray.length - 1;
-                    item0.innerHTML = menuArray[menuArray.length - 1].name;
-                    
-                    item1.innerHTML = menuArray[0].name
-                    item2.innerHTML = menuArray[1].name
-                    item3.innerHTML = menuArray[2].name
-                    item4.innerHTML = menuArray[3].name
-
-
-                    console.log(start);
-                    console.log(item1.innerHTML);
-                    console.log(menuArray[0].name);
-                    console.log(menuArray);
-
-                    duration = 1.2;
-
-                    menuContainer.classList.add("recenterR");
-        
-                    menuContainer.classList.remove("moveTopR");
-                    
-                    
-                }, 700);
-    
-   
-    
-                
-            }, 400);
-
- 
-
-            }
-
-
-
 
         }
 
