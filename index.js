@@ -15,6 +15,7 @@ const item2Desc = document.querySelector("#item2Desc");
 const item3Desc = document.querySelector("#item3Desc");
 const item4Desc = document.querySelector("#item4Desc");
 const item0Desc = document.querySelector("#item0Desc");
+
 let item2Toggle = false;
 
 let SS = 10;
@@ -437,12 +438,17 @@ function moveItems() {
 
                 if (this.innerHTML == "Blog") {
 
-                    item2.innerHTML = '<object type="text/html" data="../Blog/blog.html" ><input type="button" name="return" id="return"</object> >'
+                    item2.innerHTML = '<object type="text/html" data="../Blog/blog.html" ></object>'
                 }
 
                 if (this.innerHTML == "Marcov Model") {
 
-                    item2.innerHTML = '<object type="text/html" data="../Marcov/Marcov.html" ></object>'
+                    item2.innerHTML = '<object type="text/html" data="../Marcov/Marcov.html" ></object> <input type="button" name="return" id="return" value="Return">'
+                    let returnbtn = document.querySelector("#return");
+                    returnbtn.addEventListener("click", function(){
+                        item2.innerHTML = "Marcov Model"
+                        item2.classList.remove("enlarge");
+                    });
                 }
             }
 
