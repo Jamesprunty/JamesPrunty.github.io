@@ -111,46 +111,46 @@ const Lessons = [
         name: "Lesson-02-Advanced"
     },
     {
-        name: "Lesson-3"
+        name: "Lesson-03"
     },
     {
-        name: "Lesson-3-Advanced"
+        name: "Lesson-03-Advanced"
     },
     {
-        name: "Lesson-4"
+        name: "Lesson-04"
     },
     {
-        name: "Lesson-4-Advanced"
+        name: "Lesson-04-Advanced"
     },
     {
-        name: "Lesson-5"
+        name: "Lesson-05"
     },
     {
-        name: "Lesson-5-Advanced"
+        name: "Lesson-05-Advanced"
     },
     {
-        name: "Lesson-6"
+        name: "Lesson-06"
     },
     {
-        name: "Lesson-6-Advanced"
+        name: "Lesson-06-Advanced"
     },
     {
-        name: "Lesson-7"
+        name: "Lesson-07"
     },
     {
-        name: "Lesson-7-Advanced"
+        name: "Lesson-07-Advanced"
     },
     {
-        name: "Lesson-8"
+        name: "Lesson-08"
     },
     {
-        name: "Lesson-8-Advanced"
+        name: "Lesson-08-Advanced"
     },
     {
-        name: "Lesson-9"
+        name: "Lesson-09"
     },
     {
-        name: "Lesson-9-Advanced"
+        name: "Lesson-09-Advanced"
     },
     {
         name: "Lesson-10"

@@ -43,20 +43,17 @@
 
 h2 {
 
-  font-size: 30px;
+  font-size: 20px;
 }
 
 html {
-  background: #018DED url(../../BackgroundBlank.jpg);
-  background-size: cover;
-  font-family: 'helvetica neue';
+  
   text-align: center;
   font-size: 10px;
 }
 
 body {
   text-align: center;
-  font-family: 'fantasy', papyrus;
   font-weight: 100;
   font-size: 20px;
 
@@ -68,9 +65,7 @@ body {
   width: 100%;
   margin: auto;
   align-items: center;
-  position: absolute;
-  bottom: 10%;
-  padding: 20px;
+
 
 }  
 

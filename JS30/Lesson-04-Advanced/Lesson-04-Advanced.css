@@ -1,19 +1,9 @@
 html {
-  background: #018DED url(../../BackgroundBlank.jpg);
+
   background-size: cover;
 }
 
-.HomeLink {
 
-  font-family: 'fantasy', papyrus;
-  font-size: 40px;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px;
-
-
-
-}
 
 a:hover {
   text-decoration: underline;
@@ -32,7 +22,7 @@ a:hover {
 
 #table, #tableStart {
 
-  font-family: 'fantasy', papyrus;
+ 
   border: black 2px solid;
   border-collapse: collapse;
   margin: 25px 0;
@@ -53,7 +43,7 @@ tr {
 
 h1 {
 
-  font-family: 'fantasy', papyrus;
+
   text-align: center;
 
 }
@@ -64,16 +54,14 @@ h1 {
   width: 100%;
   margin: auto;
   align-items: center;
-  position: absolute;
-  bottom: 10%;
-  padding: 20px;
+
 
 }  
 
 .button{
 
   font-size: 20px;
-  font-family: 'fantasy', papyrus;
+
   font-weight: bold;
 
 }
@@ -81,7 +69,7 @@ h1 {
 input{
 
   font-size: 20px;
-  font-family: 'fantasy', papyrus;
+
   font-weight: bold;
 
 }
@@ -89,6 +77,6 @@ input{
 p {
 
   font-size: 20px;
-  font-family: 'fantasy', papyrus;
+ 
 
 }
