@@ -98,11 +98,11 @@ const projects = [
 
 const Lessons = [
     {
-        name: "Lesson-1",
+        name: "Lesson-01",
         sub: "Drumkit"
     },
     {
-        name: "Lesson-1-Advanced"
+        name: "Lesson-01-Advanced"
     },
     {
         name: "Lesson-2"
@@ -434,12 +434,27 @@ function moveItems() {
                 
 
 
-                if (this.innerHTML.indexOf("lesson") !== -1) {
+                if (!item2.classList.contains("closing") && this.innerHTML.indexOf("Lesson") !== -1) {
 
-                    let directory = "../JS30" + this.innerHTML + "/" + this.innerHTML + ".html";
+                    let directory = "../JS30/" + this.innerHTML + "/" + this.innerHTML + ".html";
 
-                    item2.innerHTML = `<object type="text/html" data=` + directory + `></object>`
+                    let title = this.innerHTML;
 
+                    console.log(directory);
+
+                    item2.classList.add("enlarge");
+
+
+                    item2.innerHTML = `<object type="text/html" data=` + directory + `></object> <input type="button" name="return" id="return" value="Return">`
+
+                    let returnbtn = document.querySelector("#return");
+                    returnbtn.addEventListener("click", function(){
+
+                        console.log("TESTING")
+                        item2.innerHTML = title
+                        item2.classList.remove("enlarge");
+                        item2.classList.add("closing");
+                    });
 
                 }
 
@@ -448,7 +463,7 @@ function moveItems() {
                     item2.innerHTML = '<object type="text/html" data="../Blog/blog.html" ></object>'
                 }
 
-                if (!item2.classList.contains("closing")) {
+                if (!item2.classList.contains("closing") && item2.innerHTML == "Marcov Model") {
 
                         item2.classList.add("enlarge");
 
