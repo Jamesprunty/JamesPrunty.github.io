@@ -15,7 +15,7 @@ const item2Desc = document.querySelector("#item2Desc");
 const item3Desc = document.querySelector("#item3Desc");
 const item4Desc = document.querySelector("#item4Desc");
 const item0Desc = document.querySelector("#item0Desc");
-
+let enlarged = false;
 
 
 let item2Toggle = false;
@@ -431,7 +431,7 @@ function moveItems() {
                 console.log("THIS IS A TEST");
 
                     
-                item2.classList.add("enlarge");
+                
 
 
                 if (this.innerHTML.indexOf("lesson") !== -1) {
@@ -448,17 +448,23 @@ function moveItems() {
                     item2.innerHTML = '<object type="text/html" data="../Blog/blog.html" ></object>'
                 }
 
-                if (this.innerHTML == "Marcov Model") {
+                if (!item2.classList.contains("closing")) {
+
+                        item2.classList.add("enlarge");
 
                     item2.innerHTML = '<object type="text/html" data="../Marcov/Marcov.html" ></object> <input type="button" name="return" id="return" value="Return">'
                     let returnbtn = document.querySelector("#return");
                     returnbtn.addEventListener("click", function(){
+
                         console.log("TESTING")
                         item2.innerHTML = "Marcov Model"
                         item2.classList.remove("enlarge");
+                        item2.classList.add("closing");
                     });
                 }
             }
+
+            item2.classList.remove("closing");
 
         }
 
