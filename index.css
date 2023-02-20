@@ -465,21 +465,24 @@ body {
 
 object{
 
-  top: 20%;
+  top: 12%;
   position: relative;
 
   width: 90%;
   height: 100%;
 }
 
-#return{
+#inputContainer{
 
-
-  bottom: -40%;
-  left: -40%;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  width: 100%;
+  bottom: 10%;
   position: relative;
+  justify-content: center;
+
+
+
+
 }
 /* CSS */
 #return {
@@ -511,6 +514,17 @@ object{
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
+  
+
+}
+
+#innerPage{
+
+  position: relative;
+  width: 100%;
+  height: 100%
+
+
 }
 
 .button-30:focus {

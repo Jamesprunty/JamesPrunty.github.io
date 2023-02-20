@@ -105,10 +105,10 @@ const Lessons = [
         name: "Lesson-01-Advanced"
     },
     {
-        name: "Lesson-2"
+        name: "Lesson-02"
     },
     {
-        name: "Lesson-2-Advanced"
+        name: "Lesson-02-Advanced"
     },
     {
         name: "Lesson-3"
@@ -430,9 +430,6 @@ function moveItems() {
 
                 console.log("THIS IS A TEST");
 
-                    
-                
-
 
                 if (!item2.classList.contains("closing") && this.innerHTML.indexOf("Lesson") !== -1) {
 
@@ -445,7 +442,7 @@ function moveItems() {
                     item2.classList.add("enlarge");
 
 
-                    item2.innerHTML = `<object type="text/html" data=` + directory + `></object> <input type="button" name="return" id="return" value="Return">`
+                    item2.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"><input type="button" name="return" id="return" value="Return"></div></div>`
 
                     let returnbtn = document.querySelector("#return");
                     returnbtn.addEventListener("click", function(){

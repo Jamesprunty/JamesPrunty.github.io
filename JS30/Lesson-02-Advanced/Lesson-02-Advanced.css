@@ -1,7 +1,5 @@
 html {
-    background: #018DED url(../../BackgroundBlank.jpg);
-    background-size: cover;
-    font-family: 'helvetica neue';
+   
     text-align: center;
     font-size: 10px;
   }
@@ -11,7 +9,8 @@ html {
     font-size: 2rem;
     display: flex;
     flex: 1;
-    min-height: 100vh;
+    flex-wrap: wrap;
+   
     align-items: center;
   }
 
@@ -128,10 +127,10 @@ html {
 
     text-align: center;
     width: 100%;
+    padding: 20px;
     margin: auto;
+    bottom: 40%;
     align-items: center;
-    position: absolute;
-    bottom: 10%;
 
   }  
 
