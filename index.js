@@ -16,7 +16,10 @@ const item3Desc = document.querySelector("#item3Desc");
 const item4Desc = document.querySelector("#item4Desc");
 const item0Desc = document.querySelector("#item0Desc");
 
+
+
 let item2Toggle = false;
+
 
 let SS = 10;
 let SL = SS * 3;
@@ -30,6 +33,8 @@ let BF = SF * 3;
 root.style.setProperty('--fontSmall', SF + "vh");
 root.style.setProperty('--fontBig', BF + "vh");
 root.style.setProperty('--sizeS', SS + "vh");
+root.style.setProperty('--sizeL', SL + "vh");
+root.style.setProperty('--sizeL', SL + "vh");
 root.style.setProperty('--sizeL', SL + "vh");
 
 
@@ -425,7 +430,9 @@ function moveItems() {
 
                 console.log("THIS IS A TEST");
 
+                    
                 item2.classList.add("enlarge");
+
 
                 if (this.innerHTML.indexOf("lesson") !== -1) {
 
@@ -446,6 +453,7 @@ function moveItems() {
                     item2.innerHTML = '<object type="text/html" data="../Marcov/Marcov.html" ></object> <input type="button" name="return" id="return" value="Return">'
                     let returnbtn = document.querySelector("#return");
                     returnbtn.addEventListener("click", function(){
+                        console.log("TESTING")
                         item2.innerHTML = "Marcov Model"
                         item2.classList.remove("enlarge");
                     });
