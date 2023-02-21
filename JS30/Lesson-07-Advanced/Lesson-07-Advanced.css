@@ -1,11 +1,6 @@
-html {
-  background: url(".//.//BackgroundBlank.jpg");
-  background-size: cover;
-}
 
 .HomeLink {
 
-  font-family: 'fantasy', papyrus;
   font-size: 40px;
   text-align: center;
   text-decoration: none;
@@ -32,7 +27,6 @@ a:hover {
 
 #table, #tableStart {
 
-  font-family: 'fantasy', papyrus;
   border: black 2px solid;
   border-collapse: collapse;
   margin: 25px 0;
@@ -53,14 +47,12 @@ tr {
 
 h1 {
 
-  font-family: 'fantasy', papyrus;
   text-align: center;
 
 }
 
 h2 {
 
-  font-family: 'fantasy', papyrus;
   text-align: center;
 
 }
@@ -71,16 +63,13 @@ h2 {
   width: 100%;
   margin: auto;
   align-items: center;
-  position: absolute;
-  bottom: 10%;
-  padding: 20px;
+
 
 }  
 
 .button{
 
   font-size: 20px;
-  font-family: 'fantasy', papyrus;
   font-weight: bold;
 
 }
@@ -88,7 +77,6 @@ h2 {
 input{
 
   font-size: 20px;
-  font-family: 'fantasy', papyrus;
   font-weight: bold;
 
 }
@@ -96,7 +84,6 @@ input{
 p {
 
   font-size: 20px;
-  font-family: 'fantasy', papyrus;
 
 }
 
@@ -123,7 +110,6 @@ p {
   display: flex;
   justify-content: space-between;
   text-transform: capitalize;
-  font-family: 'fantasy', papyrus;
   width: 35%;
   text-align: center;
   align-items: center;

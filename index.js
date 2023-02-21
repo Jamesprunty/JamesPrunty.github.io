@@ -146,7 +146,7 @@ const Lessons = [
     {
         name: "Lesson-08-Advanced"
     },
-    {
+   /* {
         name: "Lesson-09"
     },
     {
@@ -199,7 +199,7 @@ const Lessons = [
     },
     {
         name: "Lesson-17-Advanced"
-    },
+    },*/
     {
         name: "Return to Main Menu"
     },
