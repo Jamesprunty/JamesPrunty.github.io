@@ -146,12 +146,12 @@ const Lessons = [
     {
         name: "Lesson-08-Advanced"
     },
-   /* {
+    {
         name: "Lesson-09"
     },
     {
         name: "Lesson-09-Advanced"
-    },
+    },/*
     {
         name: "Lesson-10"
     },
