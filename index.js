@@ -163,13 +163,13 @@ const Lessons = [
     },
     {
         name: "Lesson-11-Advanced"
-    },/*
+    },
     {
         name: "Lesson-12"
     },
     {
         name: "Lesson-12-Advanced"
-    },
+    },/*
     {
         name: "Lesson-13"
     },
