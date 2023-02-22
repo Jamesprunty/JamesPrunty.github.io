@@ -10,10 +10,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  background: #7A419B;
   min-height: 100vh;
-  background: url("../../BackgroundBlank.jpg");
-  background-size: cover;
   align-items: center;
   justify-content: center;
 }
@@ -72,6 +69,11 @@ body {
   transition: all .3s;
   flex-wrap: wrap;
   background: rgba(0,0,0,0.1);
+}
+.fullscreen{
+  background: none;
+  color: white;
+  border: none;
 }
 
 .player:hover .player__controls {
@@ -161,28 +163,3 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
 }
 
-.HomeLink {
-  
-  font-family: 'fantasy', papyrus;
-  font-size: 40px;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px;
-
-
-
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.HomeContainer {
-
-  text-align: center;
-  width: 100%;
-  height: 10%;
-  align-items: center;
-  position: absolute;
-  bottom: 0%;
-}

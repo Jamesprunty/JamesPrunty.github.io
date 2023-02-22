@@ -1,9 +1,4 @@
 
-    html {
-      font-family: 'fantasy', papyrus;
-      background: url("../../BackgroundBlank.jpg");
-      background-size: cover;
-    }
 
     .inbox {
       max-width: 400px;
@@ -44,7 +39,6 @@
     }
     .HomeLink {
   
-      font-family: 'fantasy', papyrus;
       font-size: 40px;
       text-align: center;
       text-decoration: none;
@@ -67,8 +61,4 @@
       position: absolute;
       bottom: 0%;
     
-    }
-    .current{
-
-      
     }
