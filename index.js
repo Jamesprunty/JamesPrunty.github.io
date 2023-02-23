@@ -169,7 +169,7 @@ const Lessons = [
     },
     {
         name: "Lesson-12-Advanced"
-    },/*
+    },
     {
         name: "Lesson-13"
     },
@@ -181,7 +181,7 @@ const Lessons = [
     },
     {
         name: "Lesson-14-Advanced"
-    },
+    },/*
     {
         name: "Lesson-15"
     },
