@@ -15,8 +15,13 @@ const item2Desc = document.querySelector("#item2Desc");
 const item3Desc = document.querySelector("#item3Desc");
 const item4Desc = document.querySelector("#item4Desc");
 const item0Desc = document.querySelector("#item0Desc");
-
+const NavBtn = document.querySelector("#NavBtn");
 const Nav = document.querySelector("#Nav");
+const NavNum = document.querySelector("#NavNum");
+
+NavBtn.addEventListener('click', NavMove)
+
+
 let enlarged = false;
 
 
@@ -250,6 +255,35 @@ function moveItems() {
             menuContainer.classList.add("moveTop");
             menuContainer.classList.remove("staerRTM");
 
+            if(this.innerHTML == "JS30 Project"){
+
+                setTimeout(() => {
+
+                    console.log("TEST");
+                    Nav.classList.add("show");
+                    Nav.classList.add("NavUp");
+                    Nav.classList.remove("NavDown");
+                    
+                }, duration * 1500);
+
+
+
+
+            }else if(this.innerHTML == "Return to Main Menu"){
+
+                setTimeout(() => {
+
+                    console.log("TEST");
+                    Nav.classList.remove("show");
+                    Nav.classList.remove("NavUp");
+                    Nav.classList.add("NavDown");
+
+                    
+                }, duration * 100);
+
+
+            }
+
             setTimeout(() => {
 
                 duration = 0;
@@ -283,6 +317,12 @@ function moveItems() {
                 }
                 if (document.querySelector(".firstOTR")) {
                     document.querySelector(".firstOTR").classList.remove("firstOTR");
+                }
+                if (document.querySelector(".NavUp")) {
+                    document.querySelector(".NavUp").classList.remove("NavUp");
+                }
+                if (document.querySelector(".NavDown")) {
+                    document.querySelector(".NavDown").classList.remove("NavDown");
                 }
 
 
@@ -382,6 +422,38 @@ function moveItems() {
 
             if (this.innerHTML == "JS30 Project" || this.innerHTML == "Return to Main Menu") {
 
+
+                if(this.innerHTML == "JS30 Project"){
+
+                    setTimeout(() => {
+
+                        console.log("TEST");
+                        Nav.classList.add("show");
+                        Nav.classList.add("NavUp");
+                        Nav.classList.remove("NavDown");
+                        
+                    }, duration * 2000);
+
+
+
+
+                }else if(this.innerHTML == "Return to Main Menu"){
+
+                    setTimeout(() => {
+
+                        console.log("TEST");
+                        Nav.classList.remove("show");
+                        Nav.classList.remove("NavUp");
+                        Nav.classList.add("NavDown");
+
+                        
+                    }, duration * 100);
+
+
+                }
+
+
+
                 menuContainer.classList.add("moveTop");
 
                 setTimeout(() => {
@@ -419,7 +491,11 @@ function moveItems() {
 
                         menuContainer.classList.remove("moveBottom");
 
-                        Nav.classList.add("NavUp");
+                                        
+
+
+
+
 
 
                     }, 700);
@@ -449,7 +525,7 @@ function moveItems() {
                     item2.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"><input type="button" name="return" id="return" value="Return"></div></div>`
 
                     let returnbtn = document.querySelector("#return");
-                    returnbtn.addEventListener("click", function(){
+                    returnbtn.addEventListener("click", function () {
 
                         console.log("TESTING")
                         item2.innerHTML = title
@@ -466,11 +542,11 @@ function moveItems() {
 
                 if (!item2.classList.contains("closing") && item2.innerHTML == "Marcov Model") {
 
-                        item2.classList.add("enlarge");
+                    item2.classList.add("enlarge");
 
                     item2.innerHTML = '<object type="text/html" data="../Marcov/Marcov.html" ></object> <input type="button" name="return" id="return" value="Return">'
                     let returnbtn = document.querySelector("#return");
-                    returnbtn.addEventListener("click", function(){
+                    returnbtn.addEventListener("click", function () {
 
                         console.log("TESTING")
                         item2.innerHTML = "Marcov Model"
@@ -547,6 +623,29 @@ function openMenu() {
 
 }
 
+
+
+function NavMove(){
+
+    let lesson = parseInt(NavNum.value);
+    console.log(lesson);
+
+   // SHDiv.classList.add("menuHide");
+
+    start = lesson * 2 - 4;
+    if (start < 0){start = Lessons.length -2};
+    if (lesson == 0){start = Lessons.length - 3};
+
+    resetDivs();
+
+    //SHDiv.classList.remove("menuHide");
+    //SHDiv.classList.add("menuShow");
+
+
+
+
+}
+
 function resetDivs(click) {
 
     duration = 0;
@@ -582,6 +681,8 @@ function resetDivs(click) {
         if (document.querySelector(".firstOTR")) {
             document.querySelector(".firstOTR").classList.remove("firstOTR");
         }
+
+        
 
 
         start = menuArray.length - 1;

@@ -145,6 +145,10 @@ body {
 
 }
 
+.show{
+  visibility: visible;
+}
+
 .hidden {
   display: none;
 }
@@ -299,6 +303,13 @@ body {
   animation-fill-mode: both;
 
 
+}
+
+.NavDown{
+
+  animation-name: NavDown;
+  animation-duration: var(--duration);
+  animation-fill-mode: both;
 
 
 }
@@ -310,6 +321,10 @@ bottom: 30%;
 display: flex;
 justify-content: center;
 width:100%;
+opacity:0%;
+visibility: hidden;
+
+
 
 }
 
@@ -1098,10 +1113,31 @@ object{
 }
 
 @keyframes NavUp {
-  0% { }
+  0% { visibility: hidden;
+  opacity:0%;}
 
   100% {
-    
+
+    visibility: visible;
+    opacity:100%;
+
+  }
+}
+
+@keyframes NavDown {
+  0% { visibility: visible;
+  opacity:100%;}
+
+  10% {
+
+    visibility: hidden;
+    opacity:0%;
+
+  }
+  100% {
+
+    visibility: hidden;
+    opacity:0%;
 
   }
 }

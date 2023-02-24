@@ -1,5 +1,6 @@
 Fix animation to change menu 
 Fix backgrounds of tiles
+Fix font sizes
 
 
 Lesson 09 advanced - change
