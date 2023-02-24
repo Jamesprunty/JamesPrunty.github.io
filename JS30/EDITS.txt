@@ -1,6 +1,8 @@
 Fix animation to change menu 
 Fix backgrounds of tiles
 
+
 Lesson 09 advanced - change
 Fix Lesson 11 - Advanced Full screen
 Do something for Lesson 13- Advanced
+finish Lesson 14-Advanced
