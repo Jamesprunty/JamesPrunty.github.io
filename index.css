@@ -292,6 +292,32 @@ body {
 
 }
 
+.NavUp{
+
+  animation-name: NavUp;
+  animation-duration: var(--duration);
+  animation-fill-mode: both;
+
+
+
+
+}
+
+#Nav{
+
+position: absolute;
+bottom: 30%;
+display: flex;
+justify-content: center;
+width:100%;
+
+}
+
+.Nav{
+
+  flex:1;
+}
+
 
 .twoSmall {
   height: 10vw;
@@ -1066,6 +1092,15 @@ object{
 
     transform: translateY(0%);
     transform: translateX(-17%);
+    
+
+  }
+}
+
+@keyframes NavUp {
+  0% { }
+
+  100% {
     
 
   }

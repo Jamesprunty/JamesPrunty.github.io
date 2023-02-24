@@ -15,6 +15,8 @@ const item2Desc = document.querySelector("#item2Desc");
 const item3Desc = document.querySelector("#item3Desc");
 const item4Desc = document.querySelector("#item4Desc");
 const item0Desc = document.querySelector("#item0Desc");
+
+const Nav = document.querySelector("#Nav");
 let enlarged = false;
 
 
@@ -416,6 +418,8 @@ function moveItems() {
                         menuContainer.classList.add("recenter");
 
                         menuContainer.classList.remove("moveBottom");
+
+                        Nav.classList.add("NavUp");
 
 
                     }, 700);
