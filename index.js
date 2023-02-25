@@ -259,7 +259,6 @@ function moveItems() {
 
                 setTimeout(() => {
 
-                    console.log("TEST");
                     Nav.classList.add("show");
                     Nav.classList.add("NavUp");
                     Nav.classList.remove("NavDown");
@@ -513,6 +512,16 @@ function moveItems() {
 
                 if (!item2.classList.contains("closing") && this.innerHTML.indexOf("Lesson") !== -1) {
 
+                    setTimeout(() => {
+
+                        console.log("TEST");
+                        Nav.classList.remove("show");
+                        Nav.classList.remove("NavUp");
+                        Nav.classList.add("NavDown");
+    
+                        
+                    }, duration * 100);
+
                     let directory = "../JS30/" + this.innerHTML + "/" + this.innerHTML + ".html";
 
                     let title = this.innerHTML;
@@ -531,6 +540,9 @@ function moveItems() {
                         item2.innerHTML = title
                         item2.classList.remove("enlarge");
                         item2.classList.add("closing");
+                        Nav.classList.add("show");
+                        Nav.classList.add("NavUp");
+                        Nav.classList.remove("NavDown");
                     });
 
                 }
