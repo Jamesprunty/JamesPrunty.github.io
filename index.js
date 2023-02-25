@@ -19,6 +19,8 @@ const NavBtn = document.querySelector("#NavBtn");
 const Nav = document.querySelector("#Nav");
 const NavNum = document.querySelector("#NavNum");
 
+
+
 NavBtn.addEventListener('click', NavMove)
 
 
@@ -188,13 +190,13 @@ const Lessons = [
     },
     {
         name: "Lesson-14-Advanced"
-    },/*
+    },
     {
         name: "Lesson-15"
     },
     {
         name: "Lesson-15-Advanced"
-    },
+    },/*
     {
         name: "Lesson-16"
     },
@@ -212,10 +214,14 @@ const Lessons = [
     },
 
 
-
+   
 
 
 ];
+
+NavNum.setAttribute("max",Lessons.length/2);
+NavNum.setAttribute("min",0);
+
 
 let menuArray = projects;
 
