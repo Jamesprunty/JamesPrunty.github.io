@@ -496,13 +496,6 @@ function moveItems() {
 
                         menuContainer.classList.remove("moveBottom");
 
-                                        
-
-
-
-
-
-
                     }, 700);
 
 

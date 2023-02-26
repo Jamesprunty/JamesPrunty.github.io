@@ -1,6 +1,7 @@
 Fix animation to change menu 
 Fix backgrounds of tiles
 Fix font sizes
+Fix where menu starts when moving bewteen menus
 
 
 Lesson 09 advanced - change

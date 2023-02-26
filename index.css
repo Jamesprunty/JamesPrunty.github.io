@@ -317,7 +317,7 @@ body {
 #Nav{
 
 position: absolute;
-bottom: 30%;
+bottom: 25%;
 display: flex;
 justify-content: center;
 width:100%;
@@ -580,6 +580,14 @@ object{
 .button-30:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+
+.item:hover{
+
+  transform: scale(115%);
+  cursor:pointer;
+
 }
 
 
@@ -1043,13 +1051,14 @@ object{
 
 
   99%{
-    transform: translateX(-17%);
+   transform: translateX(-17%);
     transform: translateY(-300vw);
   }
 
   100% {
 
     transform: translateY(-300vw);
+    
 
   }
 }
@@ -1057,14 +1066,11 @@ object{
   0% {}
 
 
-  99%{
-    transform: translateX(-17%);
-    transform: translateY(-300vw);
-  }
-
   100% {
 
+    transform: translateX(-17%);
     transform: translateY(-300vw);
+
 
   }
 }
