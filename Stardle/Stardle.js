@@ -11,6 +11,8 @@ let imageData = null;
 let actor1URL;
 let actor2URL;
 let actor3URL;
+let actorsURL = [];
+let actorsURLComplete = [];
 //const data = null;
 
 const movies = [
@@ -41,28 +43,55 @@ xhr.onload = function(){
     poster = data.Poster;
     plot = data.Plot;
 
-    let actor1Search = actor1.replace(/\s/g, '%20');
-    let actor2Search = actor2.replace(/\s/g, '%20');
-    let actor3Search = actor3.replace(/\s/g, '%20');
+   
+    let a1 = actor1.trimStart();
+    let a2 = actor2.trimStart();
+    let a3 = actor3.trimStart();
+
+    console.log(a2);
+    console.log(a3);
+
+    let actor1Search = a1.replace(/\s/g, '%20');
+    let actor2Search = a2.replace(/\s/g, '%20');
+    let actor3Search = a3.replace(/\s/g, '%20');
+
+ 
+
+    actorsURL.push(actor1Search,actor2Search,actor3Search);
+    console.log(actorsURL);
 
 
 
 
-var url2 = "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=" + actor1Search + "&pageNumber=1&pageSize=10&autoCorrect=true";
-var xhr2 = new XMLHttpRequest();
-xhr2.withCredentials = true;
-xhr2.addEventListener("readystatechange", function () {
-	if (this.readyState === this.DONE) {
-		imageData = JSON.parse(this.response);
-        console.log(imageData);
-        actor1URL = Object.values(imageData.value)[1].url;
-        console.log(actor1URL);
-	}
-});
+     for(i=0;i<actorsURL.length;i++){
+
+      var url2 = "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q="+actorsURL[i]+"&pageNumber=1&pageSize=10&autoCorrect=true";
+      console.log(url2);
+      
+      var xhr2 = new XMLHttpRequest();
+      xhr2.open('GET', url2, true);
+      xhr2.withCredentials = true;
+
+      xhr2.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+            imageData = JSON.parse(this.response);
+            console.log(imageData);
+            actorsURLComplete.push(Object.values(imageData.value)[0].url);
+            console.log(actorsURLComplete);
+        }
+    });
+
+        
+     }
 
 
 
-xhr2.open('GET', url2, true);
+
+
+
+
+
+
 xhr2.setRequestHeader("X-RapidAPI-Key", "13d7771060mshc1088a713a8eca3p10eb86jsne011dab43bdb");
 xhr2.setRequestHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
 
