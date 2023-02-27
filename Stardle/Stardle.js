@@ -6,6 +6,12 @@ let actor1;
 let actor2;
 let actor3;
 let poster;
+let plot;
+let imageData = null;
+let actor1URL;
+let actor2URL;
+let actor3URL;
+//const data = null;
 
 const movies = [
     {
@@ -33,13 +39,36 @@ xhr.onload = function(){
     actor2 = actors[1];
     actor3 = actors[2];
     poster = data.Poster;
+    plot = data.Plot;
+
+    let actor1Search = actor1.replace(/\s/g, '%20');
+    let actor2Search = actor2.replace(/\s/g, '%20');
+    let actor3Search = actor3.replace(/\s/g, '%20');
 
 
-  
 
 
-};
+var url2 = "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=" + actor1Search + "&pageNumber=1&pageSize=10&autoCorrect=true";
+var xhr2 = new XMLHttpRequest();
+xhr2.withCredentials = true;
+xhr2.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		imageData = JSON.parse(this.response);
+        console.log(imageData);
+        actor1URL = Object.values(imageData.value)[1].url;
+        console.log(actor1URL);
+	}
+});
 
+
+
+xhr2.open('GET', url2, true);
+xhr2.setRequestHeader("X-RapidAPI-Key", "13d7771060mshc1088a713a8eca3p10eb86jsne011dab43bdb");
+xhr2.setRequestHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
+
+xhr2.send(data);
+
+}
 xhr.send();
 
 
