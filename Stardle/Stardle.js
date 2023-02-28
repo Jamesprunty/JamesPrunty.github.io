@@ -104,7 +104,8 @@ xhr.onload = function () {
                 console.log(imageData);
                 actorsURLComplete.push(Object.values(imageData.value)[0].url);
                 console.log(actorsURLComplete);
-            }
+                console.log(imageData[0])
+;            }
         });
 
     console.log(url2);
