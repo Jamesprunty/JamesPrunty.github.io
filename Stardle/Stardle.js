@@ -104,16 +104,18 @@ xhr.onload = function () {
                 console.log(imageData);
                 actorsURLComplete.push(Object.values(imageData.value)[0].url);
                 console.log(actorsURLComplete);
-                console.log(imageData[0])
 ;            }
         });
 
     console.log(url2);
 
 
+    
     xhr2.open('GET', url2, true);
     xhr3.open('GET', url3, true);
     xhr4.open('GET', url4, true);
+
+
     xhr2.withCredentials = true;
     xhr3.withCredentials = true;
     xhr4.withCredentials = true;
@@ -125,9 +127,25 @@ xhr.onload = function () {
     xhr4.setRequestHeader("X-RapidAPI-Key", "13d7771060mshc1088a713a8eca3p10eb86jsne011dab43bdb");
     xhr4.setRequestHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
 
-    xhr2.send(data);
-    xhr3.send(data);
-    xhr4.send(data);
+
+    setTimeout(() => {
+        xhr2.send(data);
+
+        setTimeout(() => {
+            xhr3.send(data);
+
+            setTimeout(() => {
+                xhr4.send(data);
+            }, 2000);
+
+        }, 2000);
+
+
+    }, 2000);
+    
+  
+
+
 
 }
 xhr.send();
