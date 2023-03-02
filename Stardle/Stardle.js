@@ -13,6 +13,19 @@ let actor2URL;
 let actor3URL;
 let actorsURL = [];
 let actorsURLComplete = [];
+let info = [
+
+{
+    title: "",
+    actor1: "",
+    actor2: "",
+    actor3: "",
+    release: "",
+    plot: "",
+    poster: "",
+}
+
+];
 //const data = null;
 
 const movies = [
