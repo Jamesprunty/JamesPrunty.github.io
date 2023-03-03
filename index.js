@@ -778,16 +778,3 @@ function resetDivs(click) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
