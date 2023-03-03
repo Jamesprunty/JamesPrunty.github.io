@@ -10,10 +10,15 @@
 <body>
     <h1>Stardle</h1>
 
-    <div id="Container">
+    <div id="container">
 
         <div id="pictureContainer">
             <div id="picture">
+                <img id="imageHint" src="">
+                <p id="textHint" class="hidden"></p>
+            </div>
+            <div>
+                <p id="hintInfo"></p>
 
 
 
@@ -22,15 +27,15 @@
             <div id="Nav">
 
                 <label for="Hint1"></label>
-                <input type="button" value="1" name="Hint1"></input>
+                <input class="hint" type="button" value="1" name="Hint1"></input>
                 <label for="Hint2"></label>
-                <input type="button" value="2" name="Hint2"></input>
+                <input class="hint hidden"  type="button" value="2" name="Hint2"></input>
                 <label for="Hint3"></label>
-                <input type="button" value="3" name="Hint3"></input>
+                <input class="hint hidden"  type="button" value="3" name="Hint3"></input>
                 <label for="Hint4"></label>
-                <input type="button" value="4" name="Hint4"></input>
+                <input class="hint hidden"  type="button" value="4" name="Hint4"></input>
                 <label for="Hint5"></label>
-                <input type="button" value="5" name="Hint5"></input>
+                <input class="hint hidden"  type="button" value="5" name="Hint5"></input>
 
             </div>
         </div>
@@ -38,9 +43,11 @@
         <div id="guessingContainer">
 
             <label for="guess"></label>
-                <input type="input" name="guess" placeholder="Guess"></input>
-                <label for="submit"></label>
-                <input type="button" value="Submit" name="submit"></input>
+            <input type="input" name="guess" placeholder="Guess"></input>
+            <label for="submit"></label>
+            <input type="button" value="Submit" name="submit"></input>
+            <label for="nextHint"></label>
+            <input class="hint" type="button" value="Next Hint" name="nextHint"></input>
 
         </div>
     </div>

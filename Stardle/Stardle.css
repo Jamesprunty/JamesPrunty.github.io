@@ -1,0 +1,21 @@
+h1{
+
+    text-align: center;
+}
+
+#container{
+
+    border: 1px black solid;
+}
+
+#pictureContainer{
+
+
+    border: red 1px solid;
+}
+
+.hidden{
+
+display: none;
+
+}

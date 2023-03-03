@@ -1,3 +1,14 @@
+const imageHint = document.querySelector("#imageHint");
+const hints = document.querySelectorAll(".hint")
+
+hints.forEach(element => {
+    element.addEventListener('click', hintManager);
+});
+
+let guesses = 0;
+let number = 1;
+
+
 let movieDetails;
 let title;
 let release;
@@ -13,19 +24,9 @@ let actor2URL;
 let actor3URL;
 let actorsURL = [];
 let actorsURLComplete = [];
-let info = [
+let info = {};
 
-{
-    title: "",
-    actor1: "",
-    actor2: "",
-    actor3: "",
-    release: "",
-    plot: "",
-    poster: "",
-}
 
-];
 //const data = null;
 
 const movies = [
@@ -72,6 +73,12 @@ xhr.onload = function () {
     console.log(actorsURL);
 
 
+    info[0] = "Cars"
+
+    
+
+
+
 
 
     var xhr2 = new XMLHttpRequest();
@@ -85,6 +92,10 @@ xhr.onload = function () {
             console.log(imageData);
             actorsURLComplete.push(Object.values(imageData.value)[0].url);
             console.log(actorsURLComplete);
+            info[1] = actorsURLComplete[0];
+
+            imageHint.src = actorsURLComplete[0];
+
         }
     });
 
@@ -100,6 +111,7 @@ xhr.onload = function () {
             console.log(imageData);
             actorsURLComplete.push(Object.values(imageData.value)[0].url);
             console.log(actorsURLComplete);
+            info[2] = actorsURLComplete[1];
         }
     });
 
@@ -117,9 +129,15 @@ xhr.onload = function () {
                 console.log(imageData);
                 actorsURLComplete.push(Object.values(imageData.value)[0].url);
                 console.log(actorsURLComplete);
+                info[3] = actorsURLComplete[2];
 ;            }
         });
 
+        info[4] = release;
+        info[5] = plot;
+
+
+        console.log("%c" + info, "color:red");
     console.log(url2);
 
 
@@ -141,7 +159,7 @@ xhr.onload = function () {
     xhr4.setRequestHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
 
 
-    setTimeout(() => {
+   
         xhr2.send(data);
 
         setTimeout(() => {
@@ -152,14 +170,33 @@ xhr.onload = function () {
             }, 2000);
 
         }, 2000);
+}
+xhr.send();
 
 
-    }, 2000);
-    
-  
+function hintManager() {
+
+console.log(this);
+
+
+if (this.value == "Next Hint"){
+
+    number++;
+    guesses++;
+
+hints.forEach(element => {
+
+    if(element.value == number){
+        element.classList.remove("hidden");
+        imageHint.src = Object.values(info)[number];
+
+    }
+});
+
+}
+
 
 
 
 }
-xhr.send();
 
