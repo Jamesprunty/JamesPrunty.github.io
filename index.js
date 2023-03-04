@@ -11,7 +11,7 @@ menuItems.forEach(element => {
 
 function menuController(){
 
-
+console.log(this);
 
     
 }
