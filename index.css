@@ -7,7 +7,7 @@ html, body{
     text-align: center;
     align-items: center;
     justify-content: center;
-
+    display: flex;
 }
 
 #menuContainer{
@@ -23,7 +23,14 @@ html, body{
     flex:1;
     text-align: center;
     flex-grow:1;
+    height: 100%;
+}
 
+ul{
+    margin:0;
+    padding:0;
+    height: 100%;
+   
 }
 
 #menuContainer{
@@ -31,11 +38,9 @@ html, body{
     border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     height:clamp(2rem, 10vh, 3rem);
-
 }
 
 li:hover{
-
     background-color:black;
 }
 
