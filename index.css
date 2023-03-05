@@ -52,6 +52,9 @@ ul {
 li:hover {
     background-color: blue;
 }
+.BG{
+    transform-origin: center;
+}
 
 
 

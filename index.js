@@ -9,6 +9,7 @@ let topMenuBG = document.querySelector(".topMenuBG");
 let midMenuBG = document.querySelector(".midMenuBG");
 let bottomMenuBG = document.querySelector(".bottomMenuBG");
 let expanded = 0;
+let BGs = document.querySelectorAll(".BG");
 
 console.log(circles);
 
