@@ -1,6 +1,12 @@
 html, body{
     margin:0;
     padding:0;
+    background: black;
+}
+
+#pageContainer{
+    display: flex;
+    flex-direction: column;
 }
 
 .center{
@@ -34,14 +40,61 @@ ul{
 }
 
 #menuContainer{
-    border: black 2px solid;
+    border-left: black 2px solid;
+    border-right: black 2px solid;
+    border-top: black 2px solid;
     border-collapse: collapse;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     height:clamp(2rem, 10vh, 3rem);
 }
 
 li:hover{
-    background-color:black;
+    background-color:blue;
+}
+
+
+.svg{
+border:solid white 1px;
+
+
+}
+
+#SVGContainer{
+    border:red 1px solid;
+    height: 100%;
+    flex-grow: 1;
+
+}
+
+circle{
+    stroke-dasharray: 400px;
+    animation-name: spin;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	transform-origin: 250px 250px;
+	will-change: transform;
+    
+}
+#c1{
+    animation-duration: 1s;
+}
+#c2{
+    animation-duration: 1.5s;
+}
+#c3{
+    animation-duration: 2s;
+}
+#c4{
+    animation-duration: 2.5s;
+}
+
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+    100%{
+        transform: rotate(360deg);
+    }
 }
 
 
