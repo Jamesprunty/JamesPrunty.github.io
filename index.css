@@ -1,101 +1,135 @@
-html, body{
-    margin:0;
-    padding:0;
+html,
+body {
+    margin: 0;
+    padding: 0;
     background: black;
 }
 
-#pageContainer{
+#pageContainer {
     display: flex;
     flex-direction: column;
 }
 
-.center{
+.center {
     text-align: center;
     align-items: center;
     justify-content: center;
     display: flex;
 }
 
-#menuContainer{
+#menuContainer {
     display: flex;
 }
 
-#navMenu{
+#navMenu {
     display: flex;
     list-style: none;
 }
 
-.flex1{
-    flex:1;
+.flex1 {
+    flex: 1;
     text-align: center;
-    flex-grow:1;
+    flex-grow: 1;
     height: 100%;
 }
 
-ul{
-    margin:0;
-    padding:0;
+ul {
+    margin: 0;
+    padding: 0;
     height: 100%;
-   
+
 }
 
-#menuContainer{
+#menuContainer {
     border-left: black 2px solid;
     border-right: black 2px solid;
     border-top: black 2px solid;
     border-collapse: collapse;
-    height:clamp(2rem, 10vh, 3rem);
+    height: clamp(2rem, 10vh, 3rem);
 }
 
-li:hover{
-    background-color:blue;
+li:hover {
+    background-color: blue;
 }
 
 
-.svg{
-border:solid white 1px;
+.svg {
+    border: solid white 1px;
 
 
 }
 
-#SVGContainer{
-    border:red 1px solid;
+#SVGContainer {
+    border: red 1px solid;
     height: 100%;
     flex-grow: 1;
 
 }
 
-#circles{
+#circles {
     animation-name: spinReverse;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	transform-origin: 250px 250px;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: 250px 250px;
     animation-duration: var(--speed5);
     animation-play-state: var(--running);
 
 }
 
+.menuHover {
+
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
 
 
-circle{
+
+.scaleUp {
+    animation-name: scaleUp;
+}
+
+.scaleDown {
+    animation-name: scaleDown;
+}
+.BGup{
+    animation-name: BGup;
+}
+.BGupR{
+    animation-name: BGupR;
+}
+.BGdown{
+    animation-name: BGdown;
+}
+.BGdownR{
+    animation-name: BGdownR;
+}
+
+
+
+circle {
     stroke-dasharray: 400px;
     animation-name: spin;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	transform-origin: 250px 250px;
-	will-change: transform;
-    
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: 250px 250px;
+    will-change: transform;
+
 }
-#c1{
+
+#c1 {
     animation-duration: var(--speed1);
 }
-#c2{
+
+#c2 {
     animation-duration: var(--speed2);
 }
-#c3{
+
+#c3 {
     animation-duration: var(--speed3);
 }
-#c4{
+
+#c4 {
     animation-duration: var(--speed4);
 }
 
@@ -103,23 +137,86 @@ circle{
 
 
 @keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-    100%{
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
         transform: rotate(360deg);
     }
 }
 
 @keyframes spinReverse {
-	0% {
-		transform: rotate(0deg);
-	}
-    100%{
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
         transform: rotate(-360deg);
     }
 }
 
+@keyframes scaleUp {
+    from {
+        transform: scale(1);
+    }
 
+    to {
+        transform: scale(1.1);
+    }
+}
 
+@keyframes scaleDown {
+    from {
+        transform: scale(1.1);
+    }
 
+    to {
+        transform: scale(1);
+
+    }
+}
+
+@keyframes BGup {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-0.5%);
+
+    }
+}
+
+@keyframes BGupR {
+    from {
+        transform: translateY(-0.5%);
+    }
+
+    to {
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes BGdown {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(0.5%);
+
+    }
+}
+
+@keyframes BGdownR {
+    from {
+        transform: translateY(0.5%);
+    }
+
+    to {
+        transform: translateY(0);
+
+    }
+}
