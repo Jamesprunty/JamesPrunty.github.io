@@ -6,7 +6,9 @@ let SVGContainer = document.querySelector("#SVGContainer");
 r.style.setProperty('--running', "paused");
 let menuCircle = document.querySelector(".menuCircle")
 let topMenuBG = document.querySelector(".topMenuBG");
+let midMenuBG = document.querySelector(".midMenuBG");
 let bottomMenuBG = document.querySelector(".bottomMenuBG");
+let expanded = 0;
 
 console.log(circles);
 
@@ -21,9 +23,12 @@ menuHover.forEach(element => {
 menuHover.forEach(element => {
     element.addEventListener('mouseout', function(){ menuController("off")});
 });
+menuHover.forEach(element => {
 
-menuItems.forEach(element => {
-    element.addEventListener('click', menuController);
+});
+
+menuHover.forEach(element => {
+    element.addEventListener('click', function(){ menuController("click")});
 });
 
 
@@ -33,7 +38,7 @@ function menuController(state){
 
 console.log("TEST");
 
-if(state == "on"){
+if(state == "on" && expanded == 0){
     r.style.setProperty('--running', "running");
     menuCircle.classList.add("scaleUp");
     topMenuBG.classList.add("BGup");
@@ -47,18 +52,15 @@ if(state == "on"){
     if(bottomMenuBG.classList.contains("BGdownR")){
         bottomMenuBG.classList.remove("BGdownR"); 
     }
-    /*
-    menuHover.forEach(element => {
-        element.classList.add("scaleUp");
+    if(menuCircle.classList.contains("scaleDownFull")){
+        menuCircle.classList.remove("scaleDownFull"); 
+    }
+    if(menuCircle.classList.contains("scaleUpFull")){
+        menuCircle.classList.remove("scaleUpFull"); 
+    }
 
-        if(element.classList.contains("scaleDown")){
-            element.classList.remove("scaleDown"); 
-        }
-        
-    });
-*/
 
-}else if(state === "off"){
+}else if(state === "off" && expanded == 0){
     r.style.setProperty('--running', "paused");
 
     menuCircle.classList.add("scaleDown");
@@ -73,22 +75,52 @@ if(state == "on"){
     if(bottomMenuBG.classList.contains("BGdown")){
         bottomMenuBG.classList.remove("BGdown"); 
     }
+    if(menuCircle.classList.contains("scaleDownFull")){
+        menuCircle.classList.remove("scaleDownFull"); 
+    }
+    if(menuCircle.classList.contains("scaleUpFull")){
+        menuCircle.classList.remove("scaleUpFull"); 
+    }
+}else if(state === "click" && expanded == 0){
+
+    console.log("Has been clicked");
+
     
 
-    /*
-    menuHover.forEach(element => {
-        element.classList.add("scaleDown");
-        if(element.classList.contains("scaleUp")){
-            element.classList.remove("scaleUp"); 
-        }
-    });
-    */
+    menuCircle.classList.add("scaleUpFull")
+
+    if(menuCircle.classList.contains("scaleUp")){
+        menuCircle.classList.remove("scaleUp"); 
+    }
+    if(menuCircle.classList.contains("scaleDown")){
+        menuCircle.classList.remove("scaleDown"); 
+    }
+    if(menuCircle.classList.contains("scaleDownFull")){
+        menuCircle.classList.remove("scaleDownFull"); 
+    }
+
+    expanded = 1;
+
+}else if(state === "click" && expanded == 1){
+
+    menuCircle.classList.add("scaleDownFull")
+    if(menuCircle.classList.contains("scaleUp")){
+        menuCircle.classList.remove("scaleUp"); 
+    }
+    if(menuCircle.classList.contains("scaleUpFull")){
+        menuCircle.classList.remove("scaleUpFull"); 
+    }
+    if(menuCircle.classList.contains("scaleDown")){
+        menuCircle.classList.remove("scaleDown"); 
+    }
+
+
+    expanded = 0;
+
+
 
 }
 
-
-
-    
 }
 
 function changeSpeed(duration){
