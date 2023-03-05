@@ -75,16 +75,20 @@ circle{
     
 }
 #c1{
-    animation-duration: 1s;
+    animation-duration: var(--speed1);
 }
 #c2{
-    animation-duration: 1.5s;
+    animation-duration: var(--speed2);
 }
 #c3{
-    animation-duration: 2s;
+    animation-duration: var(--speed3);
 }
 #c4{
-    animation-duration: 2.5s;
+    animation-duration: var(--speed4);
+}
+
+.slow{
+    animation-duration: var(--speed5);
 }
 
 
