@@ -2,6 +2,8 @@ let menuItems = document.querySelectorAll(".menuItem");
 let menuHover = document.querySelectorAll(".menuHover");
 let circles = document.querySelectorAll("circle");
 let r = document.querySelector(':root');
+let SVGContainer = document.querySelector("#SVGContainer");
+r.style.setProperty('--running', "paused");
 
 console.log(circles);
 
@@ -29,9 +31,9 @@ function menuController(state){
 console.log("TEST");
 
 if(state == "on"){
-    changeSpeed(5);
+    r.style.setProperty('--running', "running");
 }else if(state === "off"){
-    changeSpeed(1);
+    r.style.setProperty('--running', "paused");
 }
 
 
@@ -45,7 +47,7 @@ function changeSpeed(duration){
     let speed2 = duration * 1.5 + "s";
     let speed3 = duration * 2 + "s";
     let speed4 = duration * 2.5 + "s";
-    let speed5 = duration * 5 + "s";
+    let speed5 = duration * 2.6 + "s";
     
     r.style.setProperty('--speed1', speed1);
     r.style.setProperty('--speed2', speed2);

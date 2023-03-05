@@ -65,6 +65,18 @@ border:solid white 1px;
 
 }
 
+#circles{
+    animation-name: spinReverse;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	transform-origin: 250px 250px;
+    animation-duration: var(--speed5);
+    animation-play-state: var(--running);
+
+}
+
+
+
 circle{
     stroke-dasharray: 400px;
     animation-name: spin;
@@ -87,9 +99,7 @@ circle{
     animation-duration: var(--speed4);
 }
 
-.slow{
-    animation-duration: var(--speed5);
-}
+
 
 
 @keyframes spin {
@@ -100,5 +110,16 @@ circle{
         transform: rotate(360deg);
     }
 }
+
+@keyframes spinReverse {
+	0% {
+		transform: rotate(0deg);
+	}
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+
 
 
