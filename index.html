@@ -31,15 +31,16 @@
                 <circle class="menuHover menuCircle" cx="250" cy="250" r="30" stroke="white" stroke-width="2" fill=black
                     clip-path="url(#cut-off)" />
 
-                    <g id="menuOpen" class="hidden">
+                <g id="menuOpen" class="hidden">
 
-                        <circle class="menuOpenItem menuCircleTop" cx="250" cy="250" r="150" stroke="red" stroke-width="2" fill=red
-                        clip-path= "circle(50% at 50% 0)"; />
-                        <circle class="menuOpenItem menuCircleBottom" cx="250" cy="250" r="150" stroke="blue" stroke-width="2" fill=blue
-                        clip-path="circle(50% at 10% 0)" />
-    
-    
-                    </g>
+                    <circle class="menuOpenItem menuCircleTop" cx="250" cy="250" r="150" clip-path="inset(0 0 50% 0)" />
+
+                    <circle class="menuOpenItem menuCircleBottom" cx="250" cy="250" r="150"
+                        clip-path="inset(50% 0 0 0)" />
+
+                    <text id="topText" x="200" y="170" fill="white" font-size="2em">Projects</text>/>
+                    <text id="bottomText" x="200" y="330" fill="white" font-size="2em">Courses</text>/>
+                </g>
 
                 <circle class="menuHover menuCircle" cx="250" cy="250" r="30" stroke="white" stroke-width="2" fill=black
                     clip-path="url(#cut-off)" />
@@ -55,10 +56,6 @@
                     <rect class="menuHover bottomMenuBG BG" y="260" x="230" width="40" height="3" fill="white" rx="3">
                     </rect>
                 </g>
-
-
-
-
 
             </svg>
 
