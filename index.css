@@ -154,9 +154,6 @@ circle {
 #c4 {
     animation-duration: var(--speed4);
 }
-#BG{
-    
-}
 
 
 
@@ -279,4 +276,53 @@ circle {
 
     }
 }
+@keyframes BGtopMenu {
+    0% {
+        
+    }
 
+    99%{
+
+
+    }
+
+    100% {
+        
+        
+        transform: rotate(135deg);
+        fill: red;
+        transform: translate(0,2%);
+
+
+    }
+}
+@keyframes BGmidMenu {
+    0% {
+        
+    }
+    80% {
+        transform: scaleX(100%);
+    }
+
+
+
+
+    100% {
+        
+        transform: scaleX(775%);
+
+    }
+}
+@keyframes BGbottomMenu {
+    from {
+        
+    }
+
+    to {
+        
+        transform: rotate(45deg);
+        fill: red;
+        transform: translate(0,-2%);
+
+    }
+}
