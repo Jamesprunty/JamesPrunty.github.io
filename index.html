@@ -9,7 +9,7 @@
 
 <body>
     <div id="pageContainer">
-       
+
 
         <div id="SVGContainer" class="center">
 
@@ -26,16 +26,39 @@
                         clip-path="url(#cut-off)" />
                 </g>
 
+
+
                 <circle class="menuHover menuCircle" cx="250" cy="250" r="30" stroke="white" stroke-width="2" fill=black
                     clip-path="url(#cut-off)" />
-                <circle class="menuHover menuCircle2" cx="250" cy="250" r="30" stroke="white" stroke-width="2" fill=black
+
+                    <g id="menuOpen" class="hidden">
+
+                        <circle class="menuOpenItem menuCircleTop" cx="250" cy="250" r="150" stroke="red" stroke-width="2" fill=red
+                        clip-path= "circle(50% at 50% 0)"; />
+                        <circle class="menuOpenItem menuCircleBottom" cx="250" cy="250" r="150" stroke="blue" stroke-width="2" fill=blue
+                        clip-path="circle(50% at 10% 0)" />
+    
+    
+                    </g>
+
+                <circle class="menuHover menuCircle" cx="250" cy="250" r="30" stroke="white" stroke-width="2" fill=black
                     clip-path="url(#cut-off)" />
 
-                    <g id="BG" data-state="Default">
-                <rect class="menuHover topMenuBG BG" y="240" x="230" width="40" height="3" fill="white" rx="3"></rect>
-                <rect class="menuHover midMenuBG BG" y="250" x="230" width="40" height="3" fill="white" rx="3"></rect>
-                <rect class="menuHover bottomMenuBG BG" y="260" x="230" width="40" height="3" fill="white" rx="3"></rect>
-                    </g>
+
+
+                <g id="BG" data-state="Default">
+                    <rect class="menuHover midMenuBG BG" y="250" x="230" width="40" height="3" fill="white" rx="3">
+                    </rect>
+                    <rect class="menuHover topMenuBG BG" y="240" x="230" width="40" height="3" fill="white" rx="3">
+                    </rect>
+
+                    <rect class="menuHover bottomMenuBG BG" y="260" x="230" width="40" height="3" fill="white" rx="3">
+                    </rect>
+                </g>
+
+
+
+
 
             </svg>
 

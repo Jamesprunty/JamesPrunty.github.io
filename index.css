@@ -155,6 +155,16 @@ circle {
     animation-duration: var(--speed4);
 }
 
+.show{
+    display: unset;
+}
+
+.hidden{
+    display: none;
+}
+
+
+
 
 
 
@@ -289,9 +299,9 @@ circle {
     100% {
         
         
-        transform: rotate(135deg);
-        fill: red;
-        transform: translate(0,2%);
+        
+       
+        
 
 
     }
@@ -320,9 +330,7 @@ circle {
 
     to {
         
-        transform: rotate(45deg);
-        fill: red;
-        transform: translate(0,-2%);
-
+       
+        
     }
 }

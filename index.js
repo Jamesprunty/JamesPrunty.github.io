@@ -5,9 +5,13 @@ let r = document.querySelector(':root');
 let SVGContainer = document.querySelector("#SVGContainer");
 r.style.setProperty('--running', "paused");
 let menuCircle = document.querySelector(".menuCircle")
+let menuCircle2 = document.querySelector(".menuCircle2")
 let topMenuBG = document.querySelector(".topMenuBG");
 let midMenuBG = document.querySelector(".midMenuBG");
 let bottomMenuBG = document.querySelector(".bottomMenuBG");
+let menuCircleTop = document.querySelector(".menuCircleTop")
+let menuCircleBottom = document.querySelector(".menuCircleBottom")
+let menuOpen = document.querySelector("#menuOpen")
 let expanded = 0;
 let BGs = document.querySelectorAll(".BG");
 
@@ -92,6 +96,7 @@ if(state == "on" && expanded == 0){
     topMenuBG.classList.add("BGtopMenu");
     midMenuBG.classList.add("BGmidMenu");
     bottomMenuBG.classList.add("BGbottomMenu");
+    menuOpen.classList.add("show");
 
     if(menuCircle.classList.contains("scaleUp")){
         menuCircle.classList.remove("scaleUp"); 
@@ -116,6 +121,9 @@ if(state == "on" && expanded == 0){
     if(bottomMenuBG.classList.contains("BGdownR")){
         bottomMenuBG.classList.remove("BGdownR"); 
     }
+    if(menuOpen.classList.contains("hidden")){
+        menuOpen.classList.remove("hidden"); 
+    }
 
 
     expanded = 1;
@@ -126,6 +134,8 @@ if(state == "on" && expanded == 0){
     topMenuBG.classList.add("BGupR");
     midMenuBG.classList.add("BGmidR");
     bottomMenuBG.classList.add("BGdownR");
+    menuOpen.classList.add("hidden");
+
     if(menuCircle.classList.contains("scaleUp")){
         menuCircle.classList.remove("scaleUp"); 
     }
@@ -143,6 +153,9 @@ if(state == "on" && expanded == 0){
     }
     if(bottomMenuBG.classList.contains("BGbottomMenu")){
         bottomMenuBG.classList.remove("BGbottomMenu"); 
+    }
+    if(menuOpen.classList.contains("show")){
+        menuOpen.classList.remove("show"); 
     }
  
 
