@@ -89,6 +89,9 @@ if(state == "on" && expanded == 0){
     
 
     menuCircle.classList.add("scaleUpFull")
+    topMenuBG.classList.add("BGtopMenu");
+    midMenuBG.classList.add("BGmidMenu");
+    bottomMenuBG.classList.add("BGbottomMenu");
 
     if(menuCircle.classList.contains("scaleUp")){
         menuCircle.classList.remove("scaleUp"); 
@@ -100,11 +103,29 @@ if(state == "on" && expanded == 0){
         menuCircle.classList.remove("scaleDownFull"); 
     }
 
+    if(topMenuBG.classList.contains("BGup")){
+        topMenuBG.classList.remove("BGup"); 
+    }
+    if(bottomMenuBG.classList.contains("BGdown")){
+        bottomMenuBG.classList.remove("BGdown"); 
+    }
+
+    if(topMenuBG.classList.contains("BGupR")){
+        topMenuBG.classList.remove("BGupR"); 
+    }
+    if(bottomMenuBG.classList.contains("BGdownR")){
+        bottomMenuBG.classList.remove("BGdownR"); 
+    }
+
+
     expanded = 1;
 
 }else if(state === "click" && expanded == 1){
 
     menuCircle.classList.add("scaleDownFull")
+    topMenuBG.classList.add("BGupR");
+    midMenuBG.classList.add("BGmidR");
+    bottomMenuBG.classList.add("BGdownR");
     if(menuCircle.classList.contains("scaleUp")){
         menuCircle.classList.remove("scaleUp"); 
     }
@@ -114,7 +135,16 @@ if(state == "on" && expanded == 0){
     if(menuCircle.classList.contains("scaleDown")){
         menuCircle.classList.remove("scaleDown"); 
     }
-
+    if(topMenuBG.classList.contains("BGtopMenu")){
+        topMenuBG.classList.remove("BGtopMenu"); 
+    }
+    if(midMenuBG.classList.contains("BGmidMenu")){
+        midMenuBG.classList.remove("BGmidMenu"); 
+    }
+    if(bottomMenuBG.classList.contains("BGbottomMenu")){
+        bottomMenuBG.classList.remove("BGbottomMenu"); 
+    }
+ 
 
     expanded = 0;
 
@@ -126,12 +156,14 @@ if(state == "on" && expanded == 0){
 
 function changeSpeed(duration){
 
+    let speed0 = duration / 9 + "s";
     let speed1 = duration * 1 + "s";
     let speed2 = duration * 1.5 + "s";
     let speed3 = duration * 2 + "s";
     let speed4 = duration * 2.5 + "s";
     let speed5 = duration * 2.6 + "s";
     
+    r.style.setProperty('--speed0', speed0);
     r.style.setProperty('--speed1', speed1);
     r.style.setProperty('--speed2', speed2);
     r.style.setProperty('--speed3', speed3);
