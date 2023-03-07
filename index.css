@@ -178,12 +178,15 @@ circle {
 
 .show{
     display: unset;
+    animation-duration: var(--speed4);
 }
 
 .hidden{
     display: none;
 }
 .close{
+
+    transform: scale(0);
     animation-name: close;
 }
 

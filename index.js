@@ -176,12 +176,12 @@ function menuController(state) {
         expanded = 0;
     }
 
-    if (state === "topMenu" && expanded == 1){
+    if (state === "topMenu" && expanded == 1) {
         console.log("Top Click")
         changeMenu("projects");
 
     }
-    if (state === "bottomMenu" && expanded == 1){
+    if (state === "bottomMenu" && expanded == 1) {
         console.log("Bottom Click")
         changeMenu("courses");
 
@@ -196,7 +196,7 @@ function menuController(state) {
         if (topMenuBG.classList.contains("scaleDownTop")) {
             topMenuBG.classList.remove("scaleDownTop");
         }
-        
+
     }
 
     if (state === "bottomOn" && expanded == 1) {
@@ -209,7 +209,7 @@ function menuController(state) {
         if (bottomMenuBG.classList.contains("scaleDownBottom")) {
             bottomMenuBG.classList.remove("scaleDownBottom");
         }
-        
+
     }
     if (state === "topOff" && expanded == 1) {
         console.log("OffTop");
@@ -242,8 +242,6 @@ function menuController(state) {
 
 }
 
-
-
 function changeSpeed(duration) {
 
     let speed0 = duration / 9 + "s";
@@ -263,7 +261,7 @@ function changeSpeed(duration) {
 
 }
 
-function changeMenu(menuType){
+function changeMenu(menuType) {
 
     svg.classList.add("close");
 
