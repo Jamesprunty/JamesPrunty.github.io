@@ -187,11 +187,20 @@ circle {
 .hidden{
     display: none;
 }
-.close{
 
+.parent {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    }
 
+#SVGContainerMain{
+    border: white 1px solid;
+    height: 100%;
 }
-
+    
 
 
 

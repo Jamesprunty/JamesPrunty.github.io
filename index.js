@@ -20,6 +20,8 @@ let menuOpen = document.querySelector("#menuOpen")
 let expanded = 0;
 let BGs = document.querySelectorAll(".BG");
 let svg = document.querySelector(".svg");
+let SVGContainerMain = document.querySelector("#SVGContainerMain");
+let grid = document.getElementById("SVGContainerMain").querySelectorAll("rect");
 
 console.log(circles);
 
@@ -38,6 +40,8 @@ menuHover.forEach(element => {
 menuHover.forEach(element => {
     element.addEventListener('click', function () { menuController("click") });
 });
+
+grid.addEventListener('mouseover', function() {})
 
 
 menuCircleTop.addEventListener('mouseover', function () { menuController("topOn") });
@@ -292,6 +296,8 @@ function changeMenu(menuType) {
         circles.forEach(element => {
             element.classList.add("hidden");
         });
+
+        SVGContainer.classList.add("hidden");
         
     }, 130);
 
@@ -318,4 +324,14 @@ function changeMenu(menuType) {
         menuOpen.classList.remove("show");
     }
 
+
+    setTimeout(() => {;
+
+        SVGContainerMain.classList.remove("hidden")
+
+        
+    }, 330);
+
 }
+
+
