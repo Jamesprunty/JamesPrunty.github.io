@@ -1,6 +1,8 @@
 let menuItems = document.querySelectorAll(".menuItem");
 let menuHover = document.querySelectorAll(".menuHover");
 let circles = document.querySelectorAll("circle");
+let bigCircle = document.querySelector(".bigCircle");
+let circleContainer = document.querySelector("#circles")
 let r = document.querySelector(':root');
 let SVGContainer = document.querySelector("#SVGContainer");
 r.style.setProperty('--running', "paused");
@@ -105,12 +107,20 @@ function menuController(state) {
 
         console.log("Has been clicked");
 
+        setTimeout(() => {
 
+            menuOpen.classList.add("show");
+            if (menuOpen.classList.contains("hidden")) {
+                menuOpen.classList.remove("hidden");
+            }
+            
+        }, 100);
+       
         menuCircle.classList.add("scaleUpFull")
         topMenuBG.classList.add("BGtopMenu");
         midMenuBG.classList.add("BGmidMenu");
         bottomMenuBG.classList.add("BGbottomMenu");
-        menuOpen.classList.add("show");
+        
 
 
         if (menuCircle.classList.contains("scaleUp")) {
@@ -136,9 +146,7 @@ function menuController(state) {
         if (bottomMenuBG.classList.contains("BGdownR")) {
             bottomMenuBG.classList.remove("BGdownR");
         }
-        if (menuOpen.classList.contains("hidden")) {
-            menuOpen.classList.remove("hidden");
-        }
+
 
 
         expanded = 1;
@@ -263,6 +271,6 @@ function changeSpeed(duration) {
 
 function changeMenu(menuType) {
 
-    svg.classList.add("close");
+    
 
 }
