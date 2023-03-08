@@ -363,16 +363,17 @@ circle {
 }
 @keyframes close {
     from {
-        transform: scale(100%);
+        
         
     }
 
     to {
         
-        transform: rotate(45deg);
+        transform: scale(0%);
         
     }
 }
+
 
 
 

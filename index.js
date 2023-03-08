@@ -1,6 +1,7 @@
 let menuItems = document.querySelectorAll(".menuItem");
 let menuHover = document.querySelectorAll(".menuHover");
 let circles = document.querySelectorAll("circle");
+let circleInside = document.querySelectorAll(".circleInside");
 let bigCircle = document.querySelector(".bigCircle");
 let circleContainer = document.querySelector("#circles")
 let r = document.querySelector(':root');
@@ -272,5 +273,49 @@ function changeSpeed(duration) {
 function changeMenu(menuType) {
 
     
+    menuCircle.classList.add("scaleDownFull")
+    topMenuBG.classList.add("BGupR");
+    midMenuBG.classList.add("BGmidR");
+    bottomMenuBG.classList.add("BGdownR");
+    menuOpen.classList.add("hidden");
+
+    circleInside.forEach(element => {
+        element.classList.add("hidden");
+    });
+
+    setTimeout(() => {;
+
+        BGs.forEach(element => {
+           element.classList.add("hidden"); 
+        });
+
+        circles.forEach(element => {
+            element.classList.add("hidden");
+        });
+        
+    }, 130);
+
+
+    if (menuCircle.classList.contains("scaleUp")) {
+        menuCircle.classList.remove("scaleUp");
+    }
+    if (menuCircle.classList.contains("scaleUpFull")) {
+        menuCircle.classList.remove("scaleUpFull");
+    }
+    if (menuCircle.classList.contains("scaleDown")) {
+        menuCircle.classList.remove("scaleDown");
+    }
+    if (topMenuBG.classList.contains("BGtopMenu")) {
+        topMenuBG.classList.remove("BGtopMenu");
+    }
+    if (midMenuBG.classList.contains("BGmidMenu")) {
+        midMenuBG.classList.remove("BGmidMenu");
+    }
+    if (bottomMenuBG.classList.contains("BGbottomMenu")) {
+        bottomMenuBG.classList.remove("BGbottomMenu");
+    }
+    if (menuOpen.classList.contains("show")) {
+        menuOpen.classList.remove("show");
+    }
 
 }
