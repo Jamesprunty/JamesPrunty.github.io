@@ -20,14 +20,18 @@ let menuOpen = document.querySelector("#menuOpen")
 let expanded = 0;
 let BGs = document.querySelectorAll(".BG");
 let svg = document.querySelector(".svg");
-let SVGContainerMain = document.querySelector("#SVGContainerMain");
-let grid = document.getElementById("SVGContainerMain").querySelectorAll("rect");
+let gridContainer = document.querySelector("#gridContainer");
+let gridTiles = document.getElementById("gridContainer").querySelectorAll("div");
+
 
 console.log(circles);
 
 changeSpeed(1);
 
 
+gridTiles.forEach(element => {
+    element.classList.add("border");
+});
 
 
 menuHover.forEach(element => {
@@ -41,7 +45,6 @@ menuHover.forEach(element => {
     element.addEventListener('click', function () { menuController("click") });
 });
 
-grid.addEventListener('mouseover', function() {})
 
 
 menuCircleTop.addEventListener('mouseover', function () { menuController("topOn") });
@@ -327,11 +330,29 @@ function changeMenu(menuType) {
 
     setTimeout(() => {;
 
-        SVGContainerMain.classList.remove("hidden")
+        gridContainer.classList.remove("hidden")
 
         
     }, 330);
 
+
 }
 
 
+function menuManager(status, object){
+
+
+    if(status === "grow"){
+        object.classList.add("grow");
+        if(object.classList.contains("shrink")){
+            object.classList.remove("shrink")
+        }
+    }else if(status === "shrink"){
+        object.classList.add("shrink"); 
+        if(object.classList.contains("grow")){
+            object.classList.remove("grow")
+        }
+    }
+    
+
+}
