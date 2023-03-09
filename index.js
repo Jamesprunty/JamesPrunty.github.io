@@ -21,7 +21,11 @@ let expanded = 0;
 let BGs = document.querySelectorAll(".BG");
 let svg = document.querySelector(".svg");
 let gridContainer = document.querySelector("#gridContainer");
-let gridTiles = document.getElementById("gridContainer").querySelectorAll("div");
+let parent = document.querySelector("#parent");
+let number = 1;
+let pageContainer = document.querySelector("#pageContainer");
+
+let gridTiles = document.getElementById("parent").querySelectorAll("div");
 
 
 console.log(circles);
@@ -31,6 +35,12 @@ changeSpeed(1);
 
 gridTiles.forEach(element => {
     element.classList.add("border");
+    element.classList.add("tileAnimation");
+    element.addEventListener("mouseover", function(){menuManager("grow", this)});
+});
+gridTiles.forEach(element => {
+    element.classList.add("border");
+    element.addEventListener("mouseout", function(){menuManager("shrink", this)});
 });
 
 
@@ -261,6 +271,7 @@ function menuController(state) {
 function changeSpeed(duration) {
 
     let speed0 = duration / 9 + "s";
+    let speed05 = duration / 4 + "s";
     let speed1 = duration * 1 + "s";
     let speed2 = duration * 1.5 + "s";
     let speed3 = duration * 2 + "s";
@@ -268,6 +279,7 @@ function changeSpeed(duration) {
     let speed5 = duration * 2.6 + "s";
 
     r.style.setProperty('--speed0', speed0);
+    r.style.setProperty('--speed05', speed05);
     r.style.setProperty('--speed1', speed1);
     r.style.setProperty('--speed2', speed2);
     r.style.setProperty('--speed3', speed3);
@@ -330,7 +342,15 @@ function changeMenu(menuType) {
 
     setTimeout(() => {;
 
-        gridContainer.classList.remove("hidden")
+        gridContainer.classList.remove("zeroScale")
+        parent.classList.remove("zeroScale");
+        gridPage.classList.remove("zeroScale");
+
+        gridTiles.forEach(element => {
+            element.classList.remove("zeroScale");
+            element.innerHTML = `<p class="tileText">`+number+`</p>`;
+            number++;
+        });
 
         
     }, 330);
@@ -341,17 +361,23 @@ function changeMenu(menuType) {
 
 function menuManager(status, object){
 
+    console.log(object);
 
     if(status === "grow"){
         object.classList.add("grow");
-        if(object.classList.contains("shrink")){
-            object.classList.remove("shrink")
-        }
+
+            if(object.classList.contains("shrink")){
+                object.classList.remove("shrink")
+            }
+
+
     }else if(status === "shrink"){
         object.classList.add("shrink"); 
-        if(object.classList.contains("grow")){
-            object.classList.remove("grow")
-        }
+
+            if(object.classList.contains("grow")){
+                object.classList.remove("grow")
+            }
+
     }
     
 

@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background: black;
+    overflow-y: hidden;
 }
 
 #pageContainer {
@@ -62,7 +63,7 @@ li:hover {
 
 #SVGContainer {
     border: red 1px solid;
-    height: 100%;
+    
     flex-grow: 1;
     animation-duration: var(--speed5);
 
@@ -202,6 +203,9 @@ circle {
 .hidden {
     display: none;
 }
+.noScale{
+    transform: scale(0%);
+}
 
 .parent {
     display: grid;
@@ -216,6 +220,259 @@ circle {
 .border {
     border: 1px white solid;
 }
+
+#SVGContainerMain {
+    border: white 1px solid;
+    height: 100%;
+}
+
+.grow {
+    animation-name: grow;
+}
+.shrink {
+    animation-name: shrink;
+}
+
+.tileAnimation{
+    animation-duration: var(--speed05);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+.tileText{
+    color: white;
+}
+.zeroScale{
+    visibility: hidden;
+    max-height: 0;
+}
+#gridPage{
+    width:100%;
+    height:100%;
+}
+
+
+
+
+
+
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        filter: drop-shadow(0px 0px 2px white)
+    }
+
+    100% {
+        transform: rotate(360deg);
+        filter: drop-shadow(0px 0px 2px white)
+    }
+}
+
+@keyframes spinReverse {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(1);
+        filter: drop-shadow(0px 0px 0px);
+    }
+
+    to {
+        transform: scale(1.1);
+        filter: drop-shadow(0px 0px 5px white)
+    }
+}
+
+@keyframes scaleDown {
+    from {
+        transform: scale(1.1);
+        filter: drop-shadow(0px 0px 5px white)
+    }
+
+    to {
+        transform: scale(1);
+        filter: drop-shadow(0px 0px 0px);
+
+    }
+}
+
+@keyframes BGup {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-0.5%);
+        filter: drop-shadow(0px 0px 5px white)
+    }
+}
+
+@keyframes BGupR {
+    from {
+        transform: translateY(-0.5%);
+    }
+
+    to {
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes BGmidR {
+    from {}
+
+    to {
+        transform: rotate(0deg);
+
+    }
+}
+
+@keyframes BGdown {
+    from {
+        transform: translateY(0);
+
+    }
+
+    to {
+        transform: translateY(0.5%);
+        filter: drop-shadow(0px 0px 5px white)
+    }
+}
+
+@keyframes BGdownR {
+    from {
+        transform: translateY(0.5%);
+    }
+
+    to {
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes scaleUpFull {
+    from {
+        transform: scale(1);
+        filter: drop-shadow(0px 0px 0px);
+    }
+
+    to {
+        transform: scale(5);
+        filter: drop-shadow(0px 0px 5px white)
+    }
+}
+
+@keyframes scaleDownFull {
+    from {
+        transform: scale(5);
+        filter: drop-shadow(0px 0px 5px white)
+    }
+
+    to {
+        transform: scale(1);
+        filter: drop-shadow(0px 0px 0px);
+
+    }
+}
+
+@keyframes BGmidMenu {
+    0% {}
+
+    80% {
+        transform: scaleX(100%);
+    }
+
+
+
+
+    100% {
+
+        transform: scaleX(775%);
+
+    }
+}
+
+@keyframes scaleUpTop {
+    from {}
+
+    to {
+
+
+        fill: grey;
+
+
+
+    }
+}
+
+@keyframes scaleUpBottom {
+    from {}
+
+    to {
+
+        fill: grey;
+
+
+
+    }
+}
+
+@keyframes close {
+    from {}
+
+    to {
+
+        transform: scale(0%);
+
+    }
+}
+@keyframes grow {
+    from {}
+
+    to {
+
+        transform: scale(170%);
+
+    }
+}
+@keyframes shrink {
+    from {
+        transform: scale(170%);
+    }
+
+    to {
+
+        transform: scale(100%);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -474,197 +731,4 @@ circle {
 
 .div64 {
     grid-area: 8 / 8 / 9 / 9;
-}
-
-#SVGContainerMain {
-    border: white 1px solid;
-    height: 100%;
-}
-
-.grow {
-    fill: red;
-}
-
-
-
-
-
-
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-        filter: drop-shadow(0px 0px 2px white)
-    }
-
-    100% {
-        transform: rotate(360deg);
-        filter: drop-shadow(0px 0px 2px white)
-    }
-}
-
-@keyframes spinReverse {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(-360deg);
-    }
-}
-
-@keyframes scaleUp {
-    from {
-        transform: scale(1);
-        filter: drop-shadow(0px 0px 0px);
-    }
-
-    to {
-        transform: scale(1.1);
-        filter: drop-shadow(0px 0px 5px white)
-    }
-}
-
-@keyframes scaleDown {
-    from {
-        transform: scale(1.1);
-        filter: drop-shadow(0px 0px 5px white)
-    }
-
-    to {
-        transform: scale(1);
-        filter: drop-shadow(0px 0px 0px);
-
-    }
-}
-
-@keyframes BGup {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-0.5%);
-        filter: drop-shadow(0px 0px 5px white)
-    }
-}
-
-@keyframes BGupR {
-    from {
-        transform: translateY(-0.5%);
-    }
-
-    to {
-        transform: translateY(0);
-
-    }
-}
-
-@keyframes BGmidR {
-    from {}
-
-    to {
-        transform: rotate(0deg);
-
-    }
-}
-
-@keyframes BGdown {
-    from {
-        transform: translateY(0);
-
-    }
-
-    to {
-        transform: translateY(0.5%);
-        filter: drop-shadow(0px 0px 5px white)
-    }
-}
-
-@keyframes BGdownR {
-    from {
-        transform: translateY(0.5%);
-    }
-
-    to {
-        transform: translateY(0);
-
-    }
-}
-
-@keyframes scaleUpFull {
-    from {
-        transform: scale(1);
-        filter: drop-shadow(0px 0px 0px);
-    }
-
-    to {
-        transform: scale(5);
-        filter: drop-shadow(0px 0px 5px white)
-    }
-}
-
-@keyframes scaleDownFull {
-    from {
-        transform: scale(5);
-        filter: drop-shadow(0px 0px 5px white)
-    }
-
-    to {
-        transform: scale(1);
-        filter: drop-shadow(0px 0px 0px);
-
-    }
-}
-
-@keyframes BGmidMenu {
-    0% {}
-
-    80% {
-        transform: scaleX(100%);
-    }
-
-
-
-
-    100% {
-
-        transform: scaleX(775%);
-
-    }
-}
-
-@keyframes scaleUpTop {
-    from {}
-
-    to {
-
-
-        fill: grey;
-
-
-
-    }
-}
-
-@keyframes scaleUpBottom {
-    from {}
-
-    to {
-
-        fill: grey;
-
-
-
-    }
-}
-
-@keyframes close {
-    from {}
-
-    to {
-
-        transform: scale(0%);
-
-    }
 }
