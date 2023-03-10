@@ -63,7 +63,7 @@ li:hover {
 
 #SVGContainer {
     border: red 1px solid;
-    
+
     flex-grow: 1;
     animation-duration: var(--speed5);
 
@@ -203,7 +203,8 @@ circle {
 .hidden {
     display: none;
 }
-.noScale{
+
+.noScale {
     transform: scale(0%);
 }
 
@@ -229,26 +230,49 @@ circle {
 .grow {
     animation-name: grow;
 }
+
 .shrink {
     animation-name: shrink;
 }
 
-.tileAnimation{
+.tileAnimation {
     animation-duration: var(--speed05);
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
 }
-.tileText{
+
+.tileText {
     color: white;
 }
-.zeroScale{
+
+.zeroScale {
     visibility: hidden;
     max-height: 0;
 }
-#gridPage{
-    width:100%;
-    height:100%;
+
+#gridPage {
+    width: 100%;
+    height: 100%;
+    animation-duration: var(--speed5);
+    flex: 1;
+    flex-direction: column;
 }
+
+#gridContainer {
+
+    animation-duration: var(--speed5);
+}
+
+#information{
+    display: relative;
+    color: white;
+
+}
+.infoItem{
+    color: white;
+    font-size:larger;
+}
+
 
 
 
@@ -434,6 +458,7 @@ circle {
 
     }
 }
+
 @keyframes grow {
     from {}
 
@@ -443,6 +468,7 @@ circle {
 
     }
 }
+
 @keyframes shrink {
     from {
         transform: scale(170%);

@@ -24,8 +24,120 @@ let gridContainer = document.querySelector("#gridContainer");
 let parent = document.querySelector("#parent");
 let number = 1;
 let pageContainer = document.querySelector("#pageContainer");
-
+let titleText = "Title:"
+let descriptionText = "Description:"
+let titleInfo = document.getElementById("title");
+let descriptionInfo = document.getElementById("description");
 let gridTiles = document.getElementById("parent").querySelectorAll("div");
+
+
+
+
+const Lessons = [
+    {
+        name: "Clock",
+        description: "A JS clock"
+    },
+    {
+        name: "Clock V2",
+        description: "Slightly edited verison of the clock, including alarm and time zones"
+    },
+    {
+        name: "Lesson-02"
+    },
+    {
+        name: "Lesson-02-Advanced"
+    },
+    {
+        name: "Lesson-03"
+    },
+    {
+        name: "Lesson-03-Advanced"
+    },
+    {
+        name: "Lesson-04"
+    },
+    {
+        name: "Lesson-04-Advanced"
+    },
+    {
+        name: "Lesson-05"
+    },
+    {
+        name: "Lesson-05-Advanced"
+    },
+    {
+        name: "Lesson-06"
+    },
+    {
+        name: "Lesson-06-Advanced"
+    },
+    {
+        name: "Lesson-07"
+    },
+    {
+        name: "Lesson-07-Advanced"
+    },
+    {
+        name: "Lesson-08"
+    },
+    {
+        name: "Lesson-08-Advanced"
+    },
+    {
+        name: "Lesson-09"
+    },
+    {
+        name: "Lesson-09-Advanced"
+    },
+    {
+        name: "Lesson-10"
+    },
+    {
+        name: "Lesson-10-Advanced"
+    },
+    {
+        name: "Lesson-11"
+    },
+    {
+        name: "Lesson-11-Advanced"
+    },
+    {
+        name: "Lesson-12"
+    },
+    {
+        name: "Lesson-12-Advanced"
+    },
+    {
+        name: "Lesson-13"
+    },
+    {
+        name: "Lesson-13-Advanced"
+    },
+    {
+        name: "Lesson-14"
+    },
+    {
+        name: "Lesson-14-Advanced"
+    },
+    {
+        name: "Lesson-15"
+    },
+    {
+        name: "Lesson-15-Advanced"
+    },
+];
+
+let currentContent = [];
+let currentNumber;
+
+
+
+
+
+
+
+
 
 
 console.log(circles);
@@ -292,6 +404,7 @@ function changeSpeed(duration) {
 function changeMenu(menuType) {
 
     
+    
     menuCircle.classList.add("scaleDownFull")
     topMenuBG.classList.add("BGupR");
     midMenuBG.classList.add("BGmidR");
@@ -346,6 +459,9 @@ function changeMenu(menuType) {
         parent.classList.remove("zeroScale");
         gridPage.classList.remove("zeroScale");
 
+        titleInfo.innerHTML = titleText;
+        descriptionInfo.innerHTML = descriptionText;
+
         gridTiles.forEach(element => {
             element.classList.remove("zeroScale");
             element.innerHTML = `<p class="tileText">`+number+`</p>`;
@@ -353,7 +469,10 @@ function changeMenu(menuType) {
         });
 
         
-    }, 330);
+    }, 550);
+
+currentContent = Lessons;
+
 
 
 }
@@ -361,10 +480,13 @@ function changeMenu(menuType) {
 
 function menuManager(status, object){
 
-    console.log(object);
+ 
+
 
     if(status === "grow"){
         object.classList.add("grow");
+
+
 
             if(object.classList.contains("shrink")){
                 object.classList.remove("shrink")
