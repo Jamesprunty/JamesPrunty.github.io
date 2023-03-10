@@ -483,10 +483,13 @@ function menuManager(status, object){
  
 
 
+
     if(status === "grow"){
         object.classList.add("grow");
 
-
+        console.log(object.p.innerHTML);
+            currentNumber = object.getElementsByTagName("P").innerHTML;
+            console.log(currentNumber);
 
             if(object.classList.contains("shrink")){
                 object.classList.remove("shrink")
