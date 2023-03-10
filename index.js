@@ -132,14 +132,6 @@ let currentContent = [];
 let currentNumber;
 
 
-
-
-
-
-
-
-
-
 console.log(circles);
 
 changeSpeed(1);
@@ -149,23 +141,18 @@ gridTiles.forEach(element => {
     element.classList.add("border");
     element.classList.add("tileAnimation");
     element.addEventListener("mouseover", function(){menuManager("grow", this)});
-});
-gridTiles.forEach(element => {
-    element.classList.add("border");
     element.addEventListener("mouseout", function(){menuManager("shrink", this)});
+    element.addEventListener("click", function(){menuManager("click", this)});
 });
+
 
 
 menuHover.forEach(element => {
     element.addEventListener('mouseover', function () { menuController("on") });
-});
-menuHover.forEach(element => {
     element.addEventListener('mouseout', function () { menuController("off") });
-});
-
-menuHover.forEach(element => {
     element.addEventListener('click', function () { menuController("click") });
 });
+
 
 
 
@@ -481,6 +468,10 @@ currentContent = Lessons;
 function menuManager(status, object){
 
  
+    currentNumber = object.getElementsByTagName('p')[0].innerHTML;
+    console.log(currentNumber);
+    titleInfo.innerHTML = Lessons[currentNumber -1].name;
+    descriptionInfo.innerHTML = Lessons[currentNumber -1].description;
 
 
 
