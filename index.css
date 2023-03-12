@@ -221,7 +221,9 @@ circle {
 .border {
     border: 1px white solid;
 }
-
+.borderRed {
+    border: 1px rgb(255, 24, 24) solid;
+}
 #SVGContainerMain {
     border: white 1px solid;
     height: 100%;
@@ -239,8 +241,20 @@ circle {
     animation-duration: var(--speed05);
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
+
+}
+.tileBackground{
+    backdrop-filter: blur(1.5px);
+    
+
+}
+.z-index1{
+    z-index: 1;
 }
 
+.z-index0{
+    z-index: 0;
+}
 .tileText {
     color: white;
 }

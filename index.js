@@ -29,11 +29,26 @@ let descriptionText = "Description:"
 let titleInfo = document.getElementById("title");
 let descriptionInfo = document.getElementById("description");
 let gridTiles = document.getElementById("parent").querySelectorAll("div");
+let count = 0;
+
+const Projects =[
+
+    {
+        name: "Marcov Model",
+        description: "A test marcov model that takes reference information to create sentances based on that data."
+    },
+    {
+        name: "Stardle",
+        description: "A wordle style game where you have to guess the movie title."
+    }
 
 
 
 
-const Lessons = [
+]
+
+
+const Courses = [
     {
         name: "Clock",
         description: "A JS clock"
@@ -128,18 +143,17 @@ const Lessons = [
     },
 ];
 
+
 let currentContent = [];
 let currentNumber;
 
-
-console.log(circles);
 
 changeSpeed(1);
 
 
 gridTiles.forEach(element => {
-    element.classList.add("border");
     element.classList.add("tileAnimation");
+    element.classList.add("tileBackground");
     element.addEventListener("mouseover", function(){menuManager("grow", this)});
     element.addEventListener("mouseout", function(){menuManager("shrink", this)});
     element.addEventListener("click", function(){menuManager("click", this)});
@@ -222,7 +236,7 @@ function menuController(state) {
         }
     } else if (state === "click" && expanded == 0) {
 
-        console.log("Has been clicked");
+      
 
         setTimeout(() => {
 
@@ -302,18 +316,18 @@ function menuController(state) {
     }
 
     if (state === "topMenu" && expanded == 1) {
-        console.log("Top Click")
+      
         changeMenu("projects");
 
     }
     if (state === "bottomMenu" && expanded == 1) {
-        console.log("Bottom Click")
+      
         changeMenu("courses");
 
     }
 
     if (state === "topOn" && expanded == 1) {
-        console.log("HoverTop");
+      
         topMenuBG.classList.add("scaleUpTop");
         topText.classList.add("hText");
         menuCircleTop.classList.add("hCircle");
@@ -325,7 +339,7 @@ function menuController(state) {
     }
 
     if (state === "bottomOn" && expanded == 1) {
-        console.log("HoverBottom");
+      
         menuCircleBottom.classList.add("scaleUp");
         bottomMenuBG.classList.add("scaleUpBottom");
         bottomText.classList.add("hText");
@@ -337,7 +351,7 @@ function menuController(state) {
 
     }
     if (state === "topOff" && expanded == 1) {
-        console.log("OffTop");
+       
         menuCircleTop.classList.add("scaleDown")
         topMenuBG.classList.add("scaleDownTop")
         topText.classList.remove("hText");
@@ -351,7 +365,7 @@ function menuController(state) {
         }
     }
     if (state === "bottomOff" && expanded == 1) {
-        console.log("OffBottom");
+       
         menuCircleBottom.classList.add("scaleDown")
         bottomMenuBG.classList.add("scaleDownBottom")
         bottomText.classList.remove("hText");
@@ -439,6 +453,15 @@ function changeMenu(menuType) {
         menuOpen.classList.remove("show");
     }
 
+    if(menuType === "projects"){
+        currentContent = Projects;
+    }else if (menuType === "courses"){
+        currentContent = Courses;
+    }
+    
+   
+
+
 
     setTimeout(() => {;
 
@@ -453,13 +476,19 @@ function changeMenu(menuType) {
             element.classList.remove("zeroScale");
             element.innerHTML = `<p class="tileText">`+number+`</p>`;
             number++;
+            if(count <= currentContent.length - 1){
+                element.classList.add("border");
+            }else{
+                element.classList.add("borderRed");
+            }
+            count++;
+            
         });
 
         
     }, 550);
 
-currentContent = Lessons;
-console.log(numbers);
+
 
 
 
@@ -468,34 +497,39 @@ console.log(numbers);
 
 function menuManager(status, object){
 
- 
-    currentNumber = object.getElementsByTagName('p')[0].innerHTML;
-    console.log(currentNumber);
-    titleInfo.innerHTML = Lessons[currentNumber -1].name;
-    descriptionInfo.innerHTML = Lessons[currentNumber -1].description;
+    if(object.getElementsByTagName('p')[0].innerHTML <= currentContent.length){
 
-
-
-    if(status === "grow"){
-        object.classList.add("grow");
-
-        console.log(object.p.innerHTML);
-            currentNumber = object.getElementsByTagName("P").innerHTML;
-            console.log(currentNumber);
-
-            if(object.classList.contains("shrink")){
-                object.classList.remove("shrink")
-            }
-
-
-    }else if(status === "shrink"){
-        object.classList.add("shrink"); 
-
-            if(object.classList.contains("grow")){
-                object.classList.remove("grow")
-            }
+        currentNumber = object.getElementsByTagName('p')[0].innerHTML;
+        titleInfo.innerHTML = currentContent[currentNumber -1].name;
+        descriptionInfo.innerHTML = currentContent[currentNumber -1].description;
+    
+    
+    
+        if(status === "grow"){
+            object.classList.add("grow");
+            object.classList.add("z-index1");
+    
+    
+                currentNumber = object.getElementsByTagName("P").innerHTML;
+    
+                if(object.classList.contains("shrink")){
+                    object.classList.remove("shrink")
+                }
+    
+    
+        }else if(status === "shrink"){
+            object.classList.add("shrink"); 
+            object.classList.remove("z-index1");
+    
+                if(object.classList.contains("grow")){
+                    object.classList.remove("grow")
+                }
+    
+        }
 
     }
+ 
+
     
 
 }
