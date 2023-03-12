@@ -459,6 +459,7 @@ function changeMenu(menuType) {
     }, 550);
 
 currentContent = Lessons;
+console.log(numbers);
 
 
 
