@@ -237,6 +237,69 @@ circle {
     animation-name: shrink;
 }
 
+#returnbtn{
+   
+    position: relative;
+    top:1px;
+    background-color: black;
+    color: white;
+    font-size: large;
+    animation-duration: 1s;
+    width: 108px;
+    height: 38px;
+    z-index: 10;
+    transition-duration: 1s;
+    border: 1px black solid;
+    border-radius: 5px;
+
+}
+
+#returnbtn:hover{
+   
+    background: white;
+    color: black;
+    transition-duration: 1s;
+    border: 0;
+    width: 110px;
+    height: 40px;
+    top: 0;
+
+}
+
+#return::before{
+    content:'';
+    position: absolute;
+    width: 20px;
+    height: 120px;
+    background: white;
+    text-align: center;
+    top: -100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(-50%);
+    animation: rotation 4s linear infinite;
+    z-index: 0;
+
+
+}
+
+#return::after{
+    content: '';
+    position: absolute;
+    background: black;
+    inset: 2px;
+    z-index: -1;
+}
+
+#return{
+    
+    position: relative;
+    overflow: hidden;
+    width:110px;
+    height:40px;
+}
+
 .tileAnimation {
     animation-duration: var(--speed05);
     animation-fill-mode: forwards;
@@ -491,6 +554,18 @@ circle {
     to {
 
         transform: scale(100%);
+
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+
+        transform: rotate(360deg);
 
     }
 }

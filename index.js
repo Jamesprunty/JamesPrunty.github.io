@@ -30,6 +30,7 @@ let titleInfo = document.getElementById("title");
 let descriptionInfo = document.getElementById("description");
 let gridTiles = document.getElementById("parent").querySelectorAll("div");
 let count = 0;
+let returnbtn = document.querySelector("#returnbtn");
 
 const Projects =[
 
@@ -158,6 +159,8 @@ gridTiles.forEach(element => {
     element.addEventListener("mouseout", function(){menuManager("shrink", this)});
     element.addEventListener("click", function(){menuManager("click", this)});
 });
+
+returnbtn.addEventListener('click', function(){changeMenu("returnbtn")});
 
 
 
@@ -404,6 +407,44 @@ function changeSpeed(duration) {
 
 function changeMenu(menuType) {
 
+    if(menuType === "returnbtn"){
+
+        gridContainer.classList.add("zeroScale")
+        parent.classList.add("zeroScale");
+        gridPage.classList.add("zeroScale");
+
+        setTimeout(() => {
+            BGs.forEach(element => {
+                element.classList.remove("hidden"); 
+             });
+     
+             circles.forEach(element => {
+                 element.classList.remove("hidden");
+             });
+     
+             SVGContainer.classList.remove("hidden");
+
+             number = 1;
+             count = 0;
+
+             gridTiles.forEach(element => {
+
+                if(element.classList.contains("border"))
+                {element.classList.remove("border")};
+
+                if(element.classList.contains("borderRed"))
+                {element.classList.remove("borderRed")};
+
+
+
+             });
+
+
+
+        }, 550);
+
+    }else{
+
     
     
     menuCircle.classList.add("scaleDownFull")
@@ -427,6 +468,8 @@ function changeMenu(menuType) {
         });
 
         SVGContainer.classList.add("hidden");
+
+        menuCircle.classList.add("scaleUp")
         
     }, 130);
 
@@ -489,7 +532,7 @@ function changeMenu(menuType) {
     }, 550);
 
 
-
+    }
 
 
 }
