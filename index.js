@@ -51,96 +51,124 @@ const Projects =[
 
 const Courses = [
     {
+        name: "DrumKit",
+        description: "Interactive DurmKit - Press the buttons to play."
+    },
+    {
+        name: "Piano",
+        description: "Interactive piano - Press keys to play, or type a message and hear it played back."
+    },
+    {
         name: "Clock",
-        description: "A JS clock"
+        description: "Clock that shows the time."
     },
     {
         name: "Clock V2",
-        description: "Slightly edited verison of the clock, including alarm and time zones"
+        description: "Slightly edited verison of the clock, including alarm and time zones."
     },
     {
-        name: "Lesson-02"
+        name: "CSS Variables",
+        description: "Using CSS variables to edit an image."
     },
     {
-        name: "Lesson-02-Advanced"
+        name: "CSS Variables - Selection",
+        description: "Select which image to edit and modify CSS variables."
     },
     {
-        name: "Lesson-03"
+        name: "Array Cardio",
+        description: "Working with different Arrays."
     },
     {
-        name: "Lesson-03-Advanced"
+        name: "Poeple Sorter V1",
+        description: "Version 1 of people sorter - Add person from wikipedia and sort by different catagories."
     },
     {
-        name: "Lesson-04"
+        name: "Flex Panels",
+        description: "An example of flex panels."
     },
     {
-        name: "Lesson-04-Advanced"
+        name: "Flex Panels V2",
+        description: "Slight modifications on the flex panels."
     },
     {
-        name: "Lesson-05"
+        name: "Type ahead",
+        description: "Type to search - Displays cities in America."
     },
     {
-        name: "Lesson-05-Advanced"
+        name: "People Soter V2",
+        description: "Search for peloaded famous names to search for."
     },
     {
-        name: "Lesson-06"
+        name: "Array Cardio V2",
+        description: "Working with Arrays Pt2."
     },
     {
-        name: "Lesson-06-Advanced"
+        name: "People Sorter V3",
+        description: "Select user in table to select."
     },
     {
-        name: "Lesson-07"
+        name: "HTML Canvas",
+        description: "Simple drawing canvas."
     },
     {
-        name: "Lesson-07-Advanced"
+        name: "HTML Canvas V2",
+        description: "Added change pen and color, add the ability to save and download."
     },
     {
-        name: "Lesson-08"
+        name: "Dev Tools",
+        description: "Usefull tools for working with code"
     },
     {
-        name: "Lesson-08-Advanced"
+        name: "Dev Tools in practice",
+        description: "Examples of Dev tools in practice."
     },
     {
-        name: "Lesson-09"
+        name: "Hold Shift click (My code)",
+        description: "Shift click example - My version."
     },
     {
-        name: "Lesson-09-Advanced"
+        name: "Hold Shift click (MosBos)",
+        description: "Shift click example - Mosbos version."
     },
     {
-        name: "Lesson-10"
+        name: "Video Player",
+        description: "Simple video controls."
     },
     {
-        name: "Lesson-10-Advanced"
+        name: "Video Player V2",
+        description: "Video Player with added full screen button."
     },
     {
-        name: "Lesson-11"
+        name: "Key Sequence Detection",
+        description: "detects keys logged."
     },
     {
-        name: "Lesson-11-Advanced"
+        name: "Key Sequence Detection V2",
+        description: "Puzzle including Key Sequence."
     },
     {
-        name: "Lesson-12"
+        name: "Slide & Scroll",
+        description: "Images slide in as you scroll down."
     },
     {
-        name: "Lesson-12-Advanced"
+        name: "Slide & Scroll V2",
+        description: "*Still needs doing*"
     },
     {
-        name: "Lesson-13"
+        name: "Copying & Reference",
+        description: "Understanding Copying and reference."
     },
     {
-        name: "Lesson-13-Advanced"
+        name: "Copying and Reference V2",
+        description: "Visual example of copying and reference."
     },
     {
-        name: "Lesson-14"
+        name: "Local Storage",
+        description: "Retrieve information from local storage."
     },
     {
-        name: "Lesson-14-Advanced"
-    },
-    {
-        name: "Lesson-15"
-    },
-    {
-        name: "Lesson-15-Advanced"
+        name: "People Sorter V4",
+        description: "Added saved seaches to local storage."
     },
 ];
 
