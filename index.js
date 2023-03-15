@@ -32,6 +32,7 @@ let gridTiles = document.getElementById("parent").querySelectorAll("div");
 let count = 0;
 let returnbtn = document.querySelector("#returnbtn");
 let growfull = false;
+let growfullObj = document.querySelector(".growFull");
 
 const Projects = [
 
@@ -468,6 +469,10 @@ function changeMenu(menuType) {
 
     if (menuType === "returnbtn") {
 
+        if(growfull == false){
+            
+        
+
         gridContainer.classList.add("zeroScale")
         parent.classList.add("zeroScale");
         gridPage.classList.add("zeroScale");
@@ -500,6 +505,24 @@ function changeMenu(menuType) {
 
         }, 550);
 
+    }else if(growfull == true){
+
+        growfullObj = document.querySelector(".growFull");
+
+        if(growfullObj.classList.contains("growFull")){
+            growfullObj.classList.remove("growFull");
+        };
+
+        growfullObj.innerHTML = `<p class="tileText">` + (currentNumber+1) + `</p>`;
+
+        growfull = false;
+
+
+
+
+
+
+    }
     } else {
 
 
@@ -674,7 +697,7 @@ function menuManager(status, object) {
             console.log(directory);
     
     
-            object.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"><input type="button" name="returnbtn" id="returnbtn" value="Return"></div></div>`
+            object.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"></div></div>`
     
         }
 

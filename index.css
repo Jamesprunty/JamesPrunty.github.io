@@ -281,6 +281,25 @@ circle {
 
 }
 
+object{
+
+    top: 0%;
+    position: relative;
+  
+    width: 90%;
+    height: 90%;
+  }
+
+#returnbtn:active{
+    transition-duration: 0s;
+    background: black;
+    color: white;
+}
+
+.opacityLow{
+    opacity: 4%;
+}
+
 #return::before{
     content:'';
     position: absolute;
