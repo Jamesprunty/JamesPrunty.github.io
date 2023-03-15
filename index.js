@@ -565,7 +565,6 @@ function changeMenu(menuType) {
 
 }
 
-
 function menuManager(status, object){
 
     if(object.getElementsByTagName('p')[0].innerHTML <= currentContent.length){
