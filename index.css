@@ -236,6 +236,19 @@ circle {
 .shrink {
     animation-name: shrink;
 }
+.growFull{
+    position: absolute;
+    width: 70%;
+    height: 70%;
+
+
+}
+
+#innerPage{
+  width: 100%;
+  height: 100%;
+  border: white 1px solid;
+}
 
 #returnbtn{
    

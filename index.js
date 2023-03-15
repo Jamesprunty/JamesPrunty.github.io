@@ -31,8 +31,9 @@ let descriptionInfo = document.getElementById("description");
 let gridTiles = document.getElementById("parent").querySelectorAll("div");
 let count = 0;
 let returnbtn = document.querySelector("#returnbtn");
+let growfull = false;
 
-const Projects =[
+const Projects = [
 
     {
         name: "Marcov Model",
@@ -52,123 +53,153 @@ const Projects =[
 const Courses = [
     {
         name: "DrumKit",
-        description: "Interactive DurmKit - Press the buttons to play."
+        description: "Interactive DurmKit - Press the buttons to play.",
+        folderName: "Lesson-01"
     },
     {
         name: "Piano",
-        description: "Interactive piano - Press keys to play, or type a message and hear it played back."
+        description: "Interactive piano - Press keys to play, or type a message and hear it played back.",
+        folderName: "Lesson-01-Advanced"
     },
     {
         name: "Clock",
-        description: "Clock that shows the time."
+        description: "Clock that shows the time.",
+        folderName: "Lesson-02"
     },
     {
         name: "Clock V2",
-        description: "Slightly edited verison of the clock, including alarm and time zones."
+        description: "Slightly edited verison of the clock, including alarm and time zones.",
+        folderName: "Lesson-02-Advanced"
     },
     {
         name: "CSS Variables",
-        description: "Using CSS variables to edit an image."
+        description: "Using CSS variables to edit an image.",
+        folderName: "Lesson-03"
     },
     {
         name: "CSS Variables - Selection",
-        description: "Select which image to edit and modify CSS variables."
+        description: "Select which image to edit and modify CSS variables.",
+        folderName: "Lesson-03-Advanced"
     },
     {
         name: "Array Cardio",
-        description: "Working with different Arrays."
+        description: "Working with different Arrays.",
+        folderName: "Lesson-04"
     },
     {
         name: "Poeple Sorter V1",
-        description: "Version 1 of people sorter - Add person from wikipedia and sort by different catagories."
+        description: "Version 1 of people sorter - Add person from wikipedia and sort by different catagories.",
+        folderName: "Lesson-04-Advanced"
     },
     {
         name: "Flex Panels",
-        description: "An example of flex panels."
+        description: "An example of flex panels.",
+        folderName: "Lesson-05"
     },
     {
         name: "Flex Panels V2",
-        description: "Slight modifications on the flex panels."
+        description: "Slight modifications on the flex panels.",
+        folderName: "Lesson-05-Advanced"
     },
     {
         name: "Type ahead",
-        description: "Type to search - Displays cities in America."
+        description: "Type to search - Displays cities in America.",
+        folderName: "Lesson-06"
     },
     {
         name: "People Soter V2",
-        description: "Search for peloaded famous names to search for."
+        description: "Search for peloaded famous names to search for.",
+        folderName: "Lesson-06-Advanced"
     },
     {
         name: "Array Cardio V2",
-        description: "Working with Arrays Pt2."
+        description: "Working with Arrays Pt2.",
+        folderName: "Lesson-07"
     },
     {
         name: "People Sorter V3",
-        description: "Select user in table to select."
+        description: "Select user in table to select.",
+        folderName: "Lesson-07-Advanced"
     },
     {
         name: "HTML Canvas",
-        description: "Simple drawing canvas."
+        description: "Simple drawing canvas.",
+        folderName: "Lesson-08"
     },
     {
         name: "HTML Canvas V2",
-        description: "Added change pen and color, add the ability to save and download."
+        description: "Added change pen and color, add the ability to save and download.",
+        folderName: "Lesson-08-Advanced"
     },
     {
         name: "Dev Tools",
-        description: "Usefull tools for working with code"
+        description: "Usefull tools for working with code",
+        folderName: "Lesson-09"
     },
     {
         name: "Dev Tools in practice",
-        description: "Examples of Dev tools in practice."
+        description: "Examples of Dev tools in practice.",
+        folderName: "Lesson-09-Advanced"
     },
     {
         name: "Hold Shift click (My code)",
-        description: "Shift click example - My version."
+        description: "Shift click example - My version.",
+        folderName: "Lesson-10"
     },
     {
         name: "Hold Shift click (MosBos)",
-        description: "Shift click example - Mosbos version."
+        description: "Shift click example - Mosbos version.",
+        folderName: "Lesson-10-Advanced"
     },
     {
         name: "Video Player",
-        description: "Simple video controls."
+        description: "Simple video controls.",
+        folderName: "Lesson-11"
     },
     {
         name: "Video Player V2",
-        description: "Video Player with added full screen button."
+        description: "Video Player with added full screen button.",
+        folderName: "Lesson-11-Advanced"
     },
     {
         name: "Key Sequence Detection",
-        description: "detects keys logged."
+        description: "detects keys logged.",
+        folderName: "Lesson-12"
     },
     {
         name: "Key Sequence Detection V2",
-        description: "Puzzle including Key Sequence."
+        description: "Puzzle including Key Sequence.",
+        folderName: "Lesson-12-Advanced"
     },
     {
         name: "Slide & Scroll",
-        description: "Images slide in as you scroll down."
+        description: "Images slide in as you scroll down.",
+        folderName: "Lesson-13"
     },
     {
         name: "Slide & Scroll V2",
-        description: "*Still needs doing*"
+        description: "*Still needs doing*",
+        folderName: "Lesson-13-Advanced"
     },
     {
         name: "Copying & Reference",
-        description: "Understanding Copying and reference."
+        description: "Understanding Copying and reference.",
+        folderName: "Lesson-14"
     },
     {
         name: "Copying and Reference V2",
-        description: "Visual example of copying and reference."
+        description: "Visual example of copying and reference.",
+        folderName: "Lesson-14-Advanced"
     },
     {
         name: "Local Storage",
-        description: "Retrieve information from local storage."
+        description: "Retrieve information from local storage.",
+        folderName: "Lesson-15"
     },
     {
         name: "People Sorter V4",
-        description: "Added saved seaches to local storage."
+        description: "Added saved seaches to local storage.",
+        folderName: "Lesson-15-Advanced"
     },
 ];
 
@@ -183,12 +214,12 @@ changeSpeed(1);
 gridTiles.forEach(element => {
     element.classList.add("tileAnimation");
     element.classList.add("tileBackground");
-    element.addEventListener("mouseover", function(){menuManager("grow", this)});
-    element.addEventListener("mouseout", function(){menuManager("shrink", this)});
-    element.addEventListener("click", function(){menuManager("click", this)});
+    element.addEventListener("mouseover", function () { menuManager("grow", this) });
+    element.addEventListener("mouseout", function () { menuManager("shrink", this) });
+    element.addEventListener("click", function () { menuManager("click", this) });
 });
 
-returnbtn.addEventListener('click', function(){changeMenu("returnbtn")});
+returnbtn.addEventListener('click', function () { changeMenu("returnbtn") });
 
 
 
@@ -267,7 +298,7 @@ function menuController(state) {
         }
     } else if (state === "click" && expanded == 0) {
 
-      
+
 
         setTimeout(() => {
 
@@ -275,14 +306,14 @@ function menuController(state) {
             if (menuOpen.classList.contains("hidden")) {
                 menuOpen.classList.remove("hidden");
             }
-            
+
         }, 100);
-       
+
         menuCircle.classList.add("scaleUpFull")
         topMenuBG.classList.add("BGtopMenu");
         midMenuBG.classList.add("BGmidMenu");
         bottomMenuBG.classList.add("BGbottomMenu");
-        
+
 
 
         if (menuCircle.classList.contains("scaleUp")) {
@@ -347,18 +378,18 @@ function menuController(state) {
     }
 
     if (state === "topMenu" && expanded == 1) {
-      
+
         changeMenu("projects");
 
     }
     if (state === "bottomMenu" && expanded == 1) {
-      
+
         changeMenu("courses");
 
     }
 
     if (state === "topOn" && expanded == 1) {
-      
+
         topMenuBG.classList.add("scaleUpTop");
         topText.classList.add("hText");
         menuCircleTop.classList.add("hCircle");
@@ -370,7 +401,7 @@ function menuController(state) {
     }
 
     if (state === "bottomOn" && expanded == 1) {
-      
+
         menuCircleBottom.classList.add("scaleUp");
         bottomMenuBG.classList.add("scaleUpBottom");
         bottomText.classList.add("hText");
@@ -382,7 +413,7 @@ function menuController(state) {
 
     }
     if (state === "topOff" && expanded == 1) {
-       
+
         menuCircleTop.classList.add("scaleDown")
         topMenuBG.classList.add("scaleDownTop")
         topText.classList.remove("hText");
@@ -396,7 +427,7 @@ function menuController(state) {
         }
     }
     if (state === "bottomOff" && expanded == 1) {
-       
+
         menuCircleBottom.classList.add("scaleDown")
         bottomMenuBG.classList.add("scaleDownBottom")
         bottomText.classList.remove("hText");
@@ -435,7 +466,7 @@ function changeSpeed(duration) {
 
 function changeMenu(menuType) {
 
-    if(menuType === "returnbtn"){
+    if (menuType === "returnbtn") {
 
         gridContainer.classList.add("zeroScale")
         parent.classList.add("zeroScale");
@@ -443,121 +474,121 @@ function changeMenu(menuType) {
 
         setTimeout(() => {
             BGs.forEach(element => {
-                element.classList.remove("hidden"); 
-             });
-     
-             circles.forEach(element => {
-                 element.classList.remove("hidden");
-             });
-     
-             SVGContainer.classList.remove("hidden");
+                element.classList.remove("hidden");
+            });
 
-             number = 1;
-             count = 0;
+            circles.forEach(element => {
+                element.classList.remove("hidden");
+            });
 
-             gridTiles.forEach(element => {
+            SVGContainer.classList.remove("hidden");
 
-                if(element.classList.contains("border"))
-                {element.classList.remove("border")};
+            number = 1;
+            count = 0;
 
-                if(element.classList.contains("borderRed"))
-                {element.classList.remove("borderRed")};
+            gridTiles.forEach(element => {
+
+                if (element.classList.contains("border")) { element.classList.remove("border") };
+
+                if (element.classList.contains("borderRed")) { element.classList.remove("borderRed") };
 
 
 
-             });
+            });
 
 
 
         }, 550);
 
-    }else{
+    } else {
 
-    
-    
-    menuCircle.classList.add("scaleDownFull")
-    topMenuBG.classList.add("BGupR");
-    midMenuBG.classList.add("BGmidR");
-    bottomMenuBG.classList.add("BGdownR");
-    menuOpen.classList.add("hidden");
 
-    circleInside.forEach(element => {
-        element.classList.add("hidden");
-    });
 
-    setTimeout(() => {;
+        menuCircle.classList.add("scaleDownFull")
+        topMenuBG.classList.add("BGupR");
+        midMenuBG.classList.add("BGmidR");
+        bottomMenuBG.classList.add("BGdownR");
+        menuOpen.classList.add("hidden");
 
-        BGs.forEach(element => {
-           element.classList.add("hidden"); 
-        });
-
-        circles.forEach(element => {
+        circleInside.forEach(element => {
             element.classList.add("hidden");
         });
 
-        SVGContainer.classList.add("hidden");
+        setTimeout(() => {
+            ;
 
-        menuCircle.classList.add("scaleUp")
-        
-    }, 130);
+            BGs.forEach(element => {
+                element.classList.add("hidden");
+            });
 
+            circles.forEach(element => {
+                element.classList.add("hidden");
+            });
 
-    if (menuCircle.classList.contains("scaleUp")) {
-        menuCircle.classList.remove("scaleUp");
-    }
-    if (menuCircle.classList.contains("scaleUpFull")) {
-        menuCircle.classList.remove("scaleUpFull");
-    }
-    if (menuCircle.classList.contains("scaleDown")) {
-        menuCircle.classList.remove("scaleDown");
-    }
-    if (topMenuBG.classList.contains("BGtopMenu")) {
-        topMenuBG.classList.remove("BGtopMenu");
-    }
-    if (midMenuBG.classList.contains("BGmidMenu")) {
-        midMenuBG.classList.remove("BGmidMenu");
-    }
-    if (bottomMenuBG.classList.contains("BGbottomMenu")) {
-        bottomMenuBG.classList.remove("BGbottomMenu");
-    }
-    if (menuOpen.classList.contains("show")) {
-        menuOpen.classList.remove("show");
-    }
+            SVGContainer.classList.add("hidden");
 
-    if(menuType === "projects"){
-        currentContent = Projects;
-    }else if (menuType === "courses"){
-        currentContent = Courses;
-    }
-    
-   
+            menuCircle.classList.add("scaleUp")
+
+        }, 130);
 
 
+        if (menuCircle.classList.contains("scaleUp")) {
+            menuCircle.classList.remove("scaleUp");
+        }
+        if (menuCircle.classList.contains("scaleUpFull")) {
+            menuCircle.classList.remove("scaleUpFull");
+        }
+        if (menuCircle.classList.contains("scaleDown")) {
+            menuCircle.classList.remove("scaleDown");
+        }
+        if (topMenuBG.classList.contains("BGtopMenu")) {
+            topMenuBG.classList.remove("BGtopMenu");
+        }
+        if (midMenuBG.classList.contains("BGmidMenu")) {
+            midMenuBG.classList.remove("BGmidMenu");
+        }
+        if (bottomMenuBG.classList.contains("BGbottomMenu")) {
+            bottomMenuBG.classList.remove("BGbottomMenu");
+        }
+        if (menuOpen.classList.contains("show")) {
+            menuOpen.classList.remove("show");
+        }
 
-    setTimeout(() => {;
+        if (menuType === "projects") {
+            currentContent = Projects;
+        } else if (menuType === "courses") {
+            currentContent = Courses;
+        }
 
-        gridContainer.classList.remove("zeroScale")
-        parent.classList.remove("zeroScale");
-        gridPage.classList.remove("zeroScale");
 
-        titleInfo.innerHTML = titleText;
-        descriptionInfo.innerHTML = descriptionText;
 
-        gridTiles.forEach(element => {
-            element.classList.remove("zeroScale");
-            element.innerHTML = `<p class="tileText">`+number+`</p>`;
-            number++;
-            if(count <= currentContent.length - 1){
-                element.classList.add("border");
-            }else{
-                element.classList.add("borderRed");
-            }
-            count++;
-            
-        });
 
-        
-    }, 550);
+
+        setTimeout(() => {
+            ;
+
+            gridContainer.classList.remove("zeroScale")
+            parent.classList.remove("zeroScale");
+            gridPage.classList.remove("zeroScale");
+
+            titleInfo.innerHTML = titleText;
+            descriptionInfo.innerHTML = descriptionText;
+
+            gridTiles.forEach(element => {
+                element.classList.remove("zeroScale");
+                element.innerHTML = `<p class="tileText">` + number + `</p>`;
+                number++;
+                if (count <= currentContent.length - 1) {
+                    element.classList.add("border");
+                } else {
+                    element.classList.add("borderRed");
+                }
+                count++;
+
+            });
+
+
+        }, 550);
 
 
     }
@@ -565,41 +596,92 @@ function changeMenu(menuType) {
 
 }
 
-function menuManager(status, object){
+function menuManager(status, object) {
 
-    if(object.getElementsByTagName('p')[0].innerHTML <= currentContent.length){
+    if (growfull == false) {
 
-        currentNumber = object.getElementsByTagName('p')[0].innerHTML;
-        titleInfo.innerHTML = currentContent[currentNumber -1].name;
-        descriptionInfo.innerHTML = currentContent[currentNumber -1].description;
-    
-    
-    
-        if(status === "grow"){
-            object.classList.add("grow");
-            object.classList.add("z-index1");
-    
-    
+        if (object.getElementsByTagName('p')[0].innerHTML <= currentContent.length) {
+
+            currentNumber = object.getElementsByTagName('p')[0].innerHTML;
+            titleInfo.innerHTML = currentContent[currentNumber - 1].name;
+            descriptionInfo.innerHTML = currentContent[currentNumber - 1].description;
+
+
+
+            if (status === "grow") {
+                object.classList.add("grow");
+                object.classList.add("z-index1");
+
+
                 currentNumber = object.getElementsByTagName("P").innerHTML;
-    
-                if(object.classList.contains("shrink")){
+
+                if (object.classList.contains("growFull")) {
+                    object.classList.remove("growFull")
+                }
+
+                if (object.classList.contains("shrink")) {
                     object.classList.remove("shrink")
                 }
-    
-    
-        }else if(status === "shrink"){
-            object.classList.add("shrink"); 
-            object.classList.remove("z-index1");
-    
-                if(object.classList.contains("grow")){
+
+
+            } else if (status === "shrink") {
+                object.classList.add("shrink");
+                object.classList.remove("z-index1");
+
+
+                if (object.classList.contains("growFull")) {
+                    object.classList.remove("growFull")
+                }
+
+                if (object.classList.contains("grow")) {
                     object.classList.remove("grow")
                 }
+
+            }
+
+        }
+    }
+
+    if (status === "click") {
+       
+
+        if (object.classList.contains("shrink")) {
+            object.classList.remove("shrink")
+        }
+        if (object.classList.contains("grow")) {
+            object.classList.remove("grow")
+        }
+
+        if(growfull == true){
+            growfull = false;
+        }else if (growfull == false){
+            growfull = true;
+            console.log("GROWFULL");
+
+            object.classList.add("growFull");
+    
+            currentNumber = object.getElementsByTagName('p')[0].innerHTML;
+    
+            console.log(currentNumber);
+            Number(currentNumber);
+
+            currentNumber -= 1;
+    
+            let folder = currentContent[currentNumber].folderName;
+    
+            let directory = "../JS30/" + folder + "/" + folder + ".html";
+    
+            console.log(directory);
+    
+    
+            object.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"><input type="button" name="returnbtn" id="returnbtn" value="Return"></div></div>`
     
         }
 
+        
     }
- 
 
-    
+
+
 
 }
