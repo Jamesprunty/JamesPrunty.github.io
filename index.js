@@ -513,6 +513,12 @@ function changeMenu(menuType) {
             growfullObj.classList.remove("growFull");
         };
 
+        if(growfullObj.classList.contains("z-index1")){
+            growfullObj.classList.remove("z-index1");
+        };
+
+
+
         growfullObj.innerHTML = `<p class="tileText">` + (currentNumber+1) + `</p>`;
 
         growfull = false;
