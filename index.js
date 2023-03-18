@@ -234,12 +234,12 @@ const Courses = [
     },
     {
         name: "Photobooth",
-        description: "Working with Webcam",
+        description: "Working with Webcam and manipulating the image",
         folderName: "Lesson-19"
     },
     {
-        name: "TBD",
-        description: "TBD",
+        name: "photoBooth V2",
+        description: "Create a colour picker to get the greenscreen colour, also selectable filters",
         folderName: "Lesson-19-Advanced"
     },
 ];
