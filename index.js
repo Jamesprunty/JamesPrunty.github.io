@@ -198,9 +198,19 @@ const Courses = [
         folderName: "Lesson-15"
     },
     {
-        name: "People Sorter V4",
-        description: "Added saved seaches to local storage.",
+        name: "Advanced local storage",
+        description: "Added check all, clear, uncheck all and save to local storage",
         folderName: "Lesson-15-Advanced"
+    },
+    {
+        name: "CSS Text Shadow Mouse Move Effect",
+        description: "",
+        folderName: "Lesson-16"
+    },
+    {
+        name: "CSS Text Shadow Mouse Move Effect",
+        description: "",
+        folderName: "Lesson-16-Advanced"
     },
 ];
 
