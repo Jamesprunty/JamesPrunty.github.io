@@ -208,19 +208,39 @@ const Courses = [
         folderName: "Lesson-16"
     },
     {
-        name: "CSS Text Shadow Mouse Move Effect",
-        description: "*STILL TO DO*",
+        name: "Box CSS shadow mouse move",
+        description: "Added the effect to a box instead of text and added inset shadow",
         folderName: "Lesson-16-Advanced"
     },
     {
-        name: "Sorting band names without articles",
-        description: "Sort the band names without the articles (e.g.'The' or 'An') *My Code*",
+        name: "Sorting band names without articles (Me)",
+        description: "Sort the band names without the articles (e.g.'The' or 'An') *My Code",
         folderName: "Lesson-17"
     },
     {
-        name: "CSS Text Shadow Mouse Move Effect",
-        description: "*STILL TO DO*",
+        name: "Sorting band names without articles (MosBos)",
+        description: "Sort the band names without the articles (e.g.'The' or 'An') *MosBos Code*",
         folderName: "Lesson-17-Advanced"
+    },
+    {
+        name: "Tally string times with Reduce",
+        description: "Add up all the times for videos and turn them into hours/mins/seconds",
+        folderName: "Lesson-18"
+    },
+    {
+        name: "TBD",
+        description: "TBD",
+        folderName: "Lesson-18-Advanced"
+    },
+    {
+        name: "Photobooth",
+        description: "Working with Webcam",
+        folderName: "Lesson-19"
+    },
+    {
+        name: "TBD",
+        description: "TBD",
+        folderName: "Lesson-19-Advanced"
     },
 ];
 

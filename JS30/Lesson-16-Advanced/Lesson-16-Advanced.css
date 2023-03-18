@@ -1,6 +1,15 @@
 html {
     color: black;
     font-family: sans-serif;
+    background-color: black;
+  }
+
+  .box{
+    width: 200px;
+    height: 200px;
+    border:white 3px solid;
+
+    
   }
 
   body {
@@ -13,9 +22,5 @@ html {
     justify-content: center;
     align-items: center;
     color: black;
-  }
-
-  h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 100px;
+    border: 1px white solid;
   }
