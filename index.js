@@ -179,7 +179,7 @@ const Courses = [
     },
     {
         name: "Slide & Scroll V2",
-        description: "*Still needs doing*",
+        description: "*STILL TO DO*",
         folderName: "Lesson-13-Advanced"
     },
     {
@@ -189,7 +189,7 @@ const Courses = [
     },
     {
         name: "Copying and Reference V2",
-        description: "Visual example of copying and reference.",
+        description: "Visual example of copying and reference *NEEDS FINISHING*.",
         folderName: "Lesson-14-Advanced"
     },
     {
@@ -204,13 +204,23 @@ const Courses = [
     },
     {
         name: "CSS Text Shadow Mouse Move Effect",
-        description: "",
+        description: "Shadow moves with the mouse position on the page",
         folderName: "Lesson-16"
     },
     {
         name: "CSS Text Shadow Mouse Move Effect",
-        description: "",
+        description: "*STILL TO DO*",
         folderName: "Lesson-16-Advanced"
+    },
+    {
+        name: "Sorting band names without articles",
+        description: "Sort the band names without the articles (e.g.'The' or 'An') *My Code*",
+        folderName: "Lesson-17"
+    },
+    {
+        name: "CSS Text Shadow Mouse Move Effect",
+        description: "*STILL TO DO*",
+        folderName: "Lesson-17-Advanced"
     },
 ];
 
