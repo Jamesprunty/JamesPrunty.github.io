@@ -3,6 +3,9 @@ const canvas = document.querySelector('.photo');
 const ctx = canvas.getContext('2d');
 const strip = document.querySelector('.strip');
 const snap = document.querySelector('.snap');
+const r = document.querySelector(':root');
+let pixelLocation;
+
 
 
 function getVideo() {
@@ -156,6 +159,55 @@ getVideo();
 
 //Once this video starts playing, it will send out an event called 'canplay'
 video.addEventListener('canplay', paintToCanvas);
+
+
+canvas.addEventListener('mousedown', (e) => {
+    //Get cursor position on canvas
+    getCursorPosition(canvas, e)});
+
+
+let getCursorPosition =  (canvas, e) => {
+    //Get the size of rect
+    const rect = canvas.getBoundingClientRect()
+    //Get position compared to canvas
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+
+    let pixels = ctx.getImageData(0, 0, width, height);
+
+    console.log(x, y);
+
+    let pixelRaw = (x * y);
+
+    let pixelLocation = (x * 4) + (y * 4);
+
+    //console.log(pixelLocation);
+    
+    let pixelRed = pixels.data[((width * y) + x) * 4];
+    let pixelGreen = pixels.data[((width * y) + x) * 4 + 1];
+    let pixelBlue = pixels.data[((width * y) + x) * 4 + 2];
+    let pixelAlpha = pixels.data[((width * y) + x) * 4 + 3];
+
+    let rgbValue = pixelRed + "," + pixelGreen + "," + pixelBlue;
+
+    r.style.setProperty('--color', rgbValue);
+
+    document.getElementById("rmin").value = pixelRed - 200;
+    document.getElementById("gmin").value = pixelRed + 200;
+    document.getElementById("bmin").value = pixelGreen - 200;
+    document.getElementById("rmax").value = pixelGreen + 200;
+    document.getElementById("gmax").value = pixelBlue - 200;
+    document.getElementById("bmax").value = pixelBlue + 200;
+
+  }
+
+
+
+
+
 
 
 

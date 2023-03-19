@@ -12,23 +12,23 @@
       <button onClick="takePhoto()">Take Photo</button>
        <div class="rgb">
         <label for="rmin">Red Min:</label>
-        <input type="range" min=0 max=255 name="rmin">
+        <input type="range" min=0 max=255 name="rmin" id="rmin">
         <label for="rmax">Red Max:</label>
-        <input type="range" min=0 max=255 name="rmax">
+        <input type="range" min=0 max=255 name="rmax" id="rmax">
 
         <br>
 
         <label for="gmin">Green Min:</label>
-        <input type="range" min=0 max=255 name="gmin">
+        <input type="range" min=0 max=255 name="gmin" id="gmin">
         <label for="gmax">Green Max:</label>
-        <input type="range" min=0 max=255 name="gmax">
+        <input type="range" min=0 max=255 name="gmax" id="gmax">
 
         <br>
 
         <label for="bmin">Blue Min:</label>
-        <input type="range" min=0 max=255 name="bmin">
+        <input type="range" min=0 max=255 name="bmin" id="bmin">
         <label for="bmax">Blue Max:</label>
-        <input type="range" min=0 max=255 name="bmax">
+        <input type="range" min=0 max=255 name="bmax" id="bmax">
       </div> 
     </div>
 
@@ -39,6 +39,8 @@
     <!--This is where we will put all of our images-->
     <div class="strip"></div>
   </div>
+
+  <div id="box"></div>
 
   <audio class="snap" src="./snap.mp3" hidden></audio>
 
