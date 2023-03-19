@@ -163,15 +163,19 @@ video.addEventListener('canplay', paintToCanvas);
 
 canvas.addEventListener('mousedown', (e) => {
     //Get cursor position on canvas
-    getCursorPosition(canvas, e)});
+    getCursorPosition(canvas, e)
+});
 
 
-let getCursorPosition =  (canvas, e) => {
+let getCursorPosition = (canvas, e) => {
     //Get the size of rect
     const rect = canvas.getBoundingClientRect()
     //Get position compared to canvas
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
+
+
+
 
     const width = video.videoWidth;
     const height = video.videoHeight;
@@ -180,12 +184,8 @@ let getCursorPosition =  (canvas, e) => {
 
     console.log(x, y);
 
-    let pixelRaw = (x * y);
-
-    let pixelLocation = (x * 4) + (y * 4);
-
     //console.log(pixelLocation);
-    
+
     let pixelRed = pixels.data[((width * y) + x) * 4];
     let pixelGreen = pixels.data[((width * y) + x) * 4 + 1];
     let pixelBlue = pixels.data[((width * y) + x) * 4 + 2];
@@ -193,16 +193,52 @@ let getCursorPosition =  (canvas, e) => {
 
     let rgbValue = pixelRed + "," + pixelGreen + "," + pixelBlue;
 
+    let numbers = [pixelRed, pixelGreen, pixelBlue];
+    numbers.sort((a, b) => a < b ? 1 : -1);
+
+    if (numbers[0] == pixelRed) {
+
+        document.getElementById("rmin").value = pixelRed - 90;
+        document.getElementById("rmax").value = pixelRed + 90;
+
+        document.getElementById("gmin").value = pixelGreen - 20;
+        document.getElementById("gmax").value = pixelGreen + 20;
+
+        document.getElementById("bmin").value = pixelBlue - 20;
+        document.getElementById("bmax").value = pixelBlue + 20;
+
+    }
+    if (numbers[0] == pixelGreen) {
+
+    } document.getElementById("rmin").value = pixelRed - 20;
+    document.getElementById("rmax").value = pixelRed + 20;
+
+    document.getElementById("gmin").value = pixelGreen - 90;
+    document.getElementById("gmax").value = pixelGreen + 90;
+
+    document.getElementById("bmin").value = pixelBlue - 20;
+    document.getElementById("bmax").value = pixelBlue + 20;
+
+    if (numbers[0] == pixelBlue) {
+
+        document.getElementById("rmin").value = pixelRed - 20;
+        document.getElementById("rmax").value = pixelRed + 20;
+
+        document.getElementById("gmin").value = pixelGreen - 20;
+        document.getElementById("gmax").value = pixelGreen + 20;
+
+        document.getElementById("bmin").value = pixelBlue - 90;
+        document.getElementById("bmax").value = pixelBlue + 90;
+    }
+
+    console.log(numbers);
     r.style.setProperty('--color', rgbValue);
+    console.log(pixels);
 
-    document.getElementById("rmin").value = pixelRed - 200;
-    document.getElementById("gmin").value = pixelRed + 200;
-    document.getElementById("bmin").value = pixelGreen - 200;
-    document.getElementById("rmax").value = pixelGreen + 200;
-    document.getElementById("gmax").value = pixelBlue - 200;
-    document.getElementById("bmax").value = pixelBlue + 200;
 
-  }
+    console.log(pixelRed,)
+
+}
 
 
 
