@@ -12,7 +12,8 @@ html {
 }
 
 .photobooth {
-  background: rgb(7, 145, 14);
+  background: url(./background.jfif);
+  background-size: 100% auto;
   max-width: 150rem;
   margin: 2rem auto;
   border-radius: 2px;

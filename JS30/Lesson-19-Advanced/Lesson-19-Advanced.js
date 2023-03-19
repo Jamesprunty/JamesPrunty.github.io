@@ -6,6 +6,56 @@ const snap = document.querySelector('.snap');
 const r = document.querySelector(':root');
 let pixelLocation;
 
+let redCheck = document.querySelector("#redCheck");
+let greenCheck = document.querySelector("#greenCheck");
+let blurCheck = document.querySelector("#blurCheck");
+
+redCheck.addEventListener('change', function(){
+    if (this.checked){
+
+        console.log("Check");
+        if(greenCheck.checked){
+            greenCheck.checked = false;
+        }
+        if(blurCheck.checked){
+            blurCheck.checked = false;
+        }
+        
+
+    }
+        
+})
+greenCheck.addEventListener('change', function(){
+    if (this.checked){
+
+        console.log("Check");
+        if(redCheck.checked){
+            redCheck.checked = false;
+        }
+        if(blurCheck.checked){
+            blurCheck.checked = false;
+        }
+        
+
+    }
+        
+})
+blurCheck.addEventListener('change', function(){
+    if (this.checked){
+
+        console.log("Check");
+        if(greenCheck.checked){
+            greenCheck.checked = false;
+        }
+        if(redCheck.checked){
+            redCheck.checked = false;
+        }
+        
+
+    }
+        
+})
+
 
 
 function getVideo() {
@@ -48,14 +98,25 @@ function paintToCanvas() {
         let pixels = ctx.getImageData(0, 0, width, height);
         //Run the pixels through the filter
 
-        //pixels = redEffect(pixels);
+        if(blurCheck.checked){
+            ctx.globalAlpha = 0.1;
+            let pixels = ctx.getImageData(0, 0, width, height);
+        }else if(greenCheck.checked){
+            pixels = greenScreen(pixels);
+            ctx.globalAlpha = 1;
+        } else if(redCheck.checked){
+            pixels = redEffect(pixels);
+            ctx.globalAlpha = 1;
+        }
+
+        
 
         //pixels = rgbSplit(pixels);
 
         //This will have the new frames come up but the others will still be visible for 10 frames causing a blur
-        //ctx.globalAlpha = 0.1;
+        
 
-        pixels = greenScreen(pixels);
+        
 
         //update the canvas
         ctx.putImageData(pixels, 0, 0);
@@ -174,9 +235,6 @@ let getCursorPosition = (canvas, e) => {
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
-
-
-
     const width = video.videoWidth;
     const height = video.videoHeight;
 
@@ -231,12 +289,9 @@ let getCursorPosition = (canvas, e) => {
         document.getElementById("bmax").value = pixelBlue + 90;
     }
 
-    console.log(numbers);
+
     r.style.setProperty('--color', rgbValue);
-    console.log(pixels);
 
-
-    console.log(pixelRed,)
 
 }
 
