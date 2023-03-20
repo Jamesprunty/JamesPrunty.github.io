@@ -239,8 +239,18 @@ const Courses = [
     },
     {
         name: "photoBooth V2",
-        description: "Create a colour picker to get the greenscreen colour, also selectable filters",
+        description: "Create a colour picker to get the greenscreen colour, also selectable filters *FIX GREENSCREEN SELECTION*",
         folderName: "Lesson-19-Advanced"
+    },
+    {
+        name: "Speech Detection",
+        description: "Type out whatever is said",
+        folderName: "Lesson-20"
+    },
+    {
+        name: "People Sorter V2",
+        description: "Integrate Voice commands into people sorter",
+        folderName: "Lesson-20-Advanced"
     },
 ];
 
