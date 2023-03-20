@@ -567,10 +567,7 @@ recognition.addEventListener('result', e => {
     console.log(transcript);
 
     if (transcript.includes('add person')) {
-        if (e.results[0].isFinal) {
 
-            searchBox.value = transcript;
-        }
     }
 
 });

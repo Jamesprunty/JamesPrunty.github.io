@@ -248,9 +248,49 @@ const Courses = [
         folderName: "Lesson-20"
     },
     {
-        name: "People Sorter V2",
+        name: "People Sorter V4",
         description: "Integrate Voice commands into people sorter",
         folderName: "Lesson-20-Advanced"
+    },
+    {
+        name: "Geolocation based speedometer and compass",
+        description: "Compass and speedometer",
+        folderName: "Lesson-21"
+    },
+    {
+        name: "Google Maps clone",
+        description: "*STILL NEED TO DO",
+        folderName: "Lesson-21-Advanced"
+    },
+    {
+        name: "Highlighter Follow",
+        description: "Highlight follows around the page when hovering",
+        folderName: "Lesson-22"
+    },
+    {
+        name: "Highlighter Follow Advanced",
+        description: "*STILL NEED TO DO*",
+        folderName: "Lesson-22-Advanced"
+    },
+    {
+        name: "Text to speech",
+        description: "Type message to speech, also change voice properties",
+        folderName: "Lesson-23"
+    },
+    {
+        name: "Text to speech Advanced",
+        description: "*STILL NEED TO DO*",
+        folderName: "Lesson-23-Advanced"
+    },
+    {
+        name: "sticky Nav bar",
+        description: "When you scroll passed the header the nav bar stays at the top",
+        folderName: "Lesson-24"
+    },
+    {
+        name: "Sticky Nav bar v2",
+        description: "*STILL NEED TO DO*",
+        folderName: "Lesson-24-Advanced"
     },
 ];
 
