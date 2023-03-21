@@ -292,6 +292,12 @@ const Courses = [
         description: "*STILL NEED TO DO*",
         folderName: "Lesson-24-Advanced"
     },
+    {
+        name: "Event Listener propagation",
+        description: "Event Listener Propagation, capture & bubbling",
+        folderName: "Lesson-25"
+    },
+
 ];
 
 
