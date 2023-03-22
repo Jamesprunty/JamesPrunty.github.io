@@ -297,6 +297,36 @@ const Courses = [
         description: "Event Listener Propagation, capture & bubbling",
         folderName: "Lesson-25"
     },
+    {
+        name: "Follow along Dropdown",
+        description: "Dropdown menu that follows and changes size",
+        folderName: "Lesson-26"
+    },
+    {
+        name: "Follow along Dropdown V2",
+        description: "*TBD*",
+        folderName: "Lesson-26-Advanced"
+    },
+    {
+        name: "Drag and scroll",
+        description: "Drag and scroll along",
+        folderName: "Lesson-27"
+    },
+    {
+        name: "Drag and Drop",
+        description: "Drag and drop fuction *TO DO*",
+        folderName: "Lesson-27-Advanced"
+    },
+    {
+        name: "Video speed controls",
+        description: "Change video speed with bar",
+        folderName: "Lesson-28"
+    },
+    {
+        name: "Video speed controls V2",
+        description: "Maybe only change speed when mousedown",
+        folderName: "Lesson-28-Advanced"
+    },
 
 ];
 
