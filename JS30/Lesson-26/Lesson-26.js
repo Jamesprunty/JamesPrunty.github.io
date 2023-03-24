@@ -48,3 +48,4 @@ triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter))
 triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
 
 
+console.log("TEST")
