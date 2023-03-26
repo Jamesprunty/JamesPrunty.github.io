@@ -327,6 +327,26 @@ const Courses = [
         description: "Maybe only change speed when mousedown",
         folderName: "Lesson-28-Advanced"
     },
+    {
+        name: "Countdown Timer",
+        description: "Set time to countdown, and show end time",
+        folderName: "Lesson-29"
+    },
+    {
+        name: "Countdown Timer V2",
+        description: "TBD",
+        folderName: "Lesson-29-Advanced"
+    },
+    {
+        name: "Wackamole",
+        description: "Wackamole game",
+        folderName: "Lesson-30"
+    },
+    {
+        name: "Wackamole V2",
+        description: "*Not done* Add timer show, final score and save high scores to localstorage",
+        folderName: "Lesson-28-Advanced"
+    },
 
 ];
 
