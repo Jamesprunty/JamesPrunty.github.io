@@ -341,7 +341,8 @@ object{
 
 }
 .tileBackground{
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(2.5px);
+    background-color: rgba(0, 0, 0, 0.5);
     
 
 }

@@ -75,7 +75,7 @@ xhr.onload = function () {
 
     info[0] = "Cars"
 
-    
+
 
 
 
@@ -123,25 +123,26 @@ xhr.onload = function () {
     var url4 = "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=" + actorsURL[2] + "&pageNumber=1&pageSize=10&autoCorrect=true";
 
 
-        xhr4.addEventListener("readystatechange", function () {
-            if (this.readyState === this.DONE) {
-                imageData = JSON.parse(this.response);
-                console.log(imageData);
-                actorsURLComplete.push(Object.values(imageData.value)[0].url);
-                console.log(actorsURLComplete);
-                info[3] = actorsURLComplete[2];
-;            }
-        });
+    xhr4.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+            imageData = JSON.parse(this.response);
+            console.log(imageData);
+            actorsURLComplete.push(Object.values(imageData.value)[0].url);
+            console.log(actorsURLComplete);
+            info[3] = actorsURLComplete[2];
+            ;
+        }
+    });
 
-        info[4] = release;
-        info[5] = plot;
+    info[4] = release;
+    info[5] = plot;
 
 
-        console.log("%c" + info, "color:red");
+    console.log("%c" + info, "color:red");
     console.log(url2);
 
 
-    
+
     xhr2.open('GET', url2, true);
     xhr3.open('GET', url3, true);
     xhr4.open('GET', url4, true);
@@ -159,41 +160,43 @@ xhr.onload = function () {
     xhr4.setRequestHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
 
 
-   
-        xhr2.send(data);
+
+    xhr2.send(data);
+
+    setTimeout(() => {
+        xhr3.send(data);
 
         setTimeout(() => {
-            xhr3.send(data);
-
-            setTimeout(() => {
-                xhr4.send(data);
-            }, 2000);
-
+            xhr4.send(data);
         }, 2000);
+
+    }, 2000);
 }
 xhr.send();
 
 
 function hintManager() {
 
-console.log(this);
+    console.log(this);
 
 
-if (this.value == "Next Hint"){
+    if (this.value == "Next Hint") {
 
-    number++;
-    guesses++;
+        console.log("%c" + info, "color:green");
 
-hints.forEach(element => {
+        number++;
+        guesses++;
 
-    if(element.value == number){
-        element.classList.remove("hidden");
-        imageHint.src = Object.values(info)[number];
+        hints.forEach(element => {
+
+            if (element.value == number) {
+                element.classList.remove("hidden");
+                imageHint.src = Object.values(info)[number];
+
+            }
+        });
 
     }
-});
-
-}
 
 
 
