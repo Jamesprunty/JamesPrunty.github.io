@@ -27,11 +27,11 @@ a:hover {
 
 #table, #tableStart {
 
-  border: black 2px solid;
+  border: rgb(255, 255, 255) 2px solid;
   border-collapse: collapse;
   margin: 25px 0;
   min-width: 500px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
   border-collapse: collapse;
   text-align: center;
   margin-left:auto; 
@@ -42,7 +42,7 @@ a:hover {
 }
 
 tr {
-  border-bottom: 1pt solid black;
+  border-bottom: 1pt solid rgb(255, 255, 255);
 }
 
 h1 {
@@ -94,7 +94,7 @@ p {
 }
 
 .suggestions li {
-  background: white;
+  background: rgb(0, 0, 0);
   list-style: none;
   border-bottom: 1px solid #D8D8D8;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
@@ -149,4 +149,24 @@ ul {
 
 color: red;
 
+}
+
+input[type="button"]{
+  background: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  margin:2px;
+  transition-duration: .2s;
+}
+
+input[type="button"]:hover{
+background:white;
+color: black;
+}
+
+input[type="text"], input[type="number"] {
+  border: white 2px solid;
+  color: white;
+  background: black;
 }

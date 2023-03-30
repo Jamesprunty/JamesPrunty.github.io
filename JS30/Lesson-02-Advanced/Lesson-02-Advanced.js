@@ -16,7 +16,7 @@ var hourDiff = "0";
 //Sets the showSec to whatever the time is set to for the alarm
 var showSec = "0";
 var showMin = "0";
-var showHour = "0"; 
+var showHour = "0";
 
 
 
@@ -38,15 +38,13 @@ AUBtn.addEventListener("click", event => current = "AU");
 ITBtn.addEventListener("click", event => current = "IT");
 setBtn.addEventListener('change', function () {
 
-    
+
 
     if (this.checked) {
-
 
         setTimeEnable = true;
         console.log("Set True");
         current = "custom";
-
 
     } else {
 
@@ -61,10 +59,7 @@ setBtn.addEventListener('change', function () {
         minDiff = "0";
         hourDiff = "0";
 
-
     }
-
-
 
 });
 
@@ -83,7 +78,7 @@ alarmBtn.addEventListener('change', function () {
         alarmEnabled = false;
         alarmSound.pause();
         alarmSound.currentTime = 0;
-        
+
 
     }
 
@@ -120,7 +115,7 @@ function alarm() {
 
             console.log("alarm");
             alarmSound.play();
-            
+
 
 
         } else {
@@ -138,9 +133,6 @@ function alarm() {
 function setDate(TZ) {
 
 
-
-
-
     if (TZ == "UK") {
         //Gets the current date and sets to "now"
         const now = new Date();
@@ -149,14 +141,14 @@ function setDate(TZ) {
         const minutes = now.getMinutes();
         const hours = now.getHours();
 
-        if (seconds == "0"){
+        if (seconds == "0") {
 
             document.getElementById("second-hand").style.transitionDuration = "0s";
-        
+
         } else {
-        
+
             document.getElementById("second-hand").style.transitionDuration = "0.05s";
-        
+
         }
 
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
@@ -165,14 +157,14 @@ function setDate(TZ) {
         const minutesDegrees = ((minutes / 60) * 360) + 90;
         const hoursDegrees = ((hours / 12) * 360) + 90;
 
-        if (seconds == "0"){
+        if (seconds == "0") {
 
             document.getElementById("second-hand").style.transitionDuration = "0s";
-        
+
         } else {
-        
+
             document.getElementById("second-hand").style.transitionDuration = "0.05s";
-        
+
         }
 
         //Set the secondhand rotate to the seconds degrees
@@ -198,16 +190,16 @@ function setDate(TZ) {
         // Make a const for seconds and set to "getSeconds()"
         const seconds = now.getSeconds();
         const minutes = now.getMinutes();
-        const hours = now.getHours() + 8;
+        const hours = now.getHours() + 4;
 
-        if (seconds == "0"){
+        if (seconds == "0") {
 
             document.getElementById("second-hand").style.transitionDuration = "0s";
-        
+
         } else {
-        
+
             document.getElementById("second-hand").style.transitionDuration = "0.05s";
-        
+
         }
 
         // Get the percentage by deviding by 60, then times by 360 to get the degrees
@@ -223,7 +215,7 @@ function setDate(TZ) {
 
         showSec = seconds;
         showMin = minutes;
-        showHour = hours - 24;
+        showHour = hours;
 
 
 
@@ -236,14 +228,14 @@ function setDate(TZ) {
         const minutes = now.getMinutes();
         const hours = now.getHours() + 11;
 
-        if (seconds == "0"){
+        if (seconds == "0") {
 
             document.getElementById("second-hand").style.transitionDuration = "0s";
-        
+
         } else {
-        
+
             document.getElementById("second-hand").style.transitionDuration = "0.05s";
-        
+
         }
 
 
@@ -272,14 +264,14 @@ function setDate(TZ) {
         const minutes = now.getMinutes();
         const hours = now.getHours() + 1;
 
-        if (seconds == "0"){
+        if (seconds == "0") {
 
             document.getElementById("second-hand").style.transitionDuration = "0s";
-        
+
         } else {
-        
+
             document.getElementById("second-hand").style.transitionDuration = "0.05s";
-        
+
         }
 
 
@@ -306,14 +298,14 @@ function setDate(TZ) {
         const minutesNow = now.getMinutes();
         const hoursNow = now.getHours() + 1;
 
-        if (seconds == "0"){
+        if (seconds == "0") {
 
             document.getElementById("second-hand").style.transitionDuration = "0s";
-        
+
         } else {
-        
+
             document.getElementById("second-hand").style.transitionDuration = "0.05s";
-        
+
         }
 
 

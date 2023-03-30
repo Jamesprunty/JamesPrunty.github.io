@@ -1,6 +1,7 @@
 
   body {
     margin: 0;
+    overflow: hidden;
   }
   
 
@@ -12,23 +13,16 @@
   #canvasContainer{
 
     display: flex;
-    height: 80vh;
+    height: 80%;
+    border: 1px solid white;
 
     justify-content: center;
     align-items: center;
     align-items: center;
 
-
-
   }
-
-
   #draw{
 
   border: 1px black solid;
-
-  
- 
-
 
   }

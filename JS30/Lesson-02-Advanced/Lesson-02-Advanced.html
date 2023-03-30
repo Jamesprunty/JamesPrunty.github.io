@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>JS + CSS Clock</title>
   <link rel="stylesheet" href="Lesson-02-Advanced.css">
+  <link rel="stylesheet" href="../GeneralStyle.css">
 </head>
 
 <body>
@@ -54,11 +55,11 @@
         <input type="number" id="alarmMinutes" name="alarmMinutes" value="01" min="01" max ="60"class="input">
       </label>
       <div id="buttons">
-        <label for="SetTimeBtn">
-          <input type="checkbox" id="SetTimeBtn" name="SetTimeBtn" value="Set time"> Enable set time
+        <label for="SetTimeBtn">Enable set time</label>
+          <input  class="check" type="checkbox" id="SetTimeBtn" name="SetTimeBtn" value="Set time"> 
         <div id="enableAlarmDiv">
-        <label for="enableAlarm">
-          <input type="checkbox" id="enableAlarm" name="enableAlarm" value="Enable Alarm"> Enable Alarm
+        <label for="enableAlarm">Enable Alarm</label>
+          <input class="check" type="checkbox" id="enableAlarm" name="enableAlarm" value="Enable Alarm"> 
         </label>
         <audio data-key ="sound" id="alarmSound" src="../Lesson Two - Advanced/Sounds/AlarmSound.wav"></audio>
       </div>

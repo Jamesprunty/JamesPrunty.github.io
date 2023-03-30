@@ -1,154 +1,173 @@
+:root {
+  --font-size-mid: 1.5rem;
+}
+
 html {
-   
-    text-align: center;
-    font-size: 10px;
-  }
 
-  body {
-    margin: 0;
-    font-size: 2rem;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-   
-    align-items: center;
-  }
+  text-align: center;
+  font-size: 10px;
+}
 
-  .clock {
-    width: 30rem;
-    height: 30rem;
-    border: 20px solid rgb(0, 0, 0);
-    border-radius: 50%;
-    margin: 50px auto;
-    position: relative;
-    padding: 2rem;
-    box-shadow:
-      0 0 0 4px rgba(0,0,0,0.1),
-      inset 0 0 0 3px #c2c2c2,
-      inset 0 0 10px black,
-      0 0 10px rgba(0,0,0,0.2);
-  }
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  color: white;
 
-  .clock-face {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform: translateY(-3px); /* account for the height of the clock hands */
-  }
+  align-items: center;
+}
 
-  .min-hand {
-    width: 50%;
-    height: 6px;
-    background: black;
-    position: absolute;
-    top: 50%;
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 10px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow:
+    0 0 0 4px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 3px #c2c2c2,
+    inset 0 0 10px black,
+    0 0 10px rgba(0, 0, 0, 0.2);
+}
 
-    /* This changes the point of transform, by default it's 50% (the middle) */
-    /* By changing it to 100% we are putting it on the right side to pivot */
-    transform-origin: 100%;
-    /* This will start the clock at 12 */
-    transform: rotate(90deg);
-    /* This will make it so all transitions will take 0.5 seconds */
-    transition: all 0.05s;
-    /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
-    /* You can change all the divs and see what styles are effecting them */
-    transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
-  }
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px);
+  /* account for the height of the clock hands */
+}
 
-  .second-hand{
+.min-hand {
+  width: 50%;
+  height: 6px;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
 
-    width: 50%;
-    height: 3px;
-    background: rgb(255, 0, 0);
-    position: absolute;
-    top: 50%;
+  /* This changes the point of transform, by default it's 50% (the middle) */
+  /* By changing it to 100% we are putting it on the right side to pivot */
+  transform-origin: 100%;
+  /* This will start the clock at 12 */
+  transform: rotate(90deg);
+  /* This will make it so all transitions will take 0.5 seconds */
+  transition: all 0.05s;
+  /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
+  /* You can change all the divs and see what styles are effecting them */
+  transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
+}
 
-    /* This changes the point of transform, by default it's 50% (the middle) */
-    /* By changing it to 100% we are putting it on the right side to pivot */
-    transform-origin: 100%;
-    /* This will start the clock at 12 */
-    transform: rotate(90deg);
-    /* This will make it so all transitions will take 0.5 seconds */
-    transition: all 0.05s;
-    /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
-    /* You can change all the divs and see what styles are effecting them */
-    transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
-  }
+.second-hand {
 
-  .hour-hand{
+  width: 50%;
+  height: 3px;
+  background: rgb(255, 0, 0);
+  position: absolute;
+  top: 50%;
 
-    width: 40%;
-    height: 6px;
-    background: black;
-    position: absolute;
-    top: 50%;
-    left: 10%;
+  /* This changes the point of transform, by default it's 50% (the middle) */
+  /* By changing it to 100% we are putting it on the right side to pivot */
+  transform-origin: 100%;
+  /* This will start the clock at 12 */
+  transform: rotate(90deg);
+  /* This will make it so all transitions will take 0.5 seconds */
+  transition: all 0.05s;
+  /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
+  /* You can change all the divs and see what styles are effecting them */
+  transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
+}
 
-    /* This changes the point of transform, by default it's 50% (the middle) */
-    /* By changing it to 100% we are putting it on the right side to pivot */
-    transform-origin: 100%;
-    /* This will start the clock at 12 */
-    transform: rotate(90deg);
-    /* This will make it so all transitions will take 0.5 seconds */
-    transition: all 0.05s;
-    /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
-    /* You can change all the divs and see what styles are effecting them */
-    transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
-  }
+.hour-hand {
 
-  .HomeLink{
-    
-    font-family: 'fantasy', papyrus;
-    font-size: 40px;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px;
-  
-    
-    
-  }
-  
-  a:hover {
+  width: 40%;
+  height: 6px;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 10%;
+
+  /* This changes the point of transform, by default it's 50% (the middle) */
+  /* By changing it to 100% we are putting it on the right side to pivot */
+  transform-origin: 100%;
+  /* This will start the clock at 12 */
+  transform: rotate(90deg);
+  /* This will make it so all transitions will take 0.5 seconds */
+  transition: all 0.05s;
+  /* In the dev tools in chrome elements, you can edit this transition to see what you would like */
+  /* You can change all the divs and see what styles are effecting them */
+  transition-timing-function: cubic-bezier(0.18, 1.82, 0.54, 1.17);
+}
+
+.HomeLink {
+
+  font-size: 40px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+
+
+
+}
+
+a:hover {
   text-decoration: underline;
-  }
-  
-  .HomeContainer{
-    
-    text-align: center;
-    width: 100%;
-    height: 10%;
-    align-items: center;
-   position: absolute;
-   bottom: 0%;
-  
-  }
+}
 
-  .controls{
+.HomeContainer {
 
-    text-align: center;
-    width: 100%;
-    padding: 20px;
-    margin: auto;
-    bottom: 40%;
-    align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  align-items: center;
+  position: absolute;
+  bottom: 0%;
 
-  }  
+}
 
-  .button{
+.controls {
 
-    font-size: 20px;
-    font-family: 'fantasy', papyrus;
-    font-weight: bold;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  bottom: 40%;
+  align-items: center;
 
-  }
+}
 
-  .input{
+.button {
+  border: 1px white solid;
+  background-color: black;
+  color: white;
+  font-size: var(--font-size-mid);
+  transition-duration: .2s;
+  padding: .5rem;
+  margin: .5rem;
 
-    font-size: 20px;
-    font-family: 'fantasy', papyrus;
-    font-weight: bold;
+}
 
-  }
+.button:hover {
+  color: black;
+  background-color: white;
 
+}
 
+.input {
+
+  margin: .2rem;
+  border: 1px white solid;
+  background-color: black;
+  color: white;
+  font-size: var(--font-size-mid);
+  padding: .5rem
+}
+
+.check {
+  color: white;
+  background: white;
+}
 

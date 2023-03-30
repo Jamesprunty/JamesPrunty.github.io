@@ -1,5 +1,4 @@
 html {
-  font-family: 'helvetica neue';
   font-size: 20px;
   font-weight: 200;
 }
@@ -20,17 +19,19 @@ input {
 
 input.search {
   margin: 0;
+  color: white;
   text-align: center;
   outline: 0;
-  border: 10px solid #F7F7F7;
-  width: 120%;
-  left: -10%;
+  border: 3px solid #F7F7F7;
+  width: 100%;
+  left: -5%;
   position: relative;
   top: 10px;
   z-index: 2;
   border-radius: 5px;
   font-size: 40px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+  background: black;
 }
 
 .suggestions {
@@ -41,7 +42,7 @@ input.search {
 }
 
 .suggestions li {
-  background: white;
+  background: rgb(0, 0, 0);
   list-style: none;
   border-bottom: 1px solid #D8D8D8;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
@@ -55,43 +56,20 @@ input.search {
 
 .suggestions li:nth-child(even) {
   transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+  background: linear-gradient(to bottom,  #000000 0%,#000000 100%);
 }
 
 .suggestions li:nth-child(odd) {
   transform: perspective(100px) rotateX(-3deg) translateY(3px);
-  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+  background: linear-gradient(to top,  #000000 0%,#000000 100%);
 }
 
 span.population {
   font-size: 15px;
 }
 
-.hl {
-  background: #ffc600;
-}
-
-.HomeLink{
-    
-  font-size: 40px;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px;
-  
-}
 
 a:hover {
 text-decoration: underline;
 }
 
-.HomeContainer{
-  
-  text-align: center;
-  width: 100%;
-  height: 20%;
-  align-items: center;
- position: relative;
- bottom: 0%;
- padding: 20px;
-
-}

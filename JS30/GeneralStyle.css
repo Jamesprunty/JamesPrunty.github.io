@@ -1,0 +1,26 @@
+html{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+
+input[type="button"]{
+    background: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    margin:2px;
+    transition-duration: .2s;
+  }
+  
+  input[type="button"]:hover{
+  background:white;
+  color: black;
+  }
+  
+  input[type="text"], input[type="number"] {
+    border: white 2px solid;
+    color: white;
+    background: black;
+  }
+  

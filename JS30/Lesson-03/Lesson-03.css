@@ -40,7 +40,6 @@ img {
 
     body {
         text-align: center;
-        font-family: 'fantasy', papyrus;
         font-weight: 100;
         font-size: 20px;
         
@@ -55,7 +54,6 @@ img {
       }
       .HomeLink{
     
-        font-family: 'fantasy', papyrus;
         font-size: 40px;
         text-align: center;
         text-decoration: none;

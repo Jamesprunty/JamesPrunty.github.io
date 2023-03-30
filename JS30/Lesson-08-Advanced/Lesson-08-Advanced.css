@@ -1,6 +1,7 @@
 html {
   
     margin: 0;
+    overflow: hidden;
   }
   body {
     margin: 0;
@@ -13,7 +14,7 @@ html {
   #canvasContainer{
 
     display: flex;
-    height: 80vh;
+    height: 80%;
 
     justify-content: center;
     align-items: center;
@@ -21,9 +22,10 @@ html {
     display: flex;
     flex-direction: column;
 
-
-
+    border: 1px white solid;
   }
+
+ 
 
   
 
@@ -39,6 +41,7 @@ html {
   margin-bottom: 50px;
   text-align: center;
   align-items: center;
+  margin:2px;
 }
 
 input {
@@ -69,4 +72,8 @@ padding: 2px;
 .show{
 
   display: block;
+}
+
+a {
+  color: white;
 }

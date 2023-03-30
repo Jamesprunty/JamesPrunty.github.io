@@ -5,7 +5,7 @@ const reset = document.querySelector('#reset');
 const save = document.querySelector('#save');
 
 
-let SC = "#000000";
+let SC = "#FFFFFF";
 let SS = "10";
 
 //We dont draw on the canvas but instead draw on the context 
