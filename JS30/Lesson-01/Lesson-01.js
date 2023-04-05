@@ -31,7 +31,7 @@ function removeTransition(e) {
     /*console.log(e);*/
     //We are looking for the transform transition and none others
     //So If the PropertyName is NOT 'transform' then return.
-    console.log(e.propertyName);
+
     if (e.propertyName !== 'transform') return;
     //This means that when it is finished transitioning, it will then return 'transform'
     /*console.log(e.propertyName);*/

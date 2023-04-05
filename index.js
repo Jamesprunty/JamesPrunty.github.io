@@ -751,7 +751,7 @@ function changeMenu(menuType) {
 
             gridTiles.forEach(element => {
                 element.classList.remove("zeroScale");
-                element.innerHTML = `<p class="tileText">` + number + `</p>`;
+                element.innerHTML = `<iframe class="zeroScale hidden" id="`+number+`"> </iframe> <p class="tileText">` + number + `</p>`;
                 number++;
                 if (count <= currentContent.length - 1) {
                     element.classList.add("border");
@@ -847,10 +847,13 @@ function menuManager(status, object) {
             let directory = "../JS30/" + folder + "/" + folder + ".html";
     
             console.log(directory);
+
+            console.log(object.iframe);
     
     
-            object.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"></div></div>`
-    
+            //object.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"></div></div>`
+            object.innerHTML = `<iframe class="iframe" src="`+directory+`"> </iframe>`
+
         }
 
         

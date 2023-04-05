@@ -90,7 +90,7 @@ function handleFullScreen(){
 
     }
 
-    const icon = isFullscreen ? '< >' : '><';
+    const icon = isFullscreen ? 'Fullscreen' : '><';
     // Set the button.
     fullscreen.textContent = icon;
 

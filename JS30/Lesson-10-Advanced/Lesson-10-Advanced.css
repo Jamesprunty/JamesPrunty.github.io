@@ -3,7 +3,7 @@
     .inbox {
       max-width: 400px;
       margin: 50px auto;
-      background: white;
+      background: rgb(0, 0, 0);
       border-radius: 5px;
       box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
     }
@@ -11,7 +11,7 @@
     .item {
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #F1F1F1;
+      border-bottom: 1px solid #ffffff;
     }
 
     .item:last-child {
@@ -19,7 +19,7 @@
     }
 
     input:checked + p {
-      background: #F9F9F9;
+      background: #000000;
       text-decoration: line-through;
     }
 
@@ -37,28 +37,4 @@
       font-weight: 200;
       border-left: 1px solid #D1E2FF;
     }
-    .HomeLink {
-  
-      font-size: 40px;
-      text-align: center;
-      text-decoration: none;
-      padding: 10px;
     
-    
-    
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-    
-    .HomeContainer {
-    
-      text-align: center;
-      width: 100%;
-      height: 10%;
-      align-items: center;
-      position: absolute;
-      bottom: 0%;
-    
-    }
