@@ -249,7 +249,7 @@ const Courses = [
     },
     {
         name: "People Sorter V4",
-        description: "Integrate Voice commands into people sorter",
+        description: "Integrate Voice commands into people sorter *STILL NEEDS INTEGRATING*",
         folderName: "Lesson-20-Advanced"
     },
     {
@@ -324,7 +324,7 @@ const Courses = [
     },
     {
         name: "Video speed controls V2",
-        description: "Maybe only change speed when mousedown",
+        description: "Only change speed when mousedown and have set speed buttons *STILL TO DO*",
         folderName: "Lesson-28-Advanced"
     },
     {
@@ -345,7 +345,7 @@ const Courses = [
     {
         name: "Wackamole V2",
         description: "*Not done* Add timer show, final score and save high scores to localstorage",
-        folderName: "Lesson-28-Advanced"
+        folderName: "Lesson-30-Advanced"
     },
 
 ];
