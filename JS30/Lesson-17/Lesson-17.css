@@ -23,7 +23,7 @@ body {
   
   #bands li {
     border-bottom: 1px solid #efefef;
-    padding: 15px;
+    padding: 10px;
   }
   
   #bands li:last-child {
@@ -33,4 +33,13 @@ body {
   a {
     color: #ffc600;
     text-decoration: none;
+  }
+
+  #container{
+    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   }

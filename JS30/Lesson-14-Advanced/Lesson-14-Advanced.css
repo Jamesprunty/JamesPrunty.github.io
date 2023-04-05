@@ -1,6 +1,6 @@
 .Tables{
 
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     border-collapse: collapse;
     display: flex;
     flex-grow: 1;
@@ -25,14 +25,14 @@ padding: 0%;
 
 tr{
 
-    border-bottom: 1pt solid black;
+    border-bottom: 1pt solid rgb(255, 255, 255);
 
 
 }
 #table{ 
-    border: black 2px solid;
+    border: rgb(255, 255, 255) 2px solid;
     border-collapse: collapse;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
     flex-grow: 1;
     margin: auto;
 padding: 0%;
@@ -40,9 +40,9 @@ padding: 0%;
 }
 
 #table2{ 
-    border: black 2px solid;
+    border: rgb(255, 255, 255) 2px solid;
     border-collapse: collapse;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
     flex-grow: 1;
     margin: auto;
 padding: 0%;
@@ -55,7 +55,7 @@ padding: 0%;
 
 .controlOption{
 
-border: 1px solid black;
+border: 1px solid rgb(255, 255, 255);
 text-align: center;
 align-items: center;
 font-size: 15px;

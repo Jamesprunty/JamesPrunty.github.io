@@ -2,6 +2,7 @@
 //convert this nodelist into an array
 
 const timeNodes = Array.from(document.querySelectorAll('[data-time'));
+let totalTime = document.querySelector('.totalTime');
 
 //map through the array and get to times
 const seconds = timeNodes
@@ -28,3 +29,5 @@ const mins =  Math.floor(secondsLeft / 60);
 secondsLeft = secondsLeft % 60;
 
 console.log(hours, mins, secondsLeft);
+
+totalTime.textContent = `Hours: ` + hours + ` Minutes: ` + mins + ` Seconds: ` + secondsLeft;
