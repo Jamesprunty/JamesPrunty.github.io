@@ -224,6 +224,9 @@ circle {
 .borderRed {
     border: 1px rgb(255, 24, 24) solid;
 }
+.borderBlue {
+    border: 1px rgb(8, 32, 248) solid;
+}
 #SVGContainerMain {
     border: white 1px solid;
     height: 100%;

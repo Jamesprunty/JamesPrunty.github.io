@@ -179,7 +179,7 @@ const Courses = [
     },
     {
         name: "Slide & Scroll V2",
-        description: "*STILL TO DO*",
+        description: "(Not Done)Items scroll in when scrolling to the right",
         folderName: "Lesson-13-Advanced"
     },
     {
@@ -189,7 +189,7 @@ const Courses = [
     },
     {
         name: "Copying and Reference V2",
-        description: "Visual example of copying and reference *NEEDS FINISHING*.",
+        description: "(Not Done) Visual example of copying and referencing",
         folderName: "Lesson-14-Advanced"
     },
     {
@@ -228,11 +228,6 @@ const Courses = [
         folderName: "Lesson-18"
     },
     {
-        name: "TBD",
-        description: "TBD",
-        folderName: "Lesson-18-Advanced"
-    },
-    {
         name: "Photobooth",
         description: "Working with Webcam and manipulating the image",
         folderName: "Lesson-19"
@@ -249,7 +244,7 @@ const Courses = [
     },
     {
         name: "People Sorter V4",
-        description: "Integrate Voice commands into people sorter *STILL NEEDS INTEGRATING*",
+        description: "(Not Done) Integrate Voice commands into people sorter",
         folderName: "Lesson-20-Advanced"
     },
     {
@@ -259,7 +254,7 @@ const Courses = [
     },
     {
         name: "Google Maps clone",
-        description: "*STILL NEED TO DO",
+        description: "(Not Done) create a google maps clone",
         folderName: "Lesson-21-Advanced"
     },
     {
@@ -269,7 +264,7 @@ const Courses = [
     },
     {
         name: "Highlighter Follow Advanced",
-        description: "*STILL NEED TO DO*",
+        description: "(Not Done) ",
         folderName: "Lesson-22-Advanced"
     },
     {
@@ -279,7 +274,7 @@ const Courses = [
     },
     {
         name: "Text to speech Advanced",
-        description: "*STILL NEED TO DO*",
+        description: "(Not Done) Chat GPT intergration, add voice to text and read output",
         folderName: "Lesson-23-Advanced"
     },
     {
@@ -289,7 +284,7 @@ const Courses = [
     },
     {
         name: "Sticky Nav bar v2",
-        description: "*STILL NEED TO DO*",
+        description: "(Not Done) Add a sticky footer as well",
         folderName: "Lesson-24-Advanced"
     },
     {
@@ -304,7 +299,7 @@ const Courses = [
     },
     {
         name: "Follow along Dropdown V2",
-        description: "*TBD*",
+        description: "(Not Done) Add some animation to the dropdown",
         folderName: "Lesson-26-Advanced"
     },
     {
@@ -314,7 +309,7 @@ const Courses = [
     },
     {
         name: "Drag and Drop",
-        description: "Drag and drop fuction *TO DO*",
+        description: "(Not Done) Create drag and drop function",
         folderName: "Lesson-27-Advanced"
     },
     {
@@ -324,7 +319,7 @@ const Courses = [
     },
     {
         name: "Video speed controls V2",
-        description: "Only change speed when mousedown and have set speed buttons *STILL TO DO*",
+        description: "(Not Done) Only change speed when mousedown and have set speed buttons",
         folderName: "Lesson-28-Advanced"
     },
     {
@@ -334,7 +329,7 @@ const Courses = [
     },
     {
         name: "Countdown Timer V2",
-        description: "TBD",
+        description: "(Not Done) Add stopwatch with lap timer",
         folderName: "Lesson-29-Advanced"
     },
     {
@@ -344,7 +339,7 @@ const Courses = [
     },
     {
         name: "Wackamole V2",
-        description: "*Not done* Add timer show, final score and save high scores to localstorage",
+        description: "(Not Done) Add timer show, final score and save high scores to localstorage",
         folderName: "Lesson-30-Advanced"
     },
 
@@ -615,66 +610,66 @@ function changeMenu(menuType) {
 
     if (menuType === "returnbtn") {
 
-        if(growfull == false){
-            
-        
-
-        gridContainer.classList.add("zeroScale")
-        parent.classList.add("zeroScale");
-        gridPage.classList.add("zeroScale");
-
-        setTimeout(() => {
-            BGs.forEach(element => {
-                element.classList.remove("hidden");
-            });
-
-            circles.forEach(element => {
-                element.classList.remove("hidden");
-            });
-
-            SVGContainer.classList.remove("hidden");
-
-            number = 1;
-            count = 0;
-
-            gridTiles.forEach(element => {
-
-                if (element.classList.contains("border")) { element.classList.remove("border") };
-
-                if (element.classList.contains("borderRed")) { element.classList.remove("borderRed") };
+        if (growfull == false) {
 
 
 
-            });
+            gridContainer.classList.add("zeroScale")
+            parent.classList.add("zeroScale");
+            gridPage.classList.add("zeroScale");
+
+            setTimeout(() => {
+                BGs.forEach(element => {
+                    element.classList.remove("hidden");
+                });
+
+                circles.forEach(element => {
+                    element.classList.remove("hidden");
+                });
+
+                SVGContainer.classList.remove("hidden");
+
+                number = 1;
+                count = 0;
+
+                gridTiles.forEach(element => {
+
+                    if (element.classList.contains("border")) { element.classList.remove("border") };
+
+                    if (element.classList.contains("borderRed")) { element.classList.remove("borderRed") };
 
 
 
-        }, 550);
-
-    }else if(growfull == true){
-
-        growfullObj = document.querySelector(".growFull");
-
-        if(growfullObj.classList.contains("growFull")){
-            growfullObj.classList.remove("growFull");
-        };
-
-        if(growfullObj.classList.contains("z-index1")){
-            growfullObj.classList.remove("z-index1");
-        };
+                });
 
 
 
-        growfullObj.innerHTML = `<p class="tileText">` + (currentNumber+1) + `</p>`;
+            }, 550);
 
-        growfull = false;
+        } else if (growfull == true) {
+
+            growfullObj = document.querySelector(".growFull");
+
+            if (growfullObj.classList.contains("growFull")) {
+                growfullObj.classList.remove("growFull");
+            };
+
+            if (growfullObj.classList.contains("z-index1")) {
+                growfullObj.classList.remove("z-index1");
+            };
 
 
+
+            growfullObj.innerHTML = `<p class="tileText">` + (currentNumber + 1) + `</p>`;
+
+            growfull = false;
 
 
 
 
-    }
+
+
+        }
     } else {
 
 
@@ -740,7 +735,7 @@ function changeMenu(menuType) {
 
 
         setTimeout(() => {
-            ;
+
 
             gridContainer.classList.remove("zeroScale")
             parent.classList.remove("zeroScale");
@@ -751,14 +746,27 @@ function changeMenu(menuType) {
 
             gridTiles.forEach(element => {
                 element.classList.remove("zeroScale");
-                element.innerHTML = `<iframe class="zeroScale hidden" id="`+number+`"> </iframe> <p class="tileText">` + number + `</p>`;
+                element.innerHTML = `<iframe class="zeroScale hidden" id="` + number + `"> </iframe> <p class="tileText">` + number + `</p>`;
                 number++;
+                
+
                 if (count <= currentContent.length - 1) {
-                    element.classList.add("border");
+
+                    
+
+                    if (currentContent[count].description.includes("Not Done")) {
+                        element.classList.add("borderRed");
+                    } else {
+                        element.classList.add("border");
+                    }
+
+                   
                 } else {
-                    element.classList.add("borderRed");
+                    element.classList.add("zeroScale");
                 }
+
                 count++;
+                
 
             });
 
@@ -818,7 +826,7 @@ function menuManager(status, object) {
     }
 
     if (status === "click") {
-       
+
 
         if (object.classList.contains("shrink")) {
             object.classList.remove("shrink")
@@ -827,36 +835,36 @@ function menuManager(status, object) {
             object.classList.remove("grow")
         }
 
-        if(growfull == true){
+        if (growfull == true) {
             growfull = false;
-        }else if (growfull == false){
+        } else if (growfull == false) {
             growfull = true;
             console.log("GROWFULL");
 
             object.classList.add("growFull");
-    
+
             currentNumber = object.getElementsByTagName('p')[0].innerHTML;
-    
+
             console.log(currentNumber);
             Number(currentNumber);
 
             currentNumber -= 1;
-    
+
             let folder = currentContent[currentNumber].folderName;
-    
+
             let directory = "../JS30/" + folder + "/" + folder + ".html";
-    
+
             console.log(directory);
 
             console.log(object.iframe);
-    
-    
+
+
             //object.innerHTML = `<div id="innerPage"><object type="text/html" data=` + directory + `></object> <div id="inputContainer"></div></div>`
-            object.innerHTML = `<iframe class="iframe" src="`+directory+`"> </iframe>`
+            object.innerHTML = `<iframe class="iframe" src="` + directory + `"> </iframe>`
 
         }
 
-        
+
     }
 
 
