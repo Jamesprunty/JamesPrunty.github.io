@@ -1,7 +1,6 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  background: #ffc600;
 }
 
 *, *:before, *:after {
@@ -12,6 +11,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Amatic SC', cursive;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -66,4 +66,15 @@ h1 {
 
 .hole.up .mole {
   top: 0;
+}
+
+#controls{
+  display: flex;
+  width:100%;
+}
+
+#startBtn{
+  flex:1;
+  font-size: large;
+  justify-content: center;
 }
