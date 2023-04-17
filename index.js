@@ -339,7 +339,7 @@ const Courses = [
     },
     {
         name: "Wackamole V2",
-        description: "(Not Done) Add timer show, final score and save high scores to localstorage",
+        description: "Added a timer, show final score and save high score to localstorage",
         folderName: "Lesson-30-Advanced"
     },
 
