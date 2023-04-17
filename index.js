@@ -43,6 +43,11 @@ const Projects = [
     {
         name: "Stardle",
         description: "A wordle style game where you have to guess the movie title."
+    },
+    {
+        name: "ChatGPT assistant",
+        description: "Integrate voice to text to ask a question, then implement text to speech to read the response"
+     
     }
 
 
