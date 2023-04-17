@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Whack A Mole!</title>
@@ -7,9 +8,13 @@
   <link rel="stylesheet" href="Lesson-30-Advanced.css">
   <link rel="stylesheet" href="../GeneralStyle.css">
 </head>
+
 <body>
 
   <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <div id="highScoreHolder">
+    <h3 id="highScores"></h3>
+  </div>
 
   <div class="game">
     <div class="hole hole1">
@@ -34,12 +39,13 @@
 
   <div id="controls">
 
-  <input id="startBtn" type="button" onClick="startGame()" value="Start!"></input>
-  <h2 id="information">10 Seconds</h2>
+    <input id="startBtn" type="button" onClick="startGame()" value="Start!"></input>
+    <h2 id="information">10 Seconds</h2>
 
   </div>
 
-<script type="application/javascript" src="Lesson-30-Advanced.js">
-</script>
+  <script type="application/javascript" src="Lesson-30-Advanced.js">
+  </script>
 </body>
+
 </html>

@@ -1,6 +1,7 @@
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
 const moles = document.querySelectorAll('.mole');
+const highScores = document.querySelector('#highScores');
 let lastHole;
 let timeUp = false;
 let score = 0;
@@ -10,7 +11,12 @@ let information = document.querySelector('#information');
 
 //Set up local storage
 
-const scores = JSON.parse(localStorage.getItem('scores')) || [];
+const highScore = JSON.parse(localStorage.getItem('highScore')) || 0;
+
+highScores.innerHTML = `Your current high Score is: ` + highScore;
+
+
+
 
 //This will return a random number between two values (in ms)
 function randomTime(min, max) {
@@ -65,11 +71,24 @@ function startGame() {
         if(timer >= 0){
         information.innerHTML = timer + ` Seconds`
         } else if (timer < 0){
-            console.log("TIMEUP");
-            information.innerHTML = `Time Up, Your score is: ` + score + `!`
+            
+            if(score > parseInt(highScore)){
+
+                information.innerHTML = `Time Up, Your score is: ` + score + `! That's a new High Score!`
+
+            }else {
+
+                information.innerHTML = `Time Up, Your score is: ` + score + `!`
+            }
         }
 
         if (timer < 0) {
+            if(score > parseInt(highScore)){
+                highScores.innerHTML = `Your current high Score is: ` + score;
+                localStorage.setItem('highScore', JSON.stringify(score));
+
+            }
+            
             clearInterval(timerInterval);
         }
     }, 1000);
