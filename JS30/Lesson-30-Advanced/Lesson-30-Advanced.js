@@ -4,7 +4,13 @@ const moles = document.querySelectorAll('.mole');
 let lastHole;
 let timeUp = false;
 let score = 0;
-let timer = 10;
+let timerTime = 10;
+let timer = timerTime;
+let information = document.querySelector('#information');
+
+//Set up local storage
+
+const scores = JSON.parse(localStorage.getItem('scores')) || [];
 
 //This will return a random number between two values (in ms)
 function randomTime(min, max) {
@@ -44,6 +50,8 @@ function peep() {
 
 function startGame() {
     //Reset the game
+    timer = timerTime;
+    information.innerHTML = timer + ` Seconds`
     scoreBoard.textContent = 0;
     timeUp = false;
     score = 0;
@@ -52,8 +60,15 @@ function startGame() {
 
 
     let timerInterval = setInterval(() => {
-        console.log(timer);
-        timer--;
+        
+        timer--
+        if(timer >= 0){
+        information.innerHTML = timer + ` Seconds`
+        } else if (timer < 0){
+            console.log("TIMEUP");
+            information.innerHTML = `Time Up, Your score is: ` + score + `!`
+        }
+
         if (timer < 0) {
             clearInterval(timerInterval);
         }
