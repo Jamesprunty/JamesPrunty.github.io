@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+  <link rel="stylesheet" href="Lesson-09-Advanced.css">
+</head>
+
+<body>
+  <canvas id="draw" width="800" height="800"></canvas>
+
+  <div id="controls" class="controls">
+
+    <label for="strokeColour">Stroke Color:</label>
+    <input id="strokeColour" type="color" name="strokeColour">
+
+    <label for="strokeSize">Stroke Size:</label>
+    <input id="strokeSize" type="range" name="strokeSize" min="1" max="70" value="10">
+
+    <label for="reset"></label>
+    <input id="reset" type="button" name="reset" class="button" value="Reset">
+
+    <label for="save"></label>
+    <input id="save" type="button" name="save" value="Save" class="button">
+
+    <div id="link">
+      <a id="linkText" class="hidden">Right Click here to save image As</a>
+    </div>
+
+
+
+  </div>
+
+  <div class="HomeContainer">
+    <a href="../../index.html" class="HomeLink">Home</a>
+    <a href="../JS30.html" class="HomeLink">JS30</a>
+  </div>
+
+
+  <script type="application/javascript" src="Lesson-09-Advanced.js">
+  </script>
+
+
+</body>
+
+</html>

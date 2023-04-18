@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+  <link rel="stylesheet" href="../Lesson Three/style.css">
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+
+    <!-- Because js doesn't have a suffix (px) like css, it will only return "10"-->
+    <!-- So we have a data attribute (which is just a made up attribute) fo rthe px-->
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <!-- Type color give you the color picker-->
+    <input id="base" type="color" name="base" value="#eb0101">
+  </div>
+
+  <div>
+
+    <img src=".//images/Trees.jpg">
+
+
+
+  </div>
+  
+
+
+  <script type="application/javascript" src="../Lesson Three/Lesson Three.js"></script>
+
+  <div class="HomeContainer">
+    <a href="../../index.html" class="HomeLink">Home</a>
+    <a href="../JS30.html" class="HomeLink">JS30</a>
+  </div>
+
+</body>
+</html>
