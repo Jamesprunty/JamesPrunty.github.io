@@ -102,15 +102,44 @@ else { //This would be if the data is equal which we would not add.
 return searchTree(node);
 }
 
-TIME: 31.48
+
  
+finMin - Because the left is always smaller than the parent, the left most node is the lowest. 
+
+(let current = this.root; while (current.left !== null){current = current.left;}return current.data;})
+
+finMax - This is the same as findmin but to the right.
+
+isPresent - This will find if something is present. (while(current)) // This means, while there is a node. Then if it is less go to the left, if more go to the right. 
+
+Remove - This is slightly more complicated. This will take in the node and the data to look for. 
+
+1 - Check if tree is null (if(node == null){return null;})
+2 - If we have found the data we have three choices 
+  a - If the node has no children (left and right is null) then return null
+  b - If right is not null, return the one to the left (if(node.left == null){return node.right;})
+  c - If the left is not null, return the right. 
+3 - If the node has 2 children, we replace it with the most left node of the right child. 
+
+var tempNode = node.right; //This goes down to the right
+while (tempNode.left !== null){ //while there is a left node after
+  tempNode = tempNode.left; // tempnode equals that left node
+}
+
+//This will continue until you get to the most left node
+
+node.data = tempNode.data;
+node.right = removeNode(node.left, data); //This will call the function again to fix the data structure
+return node;
+
+4 - If the data is less, run function on the left (else if(data < node.data){node.left = removeNode(node.left, data);return node;})
+5 - If the data is more, repeat for the right
+6 - Run the removeNode again in the function to remove (this.root = removeNode(this.root, data);)
 
 
+Height - This is the height from the root node to the leaf node. 
 
-
-
-
-
+TIME 40.27
 
 
 
