@@ -1,0 +1,122 @@
+Stack like a stack of books, last in first out method. (such as an array)
+
+push - put on top
+pop - Take The top item off
+peek - display the top item
+length - get length
+
+-------------------------------------------------------------------------------------------------------
+
+Set: Similar to stack but has no duplicates and are not in any particular order (var setA = new Set():)
+
+has - checks for an element. (return (collection.indexOf(element) !== -1)
+
+values - returns collection
+
+add - Will add to colection (but we need to make sure it is not already there) (if(!this.has(element)){collection.push(element); return true;} return false;};
+
+remove - removes an element (same as the add we need to check if its there) (collection.splice(index,1) splice will take out the one element. (in ES6 it is called delete)
+
+size - (this is a property, not a method)
+
+union - The union of two sets, this will merge without any duplicates. This function will take in the new set as a param. we can just do foreach and .add() as the .add() already does not add if its a duplicate.
+
+intersection - creates an intersection set as a new set. It checks if the other set has the value, if it does, add to the new set.
+
+Difference - This is the same but with the differences
+
+subset - Check if one set is completely contained in another set (this will return true or false) (return firstSet.every(function(value){return otherSet.has(value);}); This will go through every element at see if it passes the .has method.
+
+-----------------------------------------
+
+Queue: Similar to a stack but is first in first out
+
+enqueue - Put an item on the queue (collection.push(element);)
+
+dequeue - Remove an item (collection.shift();)
+
+front - Put onto the front (return collection[0]) This will not remove the item
+
+size - gets the size (collection.length)
+
+empty - Checks if its empty (return (collection.length === 0);)
+
+priorityqueue - you add the element, but also the priority of the element.Elements with the higher priorities go to the top of the queue.
+
+you will be enqueueing an array (pq.enqueue(['item', 1]));
+
+enqueue (priority) - check if its empty, run through each element in the queue to check the priority (for loop) we will be looking at index 1 as this is the priority.
+
+---------------------------------------------------------------
+
+Tree: All data points are called nodes. They are linked to a Root node that branches to additional nodes.
+
+      A
+      |
+    -- --
+   |     |
+   B     C
+   |     |
+  - -   - -
+ |   | |   |
+ D   E F   G
+
+You have parents and children (like a family tree).
+
+A binary Search Tree can only have two branches per node.
+
+Binary Search trees are ordered. Each left subtree is less than or equal to the parent node in each and every right node is greater than or equal to the parent node.
+
+Example:
+
+We can do this via classes, we will have a node class and a BST (Binary Search tree) class.
+There will be three data properties: 
+
+this.data = data
+this.left = left
+this.right = right
+
+class BST {constructor(){this.root = null;} // this adds the root node
+
+class node {constructor(data, left = null, right = null){this.data = data; this.left = left; this.right = right;}}
+
+add(data){
+const node = this.root; //reference to the root node
+if (node === null){this.root = new Node(data); //If this is the first node, node will be null.
+//So we set the root node based on the data.
+return;}else{
+
+const searchTree = function(node){ //This is the recursive function
+if(data < node.data){ //If this current data is less than the node we are looking at
+	if(node.left === null) { node.left = new Node(data); //If there is no left, add it
+	return;
+	}else if (node.left !== null){return searchTree(node.left);} //If left is not empty, rerun the function. 
+else if(data > node.data){
+	if(node.right === null) { node.right = new Node(data);
+	return;
+	}else if (node.right !== null){return searchTree(node.right);}
+else { //This would be if the data is equal which we would not add.
+	return null;
+}
+};
+return searchTree(node);
+}
+
+TIME: 31.48
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
