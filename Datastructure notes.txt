@@ -137,9 +137,137 @@ return node;
 6 - Run the removeNode again in the function to remove (this.root = removeNode(this.root, data);)
 
 
-Height - This is the height from the root node to the leaf node. 
+Height - This is the height from the root node to the leaf node. If the tree is balanced the min and max will only differ by 1. 
 
-TIME 40.27
+Min height - The min height is the first node without 2 children
+
+
+
+findMinHeight(node = this.root){if (node == nul){ return -1;};
+let left = this.findMinHeight(node.left); //This is where it is recursive 
+let right = this.findMinHeight(node.right; // At some point one of these will be negative because one will be null
+if(left < right){return left + 1;}else{return right +1; };} // one will be bigger so we +1 to which ever is smaller
+
+
+
+Max height - This is the distance to the last node
+
+findMaxHeight(node = this.root){if (node == nul){ return -1;};
+let left = this.findMaxHeight(node.left); //This is where it is recursive 
+let right = this.findMaxHeight(node.right; // At some point one of these will be negative because one will be null
+if(left > right){return left + 1;}else{return right +1; };}
+
+
+isbalanced - It is only balanced when the difference between min and max is <= 1, this creates better efficiency when searching the tree.
+
+(return (this.findMinHeight() >= this.findMaxHeight() -1))
+
+Ways of searching in the tree: 
+
+      9
+      |
+    -- --
+   |     |
+   4     17
+   |     |
+  - -     -
+ |   |     |
+ 3   6     23
+     | 
+    - -
+   |   |
+   5   7
+
+Depth First Search - This is the next three examples, it explores all the way down one branch before going down any other branch. 
+
+inOrder - Start at the left most node and end at the right most node, so this will bring them back in ascending order. It would go all the way to 3, then 4, then 5, then 6, then 7, then 9, then 17, then 23.
+
+inOrder(){if(this.root == null){return null;}else{
+var result = new Array();
+
+//This is the difference in code
+
+function traverseInOrder(node){
+
+//These lines are recursive
+
+node.left && traverseInOrder(node.left); //Short circuit evaluation - If the first part is true (before &&) it will run the second command. So if node.left is true, run again with node.left (until you get to the left most place)
+result.push(node.data);  //Then push the node.data
+node.right && traverseInOrder(node.right); //then if right exists then go through the right.
+
+
+}
+traverseInOrder(this.root);
+
+//This is the end of difference in code
+return result;
+};
+}
+
+
+PreOrder - This will look at the nodes first. So it will go to the left but it will log the nodes as it goes. This would log 9, then 4, then 3, then 6, then 5, then 7, then 17, then 23.
+
+PreOrder(){if(this.root == null){return null;}else{
+var result = new Array();
+
+//This is the difference in code
+
+function traversePreOrder(node){
+
+//These lines are recursive and the only difference is the order these are in
+
+result.push(node.data); 
+node.left && traversePreOrder(node.left); 
+node.right && traverseInOrder(node.right); 
+
+
+}
+traversePreOrder(this.root);
+
+//This is the end of difference in code
+return result;
+};
+}
+
+
+
+PostOrder - looks at the leaf nodes before the roots. So it would start 3, then 5, then 7, then 6, then 4, then 23, then 17, then 9.
+
+PostOrder(){if(this.root == null){return null;}else{
+var result = new Array();
+
+//This is the difference in code
+
+function traversePostOrder(node){
+
+//These lines are recursive and the only difference is the order these are in
+
+node.left && traversePreOrder(node.left); 
+node.right && traverseInOrder(node.right); 
+result.push(node.data); 
+
+
+
+
+}
+traversePostOrder(this.root);
+
+//This is the end of difference in code
+return result;
+};
+}
+
+The only difference in the way that these are run is the order of the three lines of code.
+
+
+
+LevelOrder - This is called a Bredth search First which explores all the nodes in a given leven within a tree before continuing the next level up. So it would start 9, then 4, then 17, then 3, then 6, then 23, then 5, then 7.
+
+TIME: 51:03
+
+
+
+
 
 
 
