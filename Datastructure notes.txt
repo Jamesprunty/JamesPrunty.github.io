@@ -263,7 +263,76 @@ The only difference in the way that these are run is the order of the three line
 
 LevelOrder - This is called a Bredth search First which explores all the nodes in a given leven within a tree before continuing the next level up. So it would start 9, then 4, then 17, then 3, then 6, then 23, then 5, then 7.
 
-TIME: 51:03
+levelOrder(){
+	let result = [];
+	let Q = [];
+	if(this.root != null){
+		Q.push(this.root); //Put the root in the queue
+		while(Q.length > 0){ //This will continue until it has added all the elements in the tree
+			let node = Q.shift(); //Pull the first item in the queue, this also then becomes the new "root node" that it moves down from. Because this takes the first ones of and not the last ones. while 3 and 6 were added to the array, 17 was added first and so it will go through that next.
+			result.push(node.data); //Push the node data into the result (this would be 9 in the example
+			if (node.left !- null){
+				Q.push(node.left);}; //Push in the left node
+			if (node.right != null){
+				Q.push(node.right);
+			};
+		};
+		return result;
+	}else{
+		return null;
+	};
+};
+}
+	
+
+
+-----------------------------------------------------------------------------------------------------
+
+Hash Table - Implement associative arrays or mappings of key value pairs, this is a common way of implementing map data structures or objects.
+
+It takes in a key imput and then runs it through a hash function. A hash function just maps strings to numbers and usually the numbers just correspond to indexes in an array.
+
+Most languages have hash tables (such as js objects) so we usually will not have to create them from scratch.  
+
+//hash function//
+
+var hash = (string, max) => { //We pass in the string we want to hash and the max, which is the number of buckets we are using in the hash table to store values.
+	var hash = 0;
+	for(var i = 0; i<string.length;i++){
+		hash += string.charCodeAt(i); //add the charcode of each character
+	}
+	return hash % max; //deivide by the number of buckets and keep the remainder, this will be the index it goes to. 
+};
+
+let hashTable = function(){
+
+let storage = []; //Store the data
+const storagelimit = 4; //The storage limit (amount of buckets) (This is usually a lot more than 4)
+
+//Main functions//
+
+this.add = function(key, value){ //we add a key and a value
+var index = hash(key, storagelimit); // find out the index of the array by running it through the hash function.
+
+if (storage[index] === undefined) { //If that index is undefined (as in, nothing is there)
+	storage[index] = [[key,value]]; //Add in the key value pair
+} else {
+	var inserted = false; //Set inserted to false
+	for(var i =0; i < storage[index].length; i++){ //go through all the storage indexes
+		if (storage[index][i][0] === key) { //See if the key exists
+			storage[index][i][1] = value; //If it does, set the new value
+			inserted = true;
+		}
+	}
+	if (inserted === false){ //If the key does not exist, inserted will still be false
+		storage[index].push([key, value]); //push in the new item. Here we will get multiple entries into one bucket. 
+	}
+}
+};
+
+
+TIME: 59:20
+
 
 
 
