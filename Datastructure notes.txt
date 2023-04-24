@@ -396,12 +396,173 @@ Every linked list has a head which is the fist node, and the size.
 
 Head -> 1(info)|Link -> 2(info)|link -> 3(info)|link -> null(end)
 
+//LinkedList//
+
+function linkedList(){
+	var length = 0; //It has not length as we are just establishing it
+	var head  = null; //Head is null as it has no data
+
+	var Node = function(element){ //We pass in an element
+		this.element = element; //This sets the info
+		this.next = null; //This sets the next link to null
+	};
+
+	this.size = function(){
+		return length;
+	};
+
+	this.head = function(){
+		return head;
+	};
+
+//ADD//
+	
+	this.add = function(element){
+		var node = new Node(element); //Run the node function with the element param
+		if(head === null){
+			head = node; //If there is nothing so far, make head the node
+		}else{
+			var currentNode = head; //start at the head
+			while(currentNode.next){ //While there is a "next" move on
+				currentNode = currentNode.next;
+			}
+			currentNode.next = node; //Add the node to the next space
+		}
+
+		length++ //add 1 to the length
+	};
+
+
+
+//REMOVE//
+
+	this.remove = function(element){
+		var currentNode = head; //Start at the head
+		var previousNode; //Will help us once we have remove the node we want to remove
+		if(currentNode.element === element){
+			head = currentNode.next; //if the head is the current node, move the head forward one which will remove it (as you always start from the head)
+		}else{
+			while(currentNode.element !== element){ //While it is not the element
+				previousNode = currentNode; //Move up one
+				currentNode = currentNode.next; //Move up one
+			}
+
+			previousNode.next = currentNode.next; //If it is found, previous.next = current.next, removing the current node.
+		}
+
+		length--; //shorten length
+	};
+
+
+//Empty//
+
+	this.isEmpty = function() {
+		return length === 0;
+	};
+
+
+//IndexOf//
+
+	this.indexOf = function(element){
+		var currentNode = head;
+		var index = -1; //Start the indexing
+
+		while(currentNode){ //while there is a current node
+			index++; //increment the index, so at this point it is now 0 where we want to be.
+			if(currentNode.element === element){
+				return index;
+			}
+			currentNode = currentNode.next;
+		}
+
+		return -1; //If it never finds it
+	};
+
+
+//ElementAt//
+
+	this.elementAt = function(index) {
+		var currentNode = head;
+		var count = 0;
+		while(count < index){
+			count++;
+			currentNode = currentNode.next
+		}
+		return currentNode.element;
+	};
+
+
+
+//addAt//
+
+	this.addAt = function(index, element){
+		var node = new Node(element); //Add node with the element
+		var currentNode = head;
+		var previousNode;
+		var currentIndex = 0;
+
+		if(index > length){ //If what you are trying to add it too is too large
+			return false;
+		}
+
+		if(index === 0){ //If you want to add at the beginning
+			node.next = currentNode; //Add head to "node.next"
+			head = node; // Make head the node.
+		}else{
+			while(currentIndex < index){
+				currentIndex++;
+				previousNode = currentNode;
+				currentNode = currentNode.next;
+			}
+
+		node.next = currentNode; //Add the current node as the next node
+		previousNode.next = node; // Link the previous node to the new node
+		}
+
+		length++
+	}
+
+//removeAt//
+
+	this.removeAt = function(index){
+		var currentNode = head;
+		var previousNode;
+		var currentIndex = 0;
+		if(index< 0 || index >= length){if the index is smaller than 0 or its bigger than or equal to the length
+			return null;
+		}
+		if(index === 0){
+			head = currentNode.next;
+		}else {
+			while(currentIndex < index){
+				currentIndex++;
+				previousNode = currentNode;
+				currentNode = currentNode.next;
+			}
+			previousNode.next = currentNode.next
+		}
+		length--;
+		return currentNode.element; //Return the element removed
+		}
+	}
+
+}
+
+example code
+var conga = new LinkedList();
+conga.add('dog');
 
 
 
 
+======================================================================================================
 
-TIME: 1:05:11
+Trie data Structure
+
+
+TIME: 1:15:04
+
+
 
 
 
