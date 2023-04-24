@@ -311,6 +311,8 @@ const storagelimit = 4; //The storage limit (amount of buckets) (This is usually
 
 //Main functions//
 
+//ADD//
+
 this.add = function(key, value){ //we add a key and a value
 var index = hash(key, storagelimit); // find out the index of the array by running it through the hash function.
 
@@ -331,11 +333,75 @@ if (storage[index] === undefined) { //If that index is undefined (as in, nothing
 };
 
 
-TIME: 59:20
+//Remove//
+
+this.remove = function(key){ //Pass in the key
+	var index = hash(key, storageLimit); // get the index with the hash
+	if(storage[index].length === 1 && storage[index][0][0] === key){ //if there is only one thing in the bucket and it matches the key.
+		delete storage[index];
+	}else{
+		for(var i = 0; i<storage[index].length;i++){
+			if(storage[index][i][0] === key) {//Go through the storage and look for the key, if it is the same, delete it. The "0" index is the key, the "1" index is the value.
+				delete storage[index][i];
+			}
+		}
+	}
+};
+
+//LOOKUP//
+
+
+this.lookup = fucntion(key){
+	var index = hash(key,storageLimit); //This will give you the index (bucket) but there might be multiple items in that bucket. 
+	if(storage[index] === undefined){
+		return undefined; // The item is not in the hash table. 
+	}else{
+		for(var i = 0; i<storage[index].length;i++){ //Go through the bucket
+			if(storage[index][i][0] === key){ //If you find the key
+				return storage [index][i][1]; //Return the element
+			}
+		}
+	}
+};
 
 
 
 
+
+The hash table will look something like this (if the bucket size was 4):
+
+[undefined, [["sam", "person"], ["jerry", "penguin"]], [["fido", "dog"]], [["john", "cow"]]
+
+We have run the hash indexing 4 times. (ht.add()) 
+
+The hash returned "1" twice, 2,3,4 once, and "0" no times. 
+As we can see there are two things stored in the "1" bucket. 
+If we run ht.lookup('jerry') it would return "penguin".
+If we then increase the hash table to 14, the buckets would sort themselves out to only have 1 in each bucket. 
+
+
+
+======================================================================================================
+
+Linked List
+
+ A linked list is a structure where elements are stored in a node, the node contains two key pieces of info: 
+
+1 - The element itself
+2 - The referece to the next node
+
+Linked list is dynamic while Arrays are fixed, they also have efficient insertions and deletions unlick Arrays. However arrays have random access, whereas link lists dont. You can jump to index 5 on an array, but you have to go one by one in a linked list.
+
+Every linked list has a head which is the fist node, and the size. 
+
+Head -> 1(info)|Link -> 2(info)|link -> 3(info)|link -> null(end)
+
+
+
+
+
+
+TIME: 1:05:11
 
 
 
