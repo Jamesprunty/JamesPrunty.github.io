@@ -1,0 +1,1 @@
+move home buttons with the padding

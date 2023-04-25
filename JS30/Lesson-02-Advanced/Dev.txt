@@ -1,0 +1,5 @@
+Fix the jitter when seconds goes past 12
+
+Set time
+
+Add Alarm

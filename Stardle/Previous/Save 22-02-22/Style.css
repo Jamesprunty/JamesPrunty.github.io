@@ -1,0 +1,23 @@
+h1 {
+
+    color: Blue;
+    text-align: center;
+}
+
+h2 {
+    
+    text-align: center;
+    
+}
+
+.hide {
+    
+    display:none;
+}
+
+.show {
+    
+    display:block;
+    
+    
+}
