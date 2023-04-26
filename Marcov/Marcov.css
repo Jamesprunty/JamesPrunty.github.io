@@ -2,6 +2,7 @@ body {
     
     height: 100%;
   margin: 0;
+  overflow-x: hidden;
     
 }
 
@@ -17,4 +18,62 @@ body {
     z-index: -1;
   
     
+}
+
+h1{
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+}
+
+.UIContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+
+input {
+  padding:10px;
+  margin: 2px;
+}
+
+.ButtonContainer{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  border: solid 1px white;
+
+}
+
+button {
+  padding: 5px;
+  margin: 2px;
+  background: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  margin:2px;
+  transition-duration: .2s;
+  flex: 1;
+}
+
+button:hover{
+  background:white;
+  color: black;
+}
+
+a{
+  color:white;
+  text-align: center;
+}
+
+.HomeContainer{
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
 }

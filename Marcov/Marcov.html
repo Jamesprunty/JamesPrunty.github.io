@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="../index.css">
-  </head>
-  <body>
-      
-         
-    <main>
-        <h1>Welcome to My Marcov Model Test</h1>  
-    </main>
-      <div class="content">
-          <h2>Enter a feeder word and a number to start. You can also train the model with your own sentences.</h2>
-          
-          <div>
 
-              <input id="feed" type="text" placeholder="Input Feed word here">
-              
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../JS30/GeneralStyle.css">
+  <link rel="stylesheet" href=".//Marcov.css">
 
-          </div>
-          
-          <div>
+</head>
 
-              <input id="number" type="text" placeholder="Input number here">
-              
-
-          </div>
-          
-          <div>
-
-              <div>
-
-                  <input id="text" type="text" placeholder="Input Training Data here">
-                  
-
-              </div>
+<body>
 
 
-              <div class="ButtonContainer">
+  <main>
+    <h1>Welcome to My Marcov Model Test</h1>
+  </main>
+  <div class="content">
+    <h2>Enter a feeder word and a number to start. You can also train the model with your own sentences.</h2>
 
-                  <button id="btn" class="buttons"> Train </button>
-              <button id="suggestBtn" class="buttons"> Suggest</button>
-              <div id="outputEle" class="outputEle"></div>
-              </div>
-              
-            </div>
+    <div class="UIContainer">
+      <div id="inputs">
+      <div>
 
-          <script type="application/javascript" src="Marcov.js"></script>
+        <input id="feed" type="text" placeholder="Input Feed word here">
 
-          <div class="HomeContainer">
 
-          <a href="../index.html" class="HomeLink">Home</a>
+      </div>
 
-          </div>
-          </div>
-      
-  </body>
+      <div>
+
+        <input id="number" type="text" placeholder="Input number here">
+
+
+      </div>
+
+      <div>
+
+        <div>
+
+          <input id="text" type="text" placeholder="Input Training Data here">
+
+
+        </div>
+        </div>
+
+
+        <div class="ButtonContainer">
+
+          <button id="btn" class="buttons"> Train </button>
+          <button id="suggestBtn" class="buttons"> Suggest</button>
+          <div id="outputEle" class="outputEle"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <script type="application/javascript" src="Marcov.js"></script>
+
+    <div class="HomeContainer">
+
+      <a href="../index.html" class="HomeLink">Home</a>
+
+    </div>
+  </div>
+
+</body>
+
 </html>
