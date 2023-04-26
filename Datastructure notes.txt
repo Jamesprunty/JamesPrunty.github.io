@@ -714,8 +714,43 @@ let minHeap = function(){
 
 	this.insert = function(num){ //take in a number
 		heap.push(num); //Put the number in the heap at the end
+		if(heap.length > 2){ // If there is more that 1 item (0 is null, 1 is the first so doesn't need sorting. 
+			let idx = heap.length - 1;// Finding the last index
+			while (heap[idx] < heap[Math.floor(idx/2)]){ //The last item (heap[idx]) is less than it's parent (heap[Math.floor(idx/2)])) we will have to move it up as it has to be bigger. 
+				if(idx >= 1) { //If we haven't reached the root node
+					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], [heap[Math.floor(idx/2)]]; //Swap the parent with the current node. 
+					if(Math.floor(idx/2) > 1){ //If the parent node is not the root node (1 is the root node)
+						idx = Math.floor(idx/2(; //Set the index to the parent node.
+					}else{
+						break;
+					};
+				};
+			};
+		};
+	};
 
 
+
+//Remove//
+
+
+this.remove = function(){
+
+	let smallest = heap[1]; //This should always be the top node
+	if(heap.length > 2){
+		heap[1] = heap[heap.length -1] //This was the smallest, but this gets replaced by the biggest. 
+		heap.splice(heap.length - 1); //Remove the last node as we have put it in the first node.
+		if(heap.length === 3){ //If there are only 3 items 
+			if(heap[1] > heap[2]) //There are only 2 items, so if one is bigger than the other.
+				[heap[1], heap[2]] = [heap[2], heap[1]];
+			};
+			return smallest;
+		};
+		let i = 1; //set the index
+		let left = 2 * i;
+		let right = s * i + 1;
+		while(heap[1] >= heap[left] || heap[i] >= heap[right]) { //While the root is bigger than or equal to the left or right.
+			if(heap[left] < heap[right]){
 
 
 
