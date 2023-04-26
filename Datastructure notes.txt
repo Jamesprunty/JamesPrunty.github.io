@@ -557,10 +557,79 @@ conga.add('dog');
 
 ======================================================================================================
 
-Trie data Structure
+Trie data Structure (Prefix tree)
+
+Stores associative data structures, it stores data in steps, each step is a node in the trie.
+
+Usually stores words as there are a finite combinations, ie validate a word is in a dictionary.
+
+					0
+					|
+				-----------------
+				b       d       s
+				|	|	|
+			---------------------------------
+			|	|	|	|	|
+			a	e	o*	e	a
+			|	|	|	|	|
+		-----------------------------------------------
+		l	t*	t*	l	t*	t*	l
+		|	|	|	|	|	|	|
+		l*		s*	l*			t*
 
 
-TIME: 1:15:04
+In the example, both, "bat" and "ball" start with "ba" so they go down the same path, when you reach the end of a word, it will add a "*" to signify. So in "doll", "do" is also a word so there is a star by both. 
+
+
+let Node = function(){
+	this.keys = new Map(); //Creates a new map which has key value pairs, like the name of a folder and the folder. The key is the name of the folder, and the value will be what is in the folder.
+	this.end = false; 
+	this.setEnd = function(){this.end = true;}; //set the end of a word
+	this.isEnd = function(){return this.end;}; //see if it is true
+};
+
+let trie = function(){
+
+this.root = new Node(); //create root
+
+
+//ADD//
+
+
+this.add = function(input, node = this.root){ //The first time you will put the full word in. If you pass in a node, it will use that, but otherwise it will use the root
+	if(input.length == 0){ //if we are at the end of the word we put in
+		node.setEnd();//Set it to the end
+		return;
+	}else if (!node.keys.has(input[0])){ //Check if there is a node with the letter we are looking at. node.keys is all the letters that the root node points to. "input[0]" just means the first character.
+		node.keys.set(input[0], new Node()); //Create a node of that letter, the name of the folder is the letter and the contents is the "new node".
+		return this.add(input.substr(1),node.keys.get(input[0])); //This takes everything after the first letter, and runs it through the add function. Instead of using the default root node, we are passing in the node we have just created to follow along that path. 
+
+	}else{
+		return this.add(input.substr(1), node.keys.get(input[0])); //This is the same as the previous else function but it doesn't add the letter in as it is already there. 
+	};
+};
+	
+
+//isWord//
+
+
+this.isWord = function(word){
+	let node = this.root; //Start at the beginning
+	while (word.length > 1){ //while there are more characters to search.
+		if(!node.keys.has(word[0])){ //Check the first character If the letter node is not there
+			return false; 	
+		}else{
+			node = node.keys.get(word[0]); //change the node from the root node to the node that fits the first character. 
+			word = word.substr(1); //Word now equals the word minus the letter so the word will get smaller. 
+		};
+	};
+	return (node.keys.has(word) && node.keys.get(word).isEnd()) ? true : false;
+};
+		
+
+
+
+TIME: 1:24:50
 
 
 
