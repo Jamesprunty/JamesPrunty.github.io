@@ -51,9 +51,11 @@ const Projects = [
     },
     {
         name: "DataStructures",
-        description: "(Not Done) Working with Stacks, sets, queues, binary tree structures"
+        description: "(Not Done) Working with different types of data structure"
      
     },  
+
+
 
 
 
