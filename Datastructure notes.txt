@@ -628,8 +628,101 @@ this.isWord = function(word){
 		
 
 
+//print//
 
-TIME: 1:24:50
+
+this.print = function(){
+	let words = new Array(); //This will be the array with every word in.
+	let search = function(node, string) { //pass in a node and string
+		if(node.keys.size !- 0){ //If there are still more letters to look through
+		for (let letter of node.keys.keys()){ //for each key
+			search(node.keys.get(letter), string.concat(letter)); //run the search command again. Passing in the node at the letter, and add that letter to the string. It will keep pushing until it has formed the whole word.
+		};
+		if (node.isEnd()) { //If you have reached the end of a word
+			words.push(string); //Push the string to the array
+		};
+		}else{ //This else is to the check if there is a key in the node, this would mean we have hit the end of the branch
+			string.length > 0 ? words.push(string) : undefined;
+			return;
+		};
+	};
+	search(this.root, new String()); //This is the function to call for the first time
+	return words.length > 0 ? words : null; //Check if there are any words, return the array or null.
+
+	};
+};
+
+
+
+====================================================================================================
+
+//HEAP//
+
+A Binary Heap is a partially ordered binary tree which satisfies the heap property.
+
+The heap property indicates a specific relationship between the parent and child nodes. 
+
+You may have a max heap where all the parent nodes are bigger or the same as than the child nodes, or a min heap where the children are all bigger.
+
+binary heaps are also binary trees which means they fill from left to right.
+
+Heaps can be set as binary tree structures, but are more often implemented as arrays.
+
+When working with a heap you start from 1, leave 0 as null. 
+
+This is the tree structure:
+
+
+    20 (1)
+      |
+    -- --
+   |     |
+ 19 (2) 17 (3)
+   |     |
+  - -     -
+ |   |     |
+13(4)15(5) 8(6)
+     | 
+    - -
+   |   |
+  10(7)5(8)
+
+This is the structure as an array:
+
+Data: 20, 19, 17, 13, 15, 8, 10, 5
+Number: 1, 2, 3, 4, 5, 6, 7, 8
+
+1 being the root, and 8 being the heap size.
+
+You can find the left and right child from the array representation with the following equasions: 
+
+Left Child: i * 2
+right Child: i * 2 + 1
+parent: i/2 (rounded down)
+
+So, 19 is on index 2, if we double it we get 4, which is 13. Add one and we get 5 which is 15 (the right child)
+
+This is for a maxHeap. The code below is for a minHeap. 
+
+It will build the tree on level order, it then checks the position and moves it to the correct position to make sure that the children are always higher or lower depending on the heap. 
+
+//minHeap//
+
+let minHeap = function(){
+
+	let heap = [null]; //Starts out null
+
+	this.insert = function(num){ //take in a number
+		heap.push(num); //Put the number in the heap at the end
+
+
+
+
+
+
+
+
+TIME: 1:34:40
 
 
 
