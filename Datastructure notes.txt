@@ -759,25 +759,120 @@ this.remove = function(){
 			};
 			left = 2 * i; //Set the new left node
 			right = 2 * i + 1 // Set the right node
-			if(heap[left] == undefined || heap[right[ == undefined){ //If either left or right doesn't have anything
+			if(heap[left] == undefined || heap[right[ == undefined){ //If either left or right doesn't have anything, if its not undefined, keep going until we do find it
 				break; //We are at the end of the branch
 			};
 		};
 	} else if (heap.length ==2){
-		heap.splice(1, 1);
+		heap.splice(1, 1); //only 1 element in the array, so just cut the element
 	}else{
-		return null;
+		return null; //There were no elements
 	};
-	return smallest;
+	return smallest; //Which is the element we set at the top.
 	};
 
 
+//SORT//
+
+A very efficient sorting method and one of the reasons to use the heap.It takes an array and uses the heap sort to put it into order.
+
+
+this.sort = function(){
+	let result = new array(); //Create array
+	while (heap.length > 1) {//while it has something in it
+		result.push(this.remove()); //This will remove them one at a time which will sort the items into order.
+	};
+	return result;
+	};
+};
 
 
 
 
 
-TIME: 1:40:29
+======================================================================================================
+
+//GRAPHS//
+
+A graph is a collection of things and the relationships/connections between them. 
+
+The data points are called nodes or vertices. The connections are called edges. 
+
+You have directed graphs: 
+
+A -> B -> C
+
+An example of directed graphs are web pages and links. The nodes are the web pages and the links are edges which may not necessarily point the other way. 
+
+and undirected:
+
+A - B - C
+
+An example of this is a social network where people are nodes and edges are friendships. 
+
+3 ways of representing a graph: 
+
+
+//1 - Adjacency list// 
+
+A-b-c
+
+A is connected to b, b is connected to a and c, and c is connected to b.
+
+ie:
+
+Node A: Node B
+Node B: Node A, Node C
+Node C: Node B
+
+(js)
+
+var undirectedG = {NodeA: ["NodeB"],NodeB: ["NodeA","NodeC"], NodeC: ["NodeB"]};
+
+This is undirected as it does not show a direction between connection. 
+
+It can be shown in an array as:
+
+var undirectedG = {[1],[0,2],[1],}; //Using numbers rather than string labels
+
+//2 - Adjacency matrix//
+
+  a b c
+a 0 1 0
+b 1 0 1
+c 0 1 0
+
+The numbers show the relationship, 0 means there is no edge, 1 means there is an edge.
+
+(JS)
+
+var adjMat = [
+	[0, 1, 0],
+	[1, 0, 1],
+	[0, 1, 0],
+];
+
+unlike the list, the matrix has to have as many numbers as are nodes in the graph
+
+With the matrix we can make a directional adjacency matrix. 
+
+a <- b <- c 
+
+would show as:
+
+var adjMat = [
+	[0, 0, 0],
+	[1, 0, 0],
+	[0, 1, 0],
+];
+
+
+
+
+TIME: 1:45:17
+
+
+
 
 
 
