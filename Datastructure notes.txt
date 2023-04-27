@@ -750,14 +750,34 @@ this.remove = function(){
 		let left = 2 * i;
 		let right = s * i + 1;
 		while(heap[1] >= heap[left] || heap[i] >= heap[right]) { //While the root is bigger than or equal to the left or right.
-			if(heap[left] < heap[right]){
+			if(heap[left] < heap[right]){ //If the left is smaller than right
+				[heap[i], heap[left]] = [heap[left], heap[i]]; //swap nodes
+				i = 2*i; //set the index to be the left node
+			}else{
+				[heap[i], heap[right]] = [heap[right], heap[i]];// else right was samller, so swap to the right
+				i = 2 * i + 1; // Make i the right node
+			};
+			left = 2 * i; //Set the new left node
+			right = 2 * i + 1 // Set the right node
+			if(heap[left] == undefined || heap[right[ == undefined){ //If either left or right doesn't have anything
+				break; //We are at the end of the branch
+			};
+		};
+	} else if (heap.length ==2){
+		heap.splice(1, 1);
+	}else{
+		return null;
+	};
+	return smallest;
+	};
 
 
 
 
 
 
-TIME: 1:34:40
+
+TIME: 1:40:29
 
 
 
