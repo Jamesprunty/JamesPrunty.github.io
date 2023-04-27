@@ -869,6 +869,60 @@ var adjMat = [
 
 
 
+//Incidence Matrix//
+
+ -----a - 1 - b
+|     |       |
+4     3       2
+|     |       |
+d     c--------
+
+This is written as
+
+  1 2 3 4
+a 1 0 1 1
+b 1 1 0 0
+c 0 1 1 0
+d 0 0 0 1
+
+
+This is a two dimentional array. Like the adjecent matrix it uses rows and collumns, however in the previous example, both were for nodes. 
+
+In an incidence matrix, it uses rows to represent nodes and collumns to represent edges. This means we can have an uneven amount of rows an collums.
+
+In the example, edge 1 is connected to both A and B, so you can see they are connected. 
+
+To make a directed graph we do the following. 
+
+ <---<a - 1 ->b
+|     ^       |
+4     3       2
+|     |       |
+d     c<------<
+
+  01 02 03 04
+a 01 00 -1 01
+b -1 01 00 00
+c 00 -1 01 00
+d 00 00 00 -1
+
+The "-1" symbolises an edge that is pointed towards it, whereas a "1" symbolises the edge going away.
+
+(JS)
+
+var incMatDir = {
+
+	[1, 0, -1, 1],
+	[-1, 1, 0, 0],
+	[0, -1, 1, 0],
+	[0, 0, 0, -1]
+};
+
+You can have weighted edges which are stronger or weaker, in this we just have -1,0,1 to symbolise an edge is present.
+   
+
+
+
 TIME: 1:45:17
 
 
