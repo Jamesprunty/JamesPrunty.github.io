@@ -1,44 +1,5 @@
 /* Stacks! */
 
-
-let push = document.querySelector("#push");
-let newElem = document.querySelector("#newElem");
-let pop = document.querySelector("#pop");
-let peek = document.querySelector("#peek");
-let length = document.querySelector("#length");
-let stack = document.querySelector("#stack");
-
-let buttons = document.querySelectorAll(".btn");
-buttons.forEach(element => {
-    element.addEventListener('click', function(){
-
-        console.log(this.id);
-
-        if(this.id == "push"){
-
-           
-
-        }else if(this.id == "pop"){
-
-           
-
-        }else if (this.id == "peek"){
-
-            
-
-        }else if(this.id == "length"){
-
-           
-
-        }
-
-
-
-    })
-});
-
-
-
 // functions: push, pop, peek, length
 
 var letters = []; // this is our stack
@@ -99,15 +60,96 @@ var Stack = function() {
     }
 }
 
-var myStack = new Stack();
 
-myStack.push(1);
-myStack.push(2);
-console.log(myStack.peek());
-console.log(myStack.pop());
-console.log(myStack.peek());
-myStack.push("freeCodeCamp");
-console.log(myStack.size());
-console.log(myStack.peek());
-console.log(myStack.pop());
-console.log(myStack.peek());
+
+
+let newStack = new Stack();
+
+
+let push = document.querySelector("#push");
+let newElem = document.querySelector("#newElem");
+let pop = document.querySelector("#pop");
+let peek = document.querySelector("#peek");
+let length = document.querySelector("#length");
+let stack = document.querySelector("#stack");
+let outputText = document.querySelector("#outputText");
+
+let dataFinish = {};
+
+let buttons = document.querySelectorAll(".btn");
+buttons.forEach(element => {
+    element.addEventListener('click', function(){
+
+        console.log(this.id);
+
+        if(this.id == "push"){
+
+            if(newElem.value !== ""){
+
+                newStack.push(newElem.value);
+                updateStack();
+
+            }
+
+
+
+
+        }else if(this.id == "pop"){
+
+            outputText.innerText = newStack.pop();
+            updateStack();
+
+           
+
+        }else if (this.id == "peek"){
+
+            outputText.innerText = newStack.peek();
+
+            
+
+        }else if(this.id == "length"){
+
+            outputText.innerText =newStack.size();
+
+        }
+
+
+
+    })
+});
+
+function updateStack(){
+
+    dataFinish = "";
+
+
+    for(i=0;i<newStack.size();i++){
+
+        let data = `<div class="stackItem"><p>${newStack.storage[i]}</p></div>`;
+       
+        dataFinish += data;
+
+        
+
+    }
+
+    let dataComplete = JSON.stringify(dataFinish);
+
+    dataComplete[0] = ";"
+
+    console.log(dataComplete);
+
+
+
+    stack.innerHTML = dataFinish;
+    
+    
+
+
+    
+    
+
+
+
+}
+
