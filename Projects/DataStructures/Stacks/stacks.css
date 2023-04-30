@@ -1,0 +1,41 @@
+#outputContainer{
+    flex:1;
+    width: 200px;
+    border:1px solid yellow;
+    display: flex;
+
+}
+
+#visualContainer{
+    display:flex;
+    flex-direction: row;
+
+
+}
+
+#controlContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border:1px solid blue;
+}
+
+#stack{
+    border:red 1px solid;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#explinationContainer{
+    border:green 1px solid;
+    flex:1;
+}
+
+#output{
+
+    height: 70%;
+    width: 70%;
+    border: white solid 1px;
+    
+}

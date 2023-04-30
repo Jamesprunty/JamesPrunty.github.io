@@ -6,6 +6,7 @@
     <title>James Prunty</title>
     <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
     <link rel="stylesheet" href="../dataStructures.css">
+    <link rel="stylesheet" href=".//stacks.css">
 </head>
 
 <body>
@@ -17,22 +18,64 @@
 
         <div id="SummaryContainer">
 
-            <p id="summary"></p>
+            <p id="summary">
+
+                A stack is like a stack of books, it oporates on a "first in last out" method. An array is an example of
+                this.<br><br>
+
+                The following methods can be used, these methods are already set in the array object.<br><br>
+
+                Push: this will put the element on the top.<br>
+                Pop: This will take the top element off the top of the stack.<br>
+                Peek: This will display the top item without taking it off.<br>
+                Length: This will get the length of the stack.<br><br>
+
+
+
+
+
+            </p>
 
         </div>
 
         <div id="visualContainer">
 
 
+            <div id="controlContainer">
+                <div id="textInput">
+                    <input type="button" class="btn" id="push" value="Push">
+                    <input type="text" id="newElem" placeholder="Enter a value">
+                </div>
+                <div id="popDiv">
+                    <input type="button" class="btn" id="pop" value="Pop">
+                </div>
+                <div id="peekDiv">
+                    <input type="button" class="btn" id="peek" value="Peek">
+                </div>
+                <div id="lengthDiv">
+                    <input type="button" class="btn" id="length" value="Length">
+                </div>
+            </div>
+
+
+
+            <div id="stack">
 
 
 
 
+            </div>
 
+            <div id="outputContainer">
 
+                <div id="output">
+                    <p id="outputText"></p>
+                </div>
 
+            </div>
 
         </div>
+
 
 
         <div id="explinationContainer">
