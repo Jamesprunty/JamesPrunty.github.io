@@ -919,8 +919,85 @@ var incMatDir = {
 };
 
 You can have weighted edges which are stronger or weaker, in this we just have -1,0,1 to symbolise an edge is present.
-   
 
+We will look at finding the distances between two nodes in a graph. This is one of the main uses for a graph and is called graph treversal.
+
+Traversal is used to visit nodes in a graph.
+
+There are two types, 
+
+Bredth first search and depth first dearch.
+
+
+
+//Breadth First Search//
+
+The algorithm starts at one node, first visits all its neighbours that are one edge away, then goes on to visit all of their neighbours.
+
+The point is to determin how close nodes are to a root node.
+
+There are different ways of implementing bredth first search. 
+
+In this version we pass in an adjesency matrix graph and the root node. This shows you which indexes are connected to each other index in the matrix.
+
+
+  0 1 2 3 4
+0 0 1 1 1 0
+1 0 0 1 0 0
+2 1 1 0 0 0
+3 0 0 0 1 0
+4 0 1 0 0 0
+
+This represents
+
+ --3----0 - > 1 < - 4
+|--|    |     |
+        |     |
+        2-----
+
+
+Which is the following in JS:
+
+var exBFSGraph = {
+
+	[0, 1, 1, 1, 0],
+	[0, 0, 1, 0, 0],
+	[1, 1, 0, 0, 0],
+	[0, 0, 0, 1, 0],
+	[0, 1, 0, 0, 0]
+};
+
+Console.log(bfs(exBFSGraph, 1)); //This is looking for how far each node is from the first node
+   
+//This function will output an object of key value pairs where the key is the node and the value is the distance from the root.
+
+function bfs(graph, root){
+	var nodesLen = {}; //This is where is will be stored.
+	for (var i = 0; i < graph.length; i++{ //Go through the length of the graph
+		nodesLen[i] = Infinity; //Start everything at infinity (Meaning there is no rout to that node)
+	}
+	nodesLen[root] = 0; //The distance from the root node to the root node is set to "0" instead of infinity.
+	var queue = [root]; //This is a queue to keep track of nodes to visit.
+	var current; //This will keep track of the current node we are traversing.
+	while (queue.length != 0){ //Keep traversing nodes until there are no more nodes
+		current = queue.shift(); //Start the loop by popping off the first node in the queue, at the beginning this is the root node which is the only one in the queue.
+	var curConnected = graph[current]; //We look at all the nodes currently connected to the node.Each index of the graph is an array saying which node is connected to that node.
+	var neighborIdx = []; //This will keep track of which indexes are connected to this node.
+	var idx = curConnected.indexOf(1); //Gets the first node. This is a "1" because 1 symbolises that the node is connected. If there is no node with index of 1, the idx will be set to -1.
+	while(idx !- -1){ //While it had connected nodes
+		neigborIdx.push(idx); //Push it onto the list of neighbours
+		idx = curConnected.indexOf(1, idx + 1);//This searches for the next node. We look in the array after the previous one we found (idx + 1)
+	}
+	for (var j=0;j<neighborIdx.length;j++){//Loops through to find the distance
+		if(nodesLen[neighborIdx[j]] == Infinity) { //This means we have not set the distance of this node yet. 
+			nodesLen[neighborIdx[j]] = nodesLen[current] + 1;//Set the distance to the value of the nodes length array for the current node, plus 1.
+			queue.push(neighborIdx[j]]);//Push the neighbor to the queue. Next time we go through the while loop we will check those neighbors too.
+			}
+		}
+	}
+	return nodesLen;
+};
+	
 
 
 TIME: 1:45:17
