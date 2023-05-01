@@ -27,7 +27,7 @@ Difference - This is the same but with the differences
 
 subset - Check if one set is completely contained in another set (this will return true or false) (return firstSet.every(function(value){return otherSet.has(value);}); This will go through every element at see if it passes the .has method.
 
------------------------------------------
+------------------------------------------------------------------------------------------------------
 
 Queue: Similar to a stack but is first in first out
 
