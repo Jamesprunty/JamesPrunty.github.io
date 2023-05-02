@@ -157,7 +157,7 @@ function updateQueues(){
 
     for(i=0;i<q.size();i++){
 
-        let data = `<div class="stackItem"><p>${q.get(i)}</p></div>`;
+        let data = `<div class="queueItem"><p>${q.get(i)}</p></div>`;
        
         dataFinish1 += data;
 

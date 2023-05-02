@@ -37,7 +37,7 @@
     
 }
 
-.setItem{
+.queueItem{
     border:white 1px solid;
     height: 70px;
     width: 70px;
@@ -45,6 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
 }
 
@@ -64,19 +65,19 @@ p{
     margin-left: 30px;;
 }
 
-#queue, #queueP{
+#queueDiv, #queuePDiv{
     display: flex;
     min-height: 70px;
     flex-direction: row;
     border: white 1px solid;
 }
 
-.set{
+.queue{
     flex: 1;
     border: 1px red solid;
     min-height: 70px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin: 2px;
     padding: 20px;
 
