@@ -37,10 +37,14 @@
     
 }
 
-.stackItem{
+.setItem{
     border:white 1px solid;
     height: 70px;
     width: 70px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -58,4 +62,21 @@ p{
 .code{
     color: grey;
     margin-left: 30px;;
+}
+
+#sets{
+    display: flex;
+    min-height: 70px;
+    flex-direction: row;
+}
+
+.set{
+    flex: 1;
+    border: 1px red solid;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-around;
+    margin: 2px;
+    padding: 20px;
+
 }
