@@ -237,6 +237,48 @@
                 };<br>
 
             </p>
+            <p>
+
+                <br><br>The intersection method also takes in another set as the parameter.<br><br>
+                As with the union method, it creates a new var for the new set and the first set.<br><br>
+                It goes through all the values of the first set, and checks if the other set has it (using the "has" method)>br><br>
+                If the element is there then it will add it to the new set.<br><br>
+
+                <br><br> //Difference//<br><br>
+
+            </p>
+            <p class="code">
+                this.difference = function (otherSet) {<br>
+                    var differenceSet = new mySet();<br>
+                    var firstSet = this.values();<br>
+                    firstSet.forEach(function (e) {<br>
+                        if (!otherSet.has(e)) {<br>
+                            differenceSet.add(e);<br>
+                        }<br>
+                    });<br>
+                    return differenceSet;<br>
+                };<br>
+            </p>
+            <p>
+                <br><br>This method is the same as the intersection method but it will only add it if it is not in the other set.<br><br>
+
+                <br><br>//Subset//<br><br>
+            </p>
+            <p class="code">
+                this.subset = function (otherSet) {<br>
+                    var firstSet = this.values();<br>
+                    return firstSet.every(function (value) {<br>
+                        return otherSet.has(value);<br>
+                    });
+                };
+            }<br><br>
+            </p>
+            <p>
+
+                <br><br> The subset method checks to see if the first set is part of the second set. <br><br>
+                It uses the "every" method to check each value to see if the other set has it. If it is true in every case, then it will return true.
+
+            </p>
 
 
 

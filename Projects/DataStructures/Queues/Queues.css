@@ -1,0 +1,83 @@
+#outputContainer{
+    width: 100%;
+
+
+}
+
+#visualContainer, #visuallContainerP{
+    display:flex;
+    flex-direction: column;
+    border:white 1px solid;
+
+
+}
+
+#controlContainer, #controlContainerP{
+    display: flex;
+    flex: 1;
+    border:white 1px solid;
+    justify-content: center;
+}
+
+#queue, #queueP{
+    display: flex;
+    flex: 1;
+    min-height: 90px;
+    flex-direction: row;
+
+}
+
+#explinationContainer{
+    flex:1;
+}
+
+#output, #outputP{
+
+    border: white solid 1px;
+    
+}
+
+.setItem{
+    border:white 1px solid;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#outputText, #outputTextP{
+    text-align: center;
+    justify-content: center;
+    min-height: 20px;
+
+}
+
+p{
+    margin-left: 5px;;
+}
+
+.code{
+    color: grey;
+    margin-left: 30px;;
+}
+
+#queue, #queueP{
+    display: flex;
+    min-height: 70px;
+    flex-direction: row;
+    border: white 1px solid;
+}
+
+.set{
+    flex: 1;
+    border: 1px red solid;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-around;
+    margin: 2px;
+    padding: 20px;
+
+}

@@ -143,12 +143,6 @@ function updateStack(){
 
     stack.innerHTML = dataFinish;
     
-    
-
-
-    
-    
-
 
 
 }
