@@ -23,6 +23,7 @@ function mySet() {
             collection.push(element);
             return true;
         }
+        outputText.innerText = "Set 2 already contains this value so it will not be added.";
         return false;
     };
 
@@ -144,27 +145,45 @@ buttons.forEach(element => {
 
         if (this.id == "add") {
 
+
             console.log(newElem.value);
             set2.add(newElem.value);
             updateSet();
 
+
+
+
+
+
+
         } else if (this.id == "has") {
 
-            outputText
+            outputText.innerText = set2.has(checkElem.value);
 
         } else if (this.id == "values") {
 
+            outputText.innerText = set2.values();
+
         } else if (this.id == "remove") {
+
+            set2.remove(removeElem.value);
+            updateSet();
 
         } else if (this.id == "size") {
 
+            outputText.innerText = set2.size();
+
         } else if (this.id == "union") {
+
+            outputText.innerText = set2.union(set1);
 
         } else if (this.id == "intersection") {
 
         } else if (this.id == "difference") {
 
         } else if (this.id == "subset") {
+
+            outputText.innerText = JSON.stringify(set2.subset(set1));
 
         }
 
