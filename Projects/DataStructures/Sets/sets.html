@@ -22,7 +22,17 @@
 
                 A set is similar to stack but has no duplicates and are not in any particular order<br><br>
 
+                The following methods can be used.<br><br>
 
+                Add: This will add a value to the set but only if the set does not already contain the value.<br>
+                Has: This will return a true or false depending on if the set has the value in it.<br>
+                Remove: This will remove the value from the set.
+                Values: This will display the values in the set. This is also how you obtain the values of the set.<br>
+                Size: This will return the set size.<br>
+                Union: This takes in another set as a parameter, it will merge the sets, only one of each value will be added.<br>
+                Intersection: This will return all values that are the same in both sets. <br>
+                Difference: This will return all values that are different in the sets.<br>
+                subset: This will return a true or false depending if one set found in another set.<br><br>
 
             </p>
 
@@ -100,11 +110,149 @@
         <div id="explinationContainer">
 
             <p id="explination">
+                <br> So let's look at the code here.<br><br> 
+                We start off with the collection to hold the set.<br><br>
+            </p>
 
+            <p class="code">
+                var collection = [];<br><br>
+            </p>
 
+            <p>
 
+                //Has//<br><br>
 
             </p>
+
+            <p class="code">
+                this.has = function (element) {<br>
+                    return (collection.indexOf(element) !== -1);<br>
+                };<br>
+            </p>
+
+            <p>
+                <br><br>The "has()" function takes in an element to check in the set and return a true or false.<br><br>
+                If the element is not in the set, the index of the element will equal -1. 
+
+            </p>
+
+
+            <p>
+
+                <br><br>//Add//<br><br>
+
+            </p>
+
+            <p class="code">
+
+                this.add = function (element) {<br>
+                    if (!this.has(element)) {<br>
+                        collection.push(element);<br>
+                        return true;<br>
+                    }<br>
+                   return false;<br>
+                };<br>
+
+            </p>
+            <p>
+                <br><br>The "add()" function takes in an element to add to the stack.<br><br>
+                If the element is already in the set then it will not add it. <br><br>
+                So if the element is not in there, it will push the element onto the collection.<br><br>
+                <br>//Values//<br><br>
+            </p>
+            <p class="code">
+
+                this.values = function () {<br>
+                    return collection;<br>
+                };<br>
+            </p>
+            <p>
+                <br><br>The values method returns the collection. <br><br>
+                <br>//Remove//<br><br>
+            </p>
+
+            <p class="code">
+                this.remove = function (element) {<br>
+                    if (this.has(element)) {<br>
+                        index = collection.indexOf(element);<br>
+                        collection.splice(index, 1);<br>
+                        return true;<br>
+                    }<br>
+                    return false;<br>
+                };<br>
+            </p>
+            <p>
+                <br><br>First the method checks if the element is in the set.<br><br>
+                Then it gets the index of the element. <br><br>
+                If it is in there, the collection is spliced at that index to remove it.<br><br>
+
+                <br><br> //Size//<br><br>
+            </p>
+            <p class="code">
+                this.size = function () {<br>
+                    return collection.length;<br>
+                };<br>
+            </p>
+            <p>
+                <br><br>The size method returns the length.<br><br>
+
+               <br><br> //Union//<br><br>
+            </p>
+            <p class="code">
+
+                this.union = function (otherSet) {<br>
+                    var unionSet = new mySet();<br>
+                    var firstSet = this.values();<br>
+                    var secondSet = otherSet.values();<br>
+                    firstSet.forEach(function (e) {<br>
+                        unionSet.add(e);<br>
+                    });<br>
+                    secondSet.forEach(function (e) {<br>
+                        unionSet.add(e);<br>
+                    });<br>
+                    return unionSet;<br>
+                };<br><br>
+
+            </p>
+            <p>
+                The Union method takes in another set as its parameter to merge the two together. <br><br>
+                The method starts by creating a new set to store the values.<br><br>
+                Both set's values are set to a new variable to be able to use.<br><br>
+                It goes through each value in the first set and Adds it to the union set. Remember the add() method does not allow for duplicates so we won't get any in our new set.<br><br>
+                It does the same for the second set, then returns the unionSet.<br><br>
+
+                <br><br>//Intersection//<br><br>
+            </p>
+            <p class="code">
+
+                this.intersection = function (otherSet) {<br>
+                    var intersectionSet = new mySet();<br>
+                    var firstSet = this.values();<br>
+                    firstSet.forEach(function (e) {<br>
+                        if (otherSet.has(e)) {<br>
+                            intersectionSet.add(e);<br>
+                        }<br>
+                    });<br>
+                    return intersectionSet;<br>
+                };<br>
+
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
 
