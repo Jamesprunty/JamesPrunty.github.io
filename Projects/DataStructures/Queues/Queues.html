@@ -146,13 +146,23 @@
 
             <p class="code">
                 var collection = [];<br><br>
+
+                
+            </p>
+            <p>
+                <br><br>//Enqueue//<br><br>
             </p>
 
             <p class="code">
-                this.enqueue = function (element) {
-                collection.push(element);
-                };
+                this.enqueue = function (element) {<br>
+                collection.push(element);<br>
+                };<br>
 
+            </p>
+            <p>
+                <br><br>In a regular queue, this is a very simple method, just push the element onto the queue.<br><br>
+
+                This is different on the priority queue though. 
             </p>
             <p class="code">
 
@@ -162,12 +172,16 @@
                 collection.push(element);<br>
                 } else {<br>
                 var added = false;<br>
-                for (var i = 0; i < collection.length; i++) { if (element[1] < collection[i][1]) { //checking priorities<br>
+                for (var i = 0; i < collection.length; i++) <br>
+                { if (element[1] < collection[i][1]) { //checking priorities<br>
                     collection.splice(i, 0, element); added=true; break; } } if (!added) { collection.push(element); } }<br>
                     }; <br>
                 </p>
 
                     <p>
+
+                        <br><br> First, if it is an empty queue, then just push the element onto the queue.<br><br>
+
 
 
 
