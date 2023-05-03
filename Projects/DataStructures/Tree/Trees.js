@@ -226,7 +226,6 @@ bst.add(20);
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
 console.log(bst.isBalanced());
-bst.add(10);
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
 console.log(bst.isBalanced());
@@ -236,7 +235,7 @@ console.log('postOrder: ' + bst.postOrder());
 
 console.log('levelOrder: ' + bst.levelOrder());
 
-function addNode(value,x,y){
+function addNode(value, x, y) {
 
   const svgns = "http://www.w3.org/2000/svg";
 
@@ -250,45 +249,58 @@ function addNode(value,x,y){
   svg.appendChild(newCircle);
 
   let newText = document.createElementNS(svgns, "text");
-  newText.setAttributeNS(null,"y",y);  
-  newText.setAttributeNS(null,"x",x);      
-  newText.setAttributeNS(null,"stroke","white");   
-  newText.setAttributeNS(null,"text-anchor","middle");   
+  newText.setAttributeNS(null, "y", y);
+  newText.setAttributeNS(null, "x", x);
+  newText.setAttributeNS(null, "stroke", "white");
+  newText.setAttributeNS(null, "text-anchor", "middle");
   var textNode = document.createTextNode(value);
   newText.appendChild(textNode);
 
   svg.appendChild(newText);
+
+}
+
+let center = window.innerWidth / 2;
+let startHeight = 70;
+
+
+
+let svg = document.querySelector("#treeSVG");
+
+
+function updateTree() {
+
+
+
+  
+    if (bst.root != null) {
+
+      addNode(bst.root.data, center, startHeight);
+
+      var result = new Array();
+      
+      
+
+      function traversePreOrder(node) {
+
+        addNode(node.data, center, startHeight);
+
+        node.left && traversePreOrder(node.left); 
+
+        node.right && traversePreOrder(node.right); 
+      };
+      traversePreOrder(bst.root);
+      console.log( result);
+
+      }
+      
+  
+
 
 
 }
 
 
 
-
-let svg = document.querySelector("#treeSVG");
-
-addNode("2",50,50);
-
-function updateTree() {
-
-
-  if (bst.root != null) {
-
-
-      
-
-  }
-
-
-  }
-
-
-
-  updateTree();
-
-
-
-
-
-
+updateTree();
 
