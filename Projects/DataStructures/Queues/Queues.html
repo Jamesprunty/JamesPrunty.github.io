@@ -174,7 +174,8 @@
                 var added = false;<br>
                 for (var i = 0; i < collection.length; i++) <br>
                 { if (element[1] < collection[i][1]) { //checking priorities<br>
-                    collection.splice(i, 0, element); added=true; break; } } if (!added) { collection.push(element); } }<br>
+                    collection.splice(i, 0, element); added=true; break; } } <br>
+                if (!added) { collection.push(element); } }<br>
                     }; <br>
                 </p>
 
@@ -182,8 +183,19 @@
 
                         <br><br> First, if it is an empty queue, then just push the element onto the queue.<br><br>
 
+                        We set "added" to false as we have not added it yet and we will be using this to check if it's been added yet or not.<br><br>
 
+                        We create a for() loop to go through the collection.<br><br>
+                        
+                        The "1" index is the priority, as the "0" is the value, so it is checking to see if the collection[1] is less than the new priority.<br><br>
 
+                        Because the element starts comparing at the top, if the priority is smaller, it will get put there, If, it is bigger and still !added, then it will move on to the next.<br><br>
+
+                        When it is smaller it splices into that position and breaks the cycle, also setting "added" to true.<br><br>
+
+                        If it has not been added (it hasn't been spliced so added is still false) it will push it onto the end.<br><br>
+
+                        <br><br>//Dequeue//<br><br>
 
                     </p>
 
@@ -196,7 +208,11 @@
                     </p>
 
                     <p>
+                        <br><br> The rest of the methods are the same for both priority and non priority queues.<br><br>
 
+                        The dequeue method just shifts the queue which removes the value from the queue and outputs it where you want it to.<br><br>
+
+                        <br><br>//Front//<br><br>
 
                         
                     </p>
@@ -209,7 +225,9 @@
                     </p>
 
                     <p>
+                        <br><br> The front method just returns "collection[0]" which is the first element in the queue.<br><br>
 
+                        <br><br>//Size<br><br>
 
                         
                     </p>
@@ -222,7 +240,9 @@
                     </p>
 
                     <p>
+                        <br><br>the Size method returns the length of the queue.<br><br>
 
+                        <br><br>//isEmpty//<br><br>
 
                         
                     </p>
@@ -236,6 +256,7 @@
 
                     <p>
 
+                        <br><br>The "isEmpty" method returns a true or false based on whether the length of the queue is equal to 0 or not.<br><br>
 
                         
                     </p>

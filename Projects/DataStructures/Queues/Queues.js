@@ -55,7 +55,8 @@ function PriorityQueue() {
         }
     };
     this.dequeue = function () {
-        var value = collection.shift();
+        return collection.shift();
+        
     };
     this.front = function () {
         return collection[0];
@@ -138,13 +139,13 @@ buttons.forEach(element => {
 
         } else if (this.id == "dequeue") {
 
-            q.dequeue();
+            outputText.innerText = q.dequeue();
             updateQueues();
 
         }
         else if (this.id == "dequeueP") {
 
-            pq.dequeue();
+            outputTextP.innerText = pq.dequeue();
             updateQueues();
 
         }

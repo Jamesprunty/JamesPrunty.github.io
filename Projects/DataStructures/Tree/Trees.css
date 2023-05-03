@@ -1,0 +1,69 @@
+#outputContainer{
+    width: 100%;
+
+
+}
+
+#visualContainer{
+    display:flex;
+    flex-direction: column;
+    border:white 1px solid;
+
+
+}
+
+#controlContainer{
+    display: flex;
+    flex: 1;
+    border:white 1px solid;
+    justify-content: center;
+}
+
+#tree{
+    display: flex;
+    flex: 1;
+    min-height: 500px;
+    flex-direction: row;
+
+
+}
+
+#explinationContainer{
+    flex:1;
+}
+
+#output{
+
+    border: white solid 1px;
+    
+}
+
+.stackItem{
+    border:white 1px solid;
+    height: 70px;
+    width: 70px;
+
+}
+
+#outputText{
+    text-align: center;
+    justify-content: center;
+    min-height: 20px;
+
+}
+
+p{
+    margin-left: 5px;;
+}
+
+.code{
+    color: grey;
+    margin-left: 30px;;
+}
+
+svg{
+    width:100%;
+    min-height:500px;
+    border:red solid 1px;
+}
+
