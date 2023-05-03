@@ -20,6 +20,20 @@
 
             <p id="summary">
 
+                A set is similar to a stack but it oporates on the "first in first out" system<br><br>
+
+                There are two types of queues, a non priority, and a priority. A priority queue will take in an extra
+                parameter which will put it in priority order.<br><br>
+
+                The following methods can be used.<br><br>
+
+                Enqueue: This will add a value to the end of the queue, unless it is a priority queue in which it will
+                add it in line with the priority. <br>
+                Dequeue: This will remove the element at the front. This will either be the first element added or the
+                element with the highest priority in a priority queue.<br>
+                Front: This will display the element at the front.<br>
+                Size: This will return the size of the queue.<br>
+                isEmpty: This will return true if there is nothing in the queue, or false if there is something.<br>
 
             </p>
 
@@ -124,9 +138,93 @@
         <div id="explinationContainer">
 
             <p id="explination">
-
+            <p>
+                <br> So let's look at the code here.<br><br>
+                As with some of the other data structures we have looked at, we start off with the collection to hold
+                the queue.<br><br>
             </p>
 
+            <p class="code">
+                var collection = [];<br><br>
+            </p>
+
+            <p class="code">
+                this.enqueue = function (element) {
+                collection.push(element);
+                };
+
+            </p>
+            <p class="code">
+
+
+                <br><br>this.enqueue = function (element) {<br>
+                if (this.isEmpty()) {<br>
+                collection.push(element);<br>
+                } else {<br>
+                var added = false;<br>
+                for (var i = 0; i < collection.length; i++) { if (element[1] < collection[i][1]) { //checking priorities<br>
+                    collection.splice(i, 0, element); added=true; break; } } if (!added) { collection.push(element); } }<br>
+                    }; <br>
+                </p>
+
+                    <p>
+
+
+
+                    </p>
+
+                    <p class="code">
+
+                        <br><br>this.dequeue = function () {<br>
+                        return collection.shift();<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+
+
+                        
+                    </p>
+
+                    <p class="code">
+                        <br><br> this.front = function () {<br>
+                        return collection[0];<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+
+
+                        
+                    </p>
+                    <p class="code">
+
+                        <br><br>this.size = function () {<br>
+                        return collection.length;<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+
+
+                        
+                    </p>
+                    <p class="code">
+
+                        <br><br> this.isEmpty = function () {<br>
+                        return (collection.length === 0);<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+
+
+                        
+                    </p>
 
             </p>
 

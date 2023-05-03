@@ -29,10 +29,6 @@ var q = new Queue();
 q.enqueue('a');
 q.enqueue('b');
 q.enqueue('c');
-q.print();
-q.dequeue();
-console.log(q.front());
-q.print();
 
 
 
@@ -60,7 +56,6 @@ function PriorityQueue() {
     };
     this.dequeue = function () {
         var value = collection.shift();
-        return value[0];
     };
     this.front = function () {
         return collection[0];
@@ -213,7 +208,6 @@ function updateQueues() {
 
     }
 
-    console.log(dataFinish2);
 
     queue.innerHTML = dataFinish1;
     queueP.innerHTML = dataFinish2;
