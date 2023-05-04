@@ -218,10 +218,10 @@ bst.add(4);
 bst.add(17);
 bst.add(3);
 bst.add(6);
-bst.add(22);
-bst.add(5);
-bst.add(7);
-bst.add(20);
+//bst.add(22);
+//bst.add(5);
+//bst.add(7);
+//bst.add(20);
 
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
@@ -270,29 +270,38 @@ let svg = document.querySelector("#treeSVG");
 
 function updateTree() {
 
+  let x = center;
+  let y = startHeight;
+  let pos = "";
+
 
 
   
     if (bst.root != null) {
 
       addNode(bst.root.data, center, startHeight);
+    }
 
-      var result = new Array();
-      
-      
+    var result = new Array();
+      function traverseinOrder(node) {
 
-      function traversePreOrder(node) {
+        if(node.left){ pos += "l"; traverseinOrder(node.left);}
 
-        addNode(node.data, center, startHeight);
+        if(node.right){pos += "r"; traverseinOrder(node.right)};
 
-        node.left && traversePreOrder(node.left); 
+        result.push([node.data, pos]);
 
-        node.right && traversePreOrder(node.right); 
+       
+
+ 
+
+       
       };
-      traversePreOrder(bst.root);
-      console.log( result);
+      traverseinOrder(bst.root);
+      console.log(result);
 
-      }
+    
+  
       
   
 
