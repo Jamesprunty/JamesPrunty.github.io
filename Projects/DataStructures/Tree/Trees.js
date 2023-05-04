@@ -1,5 +1,9 @@
 /* Binary Search Tree */
 
+let center = window.innerWidth / 2;
+let startHeight = 70;
+
+
 class Node {
   constructor(data, left = null, right = null) {
     this.data = data;
@@ -12,10 +16,16 @@ class BST {
   constructor() {
     this.root = null;
   }
+
+
+
   add(data) {
     const node = this.root;
     if (node === null) {
       this.root = new Node(data);
+
+      addNode(this.root.data, center, startHeight);
+      
       return;
     } else {
       const searchTree = function (node) {
@@ -40,6 +50,12 @@ class BST {
       return searchTree(node);
     }
   }
+
+
+
+
+
+
   findMin() {
     let current = this.root;
     while (current.left !== null) {
@@ -235,7 +251,11 @@ console.log('postOrder: ' + bst.postOrder());
 
 console.log('levelOrder: ' + bst.levelOrder());
 
+
+
 function addNode(value, x, y) {
+
+  let svg = document.querySelector("#treeSVG");
 
   const svgns = "http://www.w3.org/2000/svg";
 
@@ -260,41 +280,11 @@ function addNode(value, x, y) {
 
 }
 
-let center = window.innerWidth / 2;
-let startHeight = 70;
-
-
-
-let svg = document.querySelector("#treeSVG");
-
 
 function updateTree() {
 
 
 
-  
-    if (bst.root != null) {
-
-      addNode(bst.root.data, center, startHeight);
-
-      var result = new Array();
-      
-      
-
-      function traversePreOrder(node) {
-
-        addNode(node.data, center, startHeight);
-
-        node.left && traversePreOrder(node.left); 
-
-        node.right && traversePreOrder(node.right); 
-      };
-      traversePreOrder(bst.root);
-      console.log( result);
-
-      }
-      
-  
 
 
 
