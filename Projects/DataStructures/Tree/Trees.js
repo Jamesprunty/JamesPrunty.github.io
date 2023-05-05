@@ -2,9 +2,12 @@
 
 let center = window.innerWidth / 2;
 let startHeight = 70;
-let xDiff = 150;
+let xDiffL = 200;
+let xDiffR = 200;
 let yDiff = 80;
 let state = "odd";
+let leftDone = false;
+let rightDone = false;
 
 class Node {
   constructor(data, left = null, right = null, posX = center, posY = startHeight) {
@@ -36,17 +39,18 @@ class BST {
         if (data < node.data) {
           if (node.left === null) {
 
-              xDiff = xDiff - 10;
-            
+            if(node.data == bst.root.data){
+              xDiffL = 250;
+            }else{
+              xDiffL = 80;
+            }
 
+            node.left = new Node(data, null, null, node.posX - xDiffL, node.posY + yDiff);
 
-              node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff);
+            addLine(node.posX, node.posY, node.left.posX, node.left.posY);
+            addNode(node.data, node.posX, node.posY);
 
-              addLine(node.posX, node.posY, node.left.posX, node.left.posY);
-              addNode(node.data, node.posX, node.posY);
-
-              addNode(node.left.data, node.left.posX, node.left.posY);
-              
+            addNode(node.left.data, node.left.posX, node.left.posY);
 
             //add node -50 + 50y from current node
 
@@ -63,12 +67,19 @@ class BST {
         } else if (data > node.data) {
           if (node.right === null) {
 
-              node.right = new Node(data, null, null, node.posX + xDiff, node.posY + yDiff);
-              addLine(node.posX, node.posY, node.right.posX, node.right.posY);
-              addNode(node.right.data, node.right.posX, node.right.posY);
-              addNode(node.data, node.posX, node.posY);
+            if(node.data == bst.root.data){
+              xDiffR = 250;
+            }else{
+              xDiffR = 80;
+            }
 
-              xDiff = xDiff - 10;
+
+
+            node.right = new Node(data, null, null, node.posX + xDiffR, node.posY + yDiff);
+
+            addLine(node.posX, node.posY, node.right.posX, node.right.posY);
+            addNode(node.right.data, node.right.posX, node.right.posY);
+            addNode(node.data, node.posX, node.posY);
 
 
             return;
@@ -100,6 +111,9 @@ class BST {
     }
     return current.data;
   }
+
+
+
   find(data) {
     let current = this.root;
     while (current.data !== data) {
@@ -112,8 +126,12 @@ class BST {
         return null;
       }
     }
-    return current;
+    return [current.posX, current.posY];
   }
+
+
+
+
   isPresent(data) {
     let current = this.root;
     while (current) {
@@ -128,6 +146,9 @@ class BST {
     }
     return false;
   }
+
+
+
   remove(data) {
     const removeNode = function (node, data) {
       if (node == null) {
@@ -260,6 +281,12 @@ class BST {
 
 const bst = new BST();
 bst.add(9);
+bst.add(2);
+bst.add(7);
+bst.add(8);
+bst.add(23);
+bst.add(15);
+bst.add(12);
 
 
 /*
@@ -304,7 +331,7 @@ function addNode(value, x, y) {
 
 }
 
-function addLine(fromX, fromY, toX, toY){
+function addLine(fromX, fromY, toX, toY) {
 
   let svg = document.querySelector("#treeSVG");
 
@@ -327,30 +354,71 @@ let buttons = document.querySelectorAll(".btn");
 let outputText = document.querySelector("#outputText");
 
 buttons.forEach(element => {
-  element.addEventListener('click', function(){
+  element.addEventListener('click', function () {
 
-    switch(this.id){
+    switch (this.id) {
 
       case "add":
-        if(elem.value > 0){
+        if (elem.value > 0) {
           console.log(elem.value);
           bst.add(elem.value);
-        }else{
+        } else {
 
           outputText.innerText = "Please enter a number in the value box."
 
         }
+
+        elem.value = "";
         break;
 
       case "find":
-        if(elem.value > 0){
+        if (elem.value > 0) {
+
           
-        }else{
+          let posValue = (bst.find(parseInt(elem.value)));
+          outputText.innerText = "x = " + posValue[0] + " y = " + posValue[1];
+
+          //outputText.innerText = ;
+
+        } else {
 
           outputText.innerText = "Please enter a number in the value box."
 
         }
+        elem.value = "";
         break;
+
+        case "isPresent":
+          if (elem.value > 0) {
+            outputText.innerText = bst.isPresent(parseInt(elem.value));
+          } else {
+  
+            outputText.innerText = "Please enter a number in the value box."
+  
+          }
+  
+          elem.value = "";
+          break;
+
+
+          case "remove":
+            if (elem.value > 0) {
+
+              
+
+            } else {
+    
+              outputText.innerText = "Please enter a number in the value box."
+    
+            }
+    
+            elem.value = "";
+            break;
+
+            case "findMin":
+            
+
+            break;
     }
 
   })
