@@ -322,3 +322,28 @@ function addLine(fromX, fromY, toX, toY){
 
 }
 
+let elem = document.querySelector("#elem");
+let buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(element => {
+  element.addEventListener('click', function(){
+
+    switch(this.id){
+
+      case "add":
+        console.log("add"); 
+        break;
+
+      case "find":
+        console.log("find");
+        break;
+    }
+
+  })
+});
+
+/*let add = document.querySelector("#add");
+let find = document.querySelector("#find");
+let isPresent = document.querySelector("#isPresent");
+let remove = document.querySelector("#remove");
+let findMin = document.querySelector("#findMax");*/
