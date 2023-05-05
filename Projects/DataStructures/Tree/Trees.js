@@ -324,6 +324,7 @@ function addLine(fromX, fromY, toX, toY){
 
 let elem = document.querySelector("#elem");
 let buttons = document.querySelectorAll(".btn");
+let outputText = document.querySelector("#outputText");
 
 buttons.forEach(element => {
   element.addEventListener('click', function(){
@@ -331,11 +332,24 @@ buttons.forEach(element => {
     switch(this.id){
 
       case "add":
-        console.log("add"); 
+        if(elem.value > 0){
+          console.log(elem.value);
+          bst.add(elem.value);
+        }else{
+
+          outputText.innerText = "Please enter a number in the value box."
+
+        }
         break;
 
       case "find":
-        console.log("find");
+        if(elem.value > 0){
+          
+        }else{
+
+          outputText.innerText = "Please enter a number in the value box."
+
+        }
         break;
     }
 
