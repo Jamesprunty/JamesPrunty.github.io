@@ -3,7 +3,6 @@
 let center = window.innerWidth / 2;
 let startHeight = 70;
 
-
 class Node {
   constructor(data, left = null, right = null) {
     this.data = data;
@@ -16,16 +15,11 @@ class BST {
   constructor() {
     this.root = null;
   }
-
-
-
   add(data) {
     const node = this.root;
     if (node === null) {
       this.root = new Node(data);
-
-      addNode(this.root.data, center, startHeight);
-      
+      addNode(bst.root.data, center, startHeight);
       return;
     } else {
       const searchTree = function (node) {
@@ -50,12 +44,6 @@ class BST {
       return searchTree(node);
     }
   }
-
-
-
-
-
-
   findMin() {
     let current = this.root;
     while (current.left !== null) {
@@ -251,11 +239,10 @@ console.log('postOrder: ' + bst.postOrder());
 
 console.log('levelOrder: ' + bst.levelOrder());
 
-
-
 function addNode(value, x, y) {
 
-  let svg = document.querySelector("#treeSVG");
+  
+let svg = document.querySelector("#treeSVG");
 
   const svgns = "http://www.w3.org/2000/svg";
 
@@ -279,22 +266,4 @@ function addNode(value, x, y) {
   svg.appendChild(newText);
 
 }
-
-
-function updateTree() {
-
-  let x = center;
-  let y = startHeight;
-  let pos = "";
-
-
-
-
-
-
-}
-
-
-
-updateTree();
 
