@@ -24,7 +24,6 @@ class BST {
     const node = this.root;
     if (node === null) {
       this.root = new Node(data);
-      console.log(this);
 
       addNode(this.root.data, this.root.posX, this.root.posY);
 
@@ -261,19 +260,9 @@ class BST {
 
 const bst = new BST();
 bst.add(9);
-bst.add(4);
-bst.add(17);
-bst.add(3);
-bst.add(6);
-bst.add(22);
-bst.add(5);
-bst.add(7);
-bst.add(20);
-bst.add(23);
-bst.add(21);
-bst.add(25);
 
 
+/*
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
 console.log(bst.isBalanced());
@@ -284,7 +273,7 @@ console.log('inOrder: ' + bst.inOrder());
 console.log('preOrder: ' + bst.preOrder());
 console.log('postOrder: ' + bst.postOrder());
 
-console.log('levelOrder: ' + bst.levelOrder());
+console.log('levelOrder: ' + bst.levelOrder());*/
 
 function addNode(value, x, y) {
 

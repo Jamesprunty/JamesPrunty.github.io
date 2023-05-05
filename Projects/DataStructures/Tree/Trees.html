@@ -30,27 +30,66 @@
 
 
             <div id="controlContainer" class="control">
-                <div id="textInput">
-                    <input type="button" class="btn" id="add" value="Add">
-                    <input type="text" id="newElem" placeholder="Enter a value">
+
+
+                <div id="input" class="controlBtns">
+                    <input type="number" id="Elem" placeholder="Value">
+                    <div id="addDiv">
+                        <input type="button" class="btn" id="add" value="Add">
+                    </div>
+                    <div id="findDiv">
+                        <input type="button" class="btn" id="find" value="Find">
+                    </div>
+                    <div id="presentDiv">
+                        <input type="button" class="btn" id="isPresent" value="Is Present">
+                    </div>
+                    <div id="removeDiv">
+                        <input type="button" class="btn" id="remove" value="Remove">
+                    </div>
+
                 </div>
-                <div id="popDiv" class="control">
-                    <input type="button" class="btn" id="pop" value="Pop">
+                <div id="find" class="controlBtns">
+                    <div id="minDiv" class="control">
+                        <input type="button" class="btn" id="findMin" value="find Min">
+                    </div>
+                    <div id="maxDiv" class="control">
+                        <input type="button" class="btn" id="findMax" value="Find Max">
+                    </div>
+
+
+                    <div id="minHeightDiv" class="control">
+                        <input type="button" class="btn" id="minHeight" value="Find Min Height">
+                    </div>
+                    <div id="maxHeightDiv" class="control">
+                        <input type="button" class="btn" id="maxHeight" value="Find Max Height">
+                    </div>
                 </div>
-                <div id="peekDiv" class="control">
-                    <input type="button" class="btn" id="peek" value="Peek">
+
+                <div id="order" class="controlBtns">
+                <div id="isBalanced" class="control">
+                    <input type="button" class="btn" id="isBalanced" value="IsBalanced">
                 </div>
-                <div id="lengthDiv" class="control">
-                    <input type="button" class="btn" id="length" value="Length">
+                <div id="inOrderDiv" class="control">
+                    <input type="button" class="btn" id="inOrder" value="In Order">
                 </div>
+                <div id="preOrderDiv" class="control">
+                    <input type="button" class="btn" id="preOrder" value="Pre-Order">
+                </div>
+                <div id="postOrderDiv" class="control">
+                    <input type="button" class="btn" id="postOrder" value="Post-Order">
+                </div>
+                <div id="levelOrderDiv" class="control">
+                    <input type="button" class="btn" id="levelOrder" value="level Order">
+                </div>
+            </div>
             </div>
 
 
 
             <div id="tree">
                 <svg id="treeSVG">
-                    
-                </svg> 
+
+                </svg>
 
 
 
@@ -73,7 +112,7 @@
 
             <p id="explination">
 
-                    </p>
+            </p>
 
 
 

@@ -8,15 +8,27 @@
     display:flex;
     flex-direction: column;
     border:white 1px solid;
+    
 
 
+}
+
+input{
+    flex:1;
 }
 
 #controlContainer{
     display: flex;
     flex: 1;
     border:white 1px solid;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+}
+
+.controlBtns{
+    display: flex;
+    flex: 1;
 }
 
 #tree{
