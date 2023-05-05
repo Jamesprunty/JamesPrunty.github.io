@@ -2,12 +2,17 @@
 
 let center = window.innerWidth / 2;
 let startHeight = 70;
+let xDiff = 150;
+let yDiff = 80;
+let state = "odd";
 
 class Node {
-  constructor(data, left = null, right = null) {
+  constructor(data, left = null, right = null, posX = center, posY = startHeight) {
     this.data = data;
     this.left = left;
     this.right = right;
+    this.posX = posX;
+    this.posY = posY;
   }
 }
 
@@ -19,24 +24,56 @@ class BST {
     const node = this.root;
     if (node === null) {
       this.root = new Node(data);
-      addNode(bst.root.data, center, startHeight);
+      console.log(this);
+
+      addNode(this.root.data, this.root.posX, this.root.posY);
+
+
       return;
     } else {
+
+
       const searchTree = function (node) {
         if (data < node.data) {
           if (node.left === null) {
-            node.left = new Node(data);
+
+              xDiff = xDiff - 10;
+            
+
+
+              node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff);
+
+              addNode(node.left.data, node.left.posX, node.left.posY);
+
+            //add node -50 + 50y from current node
+
+
             return;
           } else if (node.left !== null) {
+
             return searchTree(node.left);
+
           }
+
+
+
         } else if (data > node.data) {
           if (node.right === null) {
-            node.right = new Node(data);
+
+              node.right = new Node(data, null, null, node.posX + xDiff, node.posY + yDiff);
+              addNode(node.right.data, node.right.posX, node.right.posY);
+
+              xDiff = xDiff - 10;
+
+
             return;
           } else if (node.right !== null) {
+
             return searchTree(node.right);
           }
+
+
+
         } else {
           return null;
         }
@@ -222,10 +259,13 @@ bst.add(4);
 bst.add(17);
 bst.add(3);
 bst.add(6);
-//bst.add(22);
-//bst.add(5);
-//bst.add(7);
-//bst.add(20);
+bst.add(22);
+bst.add(5);
+bst.add(7);
+bst.add(20);
+bst.add(23);
+bst.add(21);
+
 
 console.log(bst.findMinHeight());
 console.log(bst.findMaxHeight());
@@ -241,8 +281,8 @@ console.log('levelOrder: ' + bst.levelOrder());
 
 function addNode(value, x, y) {
 
-  
-let svg = document.querySelector("#treeSVG");
+
+  let svg = document.querySelector("#treeSVG");
 
   const svgns = "http://www.w3.org/2000/svg";
 
