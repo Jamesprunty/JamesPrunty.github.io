@@ -43,7 +43,11 @@ class BST {
 
               node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff);
 
+              addLine(node.posX, node.posY, node.left.posX, node.left.posY);
+              addNode(node.data, node.posX, node.posY);
+
               addNode(node.left.data, node.left.posX, node.left.posY);
+              
 
             //add node -50 + 50y from current node
 
@@ -61,7 +65,9 @@ class BST {
           if (node.right === null) {
 
               node.right = new Node(data, null, null, node.posX + xDiff, node.posY + yDiff);
+              addLine(node.posX, node.posY, node.right.posX, node.right.posY);
               addNode(node.right.data, node.right.posX, node.right.posY);
+              addNode(node.data, node.posX, node.posY);
 
               xDiff = xDiff - 10;
 
@@ -294,6 +300,7 @@ function addNode(value, x, y) {
   newCircle.setAttribute("r", "25");
   newCircle.setAttribute("stroke", "white");
 
+
   svg.appendChild(newCircle);
 
   let newText = document.createElementNS(svgns, "text");
@@ -305,6 +312,24 @@ function addNode(value, x, y) {
   newText.appendChild(textNode);
 
   svg.appendChild(newText);
+
+}
+
+function addLine(fromX, fromY, toX, toY){
+
+  let svg = document.querySelector("#treeSVG");
+
+  const svgns = "http://www.w3.org/2000/svg";
+  let newLine = document.createElementNS(svgns, "line");
+  newLine.setAttribute("x1", fromX);
+  newLine.setAttribute("y1", fromY);
+  newLine.setAttribute("x2", toX);
+  newLine.setAttribute("y2", toY);
+  newLine.setAttribute("stroke-width", 1);
+  newLine.setAttribute("stroke", "white");
+  newLine.setAttribute("z-index", "-1");
+
+  svg.appendChild(newLine);
 
 }
 
