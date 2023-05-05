@@ -265,6 +265,7 @@ bst.add(7);
 bst.add(20);
 bst.add(23);
 bst.add(21);
+bst.add(25);
 
 
 console.log(bst.findMinHeight());
