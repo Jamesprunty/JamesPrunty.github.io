@@ -389,9 +389,6 @@ buttons.forEach(element => {
 
           }
 
-
-
-
         } else {
 
           outputText.innerText = "Please enter a number in the value box."
@@ -433,10 +430,12 @@ buttons.forEach(element => {
 
         let svg = document.querySelector("#treeSVG");
 
-        svg.textContent("")
-
+        svg.innerHTML = "";
 
         break;
+
+        case "findMin":
+          outputText.innerText = bst.findMinHeight();
     }
 
   })
