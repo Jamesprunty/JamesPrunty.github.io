@@ -2,20 +2,22 @@
 
 let center = window.innerWidth / 2;
 let startHeight = 70;
-let xDiffL = 200;
-let xDiffR = 200;
+let xDiff = 200;
+let xDiffStart = window.innerWidth / 4;
 let yDiff = 80;
+let newLevel = 0;
 let state = "odd";
 let leftDone = false;
 let rightDone = false;
 
 class Node {
-  constructor(data, left = null, right = null, posX = center, posY = startHeight) {
+  constructor(data, left = null, right = null, posX = center, posY = startHeight, level = 0) {
     this.data = data;
     this.left = left;
     this.right = right;
-    this.posX = posX;
+    this.posX = posX; //Stores the position x of the node to use later
     this.posY = posY;
+    this.level = level;//Stores what level the node is on
   }
 }
 
@@ -26,7 +28,7 @@ class BST {
   add(data) {
     const node = this.root;
     if (node === null) {
-      this.root = new Node(data);
+      this.root = new Node(data); //The root can keep all the defaults of the new node
 
       addNode(this.root.data, this.root.posX, this.root.posY);
 
@@ -39,20 +41,22 @@ class BST {
         if (data < node.data) {
           if (node.left === null) {
 
-            if(node.data == bst.root.data){
-              xDiffL = 250;
-            }else{
-              xDiffL = 80;
-            }
+            /*newLevel = node.level +1; //increase the node level from the previous node
+            xDiff = xDiffStart; //Reset xDiff so we can change it for each level
 
-            node.left = new Node(data, null, null, node.posX - xDiffL, node.posY + yDiff);
+            for(let i=0;i<node.level;i++){//For each level
+              xDiff = xDiff /2; //Half the distance
+            }*/
 
-            addLine(node.posX, node.posY, node.left.posX, node.left.posY);
-            addNode(node.data, node.posX, node.posY);
+            console.log(node.left);
 
-            addNode(node.left.data, node.left.posX, node.left.posY);
 
-            //add node -50 + 50y from current node
+            node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff, newLevel);//The node position is relative to the previous node so each level will always be the same.
+
+            addLine(node.posX, node.posY, node.left.posX, node.left.posY); //Add line first to it is at the bottom
+            addNode(node.data, node.posX, node.posY);//Add revious node again so its on the line, since the node position is stored in the node, this makes it easy. 
+
+            addNode(node.left.data, node.left.posX, node.left.posY); //Add new node
 
 
             return;
@@ -67,15 +71,17 @@ class BST {
         } else if (data > node.data) {
           if (node.right === null) {
 
-            if(node.data == bst.root.data){
-              xDiffR = 250;
-            }else{
-              xDiffR = 80;
-            }
+            /*newLevel = node.level +1;
+            xDiff = xDiffStart;
+
+            for(let i=0;i<node.level;i++){
+              xDiff = xDiff /2;
+            }*/
 
 
 
-            node.right = new Node(data, null, null, node.posX + xDiffR, node.posY + yDiff);
+
+            node.right = new Node(data, null, null, node.posX + xDiff, node.posY + yDiff, newLevel);
 
             addLine(node.posX, node.posY, node.right.posX, node.right.posY);
             addNode(node.right.data, node.right.posX, node.right.posY);
@@ -279,14 +285,10 @@ class BST {
 
 
 
-const bst = new BST();
-bst.add(9);
-bst.add(2);
-bst.add(7);
-bst.add(8);
-bst.add(23);
-bst.add(15);
-bst.add(12);
+var bst = new BST();
+bst.add(20);
+
+
 
 
 /*
@@ -361,7 +363,7 @@ buttons.forEach(element => {
       case "add":
         if (elem.value > 0) {
           console.log(elem.value);
-          bst.add(elem.value);
+          bst.add(parseInt(elem.value));
         } else {
 
           outputText.innerText = "Please enter a number in the value box."
@@ -374,11 +376,21 @@ buttons.forEach(element => {
       case "find":
         if (elem.value > 0) {
 
-          
-          let posValue = (bst.find(parseInt(elem.value)));
-          outputText.innerText = "x = " + posValue[0] + " y = " + posValue[1];
 
-          //outputText.innerText = ;
+          let posValue = (bst.find(parseInt(elem.value)));
+
+          if (posValue != null) {
+
+            outputText.innerText = "x = " + posValue[0] + " y = " + posValue[1];
+
+          } else {
+
+            outputText.innerText = "That value is not in the tree"
+
+          }
+
+
+
 
         } else {
 
@@ -388,37 +400,43 @@ buttons.forEach(element => {
         elem.value = "";
         break;
 
-        case "isPresent":
-          if (elem.value > 0) {
-            outputText.innerText = bst.isPresent(parseInt(elem.value));
-          } else {
-  
-            outputText.innerText = "Please enter a number in the value box."
-  
-          }
-  
-          elem.value = "";
-          break;
+      case "isPresent":
+        if (elem.value > 0) {
+          outputText.innerText = bst.isPresent(parseInt(elem.value));
+        } else {
+
+          outputText.innerText = "Please enter a number in the value box."
+
+        }
+
+        elem.value = "";
+        break;
 
 
-          case "remove":
-            if (elem.value > 0) {
+      case "remove":
+        if (elem.value > 0) {
 
-              
 
-            } else {
-    
-              outputText.innerText = "Please enter a number in the value box."
-    
-            }
-    
-            elem.value = "";
-            break;
 
-            case "findMin":
-            
+        } else {
 
-            break;
+          outputText.innerText = "Please enter a number in the value box."
+
+        }
+
+        elem.value = "";
+        break;
+
+      case "reset":
+        bst = null;
+        bst = new BST();
+
+        let svg = document.querySelector("#treeSVG");
+
+        svg.textContent("")
+
+
+        break;
     }
 
   })
