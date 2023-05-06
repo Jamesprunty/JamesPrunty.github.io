@@ -22,8 +22,9 @@
 
                 <br><br> A tree is a dataset that consists of nodes connected by edges.<br><br>
 
-                In a binary search tree (BST) each node can have a max of 2 shild nodes. Lesser values are stored on the left, and larger values are stored on the right.<br><br>
-                
+                In a binary search tree (BST) each node can have a max of 2 child nodes. Lesser values are stored on the
+                left, and larger values are stored on the right.<br><br>
+
 
 
 
@@ -75,23 +76,23 @@
                 </div>
 
                 <div id="order" class="controlBtns">
-                <div id="isBalanced" class="control">
-                    <input type="button" class="btn" id="isBalanced" value="IsBalanced">
-                </div>
-                <div id="inOrderDiv" class="control">
-                    <input type="button" class="btn" id="inOrder" value="In Order">
-                </div>
-                <div id="preOrderDiv" class="control">
-                    <input type="button" class="btn" id="preOrder" value="Pre-Order">
-                </div>
-                <div id="postOrderDiv" class="control">
-                    <input type="button" class="btn" id="postOrder" value="Post-Order">
-                </div>
-                <div id="levelOrderDiv" class="control">
-                    <input type="button" class="btn" id="levelOrder" value="level Order">
-                </div>
+                    <div id="isBalanced" class="control">
+                        <input type="button" class="btn" id="isBalanced" value="IsBalanced">
+                    </div>
+                    <div id="inOrderDiv" class="control">
+                        <input type="button" class="btn" id="inOrder" value="In Order">
+                    </div>
+                    <div id="preOrderDiv" class="control">
+                        <input type="button" class="btn" id="preOrder" value="Pre-Order">
+                    </div>
+                    <div id="postOrderDiv" class="control">
+                        <input type="button" class="btn" id="postOrder" value="Post-Order">
+                    </div>
+                    <div id="levelOrderDiv" class="control">
+                        <input type="button" class="btn" id="levelOrder" value="level Order">
+                    </div>
 
-            </div>
+                </div>
             </div>
 
 
@@ -122,13 +123,56 @@
 
             <p id="explination">
 
+                <br><br> We start by declaring some variables.<br><br>
+
             </p>
 
+            <p class="code">
+
+                let center = window.innerWidth / 2;<br>
+                let startHeight = 70;<br>
+                let xDiff = 200;<br>
+                let yDiff = 80;<br>
+                let newLevel = 0;<br>
 
 
+            </p>
+            <p>
+                <br><br> The center and startheight will be where the nodes start.<br><br>
+                xDiff is the variabe that will be uesed for deciding the difference between the nodes on the map.<br><br>
+                yDiff is the distance between each level in the map<br><br> 
+                Newlevel will keep track of the level we want to add the node to.<br><br>
 
+                We then create the node class.<br><br>
+                <br><br>//The Node//<br><br>
+            </p>
+            <p class="code">
+                class Node {<br>
+                    constructor(data, left = null, right = null, posX = center, posY = startHeight, level = 0) {<br>
+                      this.data = data;<br>
+                      this.left = left;<br>
+                      this.right = right;<br>
+                      this.posX = posX;<br>
+                      this.posY = posY;<br>
+                      this.level = level;<br>
+                    }<br>
+                  }<br><br>
+            </p>
+            <p>
+                <br> These variables are all stored in the node so that we can keep track of where all the nodes are on the physical map.<br><br>
+                The constructor line has a lot of different variables, they are all set to the defaults if nothing is put in.<br><br>
+                Most are self explanitory, the last three are to keep track of their positioning.<br><br>
 
-
+                <br><br> //The BST//<br><br>
+            </p>
+            <p class="code">
+                class BST {<br>
+                    constructor() {<br>
+                      this.root = null;<br>
+                    }<br><br>
+            </p>
+            <p>
+                We set a BST class to be able to create the tree, we set the root to null.
 
             </p>
 
