@@ -39,6 +39,7 @@ const Projects = [
     {
         name: "Marcov Model",
         description: "A test marcov model that takes reference information to create sentances based on that data."
+        
     },
     {
         name: "Stardle",
@@ -51,15 +52,11 @@ const Projects = [
     },
     {
         name: "DataStructures",
-        description: "(Not Done) Working with different types of data structure, visual representations"
+        description: "(Not Done) Working with different types of data structure, visual representations",
+        folderName: "DataStructures",
+        dir: "../Projects/"
      
     },  
-
-
-
-
-
-
 
 
 ]
@@ -69,257 +66,308 @@ const Courses = [
     {
         name: "DrumKit",
         description: "Interactive DurmKit - Press the buttons to play.",
-        folderName: "Lesson-01"
+        folderName: "Lesson-01",
+        dir: "../JS30/"
     },
     {
         name: "Piano",
         description: "Interactive piano - Press keys to play, or type a message and hear it played back.",
-        folderName: "Lesson-01-Advanced"
+        folderName: "Lesson-01-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Clock",
         description: "Clock that shows the time.",
-        folderName: "Lesson-02"
+        folderName: "Lesson-02",
+        dir: "../JS30/"
     },
     {
         name: "Clock V2",
         description: "Slightly edited verison of the clock, including alarm and time zones.",
-        folderName: "Lesson-02-Advanced"
+        folderName: "Lesson-02-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "CSS Variables",
         description: "Using CSS variables to edit an image.",
-        folderName: "Lesson-03"
+        folderName: "Lesson-03",
+        dir: "../JS30/"
     },
     {
         name: "CSS Variables - Selection",
         description: "Select which image to edit and modify CSS variables.",
-        folderName: "Lesson-03-Advanced"
+        folderName: "Lesson-03-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Array Cardio",
         description: "Working with different Arrays.",
-        folderName: "Lesson-04"
+        folderName: "Lesson-04",
+        dir: "../JS30/"
     },
     {
         name: "Poeple Sorter V1",
         description: "Version 1 of people sorter - Add person from wikipedia and sort by different catagories.",
-        folderName: "Lesson-04-Advanced"
+        folderName: "Lesson-04-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Flex Panels",
         description: "An example of flex panels.",
-        folderName: "Lesson-05"
+        folderName: "Lesson-05",
+        dir: "../JS30/"
     },
     {
         name: "Flex Panels V2",
         description: "Slight modifications on the flex panels.",
-        folderName: "Lesson-05-Advanced"
+        folderName: "Lesson-05-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Type ahead",
         description: "Type to search - Displays cities in America.",
-        folderName: "Lesson-06"
+        folderName: "Lesson-06",
+        dir: "../JS30/"
     },
     {
         name: "People Soter V2",
         description: "Search for peloaded famous names to search for.",
-        folderName: "Lesson-06-Advanced"
+        folderName: "Lesson-06-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Array Cardio V2",
         description: "Working with Arrays Pt2.",
-        folderName: "Lesson-07"
+        folderName: "Lesson-07",
+        dir: "../JS30/"
     },
     {
         name: "People Sorter V3",
         description: "Select user in table to select.",
-        folderName: "Lesson-07-Advanced"
+        folderName: "Lesson-07-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "HTML Canvas",
         description: "Simple drawing canvas.",
-        folderName: "Lesson-08"
+        folderName: "Lesson-08",
+        dir: "../JS30/"
     },
     {
         name: "HTML Canvas V2",
         description: "Added change pen and color, add the ability to save and download.",
-        folderName: "Lesson-08-Advanced"
+        folderName: "Lesson-08-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Dev Tools",
         description: "Usefull tools for working with code",
-        folderName: "Lesson-09"
+        folderName: "Lesson-09",
+        dir: "../JS30/"
     },
     {
         name: "Dev Tools in practice",
         description: "Examples of Dev tools in practice.",
-        folderName: "Lesson-09-Advanced"
+        folderName: "Lesson-09-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Hold Shift click (My code)",
         description: "Shift click example - My version.",
-        folderName: "Lesson-10"
+        folderName: "Lesson-10",
+        dir: "../JS30/"
     },
     {
         name: "Hold Shift click (MosBos)",
         description: "Shift click example - Mosbos version.",
-        folderName: "Lesson-10-Advanced"
+        folderName: "Lesson-10-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Video Player",
         description: "Simple video controls.",
-        folderName: "Lesson-11"
+        folderName: "Lesson-11",
+        dir: "../JS30/"
     },
     {
         name: "Video Player V2",
         description: "Video Player with added full screen button.",
-        folderName: "Lesson-11-Advanced"
+        folderName: "Lesson-11-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Key Sequence Detection",
         description: "detects keys logged.",
-        folderName: "Lesson-12"
+        folderName: "Lesson-12",
+        dir: "../JS30/"
     },
     {
         name: "Key Sequence Detection V2",
         description: "Puzzle including Key Sequence.",
-        folderName: "Lesson-12-Advanced"
+        folderName: "Lesson-12-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Slide & Scroll",
         description: "Images slide in as you scroll down.",
-        folderName: "Lesson-13"
+        folderName: "Lesson-13",
+        dir: "../JS30/"
     },
     {
         name: "Slide & Scroll V2",
         description: "(Not Done)Items scroll in when scrolling to the right",
-        folderName: "Lesson-13-Advanced"
+        folderName: "Lesson-13-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Copying & Reference",
         description: "Understanding Copying and reference.",
-        folderName: "Lesson-14"
+        folderName: "Lesson-14",
+        dir: "../JS30/"
     },
     {
         name: "Copying and Reference V2",
         description: "(Not Done) Visual example of copying and referencing",
-        folderName: "Lesson-14-Advanced"
+        folderName: "Lesson-14-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Local Storage",
         description: "Retrieve information from local storage.",
-        folderName: "Lesson-15"
+        folderName: "Lesson-15",
+        dir: "../JS30/"
     },
     {
         name: "Advanced local storage",
         description: "Added check all, clear, uncheck all and save to local storage",
-        folderName: "Lesson-15-Advanced"
+        folderName: "Lesson-15-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "CSS Text Shadow Mouse Move Effect",
         description: "Shadow moves with the mouse position on the page",
-        folderName: "Lesson-16"
+        folderName: "Lesson-16",
+        dir: "../JS30/"
     },
     {
         name: "Box CSS shadow mouse move",
         description: "Added the effect to a box instead of text and added inset shadow",
-        folderName: "Lesson-16-Advanced"
+        folderName: "Lesson-16-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Sorting band names without articles (Me)",
         description: "Sort the band names without the articles (e.g.'The' or 'An') *My Code",
-        folderName: "Lesson-17"
+        folderName: "Lesson-17",
+        dir: "../JS30/"
     },
     {
         name: "Sorting band names without articles (MosBos)",
         description: "Sort the band names without the articles (e.g.'The' or 'An') *MosBos Code*",
-        folderName: "Lesson-17-Advanced"
+        folderName: "Lesson-17-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Tally string times with Reduce",
         description: "Add up all the times for videos and turn them into hours/mins/seconds",
-        folderName: "Lesson-18"
+        folderName: "Lesson-18",
+        dir: "../JS30/"
     },
     {
         name: "Photobooth",
         description: "Working with Webcam and manipulating the image",
-        folderName: "Lesson-19"
+        folderName: "Lesson-19",
+        dir: "../JS30/"
     },
     {
         name: "photoBooth V2",
         description: "Create a colour picker to get the greenscreen colour, also selectable filters *FIX GREENSCREEN SELECTION*",
-        folderName: "Lesson-19-Advanced"
+        folderName: "Lesson-19-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Speech Detection",
         description: "Type out whatever is said",
-        folderName: "Lesson-20"
+        folderName: "Lesson-20",
+        dir: "../JS30/"
     },
     {
         name: "People Sorter V4",
         description: "(Not Done) Integrate Voice commands into people sorter",
-        folderName: "Lesson-20-Advanced"
+        folderName: "Lesson-20-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Geolocation based speedometer and compass",
         description: "Compass and speedometer",
-        folderName: "Lesson-21"
+        folderName: "Lesson-21",
+        dir: "../JS30/"
     },
     {
         name: "Google Maps clone",
         description: "(Not Done) create a google maps clone",
-        folderName: "Lesson-21-Advanced"
+        folderName: "Lesson-21-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Highlighter Follow",
         description: "Highlight follows around the page when hovering",
-        folderName: "Lesson-22"
+        folderName: "Lesson-22",
+        dir: "../JS30/"
     },
     {
         name: "Highlighter Follow Advanced",
         description: "(Not Done) ",
-        folderName: "Lesson-22-Advanced"
+        folderName: "Lesson-22-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Text to speech",
         description: "Type message to speech, also change voice properties",
-        folderName: "Lesson-23"
+        folderName: "Lesson-23",
+        dir: "../JS30/"
     },
     {
         name: "Text to speech Advanced",
         description: "(Not Done) Chat GPT intergration, add voice to text and read output",
-        folderName: "Lesson-23-Advanced"
+        folderName: "Lesson-23-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "sticky Nav bar",
         description: "When you scroll passed the header the nav bar stays at the top",
-        folderName: "Lesson-24"
+        folderName: "Lesson-24",
+        dir: "../JS30/"
     },
     {
         name: "Sticky Nav bar v2",
         description: "(Not Done) Add a sticky footer as well",
-        folderName: "Lesson-24-Advanced"
+        folderName: "Lesson-24-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Event Listener propagation",
         description: "Event Listener Propagation, capture & bubbling",
-        folderName: "Lesson-25"
+        folderName: "Lesson-25",
+        dir: "../JS30/"
     },
     {
         name: "Follow along Dropdown",
         description: "Dropdown menu that follows and changes size",
-        folderName: "Lesson-26"
+        folderName: "Lesson-26",
+        dir: "../JS30/"
     },
     {
         name: "Follow along Dropdown V2",
         description: "(Not Done) Add some animation to the dropdown",
-        folderName: "Lesson-26-Advanced"
+        folderName: "Lesson-26-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Drag and scroll",
         description: "Drag and scroll along",
-        folderName: "Lesson-27"
+        folderName: "Lesson-27",
+        dir: "../JS30/"
     },
     {
         name: "Drag and Drop",
@@ -329,32 +377,38 @@ const Courses = [
     {
         name: "Video speed controls",
         description: "Change video speed with bar",
-        folderName: "Lesson-28"
+        folderName: "Lesson-28",
+        dir: "../JS30/"
     },
     {
         name: "Video speed controls V2",
         description: "(Not Done) Only change speed when mousedown and have set speed buttons",
-        folderName: "Lesson-28-Advanced"
+        folderName: "Lesson-28-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Countdown Timer",
         description: "Set time to countdown, and show end time",
-        folderName: "Lesson-29"
+        folderName: "Lesson-29",
+        dir: "../JS30/"
     },
     {
         name: "Countdown Timer V2",
         description: "(Not Done) Add stopwatch with lap timer",
-        folderName: "Lesson-29-Advanced"
+        folderName: "Lesson-29-Advanced",
+        dir: "../JS30/"
     },
     {
         name: "Wackamole",
         description: "Wackamole game",
-        folderName: "Lesson-30"
+        folderName: "Lesson-30",
+        dir: "../JS30/"
     },
     {
         name: "Wackamole V2",
         description: "Added a timer, show final score and save high score to localstorage",
-        folderName: "Lesson-30-Advanced"
+        folderName: "Lesson-30-Advanced",
+        dir: "../JS30/"
     },
 
 ];
@@ -865,8 +919,9 @@ function menuManager(status, object) {
             currentNumber -= 1;
 
             let folder = currentContent[currentNumber].folderName;
+            let dir = currentContent[currentNumber].dir;
 
-            let directory = "../JS30/" + folder + "/" + folder + ".html";
+            let directory = dir + folder + "/" + folder + ".html";
 
             console.log(directory);
 
