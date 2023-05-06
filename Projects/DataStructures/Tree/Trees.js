@@ -41,12 +41,12 @@ class BST {
         if (data < node.data) {
           if (node.left === null) {
 
-            /*newLevel = node.level +1; //increase the node level from the previous node
+            newLevel = node.level + 1; //increase the node level from the previous node
             xDiff = xDiffStart; //Reset xDiff so we can change it for each level
 
-            for(let i=0;i<node.level;i++){//For each level
-              xDiff = xDiff /2; //Half the distance
-            }*/
+            for (let i = 0; i < node.level; i++) {//For each level
+              xDiff = xDiff / 2; //Half the distance
+            }
 
             console.log(node.left);
 
@@ -71,12 +71,12 @@ class BST {
         } else if (data > node.data) {
           if (node.right === null) {
 
-            /*newLevel = node.level +1;
+            newLevel = node.level + 1;
             xDiff = xDiffStart;
 
-            for(let i=0;i<node.level;i++){
-              xDiff = xDiff /2;
-            }*/
+            for (let i = 0; i < node.level; i++) {
+              xDiff = xDiff / 2;
+            }
 
 
 
@@ -156,32 +156,49 @@ class BST {
 
 
   remove(data) {
+
     const removeNode = function (node, data) {
+
+
       if (node == null) {
         return null;
       }
-      if (data == node.data) {
+
+
+      if (data == node.data) { //if we have found the data
+
+
         // node has no children 
         if (node.left == null && node.right == null) {
-          return null;
+          return null; //return it does not have any children, so it sets it to nothing.
+
+
         }
+
+
         // node has no left child 
         if (node.left == null) {
           return node.right;
         }
+
         // node has no right child 
         if (node.right == null) {
           return node.left;
         }
+
         // node has two children 
         var tempNode = node.right;
         while (tempNode.left !== null) {
           tempNode = tempNode.left;
         }
+
         node.data = tempNode.data;
+
         node.right = removeNode(node.right, tempNode.data);
         return node;
-      } else if (data < node.data) {
+
+
+      } else if (data < node.data) {//if you haven't found the data, look left if less
         node.left = removeNode(node.left, data);
         return node;
       } else {
@@ -189,8 +206,20 @@ class BST {
         return node;
       }
     }
+
+
     this.root = removeNode(this.root, data);
+
+
+    
+    
+
   }
+
+
+
+
+
   isBalanced() {
     return (this.findMinHeight() >= this.findMaxHeight() - 1)
   }
@@ -287,6 +316,14 @@ class BST {
 
 var bst = new BST();
 bst.add(20);
+bst.add(10);
+bst.add(30);
+bst.add(50);
+bst.add(25);
+bst.add(3);
+bst.add(7);
+bst.add(15);
+bst.add(19);
 
 
 
@@ -413,6 +450,9 @@ buttons.forEach(element => {
       case "remove":
         if (elem.value > 0) {
 
+          bst.remove(parseInt(elem.value));
+
+          updateTree();
 
 
         } else {
@@ -434,12 +474,70 @@ buttons.forEach(element => {
 
         break;
 
-        case "findMin":
-          outputText.innerText = bst.findMinHeight();
+      case "findMin":
+        outputText.innerText = bst.findMin();
+        break;
+
+      case "findMax":
+        outputText.innerText = bst.findMax();
+        break;
+
+      case "minHeight":
+        outputText.innerText = bst.findMinHeight();
+        break;
+
+      case "maxHeight":
+        outputText.innerText = bst.findMaxHeight();
+        break;
+
+      case "isBalanced":
+        outputText.innerText = bst.isBalanced();
+        break;
+
+      case "inOrder":
+        outputText.innerText = bst.inOrder();
+        break;
+
+      case "preOrder":
+        outputText.innerText = bst.preOrder();
+        break;
+
+      case "postOrder":
+        outputText.innerText = bst.postOrder();
+        break;
+
+      case "levelOrder":
+        outputText.innerText = bst.levelOrder();
+        break;
     }
 
   })
 });
+
+
+function updateTree(){
+
+let tempArray = bst.levelOrder();
+
+let svg = document.querySelector("#treeSVG");
+
+svg.innerHTML = "";
+
+bst = null;
+bst = new BST();
+
+console.log(tempArray);
+
+
+tempArray.forEach(element => {
+
+  bst.add(element);
+  
+});
+
+
+
+}
 
 /*let add = document.querySelector("#add");
 let find = document.querySelector("#find");
