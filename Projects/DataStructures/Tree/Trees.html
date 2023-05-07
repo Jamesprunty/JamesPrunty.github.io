@@ -148,7 +148,8 @@
 
             </p>
             <br><br>
-            <h2>The Node</h2><br><br>
+            <h2>The Node</h2>
+            <p><br>The node is the part that stores all the data.</p>
             <p class="code">
                 class Node {<br>
                 <ind>constructor(data, left = null, right = null, posX = center, posY = startHeight, level = 0) {<br>
@@ -199,6 +200,8 @@
             <h2>Add</h2><br><br>
 
             <p>
+                The add function will compare the inputted data to each node, if it is less than the current node it will put it to the left, if its bigger it will go to the right. 
+
                 Firstly we create a variable called "node" and set it to the root.<br>
                 If the node is null (empty), we add it to the root node.<br>
                 We then run the "addNode" function which adds the node to the visual map.<br>
@@ -290,8 +293,136 @@
                 <ind/><ind/>};<br>
                 <ind/><ind/>return searchTree(node);<br>
                 <ind/>}<br>
-                }<br>
+                }<br><br>
                 </p>
+
+                <br><h2>Remove</h2>
+
+                <p class="code">
+                    remove(data) {<br>
+                    <ind/>const removeNode = function (node, data) {<br>
+                    <ind/><ind/>if (node == null) {<br>
+                    <ind/><ind/><ind/>return null;<br>
+                    <ind/><ind/>}<br><br>
+                    
+                    
+                    <ind/><ind/>if (data == node.data) {<br>
+                    <ind/><ind/><ind/>if (node.left == null && node.right == null) {<br>
+                    <ind/><ind/><ind/><ind/>return null; <br>
+                    <ind/><ind/><ind/>}<br><br>
+                    
+                    <ind/><ind/>if (node.left == null) {<br>
+                    <ind/><ind/><ind/>return node.right;<br>
+                    <ind/><ind/>}<br><br>
+                    
+                           
+                    <ind/><ind/>if (node.right == null) {<br>
+                    <ind/><ind/><ind/>return node.left;<br>
+                    <ind/><ind/>}<br><br>
+                    
+                    <ind/><ind/>var tempNode = node.right;<br>
+                    <ind/><ind/>while (tempNode.left !== null) {<br>
+                    <ind/><ind/><ind/>tempNode = tempNode.left;<br>
+                    <ind/><ind/>}<br>
+                    
+                    <ind/><ind/>node.data = tempNode.data;<br>
+                    
+                    <ind/><ind/>node.right = removeNode(node.right, tempNode.data);<br>
+                    <ind/><ind/>return node;<br><br>
+                    
+                    
+                    <ind/><ind/>} else if (data < node.data) {<br>
+                    <ind/><ind/><ind/>node.left = removeNode(node.left, data);<br>
+                    <ind/><ind/><ind/>return node;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>node.right = removeNode(node.right, data);<br>
+                    <ind/><ind/><ind/>return node;<br>
+                    <ind/><ind/>}<br>
+                    <ind/>}<br>
+
+                    <ind/>this.root = removeNode(this.root, data);<br>            
+                    }<br><br>
+                </p>
+
+                <h2>Find</h2><br>
+
+                <p>
+
+                    The find method will look for the data and return something. In this method we will return the position of the node.<br><br>
+
+                </p>
+
+                <p class="code">
+
+                    find(data) {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current.data !== data) {<br>
+                    <ind/><ind/>if (data < current.data) {<br>
+                    <ind/><ind/><ind/>current = current.left;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>current = current.right;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>if (current === null) {<br>
+                    <ind/><ind/><ind/>return null;<br>
+                    <ind/><ind/>}<br>
+                    <ind/>}<br>
+                    <ind/>return [current.posX, current.posY];<br>
+                    }<br><br>
+                </p>
+
+                <p>
+
+                    <br><br>The method starts by setting a variable "current" to the root node.<br>
+                    While the searched for data is not the same as the current data, keep looking.<br>
+                    If the data is smaller, look left, if its bigger, look right.<br>
+                    Once the data is the same as current, return the x and y position of the node.<br><br>
+
+                </p>
+
+                <h2>isPresent</h2><br><br>
+
+                <p>
+
+                    The isPresent method looks for the data and 
+
+                </p>
+
+                <p class="code">
+                    isPresent(data) {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current) {<br>
+                    <ind/><ind/>if (data === current.data) {<br>
+                    <ind/><ind/><ind/>return true;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>if (data < current.data) {<br>
+                    <ind/><ind/><ind/>current = current.left;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>current = current.right;<br>
+                    <ind/><ind/>}<br>
+                    <ind/>}<br>
+                    <ind/>return false;<br>
+                    }<br>
+                    
+                </p>
+                <p>
+                    As with the "Find" method, we start with the root as the current node and looks for a match. Instead of returning a value, it will return true or false.<br><br>
+                </p>
+
+                <h2>Remove</h2>
+
+                <p class="code">
+
+                </p>
+
+
+
+
+
+
+                <h2>Reset</h2>
+
+
+
         </div>
 
         
