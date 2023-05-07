@@ -298,28 +298,64 @@
 
                 <br><h2>Remove</h2>
 
+                <p>
+                    The remove method will search to find the search data in the tree, the difficulty with this is when we remove the node we need to fix the tree so that there isn't a gap.<br><br>
+                </p>
+                <p>
+                    <br>We start with the creation of the removeNode function that takes in a node and the data that we are removing.<br>
+                    If the node is null then return null. This starts with the root node, so will check that first.<br>
+
+                </p>
+
                 <p class="code">
                     remove(data) {<br>
                     <ind/>const removeNode = function (node, data) {<br>
                     <ind/><ind/>if (node == null) {<br>
                     <ind/><ind/><ind/>return null;<br>
                     <ind/><ind/>}<br><br>
-                    
+                    </p>
+
+                    <p>
+                        If the left and right node are null this means that the node is at the end of the tree.<br>
+                        The last line of this function is to replace the node with whatever is returned. This will return null, so that means that the node will be removed (nullified).<br>
+                    </p>
+
+                    <p class="code">                    
                     
                     <ind/><ind/>if (data == node.data) {<br>
                     <ind/><ind/><ind/>if (node.left == null && node.right == null) {<br>
                     <ind/><ind/><ind/><ind/>return null; <br>
                     <ind/><ind/><ind/>}<br><br>
+                    </p>
+
+                    <p>
+                        If only the left node is null, return the right node.<br>
+                    </p>
+
                     
+                    <p class="code">
                     <ind/><ind/>if (node.left == null) {<br>
                     <ind/><ind/><ind/>return node.right;<br>
-                    <ind/><ind/>}<br><br>
-                    
-                           
+                    <ind/><ind/>}<br>
+                    </p>
+
+                    <p>
+                        <br>If Only right is null, return the left node.
+                    </p>
+
+                    <p class="code">      
                     <ind/><ind/>if (node.right == null) {<br>
                     <ind/><ind/><ind/>return node.left;<br>
                     <ind/><ind/>}<br><br>
                     
+                    <p>
+                        If it has both left and right nodes, then we need to get the left most node of the right side.<br>
+                        The temp node is set to the right node, then it will the the left node until the left node is null. The node.data is then set to the tempdata, which is the left most node.<br>
+                        Once we have changed the node, we have to remove it from the tree or there will be a duplicate.<br>
+                        Since we know that the node is at the end of thre tree we can run the removeNode and know it will be removed.<br><br>
+                    </p>
+
+                    <p class="code">
                     <ind/><ind/>var tempNode = node.right;<br>
                     <ind/><ind/>while (tempNode.left !== null) {<br>
                     <ind/><ind/><ind/>tempNode = tempNode.left;<br>
@@ -329,6 +365,16 @@
                     
                     <ind/><ind/>node.right = removeNode(node.right, tempNode.data);<br>
                     <ind/><ind/>return node;<br><br>
+
+                    </p>
+
+                    <p>
+                        If the data is not the one we are looking for, keep looking for it. <br>
+                        The last line is the first initialisation of the function. <br><br>
+                    </p>
+
+
+                    <p class="code">
                     
                     
                     <ind/><ind/>} else if (data < node.data) {<br>
@@ -383,7 +429,7 @@
 
                 <p>
 
-                    The isPresent method looks for the data and 
+                    The isPresent method looks for the data and returns a true pr false.<br><br>
 
                 </p>
 
@@ -408,26 +454,208 @@
                     As with the "Find" method, we start with the root as the current node and looks for a match. Instead of returning a value, it will return true or false.<br><br>
                 </p>
 
-                <h2>Remove</h2>
+
+                <br><h2>Find Min</h2><br>
+
+                <p>
+                    Look for the left most node and return the value<br><br>
+                </p>
 
                 <p class="code">
+
+                    findMin() {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current.left !== null) {<br>
+                    <ind/><ind/>current = current.left;<br>
+                    <ind/>}<br>
+                    <ind/>return current.data;<br>
+                    }<br><br>
+
+                </p>
+
+                <br><h2>Find Max</h2><br><br>
+
+                <p>
+                    Look for the right most node and return the value<br><br>
+                </p>
+
+                <p class="code">
+
+                    findMax() {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current.right !== null) {<br>
+                    <ind/><ind/>current = current.right;<br>
+                    <ind/>}<br>
+                    <ind/>return current.data;<br>
+                    }<br><br>
 
                 </p>
 
 
 
+                <br><h2>Find Min Height</h2><br><br>
+
+                <p>
+                    The find min height will find the first node without 2 child nodes.<br>
+                    If node is null then it will return -1.<br>
+                    
+                </p>
+
+                <p class="code">
+
+                    findMinHeight(node = this.root) {<br>
+                    <ind/>if (node == null) {<br>
+                    <ind/><ind/>return -1;<br>
+                    <ind/>};<br>
+                    <ind/>let left = this.findMinHeight(node.left);<br>
+                    <ind/>let right = this.findMinHeight(node.right);<br>
+                    <ind/>if (left < right) {<br>
+                    <ind/><ind/>return left + 1;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>return right + 1;<br>
+                    <ind/>};<br>
+                    }<br><br>
+                </p>
+
+
+                <br><h2>Find Max Height</h2><br><br>
+
+                <p class="code">
+
+                    findMaxHeight(node = this.root) {<br>
+                    <ind/>if (node == null) {<br>
+                    <ind/><ind/>return -1;<br>
+                    <ind/>};<br>
+                    <ind/>let left = this.findMaxHeight(node.left);<br>
+                    <ind/>let right = this.findMaxHeight(node.right);<br>
+                    <ind/>if (left > right) {<br>
+                    <ind/><ind/>return left + 1;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>return right + 1;<br>
+                    <ind/>};<br>
+                    }<br><br>
 
 
 
-                <h2>Reset</h2>
+                </p>
 
+
+                <br><h2>isBalanced</h2><br><br>
+
+                <p>
+                    A balanced tree will have a difference between min and max height of 1 or less. This will mean that it is efficient.<br>
+                </p>
+
+                <p class="code">
+
+                    isBalanced() {<br>
+                        <ind/>return (this.findMinHeight() >= this.findMaxHeight() - 1)<br>
+                    }<br><br>
+
+
+                </p>
+
+
+                <br><h2>inOrder</h2><br><br>
+
+                <p class="code">
+
+                    inOrder() {<br>
+                    <ind/>if (this.root == null) {<br>
+                    <ind/><ind/>return null;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var result = new Array();<br>
+                    <ind/><ind/>function traverseInOrder(node) {<br>
+                    <ind/><ind/><ind/>node.left && traverseInOrder(node.left);<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/><ind/>node.right && traverseInOrder(node.right);<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>traverseInOrder(this.root);<br>
+                    <ind/><ind/>return result;<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+
+                </p>
+
+
+                <br><h2>Pre-Order</h2><br><br>
+
+                <p class="code">
+
+
+                    preOrder() {<br>
+                    <ind/>if (this.root == null) {<br>
+                    <ind/><ind/>return null;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var result = new Array();<br>
+                    <ind/><ind/>function traversePreOrder(node) {<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/><ind/>node.left && traversePreOrder(node.left);<br>
+                    <ind/><ind/><ind/>node.right && traversePreOrder(node.right);<br>
+                    <ind/><ind/>};<br>
+                    <ind/><ind/>traversePreOrder(this.root);<br>
+                    <ind/><ind/>return result;<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+                </p>
+
+                <br><h2>Post-Order</h2><br><br>
+
+                <p class="code">
+
+                    postOrder() {<br>
+                    <ind/>if (this.root == null) {<br>
+                    <ind/><ind/>return null;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var result = new Array();<br>
+                    <ind/><ind/>function traversePostOrder(node) {<br>
+                    <ind/><ind/><ind/>node.left && traversePostOrder(node.left);<br>
+                    <ind/><ind/><ind/>node.right && traversePostOrder(node.right);<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/>};<br>
+                    <ind/><ind/>traversePostOrder(this.root);<br>
+                    <ind/><ind/>return result;<br>
+                    <ind/>}<br>
+                    }<br><br>
+
+
+                </p>
+
+
+                <br><h2>Level Order</h2><br><br>
+
+
+                <p class="code">
+
+                    levelOrder() {<br>
+                    <ind/>let result = [];<br>
+                    <ind/>let Q = [];<br>
+                    <ind/>if (this.root != null) {<br>
+                    <ind/><ind/>Q.push(this.root);<br>
+                    <ind/><ind/>while (Q.length > 0) {<br>
+                    <ind/><ind/><ind/>let node = Q.shift();<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/><ind/><ind/>if (node.left != null) {<br>
+                    <ind/><ind/><ind/><ind/><ind/>Q.push(node.left);<br>
+                    <ind/><ind/><ind/><ind/>};<br>
+                    <ind/><ind/><ind/><ind/>if (node.right != null) {<br>
+                    <ind/><ind/><ind/><ind/><ind/>Q.push(node.right);<br>
+                    <ind/><ind/><ind/><ind/>};<br>
+                    <ind/><ind/><ind/>};<br>
+                    <ind/><ind/><ind/>return result;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>return null;<br>
+                    <ind/><ind/>};<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+
+                </p>
 
 
         </div>
-
-        
-
-
 
     </div>
 
