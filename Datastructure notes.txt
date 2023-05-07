@@ -1005,29 +1005,3 @@ TIME: 1:45:17
 
 
 
-add
-findmin
-findmax
-find(data)
-ispresent(data)
-remove(data)
-isbalanced
-findminheight
-findmaxheight
-inorder
-preorder
-postorder
-levelorder
-
-
-
-
-
-
-
-
-
-
-
- 
-

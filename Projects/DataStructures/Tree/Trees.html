@@ -139,44 +139,162 @@
             </p>
             <p>
                 <br><br> The center and startheight will be where the nodes start.<br><br>
-                xDiff is the variabe that will be uesed for deciding the difference between the nodes on the map.<br><br>
-                yDiff is the distance between each level in the map<br><br> 
+                xDiff is the variabe that will be uesed for deciding the difference between the nodes on the
+                map.<br><br>
+                yDiff is the distance between each level in the map<br><br>
                 Newlevel will keep track of the level we want to add the node to.<br><br>
 
                 We then create the node class.<br><br>
-                <br><br>//The Node//<br><br>
+
             </p>
+            <br><br>
+            <h2>The Node</h2><br><br>
             <p class="code">
                 class Node {<br>
-                    constructor(data, left = null, right = null, posX = center, posY = startHeight, level = 0) {<br>
-                      this.data = data;<br>
-                      this.left = left;<br>
-                      this.right = right;<br>
-                      this.posX = posX;<br>
-                      this.posY = posY;<br>
-                      this.level = level;<br>
-                    }<br>
-                  }<br><br>
-            </p>
-            <p>
-                <br> These variables are all stored in the node so that we can keep track of where all the nodes are on the physical map.<br><br>
-                The constructor line has a lot of different variables, they are all set to the defaults if nothing is put in.<br><br>
-                Most are self explanitory, the last three are to keep track of their positioning.<br><br>
-
-                <br><br> //The BST//<br><br>
-            </p>
-            <p class="code">
-                class BST {<br>
-                    constructor() {<br>
-                      this.root = null;<br>
+                <ind>constructor(data, left = null, right = null, posX = center, posY = startHeight, level = 0) {<br>
+                    <ind />
+                    <ind />this.data = data;<br>
+                    <ind />
+                    <ind />this.left = left;<br>
+                    <ind />
+                    <ind />this.right = right;<br>
+                    <ind />
+                    <ind />this.posX = posX;<br>
+                    <ind />
+                    <ind />this.posY = posY;<br>
+                    <ind />
+                    <ind />this.level = level;<br>
+                    <ind />}<br>
                     }<br><br>
             </p>
             <p>
-                We set a BST class to be able to create the tree, we set the root to null.
+                <br> These variables are all stored in the node so that we can keep track of where all the nodes are on
+                the physical map.<br><br>
+                The constructor line has a lot of different variables, they are all set to the defaults if nothing is
+                put in.<br><br>
+                Most are self explanitory, the last three are to keep track of their positioning.<br><br>
+
+
+            </p>
+            <br><br>
+            <h2> The BST</h2><br><br>
+            <p class="code">
+                class BST {<br>
+                <ind />
+                </ind>constructor() {<br>
+                <ind />
+                <ind />this.root = null;<br>
+                <ind />}<br><br>
+            </p>
+            <p>
+                We set a BST class to be able to create the tree, we set the root to null.<br><br>
+
+                We will look at the "ADD" methos first, I will add the comments as we go through the code.<br><br>
+
+
 
             </p>
 
+            <br><br>
+            <h2>Add</h2><br><br>
+
+            <p>
+                Firstly we create a variable called "node" and set it to the root.<br>
+                If the node is null (empty), we add it to the root node.<br>
+                We then run the "addNode" function which adds the node to the visual map.<br>
+            
+            
+            
+            </p>
+
+            <p class="code">
+                add(data) {<br>
+                <ind/>const node = this.root;<br>
+                <ind/>if (node === null) {<br>
+                <ind/><ind/>this.root = new Node(data); <br>
+                <ind/><ind/>addNode(this.root.data, this.root.posX, this.root.posY);<br>
+                <ind/><ind/>return;<br><br>
+                <ind/>} else {<br><br>
+            </p>
+
+            <p>
+                Next we have the "SearchTree" Function which will be our recursive function to find where to add the new node.<br>
+                First we check if the new data is less than the current node data. IF it is we will start checking to the left.<br>
+                If the left node is empty, then we will be adding the node to the left side.<br>
+                Before we add the node, we have to set a few things for the visual map, we increase the level from the previous node, reset xDiff, then divide the difference by 2 for each level, this is so the branches don't overlap.<br>
+                Then we add the node, making sure to add in all the information for the visual map.<br>
+                Once we have the data, we need to actually put it on the SVG container. We run the functions to addNode and addLine. We first add the line, then add the node (and parent node) so that the line is underneath.<br>
+
+                
+            </p>
+            
+
+            <p class="code">
+                
+                
+                <ind/><ind/>const searchTree = function (node) {<br>
+                <ind/><ind/><ind/>if (data < node.data) {<br>
+                <ind/><ind/><ind/><ind/>if (node.left === null) {<br>
+                <ind/><ind/><ind/><ind/><ind/>newLevel = node.level + 1; <br>
+                <ind/><ind/><ind/><ind/><ind/>xDiff = xDiffStart; <br>
+                <ind/><ind/><ind/><ind/><ind/>for (let i = 0; i < node.level; i++) {<br>
+                <ind/><ind/><ind/><ind/><ind/><ind/>xDiff = xDiff / 2;<br>
+                <ind/><ind/><ind/><ind/><ind/>}<br><br>
+                
+                <ind/><ind/><ind/><ind/><ind/>node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff, newLevel);<br>
+                <ind/><ind/><ind/><ind/><ind/>addLine(node.posX, node.posY, node.left.posX, node.left.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.data, node.posX, node.posY);<br> 
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.left.data, node.left.posX, node.left.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>return;<br><br>
+                </p>
+
+                <p>
+                    If the left node does have something in it, then run the search tree again but the root node will be the left node.<br> 
+                </p>
+
+
+                <p class="code">
+
+                <ind/><ind/><ind/><ind/>} else if (node.left !== null) {<br>
+                <ind/><ind/><ind/><ind/><ind/>return searchTree(node.left);<br>
+                <ind/><ind/><ind/><ind/>}<br><br>
+
+                <p>
+                    We then do the same for the right
+                </p>
+                
+                <p class="code">
+                <ind/><ind/><ind/>} else if (data > node.data) {<br>
+                <ind/><ind/><ind/><ind/>if (node.right === null) {<br>
+                <ind/><ind/><ind/><ind/><ind/>newLevel = node.level + 1;<br>
+                <ind/><ind/><ind/><ind/><ind/>xDiff = xDiffStart;<br>
+                <ind/><ind/><ind/><ind/><ind/>for (let i = 0; i < node.level; i++) {<br>
+                <ind/><ind/><ind/><ind/><ind/><ind/>xDiff = xDiff / 2;<br>
+                <ind/><ind/><ind/><ind/><ind/>}<br>
+                <ind/><ind/><ind/><ind/><ind/>node.right = new Node(data, null, null, node.posX + xDiff, node.posY + yDiff, newLevel);<br>
+                <ind/><ind/><ind/><ind/><ind/>addLine(node.posX, node.posY, node.right.posX, node.right.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.right.data, node.right.posX, node.right.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.data, node.posX, node.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>return;<br><br>
+                <ind/><ind/><ind/><ind/>} else if (node.right !== null) {<br><br>
+                <ind/><ind/><ind/><ind/><ind/>return searchTree(node.right);<br>
+                <ind/><ind/><ind/><ind/>}<br>
+                 </p>
+                 <p>
+                    If it is not less than the nodes, or larger than the nodes, then it must be the same. If this is the case then it is the same number so we return null.<br>
+                 </p>
+                 <p class="code">
+                <ind/><ind/><ind/>} else {<br>
+                <ind/><ind/><ind/><ind/>return null;<br>
+                <ind/><ind/><ind/>}<br>
+                <ind/><ind/>};<br>
+                <ind/><ind/>return searchTree(node);<br>
+                <ind/>}<br>
+                }<br>
+                </p>
         </div>
+
+        
 
 
 
