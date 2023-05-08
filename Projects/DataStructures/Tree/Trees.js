@@ -48,7 +48,6 @@ class BST {
               xDiff = xDiff / 2; //Half the distance
             }
 
-            console.log(node.left);
 
 
             node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff, newLevel);//The node position is relative to the previous node so each level will always be the same.
@@ -223,12 +222,26 @@ class BST {
     if (node == null) {
       return -1;
     };
+
+
+
     let left = this.findMinHeight(node.left);
     let right = this.findMinHeight(node.right);
+
+
+
+
     if (left < right) {
+      console.log("this is data: " + node.data)
+      console.log("this is Left: " + left);
+      console.log("This is right: " + right);
       return left + 1;
     } else {
+      console.log("this is data: " + node.data)
+      console.log("this is Left: " + left);
+      console.log("This is right: " + right);
       return right + 1;
+
     };
   }
 
@@ -239,12 +252,18 @@ class BST {
     let left = this.findMaxHeight(node.left);
     let right = this.findMaxHeight(node.right);
     if (left > right) {
+      console.log("this is data: " + node.data)
+      console.log("this is Left: " + left);
+      console.log("This is right: " + right);
       return left + 1;
     } else {
+      console.log("this is data: " + node.data)
+      console.log("this is Left: " + left);
+      console.log("This is right: " + right);
       return right + 1;
     };
   }
-  
+
   inOrder() {
     if (this.root == null) {
       return null;
@@ -275,7 +294,7 @@ class BST {
       return result;
     };
   }
-  
+
   postOrder() {
     if (this.root == null) {
       return null;
@@ -311,7 +330,34 @@ class BST {
       return null;
     };
   };
+
+
+  random() {
+
+    let nodes = Math.floor(Math.random() * 20);
+    let numbers = [];
+    for (let i = 0; i < nodes; i++) {
+      numbers.push(Math.floor(Math.random() * 100));
+    }
+
+    bst = null;
+    bst = new BST();
+
+    let svg = document.querySelector("#treeSVG");
+
+    svg.innerHTML = "";
+
+    numbers.forEach(element => {
+
+      bst.add(element);
+
+    });
+
+
+  }
 }
+
+
 
 
 
@@ -510,31 +556,35 @@ buttons.forEach(element => {
       case "levelOrder":
         outputText.innerText = bst.levelOrder();
         break;
+
+      case "random":
+        bst.random();
+        break;
     }
 
   })
 });
 
 
-function updateTree(){
+function updateTree() {
 
-let tempArray = bst.levelOrder();
+  let tempArray = bst.levelOrder();
 
-let svg = document.querySelector("#treeSVG");
+  let svg = document.querySelector("#treeSVG");
 
-svg.innerHTML = "";
+  svg.innerHTML = "";
 
-bst = null;
-bst = new BST();
+  bst = null;
+  bst = new BST();
 
-console.log(tempArray);
+  console.log(tempArray);
 
 
-tempArray.forEach(element => {
+  tempArray.forEach(element => {
 
-  bst.add(element);
-  
-});
+    bst.add(element);
+
+  });
 
 
 
