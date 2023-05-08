@@ -35,8 +35,17 @@ input{
     flex: 1;
     min-height: 500px;
     flex-direction: row;
+    align-items: flex-end;
+}
 
+.HashItem{
 
+    border:1px solid white;
+    flex: 1;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #explinationContainer{
@@ -80,4 +89,6 @@ svg{
 ind{
     margin-left: 20px;
 }
+
+
 

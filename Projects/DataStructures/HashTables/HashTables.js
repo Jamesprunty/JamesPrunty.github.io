@@ -1,5 +1,6 @@
 /* Hash Table */
 
+
 var hash = (string, max) => {
     var hash = 0;
     for (var i = 0; i < string.length; i++) {
@@ -13,42 +14,45 @@ var hash = (string, max) => {
   let HashTable = function() {
   
     let storage = [];
-    const storageLimit = 5;
+    let storageLimit = 5;
+    this.storageLimit = storageLimit;
+    this.storage = [];
+
     
     this.print = function() {
-      console.log(storage)
+      console.log(this.storage)
     }
 
   
     this.add = function(key, value) {
-      var index = hash(key, storageLimit);
-      if (storage[index] === undefined) {
-        storage[index] = [
+      var index = hash(key, this.storageLimit);
+      if (this.storage[index] === undefined) {
+        this.storage[index] = [
           [key, value]
         ];
       } else {
         var inserted = false;
-        for (var i = 0; i < storage[index].length; i++) {
-          if (storage[index][i][0] === key) {
-            storage[index][i][1] = value;
+        for (var i = 0; i < this.storage[index].length; i++) {
+          if (this.storage[index][i][0] === key) {
+            this.storage[index][i][1] = value;
             inserted = true;
           }
         }
         if (inserted === false) {
-          storage[index].push([key, value]);
+          this.storage[index].push([key, value]);
         }
       }
     };
 
   
     this.remove = function(key) {
-      var index = hash(key, storageLimit);
-      if (storage[index].length === 1 && storage[index][0][0] === key) {
-        delete storage[index];
+      var index = hash(key, this.storageLimit);
+      if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
+        delete this.storage[index];
       } else {
-        for (var i = 0; i < storage[index].length; i++) {
-          if (storage[index][i][0] === key) {
-            delete storage[index][i];
+        for (var i = 0; i < this.storage[index].length; i++) {
+          if (this.storage[index][i][0] === key) {
+            delete this.storage[index][i];
           }
         }
       }
@@ -56,22 +60,40 @@ var hash = (string, max) => {
 
   
     this.lookup = function(key) {
-      var index = hash(key, storageLimit);
-      if (storage[index] === undefined) {
+      var index = hash(key, this.storageLimit);
+      if (this.storage[index] === undefined) {
         return undefined;
       } else {
-        for (var i = 0; i < storage[index].length; i++) {
-          if (storage[index][i][0] === key) {
-            return storage[index][i][1];
+        for (var i = 0; i < this.storage[index].length; i++) {
+          if (this.storage[index][i][0] === key) {
+            return this.storage[index][i][1];
           }
         }
       }
     };
-
-  
   };
 
   function updateTables(){
+
+    console.log("THIS IS A TEST" );
+    console.log(ht.storageLimit);
+    console.log(ht.storage);
+
+    for (let i = 0; i < ht.storageLimit; i++){
+      
+      let data = `<div id="box${i}"class="HashItem"><p>${i}</p></div>`;
+
+      hashTable.innerHTML += data;
+
+      for (let j = 0; j < ht.storage[i]; i++){
+
+        let dataChild = `<div id="boxCHild${j}"class="HashItem"><p>${j.storage}</p></div>`;
+
+      }
+
+    }
+
+    ``
 
 
 
@@ -90,3 +112,5 @@ var hash = (string, max) => {
   ht.add('C', 'D');
   console.log(ht.lookup('tux'))
   ht.print();
+
+  updateTables();
