@@ -8,8 +8,6 @@
     display:flex;
     flex-direction: column;
     border:white 1px solid;
-    
-
 
 }
 
@@ -28,10 +26,11 @@ input{
 
 .controlBtns{
     display: flex;
+    border:white 1px solid;
     flex: 1;
 }
 
-#tree{
+#hashTable{
     display: flex;
     flex: 1;
     min-height: 500px;

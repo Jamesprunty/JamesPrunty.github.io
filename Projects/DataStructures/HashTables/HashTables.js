@@ -7,15 +7,18 @@ var hash = (string, max) => {
     }
     return hash % max;
   };
+
+
   
   let HashTable = function() {
   
     let storage = [];
-    const storageLimit = 14;
+    const storageLimit = 5;
     
     this.print = function() {
       console.log(storage)
     }
+
   
     this.add = function(key, value) {
       var index = hash(key, storageLimit);
@@ -36,6 +39,7 @@ var hash = (string, max) => {
         }
       }
     };
+
   
     this.remove = function(key) {
       var index = hash(key, storageLimit);
@@ -49,6 +53,7 @@ var hash = (string, max) => {
         }
       }
     };
+
   
     this.lookup = function(key) {
       var index = hash(key, storageLimit);
@@ -62,8 +67,16 @@ var hash = (string, max) => {
         }
       }
     };
+
   
   };
+
+  function updateTables(){
+
+
+
+
+  }
   
   
   console.log(hash('quincy', 10))
@@ -72,6 +85,8 @@ var hash = (string, max) => {
   ht.add('beau', 'person');
   ht.add('fido', 'dog');
   ht.add('rex', 'dinosour');
-  ht.add('tux', 'penguin')
+  ht.add('tux', 'penguin');
+  ht.add('A', 'B');
+  ht.add('C', 'D');
   console.log(ht.lookup('tux'))
   ht.print();
