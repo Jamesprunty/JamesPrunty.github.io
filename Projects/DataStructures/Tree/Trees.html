@@ -497,7 +497,14 @@
 
                 <p>
                     The find min height will find the first node without 2 child nodes.<br>
+                    If the tree is empty then it will return -1.<br>
                     If node is null then it will return -1.<br>
+                    It will run findminHeight on both left and right<br>
+                    These will return a value. <br>
+                    Eventually one will return null as it will hit a node that is empty.<br>
+                    So if the left is less than the right it will add one to the left.<br>
+                
+
                     
                 </p>
 
@@ -507,8 +514,10 @@
                     <ind/>if (node == null) {<br>
                     <ind/><ind/>return -1;<br>
                     <ind/>};<br>
+
                     <ind/>let left = this.findMinHeight(node.left);<br>
                     <ind/>let right = this.findMinHeight(node.right);<br>
+
                     <ind/>if (left < right) {<br>
                     <ind/><ind/>return left + 1;<br>
                     <ind/>} else {<br>
@@ -519,6 +528,10 @@
 
 
                 <br><h2>Find Max Height</h2><br><br>
+
+                <p>
+                    This is the same as FindMinHeight but it will check if left is bigger than right rather than smaller.<br>
+                </p>
 
                 <p class="code">
 
@@ -543,7 +556,7 @@
                 <br><h2>isBalanced</h2><br><br>
 
                 <p>
-                    A balanced tree will have a difference between min and max height of 1 or less. This will mean that it is efficient.<br>
+                    A balanced tree will have a difference between min and max height of 1 or less. This will mean that it is efficient.<br><br>
                 </p>
 
                 <p class="code">
@@ -557,6 +570,15 @@
 
 
                 <br><h2>inOrder</h2><br><br>
+
+                <p>
+                    InOrder is a depth first search, meaning it will go to the end node that it can then work its way back.<br>
+                    Start with creating a variable to hold the data.<br>
+                    All of the traversions have the same statements but in different orders.<br>
+                    In this method it will log the left node, then the root, then the right node.<br><br>
+                    This will put the list in order as left is the least, then the node then the right.<br>
+                    Because the result.push is in the middle it will keep going left until it can't go left any more, then that node becomes the result to push.<br>
+                </p>
 
                 <p class="code">
 
@@ -581,6 +603,11 @@
 
                 <br><h2>Pre-Order</h2><br><br>
 
+                <p>
+                    The pre-Order method is the same as the InOrder method but it pushes the root node first, before going to the left and right.<br><br>
+
+                </p>
+
                 <p class="code">
 
 
@@ -603,6 +630,10 @@
 
                 <br><h2>Post-Order</h2><br><br>
 
+                <p>
+                    The post-Order is like the pre-order but it will log the left and right before logging the root node.<br><br>
+                </p>
+
                 <p class="code">
 
                     postOrder() {<br>
@@ -624,7 +655,15 @@
                 </p>
 
 
-                <br><h2>Level Order</h2><br><br>
+                <br><h2>Level Order</h2><br>
+
+                <p>
+                    The level order will list the nodes as the appreas in the tree from left to right.<br>
+                    First create an array for the result and the queue<br>
+                    If it is not null, push the root.<br>
+                    While the queue is not empty, add the next node in the queue as the current node. Because it is a queue it will be first in first out<br>
+                    Once it has pushed that, then push the left and right nodes on. This will make sure that the nodes get put first and then the children will come next in order.<br><br> 
+                </p>
 
 
                 <p class="code">
