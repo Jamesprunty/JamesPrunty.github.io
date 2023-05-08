@@ -85,22 +85,29 @@ var hash = (string, max) => {
 
       hashTable.innerHTML += data;
 
-      for (let j = 0; j < ht.storage[i]; i++){
+      
+
+      for (let j = 0; j < 5; i++){
 
         let dataChild = `<div id="boxCHild${j}"class="HashItem"><p>${j.storage}</p></div>`;
+        
+        let boxName = "boxChild" + j;
+        
+        let boxDivs = document.querySelectorAll(".HasItem");
+
+
+        boxDivs.forEach(element => {
+
+          
+
+          
+        });
+
+        boxDiv.innerHTML = dataChild;
 
       }
-
     }
-
-    ``
-
-
-
-
   }
-  
-  
   console.log(hash('quincy', 10))
   
   let ht = new HashTable();
