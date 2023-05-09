@@ -132,9 +132,11 @@
                     <ind/>this.storage = [];<br><br>
 
                     </p>
-                    
+
 
                     <p>
+
+                        The print function is just used to return the storage array.
                         
                     </p>
 
@@ -144,6 +146,20 @@
                     <ind/>this.print = function () {<br>
                     <ind/><ind/>console.log(this.storage)<br>
                     <ind/>}<br><br>
+                    </p>
+
+                    <p>
+                        The add function will take in a key and a value parameter.<br>
+                        We set the index to the result of the hash function.<br>
+                        Because the hash is always the same, we can check the index to see if the storage box already has something in it.<br>
+                        If it is an empty box, then add it to the index.<br>
+                        If not, create a variable called "inserted" and set it to false.<br>
+                        Go through the storage box. If the key is the same as another, then replace the value and set it to inserted.<br>
+                        If you go through the index and it hasn't been inserted, add the key and value to the end of the storage box.<br><br>
+
+                    </p>
+
+                    <p class="code">
                       
                       
                     <ind/>this.add = function (key, value) {<br>
@@ -163,6 +179,63 @@
                     <ind/><ind/><ind/><ind/>}<br>
                     <ind/><ind/><ind/>}<br>
                     <ind/><ind/>};<br><br>
+                    </p>
+                    <h2>Remove</h2><br><br>
+
+                    <p>
+
+                        We need to find the index, by running the key and the storageLimit through the hash function.<br>
+                        If there is only one thing in the box (index), and the key is the only thing in there, then delete it.<br>
+                        Otherwise, go through the index, if the index key is the same as the key, delete it. Otherwise, return false.<br>
+
+
+                    </p>
+
+
+                    <p class="code">
+                        this.remove = function (key) {<br>
+                        <ind/>var index = hash(key, this.storageLimit);<br>
+                        <ind/>if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {<br>
+                        <ind/><ind/>delete this.storage[index];<br>
+                        <ind/><ind/>return true;<br>
+                        <ind/>} else {<br>
+                        <ind/><ind/>for (var i = 0; i < this.storage[index].length; i++) {<br>
+                        <ind/><ind/><ind/>if (this.storage[index][i][0] === key) {<br>
+                        <ind/><ind/><ind/><ind/>delete this.storage[index][i];<br>
+                        <ind/><ind/><ind/><ind/>return true;<br>
+                        <ind/><ind/><ind/>}<br>
+                        
+                        <ind/><ind/>}<br>
+                        
+                        <ind/>}<br>
+                        <ind/>return false;<br>
+                        };<br><br>
+                    </p>
+
+                    <h2>LookUp</h2>
+
+                    <p>
+                        Like the Remove function, the lookup function also gets the index with the hash function.<br>
+                        If the box is undefined, then return undefined.<br>
+                        Otherwise, look through all of the keys in the storage, if the key is there return the value.<br><br>
+                    </p>
+
+                    <p class="code">
+                        this.lookup = function (key) {<br>
+                        <ind/>var index = hash(key, this.storageLimit);<br>
+                        <ind/>if (this.storage[index] === undefined) {<br>
+                        <ind/><ind/>return undefined;<br>
+                        <ind/>} else {<br>
+                        <ind/><ind/>for (var i = 0; i < this.storage[index].length; i++) {<br>
+                        <ind/><ind/><ind/>if (this.storage[index][i][0] === key) {<br>
+                        <ind/><ind/><ind/><ind/>return this.storage[index][i][1];<br>
+                        <ind/><ind/><ind/>}<br>
+                        <ind/><ind/>}<br>
+                        <ind/>}<br>
+                          };<br><br>
+                        
+                    </p>
+
                       
                 </p>
 
