@@ -167,25 +167,37 @@ buttons.forEach(element => {
       if(key.value != ""){
         ht.remove(key.value);
         updateTable();
+        key.value = "";
+          value.value = "";
 
         if(ht.remove(key.value) === false){
           output.innerText = "Value is not in the table";
+          key.value = "";
+          value.value = "";
         }
 
       }else{
         output.innerText = "Please enter a value to remove";
+        key.value = "";
+        value.value = "";
       }
         break;
       case "lookUp":
         if(key.value != ""){
           output.innerText = ht.lookup(key.value);
           key.value = "";
+          key.value = "";
+            value.value = "";
 
           if(ht.lookup(key.value) === undefined){
             output.innerText = "Key is not in the table";
+            key.value = "";
+            value.value = "";
           }
         }else{
           output.innerText = "Please enter a key to lookup";
+          key.value = "";
+          value.value = "";
         }
        
         
