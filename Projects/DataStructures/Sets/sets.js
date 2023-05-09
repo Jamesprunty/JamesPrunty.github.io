@@ -151,11 +151,6 @@ buttons.forEach(element => {
             updateSet();
 
 
-
-
-
-
-
         } else if (this.id == "has") {
 
             outputText.innerText = set2.has(checkElem.value);
@@ -175,15 +170,19 @@ buttons.forEach(element => {
 
         } else if (this.id == "union") {
 
-            outputText.innerText = set2.union(set1);
+            outputText.innerText = set2.union(set1).values();
 
         } else if (this.id == "intersection") {
 
+            outputText.innerText = set2.intersection(set1).values();
+
         } else if (this.id == "difference") {
+
+            outputText.innerText = set2.difference(set1).values();
 
         } else if (this.id == "subset") {
 
-            outputText.innerText = JSON.stringify(set2.subset(set1));
+            outputText.innerText = set2.subset(set1);
 
         }
 
