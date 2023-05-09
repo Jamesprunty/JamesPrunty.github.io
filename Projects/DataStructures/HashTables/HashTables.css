@@ -46,6 +46,16 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.info{
+    padding:3px;
+    margin:3px;
+}
+
+.boxDiv{
+    flex: 1;
 }
 
 #explinationContainer{

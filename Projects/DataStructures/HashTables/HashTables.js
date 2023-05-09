@@ -2,122 +2,197 @@
 
 
 var hash = (string, max) => {
-    var hash = 0;
-    for (var i = 0; i < string.length; i++) {
-      hash += string.charCodeAt(i);
-    }
-    return hash % max;
-  };
-
-
-  
-  let HashTable = function() {
-  
-    let storage = [];
-    let storageLimit = 5;
-    this.storageLimit = storageLimit;
-    this.storage = [];
-
-    
-    this.print = function() {
-      console.log(this.storage)
-    }
-
-  
-    this.add = function(key, value) {
-      var index = hash(key, this.storageLimit);
-      if (this.storage[index] === undefined) {
-        this.storage[index] = [
-          [key, value]
-        ];
-      } else {
-        var inserted = false;
-        for (var i = 0; i < this.storage[index].length; i++) {
-          if (this.storage[index][i][0] === key) {
-            this.storage[index][i][1] = value;
-            inserted = true;
-          }
-        }
-        if (inserted === false) {
-          this.storage[index].push([key, value]);
-        }
-      }
-    };
-
-  
-    this.remove = function(key) {
-      var index = hash(key, this.storageLimit);
-      if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
-        delete this.storage[index];
-      } else {
-        for (var i = 0; i < this.storage[index].length; i++) {
-          if (this.storage[index][i][0] === key) {
-            delete this.storage[index][i];
-          }
-        }
-      }
-    };
-
-  
-    this.lookup = function(key) {
-      var index = hash(key, this.storageLimit);
-      if (this.storage[index] === undefined) {
-        return undefined;
-      } else {
-        for (var i = 0; i < this.storage[index].length; i++) {
-          if (this.storage[index][i][0] === key) {
-            return this.storage[index][i][1];
-          }
-        }
-      }
-    };
-  };
-
-  function updateTables(){
-
-    console.log("THIS IS A TEST" );
-    console.log(ht.storageLimit);
-    console.log(ht.storage);
-
-    for (let i = 0; i < ht.storageLimit; i++){
-      
-      let data = `<div id="box${i}"class="HashItem"><p>${i}</p></div>`;
-
-      hashTable.innerHTML += data;
-
-      
-
-      for (let j = 0; j < 5; i++){
-
-        let dataChild = `<div id="boxCHild${j}"class="HashItem"><p>${j.storage}</p></div>`;
-        
-        let boxName = "boxChild" + j;
-        
-        let boxDivs = document.querySelectorAll(".HasItem");
-
-
-        boxDivs.forEach(element => {
-
-          
-
-          
-        });
-
-        boxDiv.innerHTML = dataChild;
-
-      }
-    }
+  var hash = 0;
+  for (var i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i);
   }
-  console.log(hash('quincy', 10))
-  
-  let ht = new HashTable();
-  ht.add('beau', 'person');
-  ht.add('fido', 'dog');
-  ht.add('rex', 'dinosour');
-  ht.add('tux', 'penguin');
-  ht.add('A', 'B');
-  ht.add('C', 'D');
-  console.log(ht.lookup('tux'))
-  ht.print();
+  return hash % max;
+};
 
-  updateTables();
+
+
+let HashTable = function () {
+
+  let storage = [];
+  let storageLimit = 5;
+  this.storageLimit = storageLimit;
+  this.storage = [];
+
+
+  this.print = function () {
+    console.log(this.storage)
+  }
+
+
+  this.add = function (key, value) {
+    var index = hash(key, this.storageLimit);
+    if (this.storage[index] === undefined) {
+      this.storage[index] = [
+        [key, value]
+      ];
+    } else {
+      var inserted = false;
+      for (var i = 0; i < this.storage[index].length; i++) {
+        if (this.storage[index][i][0] === key) {
+          this.storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false) {
+        this.storage[index].push([key, value]);
+      }
+    }
+  };
+
+
+  this.remove = function (key) {
+    var index = hash(key, this.storageLimit);
+    if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
+      delete this.storage[index];
+      return true;
+    } else {
+      for (var i = 0; i < this.storage[index].length; i++) {
+        if (this.storage[index][i][0] === key) {
+          delete this.storage[index][i];
+          return true;
+        }
+        
+      }
+
+    }
+    return false;
+  };
+
+
+  this.lookup = function (key) {
+    var index = hash(key, this.storageLimit);
+    if (this.storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (var i = 0; i < this.storage[index].length; i++) {
+        if (this.storage[index][i][0] === key) {
+          return this.storage[index][i][1];
+        }
+      }
+    }
+  };
+};
+
+function updateTable() {
+
+  hashTable.innerHTML = "";
+
+
+  for (let i = 0; i < ht.storageLimit; i++) {
+
+    let data = `<div id="boxDiv${i}" class="boxDiv"> <div id="box${i}" class="HashItem"><p>${i}</p></div></div>`;
+
+    hashTable.innerHTML += data;
+
+    let index = i;
+    if (ht.storage[i] != undefined) {
+      ht.storage[i].forEach(element => {
+        let childKey = "key: " + element[0];
+        let childValue = "value: " + element[1];
+
+        let dataChild = `<div id="boxChild${i}"class="HashItem"><p class="childKey info">${childKey}</p><p class="childValue info">${childValue}</div>`;
+
+        let box = "box" + i;
+
+        let boxDiv = document.getElementById(box);
+
+        let newDiv = document.createElement('div');
+
+        newDiv.innerHTML = dataChild;
+
+        boxDiv.parentNode.prepend(newDiv);
+      });
+
+    }
+
+  }
+}
+
+let ht = new HashTable();
+ht.add('beau', 'person');
+ht.add('fido', 'dog');
+ht.add('rex', 'dinosour');
+ht.add('tux', 'penguin');
+ht.add('A', 'B');
+ht.add('C', 'D');
+
+
+updateTable();
+
+
+let buttons = document.querySelectorAll(".btn");
+let storageVal = document.querySelector("#storageLimit");
+let output = document.querySelector("#outputText");
+let key = document.querySelector("#key");
+let value = document.querySelector("#value");
+
+buttons.forEach(element => {
+  element.addEventListener('click', function () {
+    switch (this.id) {
+      case "storageLimitbtn":
+        if(storageVal.value < 30){
+          ht.storageLimit = storageVal.value;
+          updateTable();
+          storageVal.value = "";
+
+        }else{
+          output.innerText = "Please enter a number lower than 30";
+        }
+
+        break;
+      case "add":
+
+        console.log(key.value);
+        console.log(value.value);
+
+        if(key.value != "" && value.value != ""){
+
+          ht.add(key.value, value.value);
+          updateTable();
+          key.value = "";
+          value.value = "";
+
+        }else{
+          output.innerText = "Please enter a key and a value";
+          
+        }
+        break;
+      case "remove":
+
+      if(key.value != ""){
+        ht.remove(key.value);
+        updateTable();
+
+        if(ht.remove(key.value) === false){
+          output.innerText = "Value is not in the table";
+        }
+
+      }else{
+        output.innerText = "Please enter a value to remove";
+      }
+        break;
+      case "lookUp":
+        if(key.value != ""){
+          output.innerText = ht.lookup(key.value);
+          key.value = "";
+
+          if(ht.lookup(key.value) === undefined){
+            output.innerText = "Key is not in the table";
+          }
+        }else{
+          output.innerText = "Please enter a key to lookup";
+        }
+       
+        
+        break;
+
+      default:
+        break;
+    }
+  })
+});
