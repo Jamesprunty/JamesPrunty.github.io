@@ -79,11 +79,91 @@
 
                 <p id="explination">
 
-                    <br><br>
+                    <br> The Hash table 
+
 
                 </p>
 
+                <br><h2>The hash Table</h2><br>
 
+                <p>
+                    We start with hash function which will sort which storage box the data will go in. 
+                </p>
+
+                <p class="code">
+
+                    var hash = (string, max) => {<br>
+                    <ind/>var hash = 0;<br>
+                    <ind/>for (var i = 0; i < string.length; i++) {<br>
+                    <ind/><ind/>hash += string.charCodeAt(i);<br>
+                    <ind/>}<br>
+                    <ind/>return hash % max;<br>
+                    };<br><br>
+                      
+
+                </p>
+
+                <p>
+
+                    <br>The hash takes in the key and the stroagelimit as its parameters.<br>
+                    Create a variable called hash.<br>
+                    The for loop turns the string (which is the key) to it's char code so will be a number.<br>
+                    We then use the modulo with the max number which will return a remainder that is between 0 and the max number (ie if the max is 5, the remainder will be between 0 and 5).<br>
+                    This will be returned when adding a value which will be the storage box it goes into. <br><Br>
+
+                </p>
+
+                <h2>Add</h2><br><br>
+
+                <p class="code">
+
+                    <p>
+                        We start the function by declaring two variables. Storage, (which holds the boxes and the data). And StorageLimit, (Which holds the amount of boxes);<br>
+                        For the visual map, we create this.stora.... so we can edit them later on.<br>
+                    </p>
+
+                    <p class="code">
+
+                    let HashTable = function () {<br>
+
+                    <ind/>let storage = [];<br>
+                    <ind/>let storageLimit = 5;<br>
+                    <ind/>this.storageLimit = storageLimit;<br>
+                    <ind/>this.storage = [];<br><br>
+
+                    </p>
+                    
+
+                    <p>
+                        
+                    </p>
+
+                    <p class="code">
+
+                      
+                    <ind/>this.print = function () {<br>
+                    <ind/><ind/>console.log(this.storage)<br>
+                    <ind/>}<br><br>
+                      
+                      
+                    <ind/>this.add = function (key, value) {<br>
+                    <ind/><ind/>var index = hash(key, this.storageLimit);<br>
+                    <ind/><ind/>if (this.storage[index] === undefined) {<br>
+                    <ind/><ind/><ind/>this.storage[index] = [[key, value]];<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>var inserted = false;<br>
+                    <ind/><ind/><ind/><ind/>for (var i = 0; i < this.storage[index].length; i++) {<br>
+                    <ind/><ind/><ind/><ind/><ind/>if (this.storage[index][i][0] === key) {<br>
+                    <ind/><ind/><ind/><ind/><ind/><ind/>this.storage[index][i][1] = value;<br>
+                    <ind/><ind/><ind/><ind/><ind/><ind/>inserted = true;<br>
+                    <ind/><ind/><ind/><ind/><ind/>}<br>
+                    <ind/><ind/><ind/><ind/>}<br>
+                    <ind/><ind/><ind/><ind/>if (inserted === false) {<br>
+                    <ind/><ind/><ind/><ind/><ind/>this.storage[index].push([key, value]);<br>
+                    <ind/><ind/><ind/><ind/>}<br>
+                    <ind/><ind/><ind/>}<br>
+                    <ind/><ind/>};<br><br>
+                      
                 </p>
 
 
