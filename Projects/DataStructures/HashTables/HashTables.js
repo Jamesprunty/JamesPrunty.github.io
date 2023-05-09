@@ -56,7 +56,7 @@ let HashTable = function () {
           delete this.storage[index][i];
           return true;
         }
-        
+
       }
 
     }
@@ -135,12 +135,12 @@ buttons.forEach(element => {
   element.addEventListener('click', function () {
     switch (this.id) {
       case "storageLimitbtn":
-        if(storageVal.value < 30){
+        if (storageVal.value < 30) {
           ht.storageLimit = storageVal.value;
           updateTable();
           storageVal.value = "";
 
-        }else{
+        } else {
           output.innerText = "Please enter a number lower than 30";
         }
 
@@ -150,57 +150,59 @@ buttons.forEach(element => {
         console.log(key.value);
         console.log(value.value);
 
-        if(key.value != "" && value.value != ""){
+        if (key.value != "" && value.value != "") {
 
           ht.add(key.value, value.value);
           updateTable();
           key.value = "";
           value.value = "";
 
-        }else{
+        } else {
           output.innerText = "Please enter a key and a value";
-          
+
         }
         break;
       case "remove":
 
-      if(key.value != ""){
-        ht.remove(key.value);
-        updateTable();
-        key.value = "";
-          value.value = "";
-
-        if(ht.remove(key.value) === false){
-          output.innerText = "Value is not in the table";
+        if (key.value != "") {
+          ht.remove(key.value);
+          updateTable();
           key.value = "";
           value.value = "";
-        }
 
-      }else{
-        output.innerText = "Please enter a value to remove";
-        key.value = "";
-        value.value = "";
-      }
-        break;
-      case "lookUp":
-        if(key.value != ""){
-          output.innerText = ht.lookup(key.value);
-          key.value = "";
-          key.value = "";
-            value.value = "";
-
-          if(ht.lookup(key.value) === undefined){
-            output.innerText = "Key is not in the table";
+          if (ht.remove(key.value) === false) {
+            output.innerText = "Value is not in the table";
             key.value = "";
             value.value = "";
           }
-        }else{
+
+        } else {
+          output.innerText = "Please enter a value to remove";
+          key.value = "";
+          value.value = "";
+        }
+        break;
+      case "lookUp":
+        if (key.value != "") {
+
+
+          if (!ht.lookup(key.value)) {
+            output.innerText = ht.lookup(key.value);
+            key.value = "";
+            value.value = "";
+          }else{
+            output.innerText = "Key does not exist in table";
+          }
+
+          console.log(output.innerText = ht.lookup(key.value));
+
+        } else {
           output.innerText = "Please enter a key to lookup";
           key.value = "";
           value.value = "";
         }
-       
-        
+
+
         break;
 
       default:
