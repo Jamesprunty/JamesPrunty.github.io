@@ -185,7 +185,6 @@ buttons.forEach(element => {
       case "lookUp":
         if (key.value != "") {
 
-
           if (!ht.lookup(key.value)) {
             output.innerText = ht.lookup(key.value);
             key.value = "";
@@ -193,7 +192,6 @@ buttons.forEach(element => {
           }else{
             output.innerText = "Key does not exist in table";
           }
-
           console.log(output.innerText = ht.lookup(key.value));
 
         } else {
