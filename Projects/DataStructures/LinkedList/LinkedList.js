@@ -78,6 +78,19 @@ function LinkedList() {
           currentNode = currentNode.next
       }
       return currentNode.element;
+    
+    };
+
+    this.nodeAt = function(index){
+
+    var currentNode = head;
+      var count = 0;
+      while (count < index){
+          count ++;
+          currentNode = currentNode.next
+      }
+      return currentNode;
+    
     };
     
     
@@ -141,3 +154,67 @@ function LinkedList() {
   console.log(conga.elementAt(3));
   console.log(conga.indexOf('Puppy'));
   console.log(conga.size());
+
+  var linkedL = new LinkedList();
+
+  let linkedList = document.querySelector("#linkedList");
+
+
+  function updateList(){
+
+    let dataFinish = "";
+
+    var listArray = [];
+
+    for(let i=0;i<conga.size();i++){
+      listArray.push([conga.nodeAt(i), conga.nodeAt(i+1)]);
+      
+      
+    };
+
+    for(let i=0;i<listArray.length - 1;i++){
+
+      if(listArray[i][1].element){
+      console.log(listArray[i][0].element);
+      console.log(listArray[i][1].element);
+
+      let data = `<div class="listItem"><p class="element">${listArray[i][0].element}</p><p  class="next">${listArray[i][1].element}</p></div>`;
+
+      dataFinish += data;
+
+      if(i == listArray.length - 2){
+        let data = `<div class="listItem"><p class="element">${listArray[i][0].element}</p><p  class="next">*End of List*</p></div>`;
+        dataFinish += data;
+      }
+
+      }
+      linkedList.innerHTML = dataFinish;
+
+    }
+
+
+  }
+
+  updateList();
+
+  /*
+    listArray.forEach(element => {
+
+      let letnextElement = "";
+
+      if(element[0].next.element){
+        letnextElement = element[0].next.element;
+      }else{
+        letnextElement = "end of list";
+      }
+
+
+      let data = `<div class="listItem"><p class="element">${element[0].element}</p><p  class="next">${element[0]}</div>`;
+       
+        dataFinish += data;
+
+
+    });
+
+    //linkedList.innerHTML = dataFinish;
+*/

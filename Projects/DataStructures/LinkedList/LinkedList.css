@@ -11,9 +11,27 @@
 
 }
 
+#input{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    border:1px white solid;
+}
+
 input{
     flex:1;
+    display: flex;
 }
+
+#inputs{
+    display: flex;
+}
+
+.btn{
+    flex: 1;
+}
+
+
 
 #controlContainer{
     display: flex;
@@ -24,13 +42,26 @@ input{
     
 }
 
+#inputsDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border:1px white solid;
+}
+#nonInputDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border:1px white solid;
+}
 .controlBtns{
     display: flex;
     border:white 1px solid;
     flex: 1;
 }
 
-#hashTable{
+#linkedList{
     display: flex;
     flex: 1;
     min-height: 500px;
@@ -38,7 +69,7 @@ input{
     align-items: flex-end;
 }
 
-.HashItem{
+.listItem{
 
     border:1px solid white;
     flex: 1;
@@ -99,6 +130,8 @@ svg{
 ind{
     margin-left: 20px;
 }
+
+
 
 
 
