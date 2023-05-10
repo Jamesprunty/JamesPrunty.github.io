@@ -159,6 +159,15 @@ function LinkedList() {
 
   let linkedList = document.querySelector("#linkedList");
 
+  let buttons = document.querySelectorAll(".btn");
+  buttons.forEach(element => {
+    element.addEventListener('click', function() {
+      if(this.id == "add"){
+        console.log("ADD");
+      }
+    })
+  });
+
 
   function updateList(){
 
@@ -199,24 +208,3 @@ function LinkedList() {
 
   updateList();
 
-  /*
-    listArray.forEach(element => {
-
-      let letnextElement = "";
-
-      if(element[0].next.element){
-        letnextElement = element[0].next.element;
-      }else{
-        letnextElement = "end of list";
-      }
-
-
-      let data = `<div class="listItem"><p class="element">${element[0].element}</p><p  class="next">${element[0]}</div>`;
-       
-        dataFinish += data;
-
-
-    });
-
-    //linkedList.innerHTML = dataFinish;
-*/
