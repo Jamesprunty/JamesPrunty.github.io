@@ -178,6 +178,8 @@ function LinkedList() {
       console.log(listArray[i][0].element);
       console.log(listArray[i][1].element);
 
+      //ADD INDEX NUMBER TO THE DIV
+
       let data = `<div class="listItem"><p class="element">${listArray[i][0].element}</p><p  class="next">${listArray[i][1].element}</p></div>`;
 
       dataFinish += data;
