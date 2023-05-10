@@ -6,6 +6,7 @@ var hash = (string, max) => {
   for (var i = 0; i < string.length; i++) {
     hash += string.charCodeAt(i);
   }
+  console.log(hash%max);
   return hash % max;
 };
 
