@@ -186,15 +186,37 @@ function LinkedList() {
       if(listArray[i][1].element){
       console.log(listArray[i][0].element);
       console.log(listArray[i][1].element);
+      let data = "";
 
       //ADD INDEX NUMBER TO THE DIV
 
-      let data = `<div class="listItem"><p class="element">${listArray[i][0].element}</p><p  class="next">${listArray[i][1].element}</p></div>`;
+      if(i==0){
+        data = `<div class="listItem">
+                  <div class="index listData"><p>Index: ${i}</p></div>
+                  <div class="element listData"><p>Element: ${listArray[i][0].element}</p></div>
+                  <div class="next listData"><p>Link: ${listArray[i][1].element}</p></div>
+                  </div>`;
+
+      }else{
+        data = `<div class="listItem">
+                  <div class="index listData"><p>Index: ${i}</p></div>
+                  <div class="element listData"><p>Element: ${listArray[i][0].element}</p></div>
+                  <div  class="next listData"><p>Link: ${listArray[i][1].element}</p></div>
+                </div>`;
+
+      }
+
+      
 
       dataFinish += data;
 
       if(i == listArray.length - 2){
-        let data = `<div class="listItem"><p class="element">${listArray[i][0].element}</p><p  class="next">*End of List*</p></div>`;
+        data = `<div class="listItem ">
+                  <div class="index listData"><p>Index: ${i+1}</p></div>
+                  <div class="element listData"><p>Element: ${listArray[i][0].element}</p></div>
+                  <div  class="next listData"><p>*End of List*</p></div>
+                  </div>`;
+
         dataFinish += data;
       }
 

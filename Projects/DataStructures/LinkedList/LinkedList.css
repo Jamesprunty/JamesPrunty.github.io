@@ -33,6 +33,7 @@ input{
 
 
 
+
 #controlContainer{
     display: flex;
     flex: 1;
@@ -79,6 +80,7 @@ input{
     align-items: center;
     flex-direction: column;
 }
+
 
 .info{
     padding:3px;
