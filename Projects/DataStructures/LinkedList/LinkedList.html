@@ -19,6 +19,9 @@
         <div id="SummaryContainer">
 
             <p id="summary">
+                A linked list is a collection of data elements whose order is not given by their physical placement in memory, rather, each element points to the next.<br>
+                It starts at the head and links to the next element in the array, this then links to the next and so on.<br>
+                To find data you must go through each element in order. <br><br>
 
             </p>
 
@@ -70,6 +73,9 @@
                         <div id="isEmptyDiv">
                             <input type="button" class="btn" id="isEmpty" value="IsEmpty">
                         </div>
+                        <div id="resetDiv">
+                            <input type="button" class="btn" id="reset" value="Reset">
+                        </div>
                     </div>
                 </div>
 
@@ -98,8 +104,25 @@
 
                 <p id="explination">
 
+                    <br><br>To start with we have to define the linked list class and create a node function to hold the data.<br>
+                </p>
 
+                <p class="code">
+                    function LinkedList() {<br>
+                    <ind/>var length = 0;<br>
+                    <ind/>var head = null;<br><br>
+                      
+                    <ind/>var Node = function (element) {<br>
+                    <ind/><ind/>this.element = element;<br>
+                    <ind/><ind/>this.next = null;<br>
+                    <ind/>};<br><br>
+                </p>
 
+                <p>
+                    The "length" variable will keep track of the length of the list.<br>
+                    It also creates a head, which is currently empty.<br>
+                    The node function will take in an element.<br>
+                    It will set "this.element" to the element and it will set the "next" item to null as when we add a new value the one after will be empty.<br><br> 
                 </p>
 
 

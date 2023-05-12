@@ -171,8 +171,8 @@ console.log(conga.size());
 var linkedL = new LinkedList();
 
 linkedL.add('Kitten');
-//linkedL.add('Puppy');
-//linkedL.add('Dog');
+linkedL.add('Puppy');
+linkedL.add('Dog');
 //linkedL.add('Cat');
 //linkedL.add('Fish');
 
@@ -339,6 +339,11 @@ buttons.forEach(element => {
         index.value = "";
         break;
 
+        case "reset":
+
+        linkedL = new LinkedList();
+        linkedList.innerHTML = "";
+
 
 
     }
@@ -363,7 +368,7 @@ function updateList() {
   if (linkedL.size() == 1) {
 
     data = `<div class="listItem ">
-      <div class="index listData"><p>Index: ${0}</p></div>
+      <div class="index listData"><p>*Head* Index: ${0}</p></div>
       <div class="element listData"><p>Element: ${listArray[0][0].element}</p></div>
       <div  class="next listData"><p>*End of List*</p></div>
       </div>`;
