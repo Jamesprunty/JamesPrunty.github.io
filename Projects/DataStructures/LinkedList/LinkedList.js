@@ -14,7 +14,12 @@ function LinkedList() {
   };
 
   this.head = function () {
-    return [head.element];
+    if(head == null){
+      return "The list is empty";
+    }else{
+      return [head.element];
+    }
+    
   };
 
   this.add = function (element) {
@@ -43,9 +48,13 @@ function LinkedList() {
       while (currentNode.element !== element) {
         previousNode = currentNode;
         currentNode = currentNode.next;
+        if(currentNode == null){
+          return false;
+        }
       }
 
       previousNode.next = currentNode.next;
+
     }
 
     length--;
@@ -63,7 +72,11 @@ function LinkedList() {
       index++;
       if (currentNode.element === element) {
         return index;
+        if(currentNode == null){
+          return false;
+        }
       }
+
       currentNode = currentNode.next;
     }
 
@@ -174,56 +187,129 @@ buttons.forEach(element => {
 
     switch (this.id) {
 
-      //ADD IF VALUE EMPTY
+      //ADD IF VALUE EMPTY && What happens if null
 
       case "add":
 
+      if(value.value != ""){
         linkedL.add(value.value);
         updateList();
         value.value = "";
         index.value = "";
+
+      }else{
+        output.innerHTML = "Please enter a value."
+      }
+
         break;
 
         case "remove":
+        if(value.value != ""){
+
+          if(!linkedL.remove(value.value)){
+            output.innerHTML = "The value is not in the list"
+          }
 
         linkedL.remove(value.value);
         updateList();
         value.value = "";
         index.value = "";
+
+
+      }else{
+        output.innerHTML = "Please enter a value."
+      }
         break;
+
 
         case "indexOf":
+          if(value.value != ""){
 
-        output.innerHTML = linkedL.indexOf(value.value);
-        updateList();
-        value.value = "";
-        index.value = "";
+
+            if(linkedL.indexOf(value.value)==-1){
+              output.innerHTML = "The value does not exist.";
+
+            }else{
+              output.innerHTML = linkedL.indexOf(value.value);
+              updateList();
+              value.value = "";
+              index.value = "";
+
+            }
+
+      }else{
+        output.innerHTML = "Please enter a value."
+      }
         break;
 
-        case "elementAt":
 
+        case "elementAt":
+          if(index.value != ""){
+
+            if(index.value > linkedL.size()){
+              output.innerHTML = "The index does not exist."
+
+            }else{
+              
         output.innerHTML = linkedL.elementAt(index.value);
         updateList();
         value.value = "";
         index.value = "";
+
+            }
+
+      }else{
+        output.innerHTML = "Please enter an Index."
+      }
         break;
+        
 
         case "addAt":
 
-        //Add add at 0
+   
 
-        linkedL.addAt(parseInt(index.value), value.value);
-        updateList();
-        value.value = "";
-        index.value = "";
+          if(index.value >= 0 && value.value != ""){
+
+            if(index.value > linkedL.size()){
+
+              output.innerHTML = "The index does not exist."
+
+            }else{
+            linkedL.addAt(parseInt(index.value), value.value);
+            updateList();
+            value.value = "";
+            index.value = "";
+            }
+
+          }else{
+            output.innerHTML = "Please enter a value and Index."
+          }
+
+
+
         break;
 
         case "removeAt":
 
-        linkedL.removeAt(parseInt(index.value));
-        updateList();
-        value.value = "";
-        index.value = "";
+        if(index.value >= 0){
+
+          if(index.value > linkedL.size()){
+
+            output.innerHTML = "The index does not exist."
+
+          }else{
+
+            linkedL.removeAt(parseInt(index.value));
+            updateList();
+            value.value = "";
+            index.value = "";
+
+          }
+
+
+      }else{
+        output.innerHTML = "Please enter a value and Index."
+      }
         break;
 
         case "size":
@@ -236,10 +322,13 @@ buttons.forEach(element => {
 
         case "head":
 
-        output.innerHTML = linkedL.head();
-        updateList();
-        value.value = "";
-        index.value = "";
+          output.innerHTML = linkedL.head();
+          updateList();
+          value.value = "";
+          index.value = "";
+
+
+
         break;
 
         case "isEmpty":
@@ -295,8 +384,6 @@ function updateList() {
         console.log(listArray[i][0].element);
         console.log(listArray[i][1].element);
         let data = "";
-
-        //ADD INDEX NUMBER TO THE DIV
 
         if (i == 0) {
           data = `<div class="listItem">

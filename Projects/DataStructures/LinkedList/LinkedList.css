@@ -76,10 +76,32 @@ input{
     border:1px solid white;
     flex: 1;
     margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+
+}
+
+.index{
+    grid-column-start:1;
+    grid-column-end:3;
+    border:white 1px solid;
+    text-align: center;
+}
+.element{
+
+    grid-column-start:1;
+    grid-column-end:2;
+    border:white 1px solid;
+    text-align: center;
+    
+
+}
+
+.next{
+
+    grid-column-start:2;
+    grid-column-end:3;
+    border:white 1px solid;
+    text-align: center;
 }
 
 
