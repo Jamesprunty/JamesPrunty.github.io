@@ -35,20 +35,34 @@ let Trie = function() {
 
 
 	this.add = function(input, node = this.root, previousNode) {
+
 		
 		if (input.length == 0) {//if we are at the end of the word
 			node.setEnd(); //Set end of a word
 			level = 0;
 			return;
 		} else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,
-			node.keys.set(input[0], new Node()); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
+
+
 			level++;
 			console.log(level);
-			addNode(input.substr(0,1), xStart + level*100, yCenter); 
-			return this.add(input.substr(1), node.keys.get(input[0]), );//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
+			console.log(previousNode);
+
+
+			node.keys.set(input[0], new Node(previousNode, yCenter, "white")); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
+			
+			
+
+			addNode(input.substr(0,1), xStart, yCenter); 
+
+
+
+			return this.add(input.substr(1), node.keys.get(input[0], node), node.keys.get(input[0], node).posX);//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
+		
+		
+		
 		} else {
 			level++;
-			addNode(input.substr(0,1), xStart + level*50, yCenter+level*50);
 			return this.add(input.substr(1), node.keys.get(input[0])); // If there is a key already, rerun the add method with the key as the new root node.
 			
 		};
