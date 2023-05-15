@@ -1,8 +1,21 @@
 /* Trie Data Structure */
 
-let Node = function() {
+let svg = document.querySelector("#trieSVG");
+let svgSize = svg.getBoundingClientRect();
+let xStart = 70;
+let yCenter = svgSize.height / 2;
+let xDiff = 200;
+let xDiffStart = window.innerHeight / 4;
+let yDiff = 80;
+let newLevel = 0;
+
+let Node = function(posX = xStart, posY = yCenter, level = 0, colour = "white") {
 	this.keys = new Map();
 	this.end = false;
+	this.posX = posX; //Stores the position x of the node to use later
+    this.posY = posY;
+    this.level = level;//Stores what level the node is on
+	this.colour = colour
 	
 	this.setEnd = function() {
 		this.end = true;
@@ -15,18 +28,33 @@ let Node = function() {
 let Trie = function() {
 
 	this.root = new Node();
+	addNode("root", xStart, yCenter);
+	level = 0;
+	
 
-	this.add = function(input, node = this.root) {
-		if (input.length == 0) {
-			node.setEnd();
+
+
+	this.add = function(input, node = this.root, previousNode) {
+		
+		if (input.length == 0) {//if we are at the end of the word
+			node.setEnd(); //Set end of a word
+			level = 0;
 			return;
-		} else if (!node.keys.has(input[0])) {
-			node.keys.set(input[0], new Node());
-			return this.add(input.substr(1), node.keys.get(input[0]));
+		} else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,
+			node.keys.set(input[0], new Node()); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
+			level++;
+			console.log(level);
+			addNode(input.substr(0,1), xStart + level*100, yCenter); 
+			return this.add(input.substr(1), node.keys.get(input[0]), );//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
 		} else {
-			return this.add(input.substr(1), node.keys.get(input[0]));
+			level++;
+			addNode(input.substr(0,1), xStart + level*50, yCenter+level*50);
+			return this.add(input.substr(1), node.keys.get(input[0])); // If there is a key already, rerun the add method with the key as the new root node.
+			
 		};
 	};
+
+
 
 	this.isWord = function(word) {
 		let node = this.root;
@@ -41,6 +69,8 @@ let Trie = function() {
 		return (node.keys.has(word) && node.keys.get(word).isEnd()) ? 
       true : false;
 	};
+
+
 
 	this.print = function() {
 		let words = new Array();
@@ -65,22 +95,22 @@ let Trie = function() {
 
 myTrie = new Trie()
 myTrie.add('ball'); 
-myTrie.add('bat'); 
-myTrie.add('doll'); 
-myTrie.add('dork'); 
-myTrie.add('do'); 
-myTrie.add('dorm')
-myTrie.add('send')
-myTrie.add('sense')
-console.log(myTrie.isWord('doll'))
-console.log(myTrie.isWord('dor'))
-console.log(myTrie.isWord('dorf'))
+//myTrie.add('bat'); 
+//myTrie.add('doll'); 
+//myTrie.add('dork'); 
+//myTrie.add('do'); 
+//myTrie.add('dorm')
+//myTrie.add('send')
+//myTrie.add('sense')
+//console.log(myTrie.isWord('doll'))
+//console.log(myTrie.isWord('dor'))
+//console.log(myTrie.isWord('dorf'))
 console.log(myTrie.print())
 
-function addNode(value, x, y) {
+function addNode(value, x, y, colour) {
 
 
-	let svg = document.querySelector("#treeSVG");
+	let svg = document.querySelector("#trieSVG");
   
 	const svgns = "http://www.w3.org/2000/svg";
   
@@ -123,3 +153,5 @@ function addNode(value, x, y) {
 	svg.appendChild(newLine);
   
   }
+
+  console.log(svgSize.height);
