@@ -29,8 +29,9 @@ let Node = function(posX = xStart, posY = yCenter, previous, colour = "white") {
 let Trie = function() {
 
 	this.root = new Node();
-	//addNode("root", xStart, yCenter);
+	addNode("root", xStart, yCenter);
 	level = 0;
+	let posArray = [[xStart, yCenter]];
 	let currentNode = this.root;
 	let newX = 0;
 	let newY = 0;
@@ -46,15 +47,26 @@ let Trie = function() {
 
 		} else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,
 
-			
-
+			//If this node does not exist we need to add it in.
+			level++;
 
 			node.keys.set(input[0], new Node()); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
 			
+			//Next we need to add it to the visual tree.
+			//We want it to dynamically change when things are added. Make a note of all the places before adding it, change if it conflicts. 
+
+			let newX = xStart + level*70;
+			let newY = yCenter;
+			let index = 0;
+			addNode(input.substr(0,1), newX, newY); 
+			
+			//we want to take the previous node, add 70 to X, if something is there add 70 to y, keep going until nothing is there.
+				
+
 
 			//console.log(node.keys.get(input[0]).previous.posX);
 
-			//addNode(input.substr(0,1), node.keys.get(input[0]).previous.posX, node.keys.get(input[0]).previous.posY); 
+			
 
 
 
@@ -114,7 +126,7 @@ let Trie = function() {
 myTrie = new Trie()
 myTrie.add('ball'); 
 //myTrie.update();
-//myTrie.add('bat'); 
+myTrie.add('bat'); 
 //myTrie.add('doll'); 
 //myTrie.add('dork'); 
 //myTrie.add('do'); 
