@@ -9,13 +9,14 @@ let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
 let newLevel = 0;
 
-let Node = function(posX = xStart, posY = yCenter, level = 0, colour = "white") {
+let Node = function(posX = xStart, posY = yCenter, previous, colour = "white") {
 	this.keys = new Map();
 	this.end = false;
 	this.posX = posX; //Stores the position x of the node to use later
     this.posY = posY;
-    this.level = level;//Stores what level the node is on
-	this.colour = colour
+   // this.level = level;//Stores what level the node is on
+	this.colour = colour;
+	this.previous = previous;
 	
 	this.setEnd = function() {
 		this.end = true;
@@ -28,36 +29,36 @@ let Node = function(posX = xStart, posY = yCenter, level = 0, colour = "white") 
 let Trie = function() {
 
 	this.root = new Node();
-	addNode("root", xStart, yCenter);
+	//addNode("root", xStart, yCenter);
 	level = 0;
+	let currentNode = this.root;
+	let newX = 0;
+	let newY = 0;
 	
 
-
-
-	this.add = function(input, node = this.root, previousNode) {
+	this.add = function(input, node = this.root) {
 
 		
 		if (input.length == 0) {//if we are at the end of the word
 			node.setEnd(); //Set end of a word
 			level = 0;
 			return;
+
 		} else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,
 
-
-			level++;
-			console.log(level);
-			console.log(previousNode);
-
-
-			node.keys.set(input[0], new Node(previousNode, yCenter, "white")); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
-			
 			
 
-			addNode(input.substr(0,1), xStart, yCenter); 
+
+			node.keys.set(input[0], new Node()); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
+			
+
+			//console.log(node.keys.get(input[0]).previous.posX);
+
+			//addNode(input.substr(0,1), node.keys.get(input[0]).previous.posX, node.keys.get(input[0]).previous.posY); 
 
 
 
-			return this.add(input.substr(1), node.keys.get(input[0], node), node.keys.get(input[0], node).posX);//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
+			return this.add(input.substr(1), node.keys.get(input[0], node));//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
 		
 		
 		
@@ -105,10 +106,14 @@ let Trie = function() {
 		return words.length > 0 ? words : mo;
 	};
 
+
+
+
 };
 
 myTrie = new Trie()
 myTrie.add('ball'); 
+//myTrie.update();
 //myTrie.add('bat'); 
 //myTrie.add('doll'); 
 //myTrie.add('dork'); 
@@ -168,4 +173,7 @@ function addNode(value, x, y, colour) {
   
   }
 
+
   console.log(svgSize.height);
+
+
