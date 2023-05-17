@@ -9,7 +9,7 @@ let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
 let newLevel = 0;
 
-let Node = function(posX = xStart, posY = yCenter, previousX, previousY, value, previousNode, colour) {
+let Node = function(posX = xStart, posY = yCenter, previousX, previousY, value, previousNode, colour, root = "root") {
 	this.keys = new Map();
 	this.end = false;
 	this.posX = posX; //Stores the position x of the node to use later
@@ -20,6 +20,7 @@ let Node = function(posX = xStart, posY = yCenter, previousX, previousY, value, 
 	this.previousY = previousY;
 	this.value = value;
 	this.previousNode = previousNode;
+	this.root = root;
 	
 	this.setEnd = function() {
 		this.end = true;
@@ -48,7 +49,7 @@ let Trie = function() {
 		if (input.length == 0) {//if we are at the end of the word
 			node.setEnd(); //Set end of a word
 			node.colour = "red";
-			addNode( node.value, node.posX, node.posY, "red"); 
+			addNode( node.value, node.posX, node.posY, "red", node.root); 
 			level = 0;
 			return;
 
@@ -75,7 +76,7 @@ let Trie = function() {
 					}
 				}
 
-				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white"));
+				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
 
 				
 
@@ -115,8 +116,8 @@ let Trie = function() {
 			}
 
 
-			node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white")); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
-			
+			node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", node.root)); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
+			console.log(node);
 			//Next we need to add it to the visual tree.
 			//We want it to dynamically change when things are added. Make a note of all the places before adding it, change if it conflicts. 
 
@@ -241,7 +242,7 @@ function addNode(value, x, y, colour) {
   
 	newCircle.setAttribute("cy", y);
 	newCircle.setAttribute("cx", x);
-	newCircle.setAttribute("r", "25");
+	newCircle.setAttribute("r", "20");
 	newCircle.setAttribute("stroke", colour);
 	newCircle.setAttribute("id", value);
   
@@ -277,6 +278,12 @@ function addNode(value, x, y, colour) {
   
 	svg.appendChild(newLine);
   
+  }
+
+  function updateNode(){
+
+
+	
   }
 
 
