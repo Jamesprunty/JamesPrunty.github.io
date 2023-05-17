@@ -34,7 +34,7 @@ input{
 #trie{
     display: flex;
     flex: 1;
-    min-height: 500px;
+    min-height: 800px;
     flex-direction: row;
 
 

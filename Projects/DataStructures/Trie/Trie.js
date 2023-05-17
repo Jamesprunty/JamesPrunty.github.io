@@ -82,8 +82,8 @@ let Trie = function() {
 				
 
 				addLine(xStart,yCenter,newX,newY)
-				addNode(input.substr(0,1), newX, newY, "white"); 
-				addNode("root", xStart, yCenter, "white");
+				addNode(input.substr(0,1), newX, newY, "white", input.substr(0,1)); 
+				addNode("root", xStart, yCenter, "white", "root");
 
 				console.log(xStart);
 				console.log(yCenter);
@@ -189,17 +189,46 @@ let Trie = function() {
 };
 
 myTrie = new Trie()
-myTrie.add('read'); 
-myTrie.add('real'); 
-myTrie.add('greek'); 
-myTrie.add('flad'); 
-myTrie.add('tlad'); 
-myTrie.add('greet'); 
-myTrie.add('grett'); 
+
+let buttons = document.querySelectorAll(".btn");
+let value = document.querySelector("#elem");
+let output = document.querySelector("#outputText");
+buttons.forEach(element => {
+	element.addEventListener('click', function(){
+
+		switch(element){
+
+			case add:
+				if(value.value != ""){
+					myTrie.add(value.value);
+				}else{
+					output.innerText = "Please enter a value"
+				}
+				value.value = "";
+
+				break;
+
+			case isWord:
+				output.innerText = myTrie.isWord(value.value);
+				break;
+
+			case printbtn:
+				output.innerText = myTrie.print();
+				break;
+
+			case reset:
+				myTrie = null;
+				myTrie = new Trie();
+				document.querySelector("#trieSVG").innerHTML = null;
+				addNode("root", xStart, yCenter, "white");
+				break;
+		}
 
 
+	})
+});
 
-console.log(myTrie.print())
+
 
 function addNode(value, x, y, colour) {
 
@@ -214,6 +243,7 @@ function addNode(value, x, y, colour) {
 	newCircle.setAttribute("cx", x);
 	newCircle.setAttribute("r", "25");
 	newCircle.setAttribute("stroke", colour);
+	newCircle.setAttribute("id", value);
   
   
 	svg.appendChild(newCircle);
@@ -223,6 +253,7 @@ function addNode(value, x, y, colour) {
 	newText.setAttributeNS(null, "x", x);
 	newText.setAttributeNS(null, "stroke", "white");
 	newText.setAttributeNS(null, "text-anchor", "middle");
+	newText.setAttributeNS(null, "id", value);
 	var textNode = document.createTextNode(value);
 	newText.appendChild(textNode);
   
