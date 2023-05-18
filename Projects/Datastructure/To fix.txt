@@ -1,6 +1,3 @@
-Stacks - remove word once pushed
-Sets - Fix flex, have only one value box, 
-Queues - Remove word once pushed
+
 Trees - May need to fix overlapping
-Hash tables - fix flex, 
-Linked list - fix flex and overflow
+

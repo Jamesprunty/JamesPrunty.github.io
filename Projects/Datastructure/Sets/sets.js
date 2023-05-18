@@ -122,9 +122,7 @@ let intersection = document.querySelector("#intersection");
 let difference = document.querySelector("#difference");
 let subset = document.querySelector("#subset");
 
-let newElem = document.querySelector("#newElem");
-let checkElem = document.querySelector("#checkElem");
-let removeElem = document.querySelector("#removeElem");
+let Elem = document.querySelector("#Elem");
 
 let output = document.querySelector("#outputText");
 
@@ -145,15 +143,34 @@ buttons.forEach(element => {
 
         if (this.id == "add") {
 
+            if(Elem.value == ""){
 
-            console.log(newElem.value);
-            set2.add(newElem.value);
-            updateSet();
+                outputText.innerText = "Please enter a value";
+
+
+            }else{
+                console.log(Elem.value);
+                set2.add(Elem.value);
+                updateSet();
+                Elem.value = "";
+    
+
+            }
+
 
 
         } else if (this.id == "has") {
 
-            outputText.innerText = set2.has(checkElem.value);
+            if(Elem.value == ""){
+                outputText.innerText = "Please enter a value";
+
+            }else{
+                outputText.innerText = set2.has(Elem.value);
+                Elem.value = "";
+                
+            }
+
+
 
         } else if (this.id == "values") {
 
@@ -161,8 +178,17 @@ buttons.forEach(element => {
 
         } else if (this.id == "remove") {
 
-            set2.remove(removeElem.value);
-            updateSet();
+            if(Elem.value == ""){
+                outputText.innerText = "Please enter a value";
+
+            }else{
+                set2.remove(Elem.value);
+                updateSet();
+                Elem.value = "";
+                
+            }
+
+
 
         } else if (this.id == "size") {
 

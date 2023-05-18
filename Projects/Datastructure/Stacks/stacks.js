@@ -88,7 +88,10 @@ buttons.forEach(element => {
 
                 newStack.push(newElem.value);
                 updateStack();
+                newElem.value = "";
 
+            }else{
+                outputText.innerText = "Please enter a value";
             }
 
 

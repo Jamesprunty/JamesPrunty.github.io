@@ -112,9 +112,19 @@ buttons.forEach(element => {
 
         if (this.id == "enqueue") {
 
+            if(newElem.value == ""){
 
-            q.enqueue(newElem.value);
-            updateQueues();
+                outputText.innerText = "Please enter a priority & value";
+
+            }else{
+                q.enqueue(newElem.value);
+                updateQueues();
+                newElem.value = "";
+
+            }
+
+
+
 
 
         } else if (this.id == "enqueueP") {
@@ -136,6 +146,9 @@ buttons.forEach(element => {
 
             
             updateQueues();
+            
+            newElemP.value = "";
+            newPriorP.value = "";
 
         } else if (this.id == "dequeue") {
 
