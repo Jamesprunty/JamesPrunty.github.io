@@ -38,7 +38,9 @@ const Projects = [
 
     {
         name: "Marcov Model",
-        description: "A test marcov model that takes reference information to create sentances based on that data."
+        description: "A test marcov model that takes reference information to create sentances based on that data.",
+        folderName: "Marcov",
+        dir: "../Projects/"
         
     },
     {
