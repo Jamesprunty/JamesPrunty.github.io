@@ -55,7 +55,7 @@ const Projects = [
     {
         name: "DataStructures",
         description: "(Not Done) Working with different types of data structure, visual representations",
-        folderName: "DataStructures",
+        folderName: "Datastructure",
         dir: "../Projects/"
      
     },  
