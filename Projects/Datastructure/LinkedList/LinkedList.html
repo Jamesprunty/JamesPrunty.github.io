@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James Prunty</title>
+    <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
+    <link rel="stylesheet" href="../Datastructure.css">
+    <link rel="stylesheet" href=".//LinkedList.css">
+</head>
+
+<body>
+
+    <h1>Linked List</h1>
+
+
+    <div id="contentContainer">
+
+        <div id="SummaryContainer">
+
+            <p id="summary">
+                A linked list is a collection of data elements whose order is not given by their physical placement in memory, rather, each element points to the next.<br>
+                It starts at the head and links to the next element in the array, this then links to the next and so on.<br>
+                To find data you must go through each element in order. <br><br>
+
+            </p>
+
+        </div>
+
+        <div id="visualContainer">
+
+
+            <div id="controlContainer" class="control">
+
+
+                <div id="input" class="controlBtns">
+
+                    <div id="inputsDiv">
+
+                        <div id="inputs">
+                            <input type="text" id="value" placeholder="Value">
+                            <input type="number" id="index" placeholder="Index">
+                            <div id="addDiv">
+                                <input type="button" class="btn" id="add" value="Add">
+                            </div>
+                            <div id="removeDiv">
+                                <input type="button" class="btn" id="remove" value="Remove">
+                            </div>
+                            <div id="indexOfDiv">
+                                <input type="button" class="btn" id="indexOf" value="IndexOf">
+                            </div>
+                            <div id="elementAtDiv">
+                                <input type="button" class="btn" id="elementAt" value="ElementAt">
+                            </div>
+                            <div id="addAtDiv">
+                                <input type="button" class="btn" id="addAt" value="AddAt">
+                            </div>
+                            <div id="removeAtDiv">
+                                <input type="button" class="btn" id="removeAt" value="RemoveAt">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div id="nonInputDiv">
+                        <div id="sizeDiv">
+                            <input type="button" class="btn" id="size" value="Size">
+                        </div>
+                        <div id="headDiv">
+                            <input type="button" class="btn" id="head" value="Head">
+                        </div>
+                        <div id="isEmptyDiv">
+                            <input type="button" class="btn" id="isEmpty" value="IsEmpty">
+                        </div>
+                        <div id="resetDiv">
+                            <input type="button" class="btn" id="reset" value="Reset">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div id="linkedList">
+
+                </div>
+
+
+
+                <div id="outputContainer">
+
+                    <div id="output">
+                        <p id="outputText"></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="explinationContainer">
+
+                <p id="explination">
+
+                    <br><br>To start with we have to define the linked list class and create a node function to hold the data.<br>
+                </p>
+
+                <p class="code">
+                    function LinkedList() {<br>
+                    <ind/>var length = 0;<br>
+                    <ind/>var head = null;<br><br>
+                      
+                    <ind/>var Node = function (element) {<br>
+                    <ind/><ind/>this.element = element;<br>
+                    <ind/><ind/>this.next = null;<br>
+                    <ind/>};<br><br>
+                </p>
+
+                <p>
+                    The "length" variable will keep track of the length of the list.<br>
+                    It also creates a head, which is currently empty.<br>
+                    The node function will take in an element.<br>
+                    It will set "this.element" to the element and it will set the "next" item to null as when we add a new value the one after will be empty.<br><br> 
+                </p>
+
+                <h2>Size</h2>
+
+                <p class="code">
+
+                this.size = function () {<br>
+                <ind/>return length;<br>
+                };<br><br>
+
+                </p>
+
+                <p>
+                    The size function just returns the length which is increased with every addition and decreased with every remove.<br><br>
+
+                </p>
+
+                <br><br><h2>Head</h2>
+
+
+                <p class="code">
+
+                    this.head = function () {<br>
+                    <ind/>if(head == null){<br>
+                    <ind/><ind/>return "The list is empty";<br>
+                    <ind/>}else{<br>
+                    <ind/><ind/>return [head.element];<br>
+                    <ind/>}<br>
+                    };<br><br>
+                    
+                </p>
+
+                <p>
+
+                    If the head is null, then return "This list is empty", so we can display it in the output.<br>
+                    If it isn't null then return the head.element.<br><br> 
+                    
+                </p>
+
+                <br><br><h2>Add</h2>
+
+                <p>
+                    The add method will add a node onto the end of the list and link it to the previous node.<br>
+                </p>
+
+
+                <p class="code">
+
+                    this.add = function (element) {<br>
+                    <ind/>var node = new Node(element);<br>
+                    <ind/>if (head === null) {<br>
+                    <ind/><ind/>head = node;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var currentNode = head;<br>
+                    <ind/><ind/>while (currentNode.next) {<br>
+                    <ind/><ind/><ind/>currentNode = currentNode.next;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>currentNode.next = node;<br>
+                    <ind/>}<br>
+                    <ind/>length++;<br>
+                    };<br><br>
+
+                    
+                </p>
+
+                <p>
+
+                    We start by creating a new node called "node", this will contain the element we want to add.<br>
+                    If the head is null, add the node ass the head.<br>
+                    The currentNode = the head of the list, while there is a next in the list, the current node is equal to the next node.<br>
+                    This will cycle through the list until it reaches the end.<br>
+                    We then set the currentNode.next to be the new node. We will also increase the length by 1.<br><br>
+                    
+                </p>
+
+                <br><br><h2>Remove</h2>
+
+                <p>
+                    The remove method takes in an element to put in, and will remove it from wherever it is in the list.<br><br>
+                </p>
+
+
+                <p class="code">
+
+                    this.remove = function (element) {<br>
+                    <ind/>var currentNode = head;<br>
+                    <ind/>var previousNode;<br>
+                    <ind/>if (currentNode.element === element) {<br>
+                    <ind/><ind/>head = currentNode.next;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>while (currentNode.element !== element) {<br>
+                    <ind/><ind/><ind/>previousNode = currentNode;<br>
+                    <ind/><ind/><ind/>currentNode = currentNode.next;<br>
+                    <ind/><ind/><ind/>if(currentNode == null){<br>
+                    <ind/><ind/><ind/><ind/>return false;<br>
+                    <ind/><ind/><ind/>}<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>previousNode.next = currentNode.next;<br>
+                    <ind/>}<br>
+                    <ind/>length--;<br>
+                    };<br><br>
+                    
+                </p>
+
+                <p>
+                    We create two nodes here, one for the current node, and one for the previous node. This will mean we can join the previous node and the next node together once it is removed.<br>
+                    If the currentNode is the same as the element, then the head becomes the next element (Which removes the head from the list), the length will minus 1.<br>
+                    While the currentNode is not eqaul to the element we are looking for, move along the list. <br>
+                    If currentNode is null then that means we have hit the end of the list without finding the element so it doesn't exist.<br>
+                    If the element is found then the previous node = the currentNode.next meaning the current node is remove from the list.<br><br>
+                </p>
+
+                <br><br><h2>IsEmpty</h2>
+
+
+                <p class="code">
+
+                    this.isEmpty = function () {<br>
+                    <ind/>return length === 0;<br>
+                    };<br><br>
+                    
+                </p>
+
+                <p>
+                    The isEmpty method just returns true or false depending on if the length is equal to 0;<br><br>
+                    
+                </p>
+
+                <br><br><h2>IndexOf</h2>
+
+                <p>
+                    The indexOf method takes in an element to find the index of.<br>
+                </p>
+
+
+                <p class="code">
+
+                    this.indexOf = function (element) {<br>
+                    <ind/>var currentNode = head;<br>
+                    <ind/>var index = -1;<br>
+                    <ind/>while (currentNode) {<br>
+                    <ind/><ind/>index++;<br>
+                    <ind/><ind/>if (currentNode.element === element) {<br>
+                    <ind/><ind/><ind/>return index;<br>
+                    <ind/><ind/><ind/>if(currentNode == null){<br>
+                    <ind/><ind/><ind/><ind/>return false;<br>
+                    <ind/><ind/><ind/>}<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>currentNode = currentNode.next;<br>
+                    <ind/>}<br>
+                    <ind/>return -1;<br>
+                    };<br><br>
+                    
+                </p>
+
+                <p>
+                    We start by setting the "currentNode" to the head, and the index to -1. We start at -1 because the first thing in the loop is to increase the index.<br>
+                    While currentNode (so while it is not null, meaning you haven't reached the end of the list)<br>
+                    If the element is the one we are looking for, return the index.<br>
+                    currentNode = currentNode.next moves the loop along the list and add to the index.<br>
+                    If the currentNode is false return -1 for false.<br><br>
+                </p>
+
+                <br><br><h2>ElementAt</h2>
+
+                <p>
+                    The elementAt method will take in a number and return the element at the index of that number.<br>
+                </p>
+
+
+                <p class="code">
+
+                    this.elementAt = function (index) {<br>
+                    <ind/>var currentNode = head;<br>
+                    <ind/>var count = 0;<br>
+                    <ind/>while (count < index) {<br>
+                    <ind/><ind/>count++;<br>
+                    <ind/><ind/>currentNode = currentNode.next<br>
+                    <ind/>}<br>
+                    <ind/>return currentNode.element;<br>
+                    };<br><br>
+                    
+                </p>
+
+                <p>
+                    The currentNode is set to the head, and the count is set to 0.<br>
+                    While the count is less than the index, add one to the count, and move onto the next node.<br>
+                    If the count is not longer less than the index, it must be at the index, so return the currentNode elemenet.<br><br>
+
+                </p>
+
+                <br><br><h2>AddAt</h2>
+
+                <p>
+                    The addAt method will take in both a value and index, it will input the value at the index location.<br>
+                </p>
+
+                <p class="code">
+
+                    this.addAt = function (index, element) {<br>
+                    <ind/>var node = new Node(element);<br>
+                    <ind/>var currentNode = head;<br>
+                    <ind/>var previousNode;<br>
+                    <ind/>var currentIndex = 0;<br>
+                    <ind/>if (index > length) {<br>
+                    <ind/><ind/>return false;<br>
+                    <ind/>}<br>
+                    <ind/>if (index === 0) {<br>
+                    <ind/><ind/>node.next = currentNode;<br>
+                    <ind/><ind/>head = node;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>while (currentIndex < index) {<br>
+                    <ind/><ind/><ind/>currentIndex++;<br>
+                    <ind/><ind/><ind/>previousNode = currentNode;<br>
+                    <ind/><ind/><ind/>currentNode = currentNode.next;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>node.next = currentNode;<br>
+                    <ind/><ind/>previousNode.next = node;<br>
+                    <ind/>}<br>
+                    <ind/>length++;<br>
+                    }<br><br>
+
+
+                </p>
+
+                <p>
+                    We need a few variables to start with, a new node, the current node, the previous node, and the current index.<br>
+                    if the index is larger than the length then return false as the numbr isnt in the list.<br>
+                    if the index is 0, We make the nect node the current node, then add the new node the head.<br>
+                    While the current index is less than the index, add one to the urrent index, and move everything down the list.<br>
+                    If the current node is the index, node.next = current node to move it along, and make the previousnode.next equal this node, to fit it in.<br>
+                    Then add one to the length.<br><br>
+                </p>
+
+
+                <br><br><h2>RemoveAt</h2>
+
+                <p>
+                    The removeAt does the same as AddAt but only requires an index input that takes the item away.<br>
+                </p>
+
+                <p class="code">
+
+                    this.removeAt = function (index) {<br>
+                    <ind/>var currentNode = head;<br>
+                    <ind/>var previousNode;<br>
+                    <ind/>var currentIndex = 0;<br>
+                    <ind/>if (index < 0 || index >= length) {<br>
+                    <ind/><ind/>return null<br>
+                    <ind/>}<br>
+                    <ind/>if (index === 0) {<br>
+                    <ind/><ind/>head = currentNode.next;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>while (currentIndex < index) {<br>
+                    <ind/><ind/><ind/>currentIndex++;<br>
+                    <ind/><ind/><ind/>previousNode = currentNode;<br>
+                    <ind/><ind/><ind/>currentNode = currentNode.next;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>previousNode.next = currentNode.next<br>
+                    <ind/>}<br>
+                    <ind/>length--;<br>
+                    <ind/>return currentNode.element;<br>
+                    }<br><br>
+
+                    
+                </p>
+
+                <p>
+                    We start by checking if the index is less than 0 or it is larger than or equal to the length. If it is then the index doesn't exist.<br>
+                    If the index is 0 it means it is the head and so the head, becomes the next node, removing it.<br>
+                    We move through the list until we reach the index.<br>
+                    PreviousNode.next = currentNode.next. This means it will remove the current node.<br>
+                    Then remove the length by one.<br><br>
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+</body>
+
+<script type="application/javascript" src=".//LinkedList.js"></script>
+
+</html>

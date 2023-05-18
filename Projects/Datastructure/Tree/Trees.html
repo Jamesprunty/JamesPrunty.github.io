@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James Prunty</title>
+    <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
+    <link rel="stylesheet" href="../Datastructure.css">
+    <link rel="stylesheet" href=".//Trees.css">
+</head>
+
+<body>
+
+    <h1>Trees</h1>
+
+
+    <div id="contentContainer">
+
+        <div id="SummaryContainer">
+
+            <p id="summary">
+
+                <br><br> A tree is a dataset that consists of nodes connected by edges.<br><br>
+
+                In a binary search tree (BST) each node can have a max of 2 child nodes. Lesser values are stored on the
+                left, and larger values are stored on the right.<br><br>
+
+
+
+
+
+            </p>
+
+        </div>
+
+        <div id="visualContainer">
+
+
+            <div id="controlContainer" class="control">
+
+
+                <div id="input" class="controlBtns">
+                    <input type="number" id="elem" placeholder="Value">
+                    <div id="addDiv">
+                        <input type="button" class="btn" id="add" value="Add">
+                    </div>
+                    <div id="findDiv">
+                        <input type="button" class="btn" id="find" value="Find">
+                    </div>
+                    <div id="presentDiv">
+                        <input type="button" class="btn" id="isPresent" value="Is Present">
+                    </div>
+                    <div id="removeDiv">
+                        <input type="button" class="btn" id="remove" value="Remove">
+                    </div>
+                    <div id="resetDiv" class="control">
+                        <input type="button" class="btn" id="reset" value="Reset">
+                    </div>
+                    <div id="randomDiv" class="control">
+                        <input type="button" class="btn" id="random" value="Random">
+                    </div>
+
+                </div>
+                <div id="find" class="controlBtns">
+                    <div id="minDiv" class="control">
+                        <input type="button" class="btn" id="findMin" value="find Min">
+                    </div>
+                    <div id="maxDiv" class="control">
+                        <input type="button" class="btn" id="findMax" value="Find Max">
+                    </div>
+
+
+                    <div id="minHeightDiv" class="control">
+                        <input type="button" class="btn" id="minHeight" value="Find Min Height">
+                    </div>
+                    <div id="maxHeightDiv" class="control">
+                        <input type="button" class="btn" id="maxHeight" value="Find Max Height">
+                    </div>
+                </div>
+
+                <div id="order" class="controlBtns">
+                    <div id="isBalanced" class="control">
+                        <input type="button" class="btn" id="isBalanced" value="IsBalanced">
+                    </div>
+                    <div id="inOrderDiv" class="control">
+                        <input type="button" class="btn" id="inOrder" value="In Order">
+                    </div>
+                    <div id="preOrderDiv" class="control">
+                        <input type="button" class="btn" id="preOrder" value="Pre-Order">
+                    </div>
+                    <div id="postOrderDiv" class="control">
+                        <input type="button" class="btn" id="postOrder" value="Post-Order">
+                    </div>
+                    <div id="levelOrderDiv" class="control">
+                        <input type="button" class="btn" id="levelOrder" value="level Order">
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div id="tree">
+                <svg id="treeSVG">
+
+                </svg>
+
+
+
+
+            </div>
+
+            <div id="outputContainer">
+
+                <div id="output">
+                    <p id="outputText"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div id="explinationContainer">
+
+            <p id="explination">
+
+                <br><br> We start by declaring some variables.<br><br>
+
+            </p>
+
+            <p class="code">
+
+                let center = window.innerWidth / 2;<br>
+                let startHeight = 70;<br>
+                let xDiff = 200;<br>
+                let yDiff = 80;<br>
+                let newLevel = 0;<br>
+
+
+            </p>
+            <p>
+                <br><br> The center and startheight will be where the nodes start.<br><br>
+                xDiff is the variabe that will be uesed for deciding the difference between the nodes on the
+                map.<br><br>
+                yDiff is the distance between each level in the map<br><br>
+                Newlevel will keep track of the level we want to add the node to.<br><br>
+
+                We then create the node class.<br><br>
+
+            </p>
+            <br><br>
+            <h2>The Node</h2>
+            <p><br>The node is the part that stores all the data.</p>
+            <p class="code">
+                class Node {<br>
+                <ind>constructor(data, left = null, right = null, posX = center, posY = startHeight, level = 0) {<br>
+                    <ind />
+                    <ind />this.data = data;<br>
+                    <ind />
+                    <ind />this.left = left;<br>
+                    <ind />
+                    <ind />this.right = right;<br>
+                    <ind />
+                    <ind />this.posX = posX;<br>
+                    <ind />
+                    <ind />this.posY = posY;<br>
+                    <ind />
+                    <ind />this.level = level;<br>
+                    <ind />}<br>
+                    }<br><br>
+            </p>
+            <p>
+                <br> These variables are all stored in the node so that we can keep track of where all the nodes are on
+                the physical map.<br><br>
+                The constructor line has a lot of different variables, they are all set to the defaults if nothing is
+                put in.<br><br>
+                Most are self explanitory, the last three are to keep track of their positioning.<br><br>
+
+
+            </p>
+            <br><br>
+            <h2> The BST</h2><br><br>
+            <p class="code">
+                class BST {<br>
+                <ind />
+                </ind>constructor() {<br>
+                <ind />
+                <ind />this.root = null;<br>
+                <ind />}<br><br>
+            </p>
+            <p>
+                We set a BST class to be able to create the tree, we set the root to null.<br><br>
+
+                We will look at the "ADD" methos first, I will add the comments as we go through the code.<br><br>
+
+
+
+            </p>
+
+            <br><br>
+            <h2>Add</h2><br><br>
+
+            <p>
+                The add function will compare the inputted data to each node, if it is less than the current node it will put it to the left, if its bigger it will go to the right. 
+
+                Firstly we create a variable called "node" and set it to the root.<br>
+                If the node is null (empty), we add it to the root node.<br>
+                We then run the "addNode" function which adds the node to the visual map.<br>
+            
+            
+            
+            </p>
+
+            <p class="code">
+                add(data) {<br>
+                <ind/>const node = this.root;<br>
+                <ind/>if (node === null) {<br>
+                <ind/><ind/>this.root = new Node(data); <br>
+                <ind/><ind/>addNode(this.root.data, this.root.posX, this.root.posY);<br>
+                <ind/><ind/>return;<br><br>
+                <ind/>} else {<br><br>
+            </p>
+
+            <p>
+                Next we have the "SearchTree" Function which will be our recursive function to find where to add the new node.<br>
+                First we check if the new data is less than the current node data. IF it is we will start checking to the left.<br>
+                If the left node is empty, then we will be adding the node to the left side.<br>
+                Before we add the node, we have to set a few things for the visual map, we increase the level from the previous node, reset xDiff, then divide the difference by 2 for each level, this is so the branches don't overlap.<br>
+                Then we add the node, making sure to add in all the information for the visual map.<br>
+                Once we have the data, we need to actually put it on the SVG container. We run the functions to addNode and addLine. We first add the line, then add the node (and parent node) so that the line is underneath.<br>
+
+                
+            </p>
+            
+
+            <p class="code">
+                
+                
+                <ind/><ind/>const searchTree = function (node) {<br>
+                <ind/><ind/><ind/>if (data < node.data) {<br>
+                <ind/><ind/><ind/><ind/>if (node.left === null) {<br>
+                <ind/><ind/><ind/><ind/><ind/>newLevel = node.level + 1; <br>
+                <ind/><ind/><ind/><ind/><ind/>xDiff = xDiffStart; <br>
+                <ind/><ind/><ind/><ind/><ind/>for (let i = 0; i < node.level; i++) {<br>
+                <ind/><ind/><ind/><ind/><ind/><ind/>xDiff = xDiff / 2;<br>
+                <ind/><ind/><ind/><ind/><ind/>}<br><br>
+                
+                <ind/><ind/><ind/><ind/><ind/>node.left = new Node(data, null, null, node.posX - xDiff, node.posY + yDiff, newLevel);<br>
+                <ind/><ind/><ind/><ind/><ind/>addLine(node.posX, node.posY, node.left.posX, node.left.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.data, node.posX, node.posY);<br> 
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.left.data, node.left.posX, node.left.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>return;<br><br>
+                </p>
+
+                <p>
+                    If the left node does have something in it, then run the search tree again but the root node will be the left node.<br> 
+                </p>
+
+
+                <p class="code">
+
+                <ind/><ind/><ind/><ind/>} else if (node.left !== null) {<br>
+                <ind/><ind/><ind/><ind/><ind/>return searchTree(node.left);<br>
+                <ind/><ind/><ind/><ind/>}<br><br>
+
+                <p>
+                    We then do the same for the right
+                </p>
+                
+                <p class="code">
+                <ind/><ind/><ind/>} else if (data > node.data) {<br>
+                <ind/><ind/><ind/><ind/>if (node.right === null) {<br>
+                <ind/><ind/><ind/><ind/><ind/>newLevel = node.level + 1;<br>
+                <ind/><ind/><ind/><ind/><ind/>xDiff = xDiffStart;<br>
+                <ind/><ind/><ind/><ind/><ind/>for (let i = 0; i < node.level; i++) {<br>
+                <ind/><ind/><ind/><ind/><ind/><ind/>xDiff = xDiff / 2;<br>
+                <ind/><ind/><ind/><ind/><ind/>}<br>
+                <ind/><ind/><ind/><ind/><ind/>node.right = new Node(data, null, null, node.posX + xDiff, node.posY + yDiff, newLevel);<br>
+                <ind/><ind/><ind/><ind/><ind/>addLine(node.posX, node.posY, node.right.posX, node.right.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.right.data, node.right.posX, node.right.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>addNode(node.data, node.posX, node.posY);<br>
+                <ind/><ind/><ind/><ind/><ind/>return;<br><br>
+                <ind/><ind/><ind/><ind/>} else if (node.right !== null) {<br><br>
+                <ind/><ind/><ind/><ind/><ind/>return searchTree(node.right);<br>
+                <ind/><ind/><ind/><ind/>}<br>
+                 </p>
+                 <p>
+                    If it is not less than the nodes, or larger than the nodes, then it must be the same. If this is the case then it is the same number so we return null.<br>
+                 </p>
+                 <p class="code">
+                <ind/><ind/><ind/>} else {<br>
+                <ind/><ind/><ind/><ind/>return null;<br>
+                <ind/><ind/><ind/>}<br>
+                <ind/><ind/>};<br>
+                <ind/><ind/>return searchTree(node);<br>
+                <ind/>}<br>
+                }<br><br>
+                </p>
+
+                <br><h2>Remove</h2>
+
+                <p>
+                    The remove method will search to find the search data in the tree, the difficulty with this is when we remove the node we need to fix the tree so that there isn't a gap.<br><br>
+                </p>
+                <p>
+                    <br>We start with the creation of the removeNode function that takes in a node and the data that we are removing.<br>
+                    If the node is null then return null. This starts with the root node, so will check that first.<br>
+
+                </p>
+
+                <p class="code">
+                    remove(data) {<br>
+                    <ind/>const removeNode = function (node, data) {<br>
+                    <ind/><ind/>if (node == null) {<br>
+                    <ind/><ind/><ind/>return null;<br>
+                    <ind/><ind/>}<br><br>
+                    </p>
+
+                    <p>
+                        If the left and right node are null this means that the node is at the end of the tree.<br>
+                        The last line of this function is to replace the node with whatever is returned. This will return null, so that means that the node will be removed (nullified).<br>
+                    </p>
+
+                    <p class="code">                    
+                    
+                    <ind/><ind/>if (data == node.data) {<br>
+                    <ind/><ind/><ind/>if (node.left == null && node.right == null) {<br>
+                    <ind/><ind/><ind/><ind/>return null; <br>
+                    <ind/><ind/><ind/>}<br><br>
+                    </p>
+
+                    <p>
+                        If only the left node is null, return the right node.<br>
+                    </p>
+
+                    
+                    <p class="code">
+                    <ind/><ind/>if (node.left == null) {<br>
+                    <ind/><ind/><ind/>return node.right;<br>
+                    <ind/><ind/>}<br>
+                    </p>
+
+                    <p>
+                        <br>If Only right is null, return the left node.
+                    </p>
+
+                    <p class="code">      
+                    <ind/><ind/>if (node.right == null) {<br>
+                    <ind/><ind/><ind/>return node.left;<br>
+                    <ind/><ind/>}<br><br>
+                    
+                    <p>
+                        If it has both left and right nodes, then we need to get the left most node of the right side.<br>
+                        The temp node is set to the right node, then it will the the left node until the left node is null. The node.data is then set to the tempdata, which is the left most node.<br>
+                        Once we have changed the node, we have to remove it from the tree or there will be a duplicate.<br>
+                        Since we know that the node is at the end of thre tree we can run the removeNode and know it will be removed.<br><br>
+                    </p>
+
+                    <p class="code">
+                    <ind/><ind/>var tempNode = node.right;<br>
+                    <ind/><ind/>while (tempNode.left !== null) {<br>
+                    <ind/><ind/><ind/>tempNode = tempNode.left;<br>
+                    <ind/><ind/>}<br>
+                    
+                    <ind/><ind/>node.data = tempNode.data;<br>
+                    
+                    <ind/><ind/>node.right = removeNode(node.right, tempNode.data);<br>
+                    <ind/><ind/>return node;<br><br>
+
+                    </p>
+
+                    <p>
+                        If the data is not the one we are looking for, keep looking for it. <br>
+                        The last line is the first initialisation of the function. <br><br>
+                    </p>
+
+
+                    <p class="code">
+                    
+                    
+                    <ind/><ind/>} else if (data < node.data) {<br>
+                    <ind/><ind/><ind/>node.left = removeNode(node.left, data);<br>
+                    <ind/><ind/><ind/>return node;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>node.right = removeNode(node.right, data);<br>
+                    <ind/><ind/><ind/>return node;<br>
+                    <ind/><ind/>}<br>
+                    <ind/>}<br>
+
+                    <ind/>this.root = removeNode(this.root, data);<br>            
+                    }<br><br>
+                </p>
+
+                <h2>Find</h2><br>
+
+                <p>
+
+                    The find method will look for the data and return something. In this method we will return the position of the node.<br><br>
+
+                </p>
+
+                <p class="code">
+
+                    find(data) {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current.data !== data) {<br>
+                    <ind/><ind/>if (data < current.data) {<br>
+                    <ind/><ind/><ind/>current = current.left;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>current = current.right;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>if (current === null) {<br>
+                    <ind/><ind/><ind/>return null;<br>
+                    <ind/><ind/>}<br>
+                    <ind/>}<br>
+                    <ind/>return [current.posX, current.posY];<br>
+                    }<br><br>
+                </p>
+
+                <p>
+
+                    <br><br>The method starts by setting a variable "current" to the root node.<br>
+                    While the searched for data is not the same as the current data, keep looking.<br>
+                    If the data is smaller, look left, if its bigger, look right.<br>
+                    Once the data is the same as current, return the x and y position of the node.<br><br>
+
+                </p>
+
+                <h2>isPresent</h2><br><br>
+
+                <p>
+
+                    The isPresent method looks for the data and returns a true pr false.<br><br>
+
+                </p>
+
+                <p class="code">
+                    isPresent(data) {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current) {<br>
+                    <ind/><ind/>if (data === current.data) {<br>
+                    <ind/><ind/><ind/>return true;<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>if (data < current.data) {<br>
+                    <ind/><ind/><ind/>current = current.left;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>current = current.right;<br>
+                    <ind/><ind/>}<br>
+                    <ind/>}<br>
+                    <ind/>return false;<br>
+                    }<br>
+                    
+                </p>
+                <p>
+                    As with the "Find" method, we start with the root as the current node and looks for a match. Instead of returning a value, it will return true or false.<br><br>
+                </p>
+
+
+                <br><h2>Find Min</h2><br>
+
+                <p>
+                    Look for the left most node and return the value<br><br>
+                </p>
+
+                <p class="code">
+
+                    findMin() {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current.left !== null) {<br>
+                    <ind/><ind/>current = current.left;<br>
+                    <ind/>}<br>
+                    <ind/>return current.data;<br>
+                    }<br><br>
+
+                </p>
+
+                <br><h2>Find Max</h2><br><br>
+
+                <p>
+                    Look for the right most node and return the value<br><br>
+                </p>
+
+                <p class="code">
+
+                    findMax() {<br>
+                    <ind/>let current = this.root;<br>
+                    <ind/>while (current.right !== null) {<br>
+                    <ind/><ind/>current = current.right;<br>
+                    <ind/>}<br>
+                    <ind/>return current.data;<br>
+                    }<br><br>
+
+                </p>
+
+
+
+                <br><h2>Find Min Height</h2><br><br>
+
+                <p>
+                    The find min height will find the first node without 2 child nodes.<br>
+                    If the tree is empty then it will return -1.<br>
+                    If node is null then it will return -1.<br>
+                    It will run findminHeight on both left and right<br>
+                    These will return a value. <br>
+                    Eventually one will return null as it will hit a node that is empty.<br>
+                    So if the left is less than the right it will add one to the left.<br>
+                    If a node has no children it will return -1 for both. If they both have nodes, it will +1 for both.<br>
+                    It works from the bottom up, so all th minuses happen before you start adding up the plusses.<br><br>
+                
+
+                    
+                </p>
+
+                <p class="code">
+
+                    findMinHeight(node = this.root) {<br>
+                    <ind/>if (node == null) {<br>
+                    <ind/><ind/>return -1;<br>
+                    <ind/>};<br>
+
+                    <ind/>let left = this.findMinHeight(node.left);<br>
+                    <ind/>let right = this.findMinHeight(node.right);<br>
+
+                    <ind/>if (left < right) {<br>
+                    <ind/><ind/>return left + 1;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>return right + 1;<br>
+                    <ind/>};<br>
+                    }<br><br>
+                </p>
+
+
+                <br><h2>Find Max Height</h2><br><br>
+
+                <p>
+                    This is the same as FindMinHeight but it will check if left is bigger than right rather than smaller.<br>
+                    This will mean that it will prioritise the larger number and so show the max height.<br><br>
+                </p>
+
+                <p class="code">
+
+                    findMaxHeight(node = this.root) {<br>
+                    <ind/>if (node == null) {<br>
+                    <ind/><ind/>return -1;<br>
+                    <ind/>};<br>
+                    <ind/>let left = this.findMaxHeight(node.left);<br>
+                    <ind/>let right = this.findMaxHeight(node.right);<br>
+                    <ind/>if (left > right) {<br>
+                    <ind/><ind/>return left + 1;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>return right + 1;<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+
+
+                </p>
+
+
+                <br><h2>isBalanced</h2><br><br>
+
+                <p>
+                    A balanced tree will have a difference between min and max height of 1 or less. This will mean that it is efficient.<br><br>
+                </p>
+
+                <p class="code">
+
+                    isBalanced() {<br>
+                        <ind/>return (this.findMinHeight() >= this.findMaxHeight() - 1)<br>
+                    }<br><br>
+
+
+                </p>
+
+
+                <br><h2>inOrder</h2><br><br>
+
+                <p>
+                    InOrder is a depth first search, meaning it will go to the end node that it can then work its way back.<br>
+                    Start with creating a variable to hold the data.<br>
+                    All of the traversions have the same statements but in different orders.<br>
+                    In this method it will log the left node, then the root, then the right node.<br><br>
+                    This will put the list in order as left is the least, then the node then the right.<br>
+                    Because the result.push is in the middle it will keep going left until it can't go left any more, then that node becomes the result to push.<br>
+                </p>
+
+                <p class="code">
+
+                    inOrder() {<br>
+                    <ind/>if (this.root == null) {<br>
+                    <ind/><ind/>return null;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var result = new Array();<br>
+                    <ind/><ind/>function traverseInOrder(node) {<br>
+                    <ind/><ind/><ind/>node.left && traverseInOrder(node.left);<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/><ind/>node.right && traverseInOrder(node.right);<br>
+                    <ind/><ind/>}<br>
+                    <ind/><ind/>traverseInOrder(this.root);<br>
+                    <ind/><ind/>return result;<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+
+                </p>
+
+
+                <br><h2>Pre-Order</h2><br><br>
+
+                <p>
+                    The pre-Order method is the same as the InOrder method but it pushes the root node first, before going to the left and right.<br><br>
+
+                </p>
+
+                <p class="code">
+
+
+                    preOrder() {<br>
+                    <ind/>if (this.root == null) {<br>
+                    <ind/><ind/>return null;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var result = new Array();<br>
+                    <ind/><ind/>function traversePreOrder(node) {<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/><ind/>node.left && traversePreOrder(node.left);<br>
+                    <ind/><ind/><ind/>node.right && traversePreOrder(node.right);<br>
+                    <ind/><ind/>};<br>
+                    <ind/><ind/>traversePreOrder(this.root);<br>
+                    <ind/><ind/>return result;<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+                </p>
+
+                <br><h2>Post-Order</h2><br><br>
+
+                <p>
+                    The post-Order is like the pre-order but it will log the left and right before logging the root node.<br><br>
+                </p>
+
+                <p class="code">
+
+                    postOrder() {<br>
+                    <ind/>if (this.root == null) {<br>
+                    <ind/><ind/>return null;<br>
+                    <ind/>} else {<br>
+                    <ind/><ind/>var result = new Array();<br>
+                    <ind/><ind/>function traversePostOrder(node) {<br>
+                    <ind/><ind/><ind/>node.left && traversePostOrder(node.left);<br>
+                    <ind/><ind/><ind/>node.right && traversePostOrder(node.right);<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/>};<br>
+                    <ind/><ind/>traversePostOrder(this.root);<br>
+                    <ind/><ind/>return result;<br>
+                    <ind/>}<br>
+                    }<br><br>
+
+
+                </p>
+
+
+                <br><h2>Level Order</h2><br>
+
+                <p>
+                    The level order will list the nodes as the appreas in the tree from left to right.<br>
+                    First create an array for the result and the queue<br>
+                    If it is not null, push the root.<br>
+                    While the queue is not empty, add the next node in the queue as the current node. Because it is a queue it will be first in first out<br>
+                    Once it has pushed that, then push the left and right nodes on. This will make sure that the nodes get put first and then the children will come next in order.<br><br> 
+                </p>
+
+
+                <p class="code">
+
+                    levelOrder() {<br>
+                    <ind/>let result = [];<br>
+                    <ind/>let Q = [];<br>
+                    <ind/>if (this.root != null) {<br>
+                    <ind/><ind/>Q.push(this.root);<br>
+                    <ind/><ind/>while (Q.length > 0) {<br>
+                    <ind/><ind/><ind/>let node = Q.shift();<br>
+                    <ind/><ind/><ind/>result.push(node.data);<br>
+                    <ind/><ind/><ind/><ind/>if (node.left != null) {<br>
+                    <ind/><ind/><ind/><ind/><ind/>Q.push(node.left);<br>
+                    <ind/><ind/><ind/><ind/>};<br>
+                    <ind/><ind/><ind/><ind/>if (node.right != null) {<br>
+                    <ind/><ind/><ind/><ind/><ind/>Q.push(node.right);<br>
+                    <ind/><ind/><ind/><ind/>};<br>
+                    <ind/><ind/><ind/>};<br>
+                    <ind/><ind/><ind/>return result;<br>
+                    <ind/><ind/>} else {<br>
+                    <ind/><ind/><ind/>return null;<br>
+                    <ind/><ind/>};<br>
+                    <ind/>};<br>
+                    }<br><br>
+
+
+                </p>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script type="application/javascript" src=".//Trees.js"></script>
+
+</html>

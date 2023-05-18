@@ -1,0 +1,162 @@
+#outputContainer{
+    width: 100%;
+
+
+}
+
+#visualContainer{
+    display:flex;
+    flex-direction: column;
+    border:white 1px solid;
+
+}
+
+#input{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    border:1px white solid;
+}
+
+input{
+    flex:1;
+    display: flex;
+}
+
+#inputs{
+    display: flex;
+}
+
+.btn{
+    flex: 1;
+}
+
+
+
+
+#controlContainer{
+    display: flex;
+    flex: 1;
+    border:white 1px solid;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow-y: hidden;
+    
+}
+
+#inputsDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border:1px white solid;
+}
+#nonInputDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border:1px white solid;
+}
+.controlBtns{
+    display: flex;
+    border:white 1px solid;
+    flex: 1;
+}
+
+#linkedList{
+    display: flex;
+    flex: 1;
+    min-height: 500px;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.listItem{
+
+    border:1px solid white;
+    flex: 1;
+    margin: 20px;
+    display: grid;
+
+}
+
+.index{
+    grid-column-start:1;
+    grid-column-end:3;
+    border:white 1px solid;
+    text-align: center;
+}
+.element{
+
+    grid-column-start:1;
+    grid-column-end:2;
+    border:white 1px solid;
+    text-align: center;
+    
+
+}
+
+.next{
+
+    grid-column-start:2;
+    grid-column-end:3;
+    border:white 1px solid;
+    text-align: center;
+}
+
+
+.info{
+    padding:3px;
+    margin:3px;
+}
+
+.boxDiv{
+    flex: 1;
+}
+
+#explinationContainer{
+    flex:1;
+}
+
+#output{
+
+    border: white solid 1px;
+    
+}
+
+.stackItem{
+    border:white 1px solid;
+    height: 70px;
+    width: 70px;
+
+}
+
+#outputText{
+    text-align: center;
+    justify-content: center;
+    min-height: 20px;
+
+}
+
+p{
+    margin-left: 5px;;
+}
+
+.code{
+    color: grey;
+    margin-left: 30px;;
+}
+
+svg{
+    width:100%;
+    min-height:500px;
+    border:red solid 1px;
+}
+ind{
+    margin-left: 20px;
+}
+
+
+
+
+

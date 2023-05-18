@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James Prunty</title>
+    <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
+    <link rel="stylesheet" href="../Datastructure.css">
+    <link rel="stylesheet" href=".//Queues.css">
+</head>
+
+<body>
+
+    <h1>Queues</h1>
+
+
+    <div id="contentContainer">
+
+        <div id="SummaryContainer">
+
+            <p id="summary">
+
+                A set is similar to a stack but it oporates on the "first in first out" system<br><br>
+
+                There are two types of queues, a non priority, and a priority. A priority queue will take in an extra
+                parameter which will put it in priority order.<br><br>
+
+                The following methods can be used.<br><br>
+
+                Enqueue: This will add a value to the end of the queue, unless it is a priority queue in which it will
+                add it in line with the priority. <br>
+                Dequeue: This will remove the element at the front. This will either be the first element added or the
+                element with the highest priority in a priority queue.<br>
+                Front: This will display the element at the front.<br>
+                Size: This will return the size of the queue.<br>
+                isEmpty: This will return true if there is nothing in the queue, or false if there is something.<br>
+
+            </p>
+
+        </div>
+
+        <div id="visualContainer">
+
+
+            <div id="controlContainer" class="control">
+
+                <div id="addContainer">
+                    <input type="button" class="btn" id="enqueue" value="enqueue">
+                    <input type="text" id="newElem" placeholder="Enter a value">
+                </div>
+
+                <div id="dequeueDiv" class="control">
+                    <input type="button" class="btn" id="dequeue" value="dequeue">
+                </div>
+
+                <div id="frontDiv" class="control">
+                    <input type="button" class="btn" id="front" value="front">
+                </div>
+                <div id="sizeDiv" class="control">
+                    <input type="button" class="btn" id="size" value="size">
+                </div>
+                <div id="emptyDiv" class="control">
+                    <input type="button" class="btn" id="empty" value="empty">
+                </div>
+
+
+            </div>
+
+
+
+            <div id="queueDiv">
+                <div id="queue" class="queue"></div>
+            </div>
+
+
+
+
+            <div id="outputContainer">
+
+                <div id="output">
+                    <p id="outputText"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="visualContainerP">
+
+
+            <div id="controlContainerP" class="control">
+
+                <div id="addContainerP">
+                    <input type="button" class="btn" id="enqueueP" value="enqueue">
+                    <input type="text" id="newElemP" placeholder="Enter a value">
+                    <input type="number" id="newPriorP" placeholder="Enter priority">
+                </div>
+
+                <div id="dequeueDivP" class="control">
+                    <input type="button" class="btn" id="dequeueP" value="dequeue">
+                </div>
+
+                <div id="frontDivP" class="control">
+                    <input type="button" class="btn" id="frontP" value="front">
+                </div>
+                <div id="sizeDivP" class="control">
+                    <input type="button" class="btn" id="sizeP" value="size">
+                </div>
+                <div id="emptyDivP" class="control">
+                    <input type="button" class="btn" id="emptyP" value="empty">
+                </div>
+
+
+
+            </div>
+
+
+
+            <div id="queuePDiv">
+                <div id="queueP" class="queue"></div>
+            </div>
+
+
+
+
+            <div id="outputContainerP">
+
+                <div id="outputP">
+                    <p id="outputTextP"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div id="explinationContainer">
+
+            <p id="explination">
+            <p>
+                <br> So let's look at the code here.<br><br>
+                As with some of the other data structures we have looked at, we start off with the collection to hold
+                the queue.<br><br>
+            </p>
+
+            <p class="code">
+                var collection = [];<br><br>
+
+                
+            </p>
+            <p>
+                <br><br>//Enqueue//<br><br>
+            </p>
+
+            <p class="code">
+                this.enqueue = function (element) {<br>
+                collection.push(element);<br>
+                };<br>
+
+            </p>
+            <p>
+                <br><br>In a regular queue, this is a very simple method, just push the element onto the queue.<br><br>
+
+                This is different on the priority queue though. 
+            </p>
+            <p class="code">
+
+
+                <br><br>this.enqueue = function (element) {<br>
+                if (this.isEmpty()) {<br>
+                collection.push(element);<br>
+                } else {<br>
+                var added = false;<br>
+                for (var i = 0; i < collection.length; i++) <br>
+                { if (element[1] < collection[i][1]) { //checking priorities<br>
+                    collection.splice(i, 0, element); added=true; break; } } <br>
+                if (!added) { collection.push(element); } }<br>
+                    }; <br>
+                </p>
+
+                    <p>
+
+                        <br><br> First, if it is an empty queue, then just push the element onto the queue.<br><br>
+
+                        We set "added" to false as we have not added it yet and we will be using this to check if it's been added yet or not.<br><br>
+
+                        We create a for() loop to go through the collection.<br><br>
+                        
+                        The "1" index is the priority, as the "0" is the value, so it is checking to see if the collection[1] is less than the new priority.<br><br>
+
+                        Because the element starts comparing at the top, if the priority is smaller, it will get put there, If, it is bigger and still !added, then it will move on to the next.<br><br>
+
+                        When it is smaller it splices into that position and breaks the cycle, also setting "added" to true.<br><br>
+
+                        If it has not been added (it hasn't been spliced so added is still false) it will push it onto the end.<br><br>
+
+                        <br><br>//Dequeue//<br><br>
+
+                    </p>
+
+                    <p class="code">
+
+                        <br><br>this.dequeue = function () {<br>
+                        return collection.shift();<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+                        <br><br> The rest of the methods are the same for both priority and non priority queues.<br><br>
+
+                        The dequeue method just shifts the queue which removes the value from the queue and outputs it where you want it to.<br><br>
+
+                        <br><br>//Front//<br><br>
+
+                        
+                    </p>
+
+                    <p class="code">
+                        <br><br> this.front = function () {<br>
+                        return collection[0];<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+                        <br><br> The front method just returns "collection[0]" which is the first element in the queue.<br><br>
+
+                        <br><br>//Size<br><br>
+
+                        
+                    </p>
+                    <p class="code">
+
+                        <br><br>this.size = function () {<br>
+                        return collection.length;<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+                        <br><br>the Size method returns the length of the queue.<br><br>
+
+                        <br><br>//isEmpty//<br><br>
+
+                        
+                    </p>
+                    <p class="code">
+
+                        <br><br> this.isEmpty = function () {<br>
+                        return (collection.length === 0);<br>
+                        };<br>
+
+                    </p>
+
+                    <p>
+
+                        <br><br>The "isEmpty" method returns a true or false based on whether the length of the queue is equal to 0 or not.<br><br>
+
+                        
+                    </p>
+
+            </p>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+</body>
+
+<script type="application/javascript" src=".//Queues.js"></script>
+
+</html>
