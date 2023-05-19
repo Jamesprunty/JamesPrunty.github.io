@@ -58,6 +58,13 @@ const Projects = [
         folderName: "Datastructure",
         dir: "../Projects/"
      
+    }, 
+    {
+        name: "Minesweeper",
+        description: "(Not Done) MineSweeper game",
+        folderName: "Minesweeper",
+        dir: "../Projects/"
+     
     },  
 
 

@@ -79,26 +79,26 @@
                     First we have to create the node class which will store our node data.<br><br>
                 </p>
                 <p class="code">
-                    let Node = function(posX = xStart, posY = yCenter, previousX, previousY, value, previousNode, colour, root = "root") {
-                        this.keys = new Map();
-                        this.end = false;
-                        this.posX = posX; //Stores the position x of the node to use later
-                        this.posY = posY;
-                       // this.level = level;//Stores what level the node is on
-                        this.colour = colour;
-                        this.previousX = previousX;
-                        this.previousY = previousY;
-                        this.value = value;
-                        this.previousNode = previousNode;
-                        this.root = root;
+                    let Node = function(posX = xStart, posY = yCenter, previousX, previousY, value, previousNode, colour, root = "root") {<br>
+                        this.keys = new Map();<br>
+                        this.end = false;<br>
+                        this.posX = posX;<br>
+                        this.posY = posY;<br>
+                       // this.level = level;//Stores what level the node is on<br>
+                        this.colour = colour;<br>
+                        this.previousX = previousX;<br>
+                        this.previousY = previousY;<br>
+                        this.value = value;<br>
+                        this.previousNode = previousNode;<br>
+                        this.root = root;<br><br>
                         
-                        this.setEnd = function() {
-                            this.end = true;
-                        };
-                        this.isEnd = function() {
-                            return this.end;
-                        };
-                    };
+                        this.setEnd = function() {<br>
+                            this.end = true;<br>
+                        };<br><br>
+                        this.isEnd = function() {<Br>
+                            return this.end;<br>
+                        };<br>
+                    };<br><br>
                 </p>
 
                 <p>
@@ -110,109 +110,99 @@
 
                 </p>
                 <p class="code">
-                    this.add = function(input, node = this.root) {
+                    this.add = function(input, node = this.root) {<br>
 
 		
-                        if (input.length == 0) {//if we are at the end of the word
-                            node.setEnd(); //Set end of a word
-                            node.colour = "red";
-                            addNode( node.value, node.posX, node.posY, "red", node.root); 
-                            level = 0;
-                            return;
+                        if (input.length == 0) {//if we are at the end of the word<br>
+                            node.setEnd(); //Set end of a word<br>
+                            node.colour = "red";<br>
+                            addNode( node.value, node.posX, node.posY, "red", node.root); <br>
+                            level = 0;<br>
+                            return;<br><br>
                 
-                        } else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,
+                        } else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,<br>
                 
-                            //If this node does not exist we need to add it in.
-                            level++;
+                            //If this node does not exist we need to add it in.<br>
+                            level++;<br>
                             
-                            if(node == this.root){
+                            if(node == this.root){<br>
                 
-                                let newX = xStart + 70;
-                                let newY = yCenter + 200;
+                                let newX = xStart + 70;<br>
+                                let newY = yCenter + 200;<br>
                 
                 
-                                for(let i=0;i < posArray.length;i++){
-                                    if(newX == posArray[i][0] && newY == posArray[i][1]){
+                                for(let i=0;i < posArray.length;i++){<br>
+                                    if(newX == posArray[i][0] && newY == posArray[i][1]){<br>
                                         
-                                        newY -= 70;
+                                        newY -= 70;<br>
                                         
                                         
-                                    }else if(newX == posArray[i][0] && newY == posArray[i][1]){
+                                    }else if(newX == posArray[i][0] && newY == posArray[i][1]){<br>
                                         
-                                        break;
-                                    }
-                                }
+                                        break;<br>
+                                    }<br>
+                                }<br><br>
                 
-                                node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
-                
-                                
-                
-                                
-                
-                                addLine(xStart,yCenter,newX,newY)
-                                addNode(input.substr(0,1), newX, newY, "white", input.substr(0,1)); 
-                                addNode("root", xStart, yCenter, "white", "root");
-                
-                                console.log(xStart);
-                                console.log(yCenter);
-                                console.log(newX);
-                                console.log(newY);
-                
-                                posArray.push([newX,newY]);
+                                node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));<br>
+
+                                addLine(xStart,yCenter,newX,newY)<br>
+                                addNode(input.substr(0,1), newX, newY, "white", input.substr(0,1));<br> 
+                                addNode("root", xStart, yCenter, "white", "root");<br>
+                                posArray.push([newX,newY]);<br>
                 
                                 
                 
                 
-                            }else{
+                            }else{<br>
                 
                 
                 
-                            let newX = node.posX + 70;
-                            let newY = node.posY;
+                            let newX = node.posX + 70;<br>
+                            let newY = node.posY;<br>
                 
-                            for(let i=0;i < posArray.length;i++){
-                                if(newX == posArray[i][0] && newY == posArray[i][1]){
+                            for(let i=0;i < posArray.length;i++){<br>
+                                if(newX == posArray[i][0] && newY == posArray[i][1]){<br>
                                 
-                                    newY -= 70;
+                                    newY -= 70;<br>
                                     
                                     
-                                }else if(newX == posArray[i][0] && newY == posArray[i][1]){
+                                }else if(newX == posArray[i][0] && newY == posArray[i][1]){<br>
                                     
-                                    break;
-                                }
-                            }
+                                    break;<br>
+                                }<br>
+                            }<br>
                 
                 
-                            node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", node.root)); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
-                            console.log(node);
-                            //Next we need to add it to the visual tree.
-                            //We want it to dynamically change when things are added. Make a note of all the places before adding it, change if it conflicts. 
+                            node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", node.root)); //Add a key of that letter and make the contents of the key the new node, which will have its own keys<br>
+                            console.log(node);<br>
+                            //Next we need to add it to the visual tree.<br>
+                            //We want it to dynamically change when things are added. Make a note of all the places before adding it, change if it conflicts.<br> 
                 
                 
-                            let index = 0;
-                            addLine(node.posX,node.posY,newX,newY)
-                            addNode(input.substr(0,1), newX, newY, node.colour); 
-                            addNode(node.value, node.posX, node.posY, node.colour); 
-                            posArray.push([newX,newY]);
+                            let index = 0;<br>
+                            addLine(node.posX,node.posY,newX,newY)<br>
+                            addNode(input.substr(0,1), newX, newY, node.colour);<br> 
+                            addNode(node.value, node.posX, node.posY, node.colour); <br>
+                            posArray.push([newX,newY]);<br>
                             
-                            //we want to take the previous node, add 70 to X, if something is there add 70 to y, keep going until nothing is there.
+                            //we want to take the previous node, add 70 to X, if something is there add 70 to y, keep going until nothing is there.<br>
                                 
                 
                 
                 
-                            }
+                            }<br>
                 
-                            return this.add(input.substr(1), node.keys.get(input[0], node));//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
+                            return this.add(input.substr(1), node.keys.get(input[0], node));//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.<br>
                         
                             
                         
                         
-                        } else {
-                            level++;
-                            return this.add(input.substr(1), node.keys.get(input[0])); // If there is a key already, rerun the add method with the key as the new root node.
+                        } else {<br>
+                            level++;<br>
+                            return this.add(input.substr(1), node.keys.get(input[0])); // If there is a key already, rerun the add method with the key as the new root node.<br>
                             
-                        };
-                    };
+                        };<br>
+                    };<br><br>
 
                 </p>
                 <p>
@@ -229,19 +219,19 @@
                 </p>
                 <p class="code">
 
-                    this.isWord = function(word) {
-                        let node = this.root;
-                        while (word.length > 1) {
-                            if (!node.keys.has(word[0])) {
-                                return false;
-                            } else {
-                                node = node.keys.get(word[0]);
-                                word = word.substr(1);
-                            };
-                        };
-                        return (node.keys.has(word) && node.keys.get(word).isEnd()) ? 
-                      true : false;
-                    };
+                    this.isWord = function(word) {<br>
+                        let node = this.root;<br>
+                        while (word.length > 1) {<br>
+                            if (!node.keys.has(word[0])) {<br>
+                                return false;<br>
+                            } else {<br>
+                                node = node.keys.get(word[0]);<br>
+                                word = word.substr(1);<br>
+                            };<br>
+                        };<br>
+                        return (node.keys.has(word) && node.keys.get(word).isEnd()) ?<br> 
+                      true : false;<br>
+                    };<br><br>
 
                 </p>
                 <p>
@@ -257,24 +247,24 @@
 
                 </p>
                 <p class="code">
-                    this.print = function() {
-                        let words = new Array();
-                        let search = function(node, string) {
-                            if (node.keys.size != 0) {
-                                for (let letter of node.keys.keys()) {
-                                    search(node.keys.get(letter), string.concat(letter));
-                                };
-                                if (node.isEnd()) {
-                                    words.push(string);
-                                };
-                            } else {
-                                string.length > 0 ? words.push(string) : undefined;
-                                return;
-                            };
-                        };
-                        search(this.root, new String());
-                        return words.length > 0 ? words : mo;
-                    };
+                    this.print = function() {<br>
+                        let words = new Array();<br>
+                        let search = function(node, string) {<br>
+                            if (node.keys.size != 0) {<br>
+                                for (let letter of node.keys.keys()) {<br>
+                                    search(node.keys.get(letter), string.concat(letter));<br>
+                                };<br>
+                                if (node.isEnd()) {<br>
+                                    words.push(string);<br>
+                                };<br>
+                            } else {<br>
+                                string.length > 0 ? words.push(string) : undefined;<br>
+                                return;<br>
+                            };<br>
+                        };<br>
+                        search(this.root, new String());<br>
+                        return words.length > 0 ? words : mo;<br>
+                    };<br><br>
 
                 </p>
                 <p>
