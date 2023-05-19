@@ -76,6 +76,7 @@ let Trie = function() {
 					}
 				}
 
+				
 				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
 
 				
