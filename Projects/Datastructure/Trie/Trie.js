@@ -136,6 +136,7 @@ let Trie = function() {
 				}
 
 
+				// NEED TO GO THROUGH EVERY NODE AND CHANGE Y VALUE
 				
 
 				addLine(xStart,yCenter,newX,newY, node.root, input.substr(0,1))
