@@ -3,7 +3,7 @@
 let svg = document.querySelector("#trieSVG");
 let svgSize = svg.getBoundingClientRect();
 let xStart = 70;
-let yCenter = svgSize.height / 2;
+let yCenter = svgSize.height / 4;
 let xDiff = 200;
 let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
@@ -63,28 +63,11 @@ let Trie = function() {
 
 				let newX = xStart + 70;
 				let newY = yCenter;
-
-
-
-
-				for(let i=0;i<posArray.length;i++){
-					if(newX == posArray[i][0] && newY == posArray[i][1]){
-						
-						newY -= 70;
-						
-						
-					}else if(newX == posArray[i][0] && newY == posArray[i][1]){
-						
-						break;
-					}
-				}
-
 				
 				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
 
-				
+				console.log(node);
 				rootArray.push(input[0]);
-				console.log(rootArray);
 
 				if(rootArray.length <= 1){
 
@@ -148,12 +131,7 @@ let Trie = function() {
 
 					}
 
-					rootArray.forEach(element => {
-						console.log(element);
-						
-	
-	
-					});
+			
 
 				}
 
@@ -173,21 +151,14 @@ let Trie = function() {
 			}else{
 
 
+				console.log(node);
 
 			let newX = node.posX + 70;
 			let newY = node.posY;
 
-			for(let i=0;i<posArray.length;i++){
-				if(newX == posArray[i][0] && newY == posArray[i][1]){
-				
-					newY -= 70;
-					
-					
-				}else if(newX == posArray[i][0] && newY == posArray[i][1]){
-					
-					break;
-				}
-			}
+			
+
+
 
 
 			node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", node.root)); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
