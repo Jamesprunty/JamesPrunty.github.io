@@ -40,6 +40,7 @@ let Trie = function() {
 	let previousNode = currentNode.previous;
 	let newX = 0;
 	let newY = 0;
+	let rootArray = [];
 	
 	
 
@@ -61,7 +62,26 @@ let Trie = function() {
 			if(node == this.root){
 
 				let newX = xStart + 70;
-				let newY = yCenter + 200;
+				let newY = yCenter;
+				rootArray.push(input[0]);
+				console.log(rootArray);
+
+				rootArray.forEach(element => {
+					console.log(element);
+					let nodes = [];
+					nodes.push(document.getElementsByClassName(element));
+					console.log(nodes);
+					console.log(nodeArray);
+					for(let i = 0; i < nodes[0].length; i++){
+						console.log(i);
+						if(nodes[i].nodeName == "line"){
+							console.log("Line");
+						}
+					}
+
+
+				});
+
 
 
 				for(let i=0;i<posArray.length;i++){
@@ -83,14 +103,10 @@ let Trie = function() {
 
 				
 
-				addLine(xStart,yCenter,newX,newY)
-				addNode(input.substr(0,1), newX, newY, "white", input.substr(0,1)); 
-				addNode("root", xStart, yCenter, "white", "root");
+				addLine(xStart,yCenter,newX,newY, node.root)
+				addNode(input.substr(0,1), newX, newY, "white", node.root); 
+				addNode("root", xStart, yCenter, "white", node.root);
 
-				console.log(xStart);
-				console.log(yCenter);
-				console.log(newX);
-				console.log(newY);
 
 				posArray.push([newX,newY]);
 
@@ -118,15 +134,15 @@ let Trie = function() {
 
 
 			node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", node.root)); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
-			console.log(node);
+		
 			//Next we need to add it to the visual tree.
 			//We want it to dynamically change when things are added. Make a note of all the places before adding it, change if it conflicts. 
 
 
 			let index = 0;
-			addLine(node.posX,node.posY,newX,newY)
-			addNode(input.substr(0,1), newX, newY, node.colour); 
-			addNode(node.value, node.posX, node.posY, node.colour); 
+			addLine(node.posX,node.posY,newX,newY,node.root)
+			addNode(input.substr(0,1), newX, newY, node.colour, node.root); 
+			addNode(node.value, node.posX, node.posY, node.colour, node.root); 
 			posArray.push([newX,newY]);
 			
 			//we want to take the previous node, add 70 to X, if something is there add 70 to y, keep going until nothing is there.
@@ -232,7 +248,7 @@ buttons.forEach(element => {
 
 
 
-function addNode(value, x, y, colour) {
+function addNode(value, x, y, colour, root) {
 
 
 	let svg = document.querySelector("#trieSVG");
@@ -246,6 +262,7 @@ function addNode(value, x, y, colour) {
 	newCircle.setAttribute("r", "20");
 	newCircle.setAttribute("stroke", colour);
 	newCircle.setAttribute("id", value);
+	newCircle.setAttribute("class", root);
   
   
 	svg.appendChild(newCircle);
@@ -256,6 +273,7 @@ function addNode(value, x, y, colour) {
 	newText.setAttributeNS(null, "stroke", "white");
 	newText.setAttributeNS(null, "text-anchor", "middle");
 	newText.setAttributeNS(null, "id", value);
+	newText.setAttributeNS(null, "class", root);
 	var textNode = document.createTextNode(value);
 	newText.appendChild(textNode);
   
@@ -263,7 +281,7 @@ function addNode(value, x, y, colour) {
   
   }
   
-  function addLine(fromX, fromY, toX, toY) {
+  function addLine(fromX, fromY, toX, toY, root) {
   
 	let svg = document.querySelector("#trieSVG");
   
@@ -276,6 +294,7 @@ function addNode(value, x, y, colour) {
 	newLine.setAttribute("stroke-width", 1);
 	newLine.setAttribute("stroke", "white");
 	newLine.setAttribute("z-index", "-1");
+	newLine.setAttribute("class", root);
   
 	svg.appendChild(newLine);
   
