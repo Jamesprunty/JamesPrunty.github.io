@@ -63,24 +63,7 @@ let Trie = function() {
 
 				let newX = xStart + 70;
 				let newY = yCenter;
-				rootArray.push(input[0]);
-				console.log(rootArray);
 
-				rootArray.forEach(element => {
-					console.log(element);
-					let nodes = [];
-					nodes.push(document.getElementsByClassName(element));
-					console.log(nodes);
-					console.log(nodeArray);
-					for(let i = 0; i < nodes[0].length; i++){
-						console.log(i);
-						if(nodes[i].nodeName == "line"){
-							console.log("Line");
-						}
-					}
-
-
-				});
 
 
 
@@ -100,10 +83,84 @@ let Trie = function() {
 				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
 
 				
+				rootArray.push(input[0]);
+				console.log(rootArray);
+
+				if(rootArray.length <= 1){
+
+
+				}else{
+
+					for(i=0; i < rootArray.length -1; i++){
+
+						let rootVal = rootArray[i];
+
+						let nodes = [];
+						nodes = document.querySelectorAll("." + rootArray[i]);
+						nodesRoot = document.querySelectorAll("#" + rootArray[i]);
+						console.log(nodes);
+						for(let i = 0; i < nodesRoot.length; i++){
+							if(nodesRoot[i].tagName == "line"){
+								
+								nodesRoot[i].y2.baseVal.value += 50;
+							}
+							
+							if(nodesRoot[i].tagName == "circle"){
+								nodesRoot[i].cy.baseVal.value += 50;
+								console.log(rootArray[i]+"!!!!!");
+
+								if (nodesRoot[i].classList.contains(rootVal)){
+									nodesRoot[i].remove();
+								}
+							
+							}
+
+							if(nodesRoot[i].tagName == "text"){
+							
+								nodesRoot[i].y.baseVal[0].value += 50;
+								if (nodesRoot[i].classList.contains(rootVal)){
+									nodesRoot[i].remove();
+								}
+
+							}
+						}
+	
+						for(let i = 0; i < nodes.length; i++){
+							if(nodes[i].tagName == "line"){
+								
+								nodes[i].y1.baseVal.value += 50;
+								nodes[i].y2.baseVal.value += 50;
+							}
+							if(nodes[i].tagName == "circle"){
+								nodes[i].cy.baseVal.value += 50;
+							
+							}
+
+							if(nodes[i].tagName == "text"){
+
+								console.log(nodes[i].y.baseVal[0].value);
+							
+								nodes[i].y.baseVal[0].value += 50;
+
+							}
+						}
+
+
+					}
+
+					rootArray.forEach(element => {
+						console.log(element);
+						
+	
+	
+					});
+
+				}
+
 
 				
 
-				addLine(xStart,yCenter,newX,newY, node.root)
+				addLine(xStart,yCenter,newX,newY, node.root, input.substr(0,1))
 				addNode(input.substr(0,1), newX, newY, "white", node.root); 
 				addNode("root", xStart, yCenter, "white", node.root);
 
@@ -140,7 +197,7 @@ let Trie = function() {
 
 
 			let index = 0;
-			addLine(node.posX,node.posY,newX,newY,node.root)
+			addLine(node.posX,node.posY,newX,newY,node.root, input.substr(0,1))
 			addNode(input.substr(0,1), newX, newY, node.colour, node.root); 
 			addNode(node.value, node.posX, node.posY, node.colour, node.root); 
 			posArray.push([newX,newY]);
@@ -281,7 +338,7 @@ function addNode(value, x, y, colour, root) {
   
   }
   
-  function addLine(fromX, fromY, toX, toY, root) {
+  function addLine(fromX, fromY, toX, toY, root, value) {
   
 	let svg = document.querySelector("#trieSVG");
   
@@ -295,6 +352,7 @@ function addNode(value, x, y, colour, root) {
 	newLine.setAttribute("stroke", "white");
 	newLine.setAttribute("z-index", "-1");
 	newLine.setAttribute("class", root);
+	newLine.setAttribute("id", value);
   
 	svg.appendChild(newLine);
   
