@@ -66,7 +66,6 @@ let Trie = function() {
 				
 				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
 
-				console.log(node);
 				rootArray.push(input[0]);
 
 				if(rootArray.length <= 1){
@@ -81,7 +80,6 @@ let Trie = function() {
 						let nodes = [];
 						nodes = document.querySelectorAll("." + rootArray[i]);
 						nodesRoot = document.querySelectorAll("#" + rootArray[i]);
-						console.log(nodes);
 						for(let i = 0; i < nodesRoot.length; i++){
 							if(nodesRoot[i].tagName == "line"){
 								
@@ -90,7 +88,6 @@ let Trie = function() {
 							
 							if(nodesRoot[i].tagName == "circle"){
 								nodesRoot[i].cy.baseVal.value += 50;
-								console.log(rootArray[i]+"!!!!!");
 
 								if (nodesRoot[i].classList.contains(rootVal)){
 									nodesRoot[i].remove();
@@ -121,12 +118,26 @@ let Trie = function() {
 
 							if(nodes[i].tagName == "text"){
 
-								console.log(nodes[i].y.baseVal[0].value);
 							
 								nodes[i].y.baseVal[0].value += 50;
 
 							}
 						}
+
+						function update(root){
+
+							currentNode == root;
+
+							for(i=0; i < rootArray.length -1; i++){
+
+
+
+
+							}
+
+
+						}
+						
 
 
 					}
@@ -152,7 +163,6 @@ let Trie = function() {
 			}else{
 
 
-				console.log(node);
 
 			let newX = node.posX + 70;
 			let newY = node.posY;
@@ -230,12 +240,58 @@ let Trie = function() {
 		return words.length > 0 ? words : mo;
 	};
 
+	this.update = function(root){
+		let node = this.root;
+		console.log(root);
+		for (let i=0; i < rootArray.indexOf(root) ; i++){
+
+			currentNode = node.keys.get(root);
+			console.log(currentNode);
+
+			function updateNodes(root){
+
+				if (root == null) {
+					return null;
+				  } else {
+					var result = new Array();
+					function traverse(root) {
+					  result.push(currentNode);
+					  console.log(currentNode.keys.size);
+					  console.log(result);
+
+					  for(let i = 0 ; i < currentNode.keys/*.size*/; i++){
+						traverse(currentNode.keys[i]);
+						if(currentNode.isEnd){
+							return;
+						  }
+					  }
+
+					  if(currentNode.isEnd){
+						return;
+					  }
+					}
+					traverse(root);
+					return result;
+				  };
+				}
+
+			updateNodes(currentNode);
+
+
+
+		}
+
+	}
+
 
 
 
 };
 
 myTrie = new Trie()
+myTrie.add("and");
+myTrie.add("snd");
+myTrie.update("s");
 
 let buttons = document.querySelectorAll(".btn");
 let value = document.querySelector("#elem");
