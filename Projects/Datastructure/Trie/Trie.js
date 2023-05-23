@@ -236,6 +236,7 @@ let Trie = function () {
 
 					function traverse(root) {
 						root.posY -=70;
+						root.previousY = root.previousNode.posY
 
 
 						root.keys.forEach(key => {
