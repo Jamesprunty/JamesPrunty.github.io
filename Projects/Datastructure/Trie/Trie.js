@@ -152,8 +152,61 @@ let Trie = function () {
 				let newX = node.posX + 70;
 				let newY = node.posY;
 
+				this.update(input[0]);
 
 
+				for (i = 0; i < rootArray.length - 1; i++) {
+
+					let rootVal = rootArray[i];
+
+					let nodes = [];
+					nodes = document.querySelectorAll("." + rootArray[i]);
+					nodesRoot = document.querySelectorAll("#" + rootArray[i]);
+					for (let i = 0; i < nodesRoot.length; i++) {
+						if (nodesRoot[i].tagName == "line") {
+
+							nodesRoot[i].y2.baseVal.value += 50;
+						}
+
+						if (nodesRoot[i].tagName == "circle") {
+							nodesRoot[i].cy.baseVal.value += 50;
+
+							if (nodesRoot[i].classList.contains(rootVal)) {
+								nodesRoot[i].remove();
+							}
+
+						}
+
+						if (nodesRoot[i].tagName == "text") {
+
+							nodesRoot[i].y.baseVal[0].value += 50;
+							if (nodesRoot[i].classList.contains(rootVal)) {
+								nodesRoot[i].remove();
+							}
+
+						}
+					}
+
+					for (let i = 0; i < nodes.length; i++) {
+						if (nodes[i].tagName == "line") {
+
+							nodes[i].y1.baseVal.value += 50;
+							nodes[i].y2.baseVal.value += 50;
+						}
+						if (nodes[i].tagName == "circle") {
+							nodes[i].cy.baseVal.value += 50;
+
+						}
+
+						if (nodes[i].tagName == "text") {
+
+
+							nodes[i].y.baseVal[0].value += 50;
+
+						}
+					}
+
+				}
 
 
 
