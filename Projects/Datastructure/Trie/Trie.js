@@ -73,6 +73,9 @@ let Trie = function () {
 
 				} else {
 
+					console.log(input[0]);
+					this.update(input[0]);
+
 					for (i = 0; i < rootArray.length - 1; i++) {
 
 						let rootVal = rootArray[i];
@@ -124,30 +127,12 @@ let Trie = function () {
 							}
 						}
 
-						function update(root) {
-
-							currentNode == root;
-
-							for (i = 0; i < rootArray.length - 1; i++) {
-
-
-
-
-							}
-
-
-						}
-
-
-
 					}
 
 
 
 				}
 
-
-				// NEED TO GO THROUGH EVERY NODE AND CHANGE Y VALUE.
 
 
 				addLine(xStart, yCenter, newX, newY, node.root, input.substr(0, 1))
@@ -242,64 +227,42 @@ let Trie = function () {
 
 	this.update = function (root) {
 		let node = this.root;
-		console.log(root);
-		console.log(rootArray.indexOf(root));
 
 		for (let i = 0; i < rootArray.indexOf(root); i++) {
 
-
-			console.log(i);
-			currentNode = node.keys.get(rootArray.at[i]);
-			console.log(node.keys.get(rootArray.at[i]));
+			currentNode = node.keys.get(rootArray[i]);
 
 			function updateNodes(root) {
 
-				if (root == null) {
-					return null;
-				} else {
-					var result = new Array();
-
 					function traverse(root) {
-						currentNode = root;
-						result.push(currentNode);
-						console.log(currentNode.keys.size);
-						console.log(result);
+						root.posY -=70;
 
-						currentNode.keys.forEach(key => {
-							console.log(key);
+
+						root.keys.forEach(key => {
 							traverse(key);
-							if (currentNode.isEnd) {
-								return;
-							}
-
+	
 						})
 
 						if (currentNode.isEnd) {
 							return;
 						}
 					}
-					traverse(root);
-					return result;
-				};
+					traverse(currentNode);
+					return;
+				
 			}
 
 			updateNodes(currentNode);
-
-
-
 		}
-
 	}
-
-
-
 
 };
 
 myTrie = new Trie()
 myTrie.add("and");
-myTrie.add("snd");
-myTrie.update("s");
+myTrie.add("akd");
+myTrie.add("bkd");
+myTrie.update("a");
 
 let buttons = document.querySelectorAll(".btn");
 let value = document.querySelector("#elem");
