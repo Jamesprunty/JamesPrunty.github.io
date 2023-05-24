@@ -44,206 +44,15 @@ let Trie = function () {
 
 
 
-	this.add = function (input, node = this.root) {
-
-
-		if (input.length == 0) {//if we are at the end of the word
-			node.setEnd(); //Set end of a word
-			node.colour = "red";
-			addNode(node.value, node.posX, node.posY, "red", node.root);
-			level = 0;
+	this.add = function(input, node = this.root) {
+		if (input.length == 0) {
+			node.setEnd();
 			return;
-
-		} else if (!node.keys.has(input[0])) {//If the node does not have the key of input[0] already,
-
-			//If this node does not exist we need to add it in.
-			level++;
-
-			if (node == this.root) {
-
-				let newX = xStart + 70;
-				let newY = yCenter;
-
-				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", input[0]));
-
-				rootArray.push(input[0]);
-
-				if (rootArray.length <= 1) {
-
-
-				} else {
-
-					//this.update(input[0]);
-
-					for (i = 0; i < rootArray.length - 1; i++) {
-
-						let rootVal = rootArray[i];
-
-						let nodes = [];
-						nodes = document.querySelectorAll("." + rootArray[i]);
-						nodesRoot = document.querySelectorAll("#" + rootArray[i]);
-						for (let i = 0; i < nodesRoot.length; i++) {
-							if (nodesRoot[i].tagName == "line") {
-
-								nodesRoot[i].y2.baseVal.value += 25;
-							}
-
-							if (nodesRoot[i].tagName == "circle") {
-								nodesRoot[i].cy.baseVal.value += 25;
-
-								if (nodesRoot[i].classList.contains(rootVal)) {
-									nodesRoot[i].remove();
-								}
-
-							}
-
-							if (nodesRoot[i].tagName == "text") {
-
-								nodesRoot[i].y.baseVal[0].value += 25;
-								if (nodesRoot[i].classList.contains(rootVal)) {
-									nodesRoot[i].remove();
-								}
-
-							}
-						}
-
-						for (let i = 0; i < nodes.length; i++) {
-							if (nodes[i].tagName == "line") {
-
-								nodes[i].y1.baseVal.value += 25;
-								nodes[i].y2.baseVal.value += 25;
-							}
-							if (nodes[i].tagName == "circle") {
-								nodes[i].cy.baseVal.value += 25;
-
-							}
-
-							if (nodes[i].tagName == "text") {
-
-
-								nodes[i].y.baseVal[0].value += 25;
-
-							}
-						}
-
-					}
-
-
-
-				}
-
-
-
-				addLine(xStart, yCenter, newX, newY, node.root, input.substr(0, 1))
-				addNode(input.substr(0, 1), newX, newY, "white", node.root);
-				addNode("root", xStart, yCenter, "white", node.root);
-
-
-				posArray.push([newX, newY]);
-
-
-
-
-			} else {
-
-
-
-				let newX = node.posX + 70;
-				let newY = node.posY;
-
-				if(node.keys.size >= 1){
-					console.log(node);
-					newY = node.posY + 70;
-				}
-
-
-
-				this.update(input[0]);
-
-
-				for (i = 0; i < rootArray.length - 1; i++) {
-
-					let rootVal = rootArray[i];
-
-					let nodes = [];
-					nodes = document.querySelectorAll("." + rootArray[i]);
-					nodesRoot = document.querySelectorAll("#" + rootArray[i]);
-					for (let i = 0; i < nodesRoot.length; i++) {
-						if (nodesRoot[i].tagName == "line") {
-
-							nodesRoot[i].y2.baseVal.value += 25;
-						}
-
-						if (nodesRoot[i].tagName == "circle") {
-							nodesRoot[i].cy.baseVal.value += 25;
-
-							if (nodesRoot[i].classList.contains(rootVal)) {
-								nodesRoot[i].remove();
-							}
-
-						}
-
-						if (nodesRoot[i].tagName == "text") {
-
-							nodesRoot[i].y.baseVal[0].value += 25;
-							if (nodesRoot[i].classList.contains(rootVal)) {
-								nodesRoot[i].remove();
-							}
-
-						}
-					}
-
-					for (let i = 0; i < nodes.length; i++) {
-						if (nodes[i].tagName == "line") {
-
-							nodes[i].y1.baseVal.value += 25;
-							nodes[i].y2.baseVal.value += 25;
-						}
-						if (nodes[i].tagName == "circle") {
-							nodes[i].cy.baseVal.value += 25;
-
-						}
-
-						if (nodes[i].tagName == "text") {
-
-
-							nodes[i].y.baseVal[0].value += 25;
-
-						}
-					}
-
-				}
-
-
-
-				node.keys.set(input[0], new Node(newX, newY, node.posX, node.posY, input[0], node, "white", node.root)); //Add a key of that letter and make the contents of the key the new node, which will have its own keys
-
-				//Next we need to add it to the visual tree.
-				//We want it to dynamically change when things are added. Make a note of all the places before adding it, change if it conflicts. 
-
-
-				let index = 0;
-				addLine(node.posX, node.posY, newX, newY, node.root, input.substr(0, 1))
-				addNode(input.substr(0, 1), newX, newY, node.colour, node.root);
-				addNode(node.value, node.posX, node.posY, node.colour, node.root);
-				posArray.push([newX, newY]);
-
-				//we want to take the previous node, add 70 to X, if something is there add 70 to y, keep going until nothing is there.
-
-
-
-
-			}
-
-			return this.add(input.substr(1), node.keys.get(input[0], node));//run add node on the string again, from the first position, which will keep going until there are none left. The root node will be the new key.
-
-
-
-
+		} else if (!node.keys.has(input[0])) {
+			node.keys.set(input[0], new Node());
+			return this.add(input.substr(1), node.keys.get(input[0]));
 		} else {
-			level++;
-			return this.add(input.substr(1), node.keys.get(input[0])); // If there is a key already, rerun the add method with the key as the new root node.
-
+			return this.add(input.substr(1), node.keys.get(input[0]));
 		};
 	};
 
@@ -284,45 +93,14 @@ let Trie = function () {
 		return words.length > 0 ? words : mo;
 	};
 
-	this.update = function (root) {
-		let node = this.root;
-
-		for (let i = 0; i < rootArray.indexOf(root); i++) {
-
-			currentNode = node.keys.get(rootArray[i]);
-
-			function updateNodes(root) {
-
-					function traverse(root) {
-						root.posY -=70;
-						root.previousY = root.previousNode.posY
-
-
-						root.keys.forEach(key => {
-							traverse(key);
 	
-						})
-
-						if (currentNode.isEnd) {
-							return;
-						}
-					}
-					traverse(currentNode);
-					return;
-				
-			}
-
-			updateNodes(currentNode);
-		}
-	}
 
 };
 
 myTrie = new Trie()
 myTrie.add("about");
 myTrie.add("aboub");
-myTrie.add("aloud");
-myTrie.add("alouk");
+
 
 
 let buttons = document.querySelectorAll(".btn");
