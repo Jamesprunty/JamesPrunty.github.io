@@ -47,6 +47,7 @@ let Trie = function () {
 	this.add = function(input, node = this.root) {
 		if (input.length == 0) {
 			node.setEnd();
+			updateTrie();
 			return;
 		} else if (!node.keys.has(input[0])) {
 			node.keys.set(input[0], new Node());
@@ -100,6 +101,9 @@ let Trie = function () {
 myTrie = new Trie()
 myTrie.add("about");
 myTrie.add("aboub");
+myTrie.add("sboub");
+myTrie.add("sbint");
+myTrie.add("sbudt");
 
 
 
@@ -198,6 +202,56 @@ function addLine(fromX, fromY, toX, toY, root, value) {
 
 function updateNode() {
 
+
+
+}
+
+function updateTrie(){
+
+
+	function levelFinder(){
+
+		let node = myTrie.root;
+		let rootArray = [];
+		let level = 0;
+		node.keys.forEach(key => {
+			rootArray.push(key);
+		});
+
+		for (let i = 0; i < rootArray.length; i++) {
+
+			currentNode = rootArray[i];
+
+			function updateNodes(root) {
+
+					function traverse(root) {
+
+						if(root.keys.size > 1){
+							console.log("TWST")
+							level += root.keys.size;
+						}
+
+						if (currentNode.isEnd) {
+							return level;
+						}
+						
+						root.keys.forEach(key => {
+							level++;
+							traverse(key);
+	
+						})
+					}
+					traverse(currentNode);
+				
+			}
+
+			updateNodes(currentNode);
+		}
+		return level;
+
+	}
+
+levelFinder()
 
 
 }
