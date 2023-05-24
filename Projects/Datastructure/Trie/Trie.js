@@ -73,8 +73,7 @@ let Trie = function () {
 
 				} else {
 
-					console.log(input[0]);
-					this.update(input[0]);
+					//this.update(input[0]);
 
 					for (i = 0; i < rootArray.length - 1; i++) {
 
@@ -86,11 +85,11 @@ let Trie = function () {
 						for (let i = 0; i < nodesRoot.length; i++) {
 							if (nodesRoot[i].tagName == "line") {
 
-								nodesRoot[i].y2.baseVal.value += 50;
+								nodesRoot[i].y2.baseVal.value += 25;
 							}
 
 							if (nodesRoot[i].tagName == "circle") {
-								nodesRoot[i].cy.baseVal.value += 50;
+								nodesRoot[i].cy.baseVal.value += 25;
 
 								if (nodesRoot[i].classList.contains(rootVal)) {
 									nodesRoot[i].remove();
@@ -100,7 +99,7 @@ let Trie = function () {
 
 							if (nodesRoot[i].tagName == "text") {
 
-								nodesRoot[i].y.baseVal[0].value += 50;
+								nodesRoot[i].y.baseVal[0].value += 25;
 								if (nodesRoot[i].classList.contains(rootVal)) {
 									nodesRoot[i].remove();
 								}
@@ -111,18 +110,18 @@ let Trie = function () {
 						for (let i = 0; i < nodes.length; i++) {
 							if (nodes[i].tagName == "line") {
 
-								nodes[i].y1.baseVal.value += 50;
-								nodes[i].y2.baseVal.value += 50;
+								nodes[i].y1.baseVal.value += 25;
+								nodes[i].y2.baseVal.value += 25;
 							}
 							if (nodes[i].tagName == "circle") {
-								nodes[i].cy.baseVal.value += 50;
+								nodes[i].cy.baseVal.value += 25;
 
 							}
 
 							if (nodes[i].tagName == "text") {
 
 
-								nodes[i].y.baseVal[0].value += 50;
+								nodes[i].y.baseVal[0].value += 25;
 
 							}
 						}
@@ -152,6 +151,13 @@ let Trie = function () {
 				let newX = node.posX + 70;
 				let newY = node.posY;
 
+				if(node.keys.size >= 1){
+					console.log(node);
+					newY = node.posY + 70;
+				}
+
+
+
 				this.update(input[0]);
 
 
@@ -165,11 +171,11 @@ let Trie = function () {
 					for (let i = 0; i < nodesRoot.length; i++) {
 						if (nodesRoot[i].tagName == "line") {
 
-							nodesRoot[i].y2.baseVal.value += 50;
+							nodesRoot[i].y2.baseVal.value += 25;
 						}
 
 						if (nodesRoot[i].tagName == "circle") {
-							nodesRoot[i].cy.baseVal.value += 50;
+							nodesRoot[i].cy.baseVal.value += 25;
 
 							if (nodesRoot[i].classList.contains(rootVal)) {
 								nodesRoot[i].remove();
@@ -179,7 +185,7 @@ let Trie = function () {
 
 						if (nodesRoot[i].tagName == "text") {
 
-							nodesRoot[i].y.baseVal[0].value += 50;
+							nodesRoot[i].y.baseVal[0].value += 25;
 							if (nodesRoot[i].classList.contains(rootVal)) {
 								nodesRoot[i].remove();
 							}
@@ -190,18 +196,18 @@ let Trie = function () {
 					for (let i = 0; i < nodes.length; i++) {
 						if (nodes[i].tagName == "line") {
 
-							nodes[i].y1.baseVal.value += 50;
-							nodes[i].y2.baseVal.value += 50;
+							nodes[i].y1.baseVal.value += 25;
+							nodes[i].y2.baseVal.value += 25;
 						}
 						if (nodes[i].tagName == "circle") {
-							nodes[i].cy.baseVal.value += 50;
+							nodes[i].cy.baseVal.value += 25;
 
 						}
 
 						if (nodes[i].tagName == "text") {
 
 
-							nodes[i].y.baseVal[0].value += 50;
+							nodes[i].y.baseVal[0].value += 25;
 
 						}
 					}
@@ -313,10 +319,11 @@ let Trie = function () {
 };
 
 myTrie = new Trie()
-myTrie.add("and");
-myTrie.add("akd");
-myTrie.add("bkd");
-myTrie.update("a");
+myTrie.add("about");
+myTrie.add("aboub");
+myTrie.add("aloud");
+myTrie.add("alouk");
+
 
 let buttons = document.querySelectorAll(".btn");
 let value = document.querySelector("#elem");
