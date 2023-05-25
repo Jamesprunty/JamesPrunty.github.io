@@ -3,7 +3,7 @@
 let svg = document.querySelector("#trieSVG");
 let svgSize = svg.getBoundingClientRect();
 let xStart = 70;
-let yCenter = svgSize.height / 4;
+let yCenter = svgSize.height / 2;
 let xDiff = 200;
 let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
@@ -104,6 +104,7 @@ myTrie.add("aboub");
 myTrie.add("sboub");
 myTrie.add("sbint");
 myTrie.add("sbudt");
+myTrie.add("ssudt");
 
 
 
@@ -251,7 +252,8 @@ function updateTrie(){
 
 	}
 
-levelFinder()
+let maxLevel = levelFinder();
+console.log(maxLevel);
 
 
 }
