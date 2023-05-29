@@ -2,22 +2,22 @@
 
 let svg = document.querySelector("#trieSVG");
 let svgSize = svg.getBoundingClientRect();
-let xStart = 70;
-let yCenter = svgSize.height / 2;
+let xCentre = svgSize.width / 2;
+let yStart = 70;
 let xDiff = 200;
 let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
 let newLevel = 0;
 
-let Node = function (posX = xStart, posY = yCenter, previousX, previousY, value, previousNode, colour, root = "root") {
+let Node = function (value, root = "root",previousNode,level = 0,posX,posY,) {
 	this.keys = new Map();
 	this.end = false;
 	this.posX = posX; //Stores the position x of the node to use later
 	this.posY = posY;
-	// this.level = level;//Stores what level the node is on
-	this.colour = colour;
+	this.level = level;//Stores what level the node is on
+	/*this.colour = colour;
 	this.previousX = previousX;
-	this.previousY = previousY;
+	this.previousY = previousY;*/
 	this.value = value;
 	this.previousNode = previousNode;
 	this.root = root;
@@ -32,10 +32,10 @@ let Node = function (posX = xStart, posY = yCenter, previousX, previousY, value,
 
 let Trie = function () {
 
-	this.root = new Node();
-	addNode("root", xStart, yCenter, "white");
+	this.root = new Node("root", "root",null,0,xCentre,yStart);
+	addNode("root", xCentre, yStart, "white");
 	level = 0;
-	let posArray = [[xStart, yCenter]];
+	let posArray = [[xCentre, yStart]];
 	let currentNode = this.root;
 	let previousNode = currentNode.previous;
 	let newX = 0;
@@ -47,10 +47,14 @@ let Trie = function () {
 	this.add = function(input, node = this.root) {
 		if (input.length == 0) {
 			node.setEnd();
-			updateTrie();
+			//updateTrie();
 			return;
 		} else if (!node.keys.has(input[0])) {
-			node.keys.set(input[0], new Node());
+
+
+			node.keys.set(input[0], new Node(input[0], node.root,node,node.level + 1));
+
+
 			return this.add(input.substr(1), node.keys.get(input[0]));
 		} else {
 			return this.add(input.substr(1), node.keys.get(input[0]));
@@ -105,6 +109,10 @@ myTrie.add("sboub");
 myTrie.add("sbint");
 myTrie.add("sbudt");
 myTrie.add("ssudt");
+myTrie.add("ksudt");
+myTrie.add("lsudt");
+myTrie.add("msudt");
+myTrie.add("tsudt");
 
 
 
@@ -138,7 +146,7 @@ buttons.forEach(element => {
 				myTrie = null;
 				myTrie = new Trie();
 				document.querySelector("#trieSVG").innerHTML = null;
-				addNode("root", xStart, yCenter, "white");
+				addNode("root", xCentre, yStart, "white");
 				break;
 		}
 
@@ -201,16 +209,54 @@ function addLine(fromX, fromY, toX, toY, root, value) {
 
 }
 
-function updateNode() {
 
 
 
-}
+function createNode(root){
 
-function updateTrie(){
+		console.log("TEST");
+
+
+			root.keys.forEach(key => {
+
+				console.log(root);
+
+			key.posY = root.posY + 70;
+			let x = root.posX;
+
+			addNode(key.value, x ,key.posY,"white", root);
+			key.posX = x;
+			x+=70
+			})
+
+		
+
+	}
+
+
+
+createNode(myTrie.root);
+
+
+
+
+
+
+
+
+
+
+
+
+/*function updateTrie(){
+
+	svg.innerHTML = "";
+	addNode("root", xCentre, yStart, "white");
 
 
 	function levelFinder(){
+
+		console.log("start");
 
 		let node = myTrie.root;
 		let rootArray = [];
@@ -218,6 +264,7 @@ function updateTrie(){
 		node.keys.forEach(key => {
 			rootArray.push(key);
 		});
+		let levelArray = {};
 
 		for (let i = 0; i < rootArray.length; i++) {
 
@@ -227,17 +274,13 @@ function updateTrie(){
 
 					function traverse(root) {
 
-						if(root.keys.size > 1){
-							console.log("TWST")
-							level += root.keys.size;
-						}
-
 						if (currentNode.isEnd) {
-							return level;
+							return;
 						}
 						
 						root.keys.forEach(key => {
-							level++;
+							console.log(levelArray);
+							levelArray.push(key.level);
 							traverse(key);
 	
 						})
@@ -248,15 +291,62 @@ function updateTrie(){
 
 			updateNodes(currentNode);
 		}
-		return level;
+		return levelArray;
 
 	}
 
-let maxLevel = levelFinder();
-console.log(maxLevel);
+	levelFinder();
 
 
-}
+
+function createNode(root){
+
+	if(root == myTrie.root){
+
+		let widthDiff = svgSize.width / root.keys.size;
+		let startPoint = 70 * level;
+		let x = 70;
+
+		root.keys.forEach(key => {
+			key.posY = yStart + 70;
+
+			addNode(key.value, x ,key.posY,"white", root);
+			key.posX = x;
+			x+=widthDiff;
+			createNode(key);
+
+		})
+
+	}else{
+
+		let widthDiff = svgSize.width / root.keys.size;
+		let x = widthDiff / level;
+
+		
+
+		root.keys.forEach(key => {
+
+
+			key.posY = root.posY + 70;
+			addNode(key.value, x ,key.posY,"white", root);
+			key.posX = x;
+			x+=widthDiff;
+
+		})
+
+
+	}
+
+
+
+
+
+
+}*/
+//createNode(myTrie.root);
+
+
+//}
 
 
 
