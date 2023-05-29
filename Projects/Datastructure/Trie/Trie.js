@@ -9,7 +9,7 @@ let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
 let newLevel = 0;
 
-let Node = function (value, root = "root",previousNode,level = 0,posX,posY,) {
+let Node = function (value, root = "root", previousNode, level = 0, posX, posY) {
 	this.keys = new Map();
 	this.end = false;
 	this.posX = posX; //Stores the position x of the node to use later
@@ -32,7 +32,7 @@ let Node = function (value, root = "root",previousNode,level = 0,posX,posY,) {
 
 let Trie = function () {
 
-	this.root = new Node("root", "root",null,0,xCentre,yStart);
+	this.root = new Node("root", "root", null, 0, xCentre, yStart);
 	addNode("root", xCentre, yStart, "white");
 	level = 0;
 	let posArray = [[xCentre, yStart]];
@@ -44,7 +44,7 @@ let Trie = function () {
 
 
 
-	this.add = function(input, node = this.root) {
+	this.add = function (input, node = this.root) {
 		if (input.length == 0) {
 			node.setEnd();
 			//updateTrie();
@@ -52,7 +52,7 @@ let Trie = function () {
 		} else if (!node.keys.has(input[0])) {
 
 
-			node.keys.set(input[0], new Node(input[0], node.root,node,node.level + 1));
+			node.keys.set(input[0], new Node(input[0], node.root, node, node.level + 1));
 
 
 			return this.add(input.substr(1), node.keys.get(input[0]));
@@ -98,21 +98,14 @@ let Trie = function () {
 		return words.length > 0 ? words : mo;
 	};
 
-	
+
 
 };
 
 myTrie = new Trie()
-myTrie.add("about");
-myTrie.add("aboub");
-myTrie.add("sboub");
-myTrie.add("sbint");
-myTrie.add("sbudt");
-myTrie.add("ssudt");
-myTrie.add("ksudt");
-myTrie.add("lsudt");
-myTrie.add("msudt");
-myTrie.add("tsudt");
+myTrie.add("test");
+myTrie.add("best");
+myTrie.add("bert");
 
 
 
@@ -212,51 +205,28 @@ function addLine(fromX, fromY, toX, toY, root, value) {
 
 
 
-function createNode(root){
+function createTrie(root) {
 
-		console.log("TEST");
+	let width = root.keys.size * 70;
+	let startPosition = root.posX - width / 2 + 30;
 
+	if (root == myTrie.root) {
 
-			root.keys.forEach(key => {
-
-				console.log(root);
+		root.keys.forEach(key => {
 
 			key.posY = root.posY + 70;
-			let x = root.posX;
 
-			addNode(key.value, x ,key.posY,"white", root);
-			key.posX = x;
-			x+=70
-			})
+			key.posX = startPosition
 
-		
+			addNode(key.value, startPosition, key.posY, "white", root);
 
-	}
+			key.posX = startPosition;
+
+			startPosition += 70
 
 
 
-createNode(myTrie.root);
-
-
-
-
-
-
-
-
-
-
-
-
-/*function updateTrie(){
-
-	svg.innerHTML = "";
-	addNode("root", xCentre, yStart, "white");
-
-
-	function levelFinder(){
-
-		console.log("start");
+		})
 
 		let node = myTrie.root;
 		let rootArray = [];
@@ -264,89 +234,182 @@ createNode(myTrie.root);
 		node.keys.forEach(key => {
 			rootArray.push(key);
 		});
-		let levelArray = {};
+
 
 		for (let i = 0; i < rootArray.length; i++) {
+
 
 			currentNode = rootArray[i];
 
 			function updateNodes(root) {
 
-					function traverse(root) {
+				function traverse(root) {
+					console.log("TEST1");
 
-						if (currentNode.isEnd) {
-							return;
+					/*if (root.isEnd) {
+						console.log("test2");
+						//Change colour
+						return;
+					}*/
+
+					root.keys.forEach(key => {
+
+						if(root.keys.size == 1){
+
+							console.log("TESTER");
+
+							key.posX = key.previousNode.posX;
+							key.posY = key.previousNode.posY + 70
+
+							addNode(key.value, key.previousNode.posX, key.previousNode.posY + 70, "white", root);
+
+
+						}else{
+
+							let width = root.keys.size * 70;
+							let startPosition = root.posX - width / 2 + 30;
+
+							addNode(key.value, key.previousNode.posX, key.previousNode.posY + 70, "white", root);
+
+
+
+
 						}
-						
-						root.keys.forEach(key => {
-							console.log(levelArray);
-							levelArray.push(key.level);
-							traverse(key);
-	
-						})
-					}
-					traverse(currentNode);
-				
+
+						traverse(key);
+
+					})
+				}
+				traverse(currentNode);
+
 			}
 
 			updateNodes(currentNode);
+
+
+
+
+
+
 		}
-		return levelArray;
-
-	}
-
-	levelFinder();
 
 
 
-function createNode(root){
 
-	if(root == myTrie.root){
-
-		let widthDiff = svgSize.width / root.keys.size;
-		let startPoint = 70 * level;
-		let x = 70;
-
-		root.keys.forEach(key => {
-			key.posY = yStart + 70;
-
-			addNode(key.value, x ,key.posY,"white", root);
-			key.posX = x;
-			x+=widthDiff;
-			createNode(key);
-
-		})
-
-	}else{
-
-		let widthDiff = svgSize.width / root.keys.size;
-		let x = widthDiff / level;
-
-		
-
-		root.keys.forEach(key => {
-
-
-			key.posY = root.posY + 70;
-			addNode(key.value, x ,key.posY,"white", root);
-			key.posX = x;
-			x+=widthDiff;
-
-		})
 
 
 	}
 
+}
+
+	createTrie(myTrie.root);
 
 
 
 
 
-}*/
-//createNode(myTrie.root);
 
 
-//}
 
+
+
+
+
+	/*function updateTrie(){
+	
+		svg.innerHTML = "";
+		addNode("root", xCentre, yStart, "white");
+	
+	
+		function levelFinder(){
+	
+			console.log("start");
+	
+			let node = myTrie.root;
+			let rootArray = [];
+			let level = 0;
+			node.keys.forEach(key => {
+				rootArray.push(key);
+			});
+			let levelArray = {};
+	
+			for (let i = 0; i < rootArray.length; i++) {
+	
+				currentNode = rootArray[i];
+	
+				function updateNodes(root) {
+	
+						function traverse(root) {
+	
+							if (currentNode.isEnd) {
+								return;
+							}
+	
+							root.keys.forEach(key => {
+								console.log(levelArray);
+								levelArray.push(key.level);
+								traverse(key);
+	
+							})
+						}
+						traverse(currentNode);
+	
+				}
+	
+				updateNodes(currentNode);
+			}
+			return levelArray;
+	
+		}
+	
+		levelFinder();
+	
+	
+	
+	function createNode(root){
+	
+		if(root == myTrie.root){
+	
+			let widthDiff = svgSize.width / root.keys.size;
+			let startPoint = 70 * level;
+			let x = 70;
+	
+			root.keys.forEach(key => {
+				key.posY = yStart + 70;
+	
+				addNode(key.value, x ,key.posY,"white", root);
+				key.posX = x;
+				x+=widthDiff;
+				createNode(key);
+	
+			})
+	
+		}else{
+	
+			let widthDiff = svgSize.width / root.keys.size;
+			let x = widthDiff / level;
+	
+	
+	
+			root.keys.forEach(key => {
+	
+	
+				key.posY = root.posY + 70;
+				addNode(key.value, x ,key.posY,"white", root);
+				key.posX = x;
+				x+=widthDiff;
+	
+			})
+	
+	
+		}
+	
+	
+	
+	
+	
+	
+	}*/
+	//createNode(myTrie.root);
 
 
