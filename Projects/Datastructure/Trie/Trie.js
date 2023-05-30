@@ -342,7 +342,7 @@ function createTrie(root) {
 
 	console.log(rootKeys)
 	
-
+//All the root nodes are in order. I can check against the moveArray to see if it is on there to move around. 
 
 	return moveArray;
 
