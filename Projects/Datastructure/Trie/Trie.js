@@ -48,7 +48,7 @@ let Trie = function () {
 	this.add = function (input, node = this.root) {
 		if (input.length == 0) {
 			node.setEnd();
-			//updateTrie();
+			createTrie(myTrie.root);
 			return;
 		} else if (!node.keys.has(input[0])) {
 
@@ -116,16 +116,16 @@ let Trie = function () {
 
 myTrie = new Trie()
 myTrie.add("test");
-myTrie.add("terp");
-myTrie.add("terk");
-myTrie.add("plot");
-//myTrie.add("prit");
-//myTrie.add("clap");
-//myTrie.add("cram");
-//myTrie.add("prot");
-//myTrie.add("clart");
-//myTrie.add("plek");
-//myTrie.add("plat");
+myTrie.add("rest");
+myTrie.add("table");
+myTrie.add("agree");
+myTrie.add("turn");
+myTrie.add("rank");
+myTrie.add("resk");
+myTrie.add("pest");
+myTrie.add("anger");
+
+
 
 
 
@@ -228,6 +228,8 @@ function addLine(fromX, fromY, toX, toY, root, value) {
 
 function createTrie(root) {
 
+	svg.innerHTML = "";
+
 	let before = false;
 	let moveArray = [];
 
@@ -271,10 +273,10 @@ function createTrie(root) {
 						}
 					}
 
-					return moveArray;
+					
 				}
 
-				if (root.keys.size == 1) {
+				else if (root.keys.size == 1) {
 					key.posX = root.posX;
 					key.posY = root.posY + 70;
 					addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
@@ -319,6 +321,11 @@ function createTrie(root) {
 
 	});
 
+	
+	
+	function spaceTrie(rootKeys){
+
+	
 	rootKeys.forEach(key => {
 
 		moveArray.forEach(node => {
@@ -412,6 +419,7 @@ function createTrie(root) {
 
 									}
 								});
+								
 
 							} else {
 								let move = document.querySelectorAll(`.${rootKey}`);
@@ -449,15 +457,76 @@ function createTrie(root) {
 			}
 
 		});
+	
 
 	});
+}
+spaceTrie(rootKeys);
+
+
+	
 
 	console.log(rootKeys)
 
-	//All the root nodes are in order. I can check against the moveArray to see if it is on there to move around. 
+	let node = myTrie.root;
+		let rootArray = [];
+		node.keys.forEach(key => {
+			rootArray.push(key);
+		});
 
-	return moveArray;
 
+		for (let i = 0; i < rootArray.length; i++) {
+
+
+			currentNode = rootArray[i];
+
+			function updateNodes(root) {
+				console.log("test1");
+
+				function traverse(root) {
+
+					if (root.End) {
+						return;
+					}
+
+					root.keys.forEach(key => {
+						console.log("TEST");
+
+						/*if(root != myTrie.root){
+							if(root.keys.size > 1){
+								rootKeys = [];
+	
+								root.keys.forEach(key => {
+									rootKeys.push(key.value);
+							
+								});
+								
+								spaceTrie(rootKeys);
+	
+							}
+
+						}*/
+
+
+
+						traverse(key);
+
+					})
+				}
+				traverse(currentNode);
+
+			}
+
+			updateNodes(currentNode);
+
+
+
+
+
+
+		}
+
+	
 
 
 
