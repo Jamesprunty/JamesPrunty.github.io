@@ -116,10 +116,13 @@ let Trie = function () {
 
 myTrie = new Trie()
 myTrie.add("test");
-myTrie.add("best");
-myTrie.add("bert");
-myTrie.add("kert");
-myTrie.add("trip");
+myTrie.add("terp");
+myTrie.add("plot");
+myTrie.add("prit");
+myTrie.add("clap");
+myTrie.add("prot");
+
+
 
 
 
@@ -232,11 +235,9 @@ function createTrie(root) {
 
 
 			root.keys.forEach(key => {
-				console.log(root.value);
 
 
 				if (key.end) {
-					console.log("test2");
 					key.posX = root.posX;
 					key.posY = root.posY + 70;
 					addNode(key.value, key.posX, key.posY, "red", key.root);
@@ -260,7 +261,7 @@ function createTrie(root) {
 						addNode(key.value, key.posX, key.posY, "white", key.root);
 					})
 					if(root != myTrie.root){
-						moveArray.push(key.root);
+						moveArray.push([key.root, key.branch]);
 
 					}
 
@@ -332,7 +333,7 @@ function createTrie(root) {
 
 	console.log(moveArray);
 	//MOVE EVERYTHING AROUND
-
+	
 
 
 	return moveArray;
