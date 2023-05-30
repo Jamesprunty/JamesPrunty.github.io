@@ -118,9 +118,9 @@ myTrie = new Trie()
 myTrie.add("test");
 myTrie.add("terp");
 myTrie.add("terk");
-/*myTrie.add("plot");
+myTrie.add("plot");
 myTrie.add("prit");
-myTrie.add("clap");
+/*myTrie.add("clap");
 myTrie.add("cram");
 myTrie.add("prot");
 myTrie.add("clart");
@@ -335,12 +335,20 @@ function createTrie(root) {
 					move.forEach(element => {
 						if (element.tagName == "circle") {
 							let base = Number(element.getAttribute("cx"));
-							let set = base + 25;
+							let set = base + 15;
 							element.setAttribute("cx", set);
 						}else if(element.tagName == "text"){
 							let base = Number(element.getAttribute("x"));
-							let set = base + 25;
+							let set = base + 15;
 							element.setAttribute("x", set);
+						}else if(element.tagName == "line"){
+							let base1 = Number(element.getAttribute("x1"));
+							let base2 = Number(element.getAttribute("x2"));
+							let set1 = base1 + 15;
+							let set2 = base2 + 15;
+							element.setAttribute("x1", set1);
+							element.setAttribute("x2", set2);
+
 						}
 					});
 				} else if (key == rootKeys[rootKeys.length - 1]) {
@@ -355,6 +363,14 @@ function createTrie(root) {
 							let base = Number(element.getAttribute("x"));
 							let set = base - 15;
 							element.setAttribute("x", set);
+						}else if(element.tagName == "line"){
+							let base1 = Number(element.getAttribute("x1"));
+							let base2 = Number(element.getAttribute("x2"));
+							let set1 = base1 - 15;
+							let set2 = base2 - 15;
+							element.setAttribute("x1", set1);
+							element.setAttribute("x2", set2);
+
 						}
 					});
 				}else{
@@ -376,6 +392,14 @@ function createTrie(root) {
 										let base = Number(element.getAttribute("x"));
 										let set = base + 15;
 										element.setAttribute("x", set);
+									}else if(element.tagName == "line"){
+										let base1 = Number(element.getAttribute("x1"));
+										let base2 = Number(element.getAttribute("x2"));
+										let set1 = base1 + 15;
+										let set2 = base2 + 15;
+										element.setAttribute("x1", set1);
+										element.setAttribute("x2", set2);
+			
 									}
 								});
 
@@ -390,6 +414,14 @@ function createTrie(root) {
 										let base = Number(element.getAttribute("x"));
 										let set = base - 15;
 										element.setAttribute("x", set);
+									}else if(element.tagName == "line"){
+										let base1 = Number(element.getAttribute("x1"));
+										let base2 = Number(element.getAttribute("x2"));
+										let set1 = base1 - 15;
+										let set2 = base2 - 15;
+										element.setAttribute("x1", set1);
+										element.setAttribute("x2", set2);
+			
 									}
 								});
 
