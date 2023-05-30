@@ -246,9 +246,11 @@ function createTrie(root) {
 
 
 					if (root.keys.size == 1) {
+						console.log(myTrie.root.posX);
+						console.log(root.posX);
 						key.posX = root.posX;
 						key.posY = root.posY + 70;
-						addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value)
+						addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
 						addNode(key.value, key.posX, key.posY, "red", key.root);
 	
 	
@@ -258,6 +260,7 @@ function createTrie(root) {
 							key.posY = root.posY + 70;
 							key.posX = root.posX + width;
 							width -= 70;
+							addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
 							addNode(key.value, key.posX, key.posY, "red", key.root);
 						})
 						if (root != myTrie.root) {
@@ -278,6 +281,7 @@ function createTrie(root) {
 				if (root.keys.size == 1) {
 					key.posX = root.posX;
 					key.posY = root.posY + 70;
+					addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
 					addNode(key.value, key.posX, key.posY, "white", key.root);
 
 
@@ -287,6 +291,7 @@ function createTrie(root) {
 						key.posY = root.posY + 70;
 						key.posX = root.posX + width;
 						width -= 70;
+						addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
 						addNode(key.value, key.posX, key.posY, "white", key.root);
 					})
 					if (root != myTrie.root) {
