@@ -9,7 +9,7 @@ let xDiffStart = window.innerHeight / 4;
 let yDiff = 80;
 let newLevel = 0;
 
-let Node = function (value, root = "root", previousNode, level = 0, posX, posY) {
+let Node = function (value, root = "root", previousNode, branch, level = 0, posX, posY) {
 	this.keys = new Map();
 	this.end = false;
 	this.posX = posX; //Stores the position x of the node to use later
@@ -21,6 +21,7 @@ let Node = function (value, root = "root", previousNode, level = 0, posX, posY) 
 	this.value = value;
 	this.previousNode = previousNode;
 	this.root = root;
+	this.branch = branch;
 
 	this.setEnd = function () {
 		this.end = true;
@@ -32,7 +33,7 @@ let Node = function (value, root = "root", previousNode, level = 0, posX, posY) 
 
 let Trie = function () {
 
-	this.root = new Node("root", "root", null, 0, xCentre, yStart);
+	this.root = new Node("root", "root", null, null, 0, xCentre, yStart);
 	addNode("root", xCentre, yStart, "white");
 	level = 0;
 	let posArray = [[xCentre, yStart]];
@@ -51,8 +52,19 @@ let Trie = function () {
 			return;
 		} else if (!node.keys.has(input[0])) {
 
+			if(node == this.root){
+				node.keys.set(input[0], new Node(input[0], input[0], node, node.branch, node.level + 1));
+			
+			}else if(node.keys.size == 0){
+				node.keys.set(input[0], new Node(input[0], node.root, node, node.branch, node.level + 1));
 
-			node.keys.set(input[0], new Node(input[0], node.root, node, node.level + 1));
+			}else{
+				node.keys.set(input[0], new Node(input[0], node.root, node, node.root, node.level + 1));
+				node.keys.forEach(key => {
+					key.branch = node.value;
+				});
+			}
+			
 
 
 			return this.add(input.substr(1), node.keys.get(input[0]));
@@ -106,6 +118,7 @@ myTrie = new Trie()
 myTrie.add("test");
 myTrie.add("best");
 myTrie.add("bert");
+myTrie.add("kert");
 
 
 
@@ -204,8 +217,71 @@ function addLine(fromX, fromY, toX, toY, root, value) {
 
 
 
-
 function createTrie(root) {
+
+	let before = false;
+
+	let currentNode = root;
+
+	function updateNodes(root) {
+
+		function traverse(root) {
+
+
+
+			root.keys.forEach(key => {
+
+
+				if (key.end) {
+					console.log("test2");
+					key.posX = root.posX;
+					key.posY = root.posY + 70;
+					addNode(key.value, key.posX, key.posY, "red", root);
+
+					//Change colour
+					return;
+				}
+
+				if(root.keys.size == 1){
+					key.posX = root.posX;
+					key.posY = root.posY + 70;
+					addNode(key.value, key.posX, key.posY, "white", root);
+
+
+				}else{
+					let width = root.keys.size * 70 / 2 - 30;
+					root.keys.forEach(key =>{
+						key.posY = root.posY + 70;
+						key.posX = root.posX + width;
+						width -= 70;
+						addNode(key.value, key.posX, key.posY, "white", root);
+					})
+
+
+
+
+				}
+				traverse(key);
+
+			})
+		}
+		traverse(currentNode);
+
+	}
+
+	updateNodes(currentNode);
+
+
+}
+
+createTrie(myTrie.root);
+
+
+
+
+
+
+/*function createTrie(root) {
 
 	let width = root.keys.size * 70;
 	let startPosition = root.posX - width / 2 + 30;
@@ -250,7 +326,7 @@ function createTrie(root) {
 						console.log("test2");
 						//Change colour
 						return;
-					}*/
+					}
 
 					root.keys.forEach(key => {
 
@@ -302,114 +378,106 @@ function createTrie(root) {
 
 }
 
+
+
 	createTrie(myTrie.root);
 
+*/
+/*function updateTrie(){
+
+	svg.innerHTML = "";
+	addNode("root", xCentre, yStart, "white");
 
 
+	function levelFinder(){
 
+		console.log("start");
 
+		let node = myTrie.root;
+		let rootArray = [];
+		let level = 0;
+		node.keys.forEach(key => {
+			rootArray.push(key);
+		});
+		let levelArray = {};
 
+		for (let i = 0; i < rootArray.length; i++) {
 
+			currentNode = rootArray[i];
 
+			function updateNodes(root) {
 
+					function traverse(root) {
 
-
-
-	/*function updateTrie(){
-	
-		svg.innerHTML = "";
-		addNode("root", xCentre, yStart, "white");
-	
-	
-		function levelFinder(){
-	
-			console.log("start");
-	
-			let node = myTrie.root;
-			let rootArray = [];
-			let level = 0;
-			node.keys.forEach(key => {
-				rootArray.push(key);
-			});
-			let levelArray = {};
-	
-			for (let i = 0; i < rootArray.length; i++) {
-	
-				currentNode = rootArray[i];
-	
-				function updateNodes(root) {
-	
-						function traverse(root) {
-	
-							if (currentNode.isEnd) {
-								return;
-							}
-	
-							root.keys.forEach(key => {
-								console.log(levelArray);
-								levelArray.push(key.level);
-								traverse(key);
-	
-							})
+						if (currentNode.isEnd) {
+							return;
 						}
-						traverse(currentNode);
-	
-				}
-	
-				updateNodes(currentNode);
+
+						root.keys.forEach(key => {
+							console.log(levelArray);
+							levelArray.push(key.level);
+							traverse(key);
+
+						})
+					}
+					traverse(currentNode);
+
 			}
-			return levelArray;
-	
+
+			updateNodes(currentNode);
 		}
-	
-		levelFinder();
-	
-	
-	
-	function createNode(root){
-	
-		if(root == myTrie.root){
-	
-			let widthDiff = svgSize.width / root.keys.size;
-			let startPoint = 70 * level;
-			let x = 70;
-	
-			root.keys.forEach(key => {
-				key.posY = yStart + 70;
-	
-				addNode(key.value, x ,key.posY,"white", root);
-				key.posX = x;
-				x+=widthDiff;
-				createNode(key);
-	
-			})
-	
-		}else{
-	
-			let widthDiff = svgSize.width / root.keys.size;
-			let x = widthDiff / level;
-	
-	
-	
-			root.keys.forEach(key => {
-	
-	
-				key.posY = root.posY + 70;
-				addNode(key.value, x ,key.posY,"white", root);
-				key.posX = x;
-				x+=widthDiff;
-	
-			})
-	
-	
-		}
-	
-	
-	
-	
-	
-	
-	}*/
+		return levelArray;
+
+	}
+
+	levelFinder();
+
+
+
+function createNode(root){
+
+	if(root == myTrie.root){
+
+		let widthDiff = svgSize.width / root.keys.size;
+		let startPoint = 70 * level;
+		let x = 70;
+
+		root.keys.forEach(key => {
+			key.posY = yStart + 70;
+
+			addNode(key.value, x ,key.posY,"white", root);
+			key.posX = x;
+			x+=widthDiff;
+			createNode(key);
+
+		})
+
+	}else{
+
+		let widthDiff = svgSize.width / root.keys.size;
+		let x = widthDiff / level;
+
+
+
+		root.keys.forEach(key => {
+
+
+			key.posY = root.posY + 70;
+			addNode(key.value, x ,key.posY,"white", root);
+			key.posX = x;
+			x+=widthDiff;
+
+		})
+
+
+	}
+
+
+
+
+
+
+}*/
 	//createNode(myTrie.root);
 
 
