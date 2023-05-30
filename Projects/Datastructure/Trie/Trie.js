@@ -52,19 +52,19 @@ let Trie = function () {
 			return;
 		} else if (!node.keys.has(input[0])) {
 
-			if(node == this.root){
+			if (node == this.root) {
 				node.keys.set(input[0], new Node(input[0], input[0], node, node.branch, node.level + 1));
-			
-			}else if(node.keys.size == 0){
+
+			} else if (node.keys.size == 0) {
 				node.keys.set(input[0], new Node(input[0], node.root, node, node.branch, node.level + 1));
 
-			}else{
+			} else {
 				node.keys.set(input[0], new Node(input[0], node.root, node, node.root, node.level + 1));
 				node.keys.forEach(key => {
 					key.branch = node.value;
 				});
 			}
-			
+
 
 
 			return this.add(input.substr(1), node.keys.get(input[0]));
@@ -120,7 +120,9 @@ myTrie.add("terp");
 myTrie.add("plot");
 myTrie.add("prit");
 myTrie.add("clap");
+myTrie.add("cram");
 myTrie.add("prot");
+myTrie.add("clart");
 
 
 
@@ -246,21 +248,21 @@ function createTrie(root) {
 					return moveArray;
 				}
 
-				if(root.keys.size == 1){
+				if (root.keys.size == 1) {
 					key.posX = root.posX;
 					key.posY = root.posY + 70;
 					addNode(key.value, key.posX, key.posY, "white", key.root);
 
 
-				}else{
+				} else {
 					let width = root.keys.size * 70 / 2 - 34;
-					root.keys.forEach(key =>{
+					root.keys.forEach(key => {
 						key.posY = root.posY + 70;
 						key.posX = root.posX + width;
 						width -= 70;
 						addNode(key.value, key.posX, key.posY, "white", key.root);
 					})
-					if(root != myTrie.root){
+					if (root != myTrie.root) {
 						moveArray.push([key.root, key.branch]);
 
 					}
@@ -325,7 +327,7 @@ function createTrie(root) {
 			})
 		}
 		traverse(currentNode);
-		
+
 
 	}
 
@@ -337,16 +339,109 @@ function createTrie(root) {
 	let rootKeys = [];
 	myTrie.root.keys.forEach(key => {
 		rootKeys.push(key.value);
-		
+
+	});
+
+	rootKeys.forEach(key => {
+
+		moveArray.forEach(node => {
+
+			if (node[0] == key) {
+				if (key == rootKeys[0]) {
+					let move = document.querySelectorAll(`.${key}`);
+					move.forEach(element => {
+						if (element.tagName == "circle") {
+							let base = Number(element.getAttribute("cx"));
+							let set = base + 25;
+							element.setAttribute("cx", set);
+						}else if(element.tagName == "text"){
+							let base = Number(element.getAttribute("x"));
+							let set = base + 25;
+							element.setAttribute("x", set);
+						}
+					});
+				} else if (key == rootKeys[rootKeys.length - 1]) {
+					let move = document.querySelectorAll(`.${key}`);
+					console.log(move);
+					move.forEach(element => {
+						if (element.tagName == "circle") {
+							let base = Number(element.getAttribute("cx"));
+							let set = base - 25;
+							element.setAttribute("cx", set);
+						}else if (element.tagName == "text") {
+							let base = Number(element.getAttribute("x"));
+							let set = base - 25;
+							element.setAttribute("x", set);
+						}
+					});
+				}else{
+
+					//Mive anything on either side of them.
+
+					let status = "right";
+
+					rootKeys.forEach(rootKey => {
+						if(rootKey != node[0]){
+							if(status == "right"){
+								let move = document.querySelectorAll(`.${rootKey}`);
+								move.forEach(element => {
+									if (element.tagName == "circle") {
+										let base = Number(element.getAttribute("cx"));
+										let set = base + 25;
+										element.setAttribute("cx", set);
+									}else if (element.tagName == "text") {
+										let base = Number(element.getAttribute("x"));
+										let set = base + 25;
+										element.setAttribute("x", set);
+									}
+								});
+
+							}else{
+								let move = document.querySelectorAll(`.${rootKey}`);
+								move.forEach(element => {
+									if (element.tagName == "circle") {
+										let base = Number(element.getAttribute("cx"));
+										let set = base - 25;
+										element.setAttribute("cx", set);
+									}else if (element.tagName == "text") {
+										let base = Number(element.getAttribute("x"));
+										let set = base - 25;
+										element.setAttribute("x", set);
+									}
+								});
+
+							}
+						}else{
+							status = "left";
+						}
+
+					})
+
+
+
+
+
+
+				}
+
+
+
+
+
+
+			}
+
+		});
+
 	});
 
 	console.log(rootKeys)
-	
-//All the root nodes are in order. I can check against the moveArray to see if it is on there to move around. 
+
+	//All the root nodes are in order. I can check against the moveArray to see if it is on there to move around. 
 
 	return moveArray;
 
-	
+
 
 
 }
