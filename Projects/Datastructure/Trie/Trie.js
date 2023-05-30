@@ -334,17 +334,13 @@ function createTrie(root) {
 	console.log(moveArray);
 	//MOVE EVERYTHING AROUND
 
-	moveArray.forEach(element => {
-		moveFunc(element, myTrie.root);
+	let rootKeys = [];
+	myTrie.root.keys.forEach(key => {
+		rootKeys.push(key.value);
 		
 	});
 
-	function moveFunc(element, root){
-
-		
-
-	
-	}
+	console.log(rootKeys)
 	
 
 
