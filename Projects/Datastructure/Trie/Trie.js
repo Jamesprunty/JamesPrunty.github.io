@@ -117,7 +117,10 @@ let Trie = function () {
 myTrie = new Trie()
 myTrie.add("test");
 myTrie.add("rest");
-myTrie.add("table");
+myTrie.add("ta");
+myTrie.add("ra");
+myTrie.add("ar");
+//myTrie.add("table");
 myTrie.add("agree");
 myTrie.add("turn");
 myTrie.add("rank");
@@ -244,7 +247,7 @@ function createTrie(root) {
 			root.keys.forEach(key => {
 
 
-				if (key.end) {
+				if (root.end) {
 
 
 					if (root.keys.size == 1) {
@@ -253,8 +256,18 @@ function createTrie(root) {
 						key.posX = root.posX;
 						key.posY = root.posY + 70;
 						addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
-						addNode(key.value, key.posX, key.posY, "red", key.root);
-						addNode(root.value, root.posX, root.posY, "white", root.root);
+
+						if(key.end){
+							addNode(key.value, key.posX, key.posY, "red", key.root);
+						}else{
+							addNode(key.value, key.posX, key.posY, "white", key.root);
+						}
+	
+						if(root.end){
+							addNode(root.value, root.posX, root.posY, "red", root.root);
+						}else{
+							addNode(root.value, root.posX, root.posY, "white", root.root);
+						}
 
 
 					} else {
@@ -262,10 +275,19 @@ function createTrie(root) {
 						root.keys.forEach(key => {
 							key.posY = root.posY + 70;
 							key.posX = root.posX + width;
-							width -= 70;
+							width -= 150 / key.level * 1.5;
 							addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
-							addNode(key.value, key.posX, key.posY, "red", key.root);
-							addNode(root.value, root.posX, root.posY, "white", root.root);
+							if(key.end){
+								addNode(key.value, key.posX, key.posY, "red", key.root);
+							}else{
+								addNode(key.value, key.posX, key.posY, "white", key.root);
+							}
+		
+							if(root.end){
+								addNode(root.value, root.posX, root.posY, "red", root.root);
+							}else{
+								addNode(root.value, root.posX, root.posY, "white", root.root);
+							}
 						})
 						if (root != myTrie.root) {
 							moveArray.push([key.root, key.branch]);
@@ -280,19 +302,40 @@ function createTrie(root) {
 					key.posX = root.posX;
 					key.posY = root.posY + 70;
 					addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
-					addNode(key.value, key.posX, key.posY, "white", key.root);
-					addNode(root.value, root.posX, root.posY, "white", root.root);
+					if(key.end){
+						addNode(key.value, key.posX, key.posY, "red", key.root);
+					}else{
+						addNode(key.value, key.posX, key.posY, "white", key.root);
+					}
+
+					if(root.end){
+						addNode(root.value, root.posX, root.posY, "red", root.root);
+					}else{
+						addNode(root.value, root.posX, root.posY, "white", root.root);
+					}
+					
+					
 
 
 				} else {
 					let width = root.keys.size * 70 / 2 - 34;
 					root.keys.forEach(key => {
 						key.posY = root.posY + 70;
-						key.posX = root.posX + width;
-						width -= 100;
+						key.posX = root.posX + width 
+						width -= 150 / key.level * 1.5;
 						addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
-						addNode(key.value, key.posX, key.posY, "white", key.root);
-						addNode(root.value, root.posX, root.posY, "white", root.root);
+						if(key.end){
+							addNode(key.value, key.posX, key.posY, "red", key.root);
+						}else{
+							addNode(key.value, key.posX, key.posY, "white", key.root);
+						}
+	
+						if(root.end){
+							addNode(root.value, root.posX, root.posY, "red", root.root);
+						}else{
+							addNode(root.value, root.posX, root.posY, "white", root.root);
+						}
+						
 					})
 					if (root != myTrie.root) {
 						moveArray.push([key.root, key.branch]);
@@ -324,6 +367,7 @@ function createTrie(root) {
 	
 	
 	function spaceTrie(rootKeys){
+		let amount = 10
 
 	
 	rootKeys.forEach(key => {
@@ -336,18 +380,18 @@ function createTrie(root) {
 					move.forEach(element => {
 						if (element.tagName == "circle") {
 							let base = Number(element.getAttribute("cx"));
-							let set = base + 25;
+							let set = base + amount;
 							element.setAttribute("cx", set);
 						} else if (element.tagName == "text") {
 							let base = Number(element.getAttribute("x"));
-							let set = base + 25;
+							let set = base + amount;
 							element.setAttribute("x", set);
 						} else if (element.tagName == "line") {
 							let base1 = Number(element.getAttribute("x1"));
 							let base2 = Number(element.getAttribute("x2"));
 							let yValue = Number(element.getAttribute("y1"));
-							let set1 = base1 + 25;
-							let set2 = base2 + 25;
+							let set1 = base1 + amount;
+							let set2 = base2 + amount;
 
 							if(yValue != 70){
 								element.setAttribute("x1", set1);
@@ -368,18 +412,18 @@ function createTrie(root) {
 					move.forEach(element => {
 						if (element.tagName == "circle") {
 							let base = Number(element.getAttribute("cx"));
-							let set = base - 25;
+							let set = base - amount;
 							element.setAttribute("cx", set);
 						} else if (element.tagName == "text") {
 							let base = Number(element.getAttribute("x"));
-							let set = base - 25;
+							let set = base - amount;
 							element.setAttribute("x", set);
 						} else if (element.tagName == "line") {
 							let base1 = Number(element.getAttribute("x1"));
 							let base2 = Number(element.getAttribute("x2"));
 							let yValue = Number(element.getAttribute("y1"));
-							let set1 = base1 - 25;
-							let set2 = base2 - 25;
+							let set1 = base1 - amount;
+							let set2 = base2 - amount;
 							if(yValue != 70){
 								element.setAttribute("x1", set1);
 							}
@@ -400,18 +444,18 @@ function createTrie(root) {
 								move.forEach(element => {
 									if (element.tagName == "circle") {
 										let base = Number(element.getAttribute("cx"));
-										let set = base + 25;
+										let set = base + amount;
 										element.setAttribute("cx", set);
 									} else if (element.tagName == "text") {
 										let base = Number(element.getAttribute("x"));
-										let set = base + 25;
+										let set = base + amount;
 										element.setAttribute("x", set);
 									} else if (element.tagName == "line") {
 										let base1 = Number(element.getAttribute("x1"));
 										let base2 = Number(element.getAttribute("x2"));
 										let yValue = Number(element.getAttribute("y1"));
-										let set1 = base1 + 25;
-										let set2 = base2 + 25;
+										let set1 = base1 + amount;
+										let set2 = base2 + amount;
 										if(yValue != 70){
 											element.setAttribute("x1", set1);
 										}
@@ -426,18 +470,18 @@ function createTrie(root) {
 								move.forEach(element => {
 									if (element.tagName == "circle") {
 										let base = Number(element.getAttribute("cx"));
-										let set = base - 25;
+										let set = base - amount;
 										element.setAttribute("cx", set);
 									} else if (element.tagName == "text") {
 										let base = Number(element.getAttribute("x"));
-										let set = base - 25;
+										let set = base - amount;
 										element.setAttribute("x", set);
 									} else if (element.tagName == "line") {
 										let base1 = Number(element.getAttribute("x1"));
 										let base2 = Number(element.getAttribute("x2"));
 										let yValue = Number(element.getAttribute("y1"));
-										let set1 = base1 - 25;
-										let set2 = base2 - 25;
+										let set1 = base1 - amount;
+										let set2 = base2 - amount;
 										if(yValue != 70){
 											element.setAttribute("x1", set1);
 										}
@@ -460,6 +504,7 @@ function createTrie(root) {
 	
 
 	});
+
 }
 spaceTrie(rootKeys);
 
@@ -492,20 +537,20 @@ spaceTrie(rootKeys);
 					root.keys.forEach(key => {
 						console.log("TEST");
 
-						/*if(root != myTrie.root){
-							if(root.keys.size > 1){
+						if(root != myTrie.root){
+							/*if(root.keys.size > 1){
 								rootKeys = [];
 	
 								root.keys.forEach(key => {
-									rootKeys.push(key.value);
+									//rootKeys.push(key.value);
 							
 								});
 								
-								spaceTrie(rootKeys);
+								
 	
-							}
+							}*/
 
-						}*/
+						}
 
 
 
