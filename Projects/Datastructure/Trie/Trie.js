@@ -289,7 +289,7 @@ function createTrie(root) {
 					root.keys.forEach(key => {
 						key.posY = root.posY + 70;
 						key.posX = root.posX + width;
-						width -= 70;
+						width -= 100;
 						addLine(root.posX, root.posY, key.posX, key.posY, key.root, key.value);
 						addNode(key.value, key.posX, key.posY, "white", key.root);
 						addNode(root.value, root.posX, root.posY, "white", root.root);
@@ -336,18 +336,18 @@ function createTrie(root) {
 					move.forEach(element => {
 						if (element.tagName == "circle") {
 							let base = Number(element.getAttribute("cx"));
-							let set = base + 15;
+							let set = base + 25;
 							element.setAttribute("cx", set);
 						} else if (element.tagName == "text") {
 							let base = Number(element.getAttribute("x"));
-							let set = base + 15;
+							let set = base + 25;
 							element.setAttribute("x", set);
 						} else if (element.tagName == "line") {
 							let base1 = Number(element.getAttribute("x1"));
 							let base2 = Number(element.getAttribute("x2"));
 							let yValue = Number(element.getAttribute("y1"));
-							let set1 = base1 + 15;
-							let set2 = base2 + 15;
+							let set1 = base1 + 25;
+							let set2 = base2 + 25;
 
 							if(yValue != 70){
 								element.setAttribute("x1", set1);
@@ -368,18 +368,18 @@ function createTrie(root) {
 					move.forEach(element => {
 						if (element.tagName == "circle") {
 							let base = Number(element.getAttribute("cx"));
-							let set = base - 15;
+							let set = base - 25;
 							element.setAttribute("cx", set);
 						} else if (element.tagName == "text") {
 							let base = Number(element.getAttribute("x"));
-							let set = base - 15;
+							let set = base - 25;
 							element.setAttribute("x", set);
 						} else if (element.tagName == "line") {
 							let base1 = Number(element.getAttribute("x1"));
 							let base2 = Number(element.getAttribute("x2"));
 							let yValue = Number(element.getAttribute("y1"));
-							let set1 = base1 - 15;
-							let set2 = base2 - 15;
+							let set1 = base1 - 25;
+							let set2 = base2 - 25;
 							if(yValue != 70){
 								element.setAttribute("x1", set1);
 							}
@@ -400,18 +400,18 @@ function createTrie(root) {
 								move.forEach(element => {
 									if (element.tagName == "circle") {
 										let base = Number(element.getAttribute("cx"));
-										let set = base + 15;
+										let set = base + 25;
 										element.setAttribute("cx", set);
 									} else if (element.tagName == "text") {
 										let base = Number(element.getAttribute("x"));
-										let set = base + 15;
+										let set = base + 25;
 										element.setAttribute("x", set);
 									} else if (element.tagName == "line") {
 										let base1 = Number(element.getAttribute("x1"));
 										let base2 = Number(element.getAttribute("x2"));
 										let yValue = Number(element.getAttribute("y1"));
-										let set1 = base1 + 15;
-										let set2 = base2 + 15;
+										let set1 = base1 + 25;
+										let set2 = base2 + 25;
 										if(yValue != 70){
 											element.setAttribute("x1", set1);
 										}
@@ -426,18 +426,18 @@ function createTrie(root) {
 								move.forEach(element => {
 									if (element.tagName == "circle") {
 										let base = Number(element.getAttribute("cx"));
-										let set = base - 15;
+										let set = base - 25;
 										element.setAttribute("cx", set);
 									} else if (element.tagName == "text") {
 										let base = Number(element.getAttribute("x"));
-										let set = base - 15;
+										let set = base - 25;
 										element.setAttribute("x", set);
 									} else if (element.tagName == "line") {
 										let base1 = Number(element.getAttribute("x1"));
 										let base2 = Number(element.getAttribute("x2"));
 										let yValue = Number(element.getAttribute("y1"));
-										let set1 = base1 - 15;
-										let set2 = base2 - 15;
+										let set1 = base1 - 25;
+										let set2 = base2 - 25;
 										if(yValue != 70){
 											element.setAttribute("x1", set1);
 										}
