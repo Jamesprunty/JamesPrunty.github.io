@@ -15,9 +15,6 @@ let Node = function (value, root = "root", previousNode, branch, level = 0, posX
 	this.posX = posX; //Stores the position x of the node to use later
 	this.posY = posY;
 	this.level = level;//Stores what level the node is on
-	/*this.colour = colour;
-	this.previousX = previousX;
-	this.previousY = previousY;*/
 	this.value = value;
 	this.previousNode = previousNode;
 	this.root = root;
@@ -119,14 +116,11 @@ myTrie.add("test");
 myTrie.add("rest");
 myTrie.add("ta");
 myTrie.add("ra");
-myTrie.add("ar");
-//myTrie.add("table");
-myTrie.add("agree");
 myTrie.add("turn");
 myTrie.add("rank");
-myTrie.add("resk");
+myTrie.add("risk");
 myTrie.add("pest");
-myTrie.add("anger");
+
 
 
 
