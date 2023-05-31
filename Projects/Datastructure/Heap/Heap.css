@@ -17,12 +17,18 @@ input{
     flex:1;
 }
 
+.chkbx{
+    padding:10px;
+    margin: 5px;
+}
+
 #controlContainer{
     display: flex;
     flex: 1;
     border:white 1px solid;
     flex-wrap: wrap;
     flex-direction: column;
+    
     
 }
 
@@ -31,7 +37,7 @@ input{
     flex: 1;
 }
 
-#tree{
+#heap{
     display: flex;
     flex: 1;
     min-height: 500px;
