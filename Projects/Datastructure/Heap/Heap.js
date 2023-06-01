@@ -27,7 +27,7 @@ let arrayDiv = document.querySelector("#arrayDiv");
 let MinHeap = function() {
 	
 	let heap = [null];
-	addNode("Root", svgSize.width / 2, 70, "white", "root")
+	addNode("Root", svgSize.width / 2, 70, "white", 0)
 	
 	this.print = () => heap;
 
@@ -103,7 +103,7 @@ let MinHeap = function() {
 		arrayDiv.innerHTML = "";
 		let dataFinish = "";
 
-		addNode("Root", svgSize.width / 2, 70, "white", "root")
+		addNode("Root", svgSize.width / 2, 70, "white", 0)
 
 
 		data = `<div class="heapItem">
@@ -129,6 +129,15 @@ let MinHeap = function() {
 		}
 			
 		arrayDiv.innerHTML = dataFinish;
+
+		let posArray = [];
+
+		
+		if (heap.length > 2) {
+
+
+
+		}
 
 	}
 
@@ -217,7 +226,7 @@ console.log(myMinHeap.print());
 
 
 
-function addNode(value, x, y, colour, root) {
+function addNode(value, x, y, colour, ID) {
 
 
 	let svg = document.querySelector("#heapSVG");
@@ -231,7 +240,7 @@ function addNode(value, x, y, colour, root) {
 	newCircle.setAttribute("r", "20");
 	newCircle.setAttribute("stroke", colour);
 	newCircle.setAttribute("id", value);
-	newCircle.setAttribute("class", root);
+	newCircle.setAttribute("class", ID);
 
 
 	svg.appendChild(newCircle);
@@ -242,7 +251,7 @@ function addNode(value, x, y, colour, root) {
 	newText.setAttributeNS(null, "stroke", "white");
 	newText.setAttributeNS(null, "text-anchor", "middle");
 	newText.setAttributeNS(null, "id", value);
-	newText.setAttributeNS(null, "class", root);
+	newText.setAttributeNS(null, "class", ID);
 	var textNode = document.createTextNode(value);
 	newText.appendChild(textNode);
 
@@ -250,7 +259,7 @@ function addNode(value, x, y, colour, root) {
 
 }
 
-function addLine(fromX, fromY, toX, toY, root, value) {
+function addLine(fromX, fromY, toX, toY, ID, value) {
 
 	let svg = document.querySelector("#trieSVG");
 
@@ -263,7 +272,7 @@ function addLine(fromX, fromY, toX, toY, root, value) {
 	newLine.setAttribute("stroke-width", 1);
 	newLine.setAttribute("stroke", "white");
 	newLine.setAttribute("z-index", "-1");
-	newLine.setAttribute("class", root);
+	newLine.setAttribute("class", ID);
 	newLine.setAttribute("id", value);
 
 	svg.appendChild(newLine);
