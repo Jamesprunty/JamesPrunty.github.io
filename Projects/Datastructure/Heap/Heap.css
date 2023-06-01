@@ -41,7 +41,7 @@ input{
     display: flex;
     flex: 1;
     min-height: 500px;
-    flex-direction: row;
+    flex-direction: column;
 
 
 }
@@ -54,6 +54,16 @@ input{
 
     border: white solid 1px;
     
+}
+
+#arrayDiv{
+    display: flex;
+}
+
+.heapItem{
+    flex: 1;
+    border: 1px white solid;
+    text-align: center;
 }
 
 .stackItem{

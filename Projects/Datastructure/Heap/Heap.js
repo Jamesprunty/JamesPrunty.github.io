@@ -20,6 +20,7 @@ minChk.checked = true;
 
 let svg = document.querySelector("#heapSVG");
 let svgSize = svg.getBoundingClientRect();
+let arrayDiv = document.querySelector("#arrayDiv");
 
 
 
@@ -28,21 +29,24 @@ let MinHeap = function() {
 	let heap = [null];
 	addNode("Root", svgSize.width / 2, 70, "white", "root")
 	
+	this.print = () => heap;
+
 	this.insert = function(num) {
-		heap.push(num);
-		if (heap.length > 2) {
-			let idx = heap.length - 1;
-			while (heap[idx] < heap[Math.floor(idx/2)]) {
-				if (idx >= 1) {
-					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], heap[Math.floor(idx/2)]];
-					if (Math.floor(idx/2) > 1) {
-						idx = Math.floor(idx/2);
+		heap.push(num); //Push onto heap
+		if (heap.length > 2) { //Otherwise there would only be 1 value and so don't need to sort
+			let idx = heap.length - 1;//Set idx to be the end of the heap, starts at the end and works back
+			while (heap[idx] < heap[Math.floor(idx/2)]) {//While the value at the end (we just added) is less than the value at half the index which is its parent. Ie, while the value is less than its parent. 
+				if (idx >= 1) {//As long as the index is not 0 (Whic is the root)
+					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], heap[Math.floor(idx/2)]]; //Swap the parent and child round.
+					if (Math.floor(idx/2) > 1) {//If you haven't reached the end
+						idx = Math.floor(idx/2); // Keep going up one level
 					} else {
 						break;
 					};
 				};
 			};
 		};
+		this.update();
 	};
 	
 	this.remove = function() {
@@ -88,6 +92,45 @@ let MinHeap = function() {
 		};
 		return result;
 	};
+
+	this.update = function(){
+
+		let svg = document.querySelector("#heapSVG");
+
+		const svgns = "http://www.w3.org/2000/svg";
+
+		svg.innerHTML = "";
+		arrayDiv.innerHTML = "";
+		let dataFinish = "";
+
+		addNode("Root", svgSize.width / 2, 70, "white", "root")
+
+
+		data = `<div class="heapItem">
+			<div class="index heapItem"><p>ID</p></div>
+			<div class="element listData"><p>Data</p></div>
+			</div>`;
+
+			dataFinish += data;
+		
+
+		for (let i = 0; i < heap.length; i++){
+
+			
+
+			data = `<div class="heapItem">
+			<div class="index heapItem"><p>${i}</p></div>
+			<div class="element listData"><p>${heap[i]}</p></div>
+			</div>`;
+
+			dataFinish += data;
+
+
+		}
+			
+		arrayDiv.innerHTML = dataFinish;
+
+	}
 
 };
 
@@ -154,6 +197,22 @@ let MaxHeap = function() {
 
 
 let myMinHeap = new MinHeap();
+myMinHeap.insert(30);
+console.log(myMinHeap.print());
+myMinHeap.insert(26);
+console.log(myMinHeap.print());
+myMinHeap.insert(78);
+console.log(myMinHeap.print());
+myMinHeap.insert(2);
+console.log(myMinHeap.print());
+myMinHeap.insert(10);
+console.log(myMinHeap.print());
+myMinHeap.insert(79);
+console.log(myMinHeap.print());
+myMinHeap.insert(50);
+console.log(myMinHeap.print());
+myMinHeap.insert(7);
+console.log(myMinHeap.print());
 
 
 
