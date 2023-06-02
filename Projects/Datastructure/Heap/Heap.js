@@ -145,8 +145,6 @@ let MinHeap = function() {
 
 	this.update = function(){
 
-		console.log("test");
-
 		let svg = document.querySelector("#heapSVG");
 
 		const svgns = "http://www.w3.org/2000/svg";
@@ -181,7 +179,58 @@ let MinHeap = function() {
 		}
 
 		arrayDiv.innerHTML = dataFinish;
+
+		let heapPos = [];
+
+		for (let i = 0; i < heap.length; i++) {
+			if(i == 0){
+				heapPos.push([null,svgSize.width / 2,70]);
+				console.log(heapPos);
+			}else if(i == 1){
+				heapPos.push([heap[i], heapPos[0][1]-70, heapPos[0][2]-70]);
+				addNode(heap[i],heapPos[0][1], heapPos[0][2]+70,"white",heap[i]);
+			}else{
+
+				if(heap[i*2] != null){
+
+
+
+					//console.log(heap[i])
+					//console.log("left: " + heap[i*2])
+	
+				}
+	
+				if(heap[i*2+1] != null){
+					//console.log(heap[i])
+					//console.log("right: " + heap[i*2+1])
+	
+				}
+
+			}
 			
+		}
+			
+
+		for (let i = 0; i < heap.length; i++) {
+
+			
+			
+			if(heap[i*2] != null){
+
+
+
+				//console.log(heap[i])
+				//console.log("left: " + heap[i*2])
+
+			}
+
+			if(heap[i*2+1] != null){
+				//console.log(heap[i])
+				//console.log("right: " + heap[i*2+1])
+
+			}
+			
+		}
 	
 	}
 
@@ -271,8 +320,6 @@ let MaxHeap = function() {
 
 	this.update = function(){
 
-		console.log("test");
-
 		let svg = document.querySelector("#heapSVG");
 
 		const svgns = "http://www.w3.org/2000/svg";
@@ -307,6 +354,40 @@ let MaxHeap = function() {
 		}
 			
 		arrayDiv.innerHTML = dataFinish;
+
+
+		for (let i = 0; i < heap.length; i++) {
+			
+			if(heap[i*2] != null){
+
+				console.log(heap[i])
+				console.log("left: " + heap[i*2])
+
+			}
+
+			if(heap[i*2+1] != null){
+				console.log(heap[i])
+				console.log("right: " + heap[i*2+1])
+
+			}
+			
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 
 };
