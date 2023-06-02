@@ -179,15 +179,17 @@ let MinHeap = function() {
 		}
 
 		arrayDiv.innerHTML = dataFinish;
+		xDiffL = 70;
+		xDiffR = 70;
 
 		let heapPos = [];
 
 		for (let i = 0; i < heap.length; i++) {
 			if(i == 0){
-				heapPos.push([null,svgSize.width / 2, 70]);
+				heapPos.push([null,svgSize.width / 2, 70, 0]);
 				console.log(heapPos);
 
-				heapPos.push([heap[i+1], heapPos[0][1], heapPos[0][2]+70]);
+				heapPos.push([heap[i+1], heapPos[0][1], heapPos[0][2]+70, 1]);
 				addNode(heap[i+1],heapPos[0][1], heapPos[0][2]+70,"white",heap[i+1]);
 
 
@@ -201,8 +203,10 @@ let MinHeap = function() {
 
 					console.log(heap[i*2]);
 
-					heapPos.push([heap[i*2], heapPos[i][1]-70, heapPos[i][2]+70]);
+					heapPos.push([heap[i*2], heapPos[i][1] - xDiffL, heapPos[i][2]+70,heapPos[i][3]+1]);
 					addNode(heap[i*2], heapPos[i][1]-70, heapPos[i][2]+70,"white",heap[i*2]);
+
+					xDiffL = xDiffL * heapPos[i][3];
 
 
 					//console.log(heap[i])
@@ -212,8 +216,10 @@ let MinHeap = function() {
 	
 				if(heap[i*2+1] != null || heap[i*2+1] != undefined){
 
-					heapPos.push([heap[(i*2)+1], heapPos[i][1]+70, heapPos[i][2]+70]);
+					heapPos.push([heap[(i*2)+1], heapPos[i][1] + xDiffR, heapPos[i][2]+70,heapPos[i][3]+1]);
 					addNode(heap[(i*2)+1], heapPos[i][1]+70, heapPos[i][2]+70,"white",heap[i*2+1]);
+
+					xDiffR = xDiffR * heapPos[i*2][3] * 70;
 
 					//console.log(heap[i])
 					//console.log("right: " + heap[i*2+1])
