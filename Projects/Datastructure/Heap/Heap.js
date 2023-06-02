@@ -8,12 +8,48 @@ let minChk = document.querySelector("#minCheck");
 let maxChk = document.querySelector("#maxCheck");
 
 minChk.addEventListener('click', function(){
-	console.log("minCheck");
-	maxChk.checked = false;
+	
+	if(maxChk.checked){
+		maxChk.checked = false;
+
+		myMinHeap.wipe();
+		myMinHeap.insert(null);
+
+		myMaxHeap.export().forEach(element => {
+
+			if(element != null){
+				myMinHeap.insert(element);
+			}
+			
+			
+		});
+
+	}else{
+		minChk.checked = true;
+	}
+
+	myMinHeap.update();
+	
 });
 maxChk.addEventListener('click', function(){
-	console.log("maxCheck");
-	minChk.checked = false;
+
+	myMaxHeap.wipe();
+	myMaxHeap.insert(null);
+
+	myMinHeap.export().forEach(element => {
+
+		if(element != null){
+		myMaxHeap.insert(element);
+		}
+	});
+
+	if(minChk.checked){
+		minChk.checked = false;
+	}else{
+		maxChk.checked = true;
+	}
+
+	myMaxHeap.update();
 });
 
 minChk.checked = true;
@@ -30,6 +66,20 @@ let MinHeap = function() {
 	addNode("Root", svgSize.width / 2, 70, "white", 0)
 	
 	this.print = () => heap;
+
+	this.export = function(){
+		let exportArray = [];
+		heap.forEach(element => {
+			if(element != null){
+				exportArray.push(element);
+			}
+		});
+		return exportArray;
+	}
+
+	this.wipe = function(){
+		heap = [];
+	}
 
 	this.insert = function(num) {
 		heap.push(num); //Push onto heap
@@ -95,6 +145,8 @@ let MinHeap = function() {
 
 	this.update = function(){
 
+		console.log("test");
+
 		let svg = document.querySelector("#heapSVG");
 
 		const svgns = "http://www.w3.org/2000/svg";
@@ -127,18 +179,10 @@ let MinHeap = function() {
 
 
 		}
-			
+
 		arrayDiv.innerHTML = dataFinish;
-
-		let posArray = [];
-
-		
-		if (heap.length > 2) {
-
-
-
-		}
-
+			
+	
 	}
 
 };
@@ -148,6 +192,20 @@ let MaxHeap = function() {
 	let heap = [null];
 	
 	this.print = () => heap;
+
+	this.export = function(){
+		let exportArray = [];
+		heap.forEach(element => {
+			if(element != null){
+				exportArray.push(element)
+			}
+		});
+		return exportArray;
+	}
+
+	this.wipe = function(){
+		heap = [];
+	}
 
 	this.insert = function(num) {
 		heap.push(num);
@@ -164,6 +222,7 @@ let MaxHeap = function() {
 				};
 			};
 		};
+		this.update();
 	};
 	
 	this.remove = function() {
@@ -202,6 +261,54 @@ let MaxHeap = function() {
 		return smallest;
 	};
 
+	this.sort = function() {
+		let result = new Array();
+		while (heap.length > 1) {
+			result.push(this.remove());
+		};
+		return result;
+	};
+
+	this.update = function(){
+
+		console.log("test");
+
+		let svg = document.querySelector("#heapSVG");
+
+		const svgns = "http://www.w3.org/2000/svg";
+
+		svg.innerHTML = "";
+		arrayDiv.innerHTML = "";
+		let dataFinish = "";
+
+		addNode("Root", svgSize.width / 2, 70, "white", 0)
+
+
+		data = `<div class="heapItem">
+			<div class="index heapItem"><p>ID</p></div>
+			<div class="element listData"><p>Data</p></div>
+			</div>`;
+
+			dataFinish += data;
+		
+
+		for (let i = 0; i < heap.length; i++){
+
+			
+
+			data = `<div class="heapItem">
+			<div class="index heapItem"><p>${i}</p></div>
+			<div class="element listData"><p>${heap[i]}</p></div>
+			</div>`;
+
+			dataFinish += data;
+
+
+		}
+			
+		arrayDiv.innerHTML = dataFinish;
+	}
+
 };
 
 
@@ -222,6 +329,9 @@ myMinHeap.insert(50);
 console.log(myMinHeap.print());
 myMinHeap.insert(7);
 console.log(myMinHeap.print());
+
+
+let myMaxHeap = new MaxHeap();
 
 
 
