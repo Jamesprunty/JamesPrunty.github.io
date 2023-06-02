@@ -184,15 +184,25 @@ let MinHeap = function() {
 
 		for (let i = 0; i < heap.length; i++) {
 			if(i == 0){
-				heapPos.push([null,svgSize.width / 2,70]);
+				heapPos.push([null,svgSize.width / 2, 70]);
 				console.log(heapPos);
-			}else if(i == 1){
-				heapPos.push([heap[i], heapPos[0][1]-70, heapPos[0][2]-70]);
-				addNode(heap[i],heapPos[0][1], heapPos[0][2]+70,"white",heap[i]);
+
+				heapPos.push([heap[i+1], heapPos[0][1], heapPos[0][2]+70]);
+				addNode(heap[i+1],heapPos[0][1], heapPos[0][2]+70,"white",heap[i+1]);
+
+
+
+
+				
+
 			}else{
 
-				if(heap[i*2] != null){
+				if(heap[i*2] != null || heap[i*2] != undefined){
 
+					console.log(heap[i*2]);
+
+					heapPos.push([heap[i*2], heapPos[i][1]-70, heapPos[i][2]+70]);
+					addNode(heap[i*2], heapPos[i][1]-70, heapPos[i][2]+70,"white",heap[i*2]);
 
 
 					//console.log(heap[i])
@@ -200,7 +210,11 @@ let MinHeap = function() {
 	
 				}
 	
-				if(heap[i*2+1] != null){
+				if(heap[i*2+1] != null || heap[i*2+1] != undefined){
+
+					heapPos.push([heap[(i*2)+1], heapPos[i][1]+70, heapPos[i][2]+70]);
+					addNode(heap[(i*2)+1], heapPos[i][1]+70, heapPos[i][2]+70,"white",heap[i*2+1]);
+
 					//console.log(heap[i])
 					//console.log("right: " + heap[i*2+1])
 	
@@ -211,26 +225,6 @@ let MinHeap = function() {
 		}
 			
 
-		for (let i = 0; i < heap.length; i++) {
-
-			
-			
-			if(heap[i*2] != null){
-
-
-
-				//console.log(heap[i])
-				//console.log("left: " + heap[i*2])
-
-			}
-
-			if(heap[i*2+1] != null){
-				//console.log(heap[i])
-				//console.log("right: " + heap[i*2+1])
-
-			}
-			
-		}
 	
 	}
 
@@ -372,18 +366,6 @@ let MaxHeap = function() {
 			}
 			
 		}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
