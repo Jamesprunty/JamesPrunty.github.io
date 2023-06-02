@@ -6,10 +6,12 @@
 
 let minChk = document.querySelector("#minCheck");
 let maxChk = document.querySelector("#maxCheck");
+let value = document.querySelector("#elem");
+let output = document.querySelector("#outputText");
 
-minChk.addEventListener('click', function(){
-	
-	if(maxChk.checked){
+minChk.addEventListener('click', function () {
+
+	if (maxChk.checked) {
 		maxChk.checked = false;
 
 		myMinHeap.wipe();
@@ -17,35 +19,35 @@ minChk.addEventListener('click', function(){
 
 		myMaxHeap.export().forEach(element => {
 
-			if(element != null){
+			if (element != null) {
 				myMinHeap.insert(element);
 			}
-			
-			
+
+
 		});
 
-	}else{
+	} else {
 		minChk.checked = true;
 	}
 
 	myMinHeap.update();
-	
+
 });
-maxChk.addEventListener('click', function(){
+maxChk.addEventListener('click', function () {
 
 	myMaxHeap.wipe();
 	myMaxHeap.insert(null);
 
 	myMinHeap.export().forEach(element => {
 
-		if(element != null){
-		myMaxHeap.insert(element);
+		if (element != null) {
+			myMaxHeap.insert(element);
 		}
 	});
 
-	if(minChk.checked){
+	if (minChk.checked) {
 		minChk.checked = false;
-	}else{
+	} else {
 		maxChk.checked = true;
 	}
 
@@ -60,36 +62,36 @@ let arrayDiv = document.querySelector("#arrayDiv");
 
 
 
-let MinHeap = function() {
-	
+let MinHeap = function () {
+
 	let heap = [null];
 	addNode("Root", svgSize.width / 2, 70, "white", 0)
-	
+
 	this.print = () => heap;
 
-	this.export = function(){
+	this.export = function () {
 		let exportArray = [];
 		heap.forEach(element => {
-			if(element != null){
+			if (element != null) {
 				exportArray.push(element);
 			}
 		});
 		return exportArray;
 	}
 
-	this.wipe = function(){
+	this.wipe = function () {
 		heap = [];
 	}
 
-	this.insert = function(num) {
+	this.insert = function (num) {
 		heap.push(num); //Push onto heap
 		if (heap.length > 2) { //Otherwise there would only be 1 value and so don't need to sort
 			let idx = heap.length - 1;//Set idx to be the end of the heap, starts at the end and works back
-			while (heap[idx] < heap[Math.floor(idx/2)]) {//While the value at the end (we just added) is less than the value at half the index which is its parent. Ie, while the value is less than its parent. 
+			while (heap[idx] < heap[Math.floor(idx / 2)]) {//While the value at the end (we just added) is less than the value at half the index which is its parent. Ie, while the value is less than its parent. 
 				if (idx >= 1) {//As long as the index is not 0 (Whic is the root)
-					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], heap[Math.floor(idx/2)]]; //Swap the parent and child round.
-					if (Math.floor(idx/2) > 1) {//If you haven't reached the end
-						idx = Math.floor(idx/2); // Keep going up one level
+					[heap[Math.floor(idx / 2)], heap[idx]] = [heap[idx], heap[Math.floor(idx / 2)]]; //Swap the parent and child round.
+					if (Math.floor(idx / 2) > 1) {//If you haven't reached the end
+						idx = Math.floor(idx / 2); // Keep going up one level
 					} else {
 						break;
 					};
@@ -98,8 +100,8 @@ let MinHeap = function() {
 		};
 		this.update();
 	};
-	
-	this.remove = function() {
+
+	this.remove = function () {
 		let smallest = heap[1];
 		if (heap.length > 2) {
 			heap[1] = heap[heap.length - 1];
@@ -132,18 +134,20 @@ let MinHeap = function() {
 		} else {
 			return null;
 		};
+		this.update();
 		return smallest;
 	};
-  
-	this.sort = function() {
+
+	this.sort = function () {
 		let result = new Array();
 		while (heap.length > 1) {
 			result.push(this.remove());
 		};
+		this.update();
 		return result;
 	};
 
-	this.update = function(){
+	this.update = function () {
 
 		let svg = document.querySelector("#heapSVG");
 
@@ -161,12 +165,12 @@ let MinHeap = function() {
 			<div class="element listData"><p>Data</p></div>
 			</div>`;
 
-			dataFinish += data;
-		
+		dataFinish += data;
 
-		for (let i = 0; i < heap.length; i++){
 
-			
+		for (let i = 0; i < heap.length; i++) {
+
+
 
 			data = `<div class="heapItem">
 			<div class="index heapItem"><p>${i}</p></div>
@@ -179,92 +183,101 @@ let MinHeap = function() {
 		}
 
 		arrayDiv.innerHTML = dataFinish;
-		xDiffL = 70;
-		xDiffR = 70;
+		xDiff = 200;
 
 		let heapPos = [];
 
 		for (let i = 0; i < heap.length; i++) {
-			if(i == 0){
-				heapPos.push([null,svgSize.width / 2, 70, 0]);
-				console.log(heapPos);
-
-				heapPos.push([heap[i+1], heapPos[0][1], heapPos[0][2]+70, 1]);
-				addNode(heap[i+1],heapPos[0][1], heapPos[0][2]+70,"white",heap[i+1]);
+			if (i == 0) {
+				heapPos.push([null, svgSize.width / 2, 70, 0]);
 
 
-
-
-				
-
-			}else{
-
-				if(heap[i*2] != null || heap[i*2] != undefined){
-
-					console.log(heap[i*2]);
-
-					heapPos.push([heap[i*2], heapPos[i][1] - xDiffL, heapPos[i][2]+70,heapPos[i][3]+1]);
-					addNode(heap[i*2], heapPos[i][1]-70, heapPos[i][2]+70,"white",heap[i*2]);
-
-					xDiffL = xDiffL * heapPos[i][3];
-
-
-					//console.log(heap[i])
-					//console.log("left: " + heap[i*2])
+				if(heap[1]){
+					heapPos.push([heap[i + 1], heapPos[i][1], heapPos[i][2] + 70, 1]);
+					console.log(heapPos[i][1], heapPos[i][2], heapPos[i + 1][1], heapPos[i + 1][2], heapPos[i + 1][0], heapPos[i + 1][0])
 	
+					addLine(heapPos[i][1], heapPos[i][2], heapPos[i + 1][1], heapPos[i + 1][2], heapPos[i + 1][0], heapPos[i + 1][0])
+					addNode(heap[i + 1], heapPos[i][1], heapPos[i][2] + 70, "white", heap[i + 1]);
+					addNode("Root", svgSize.width / 2, 70, "white", 0)
+
 				}
-	
-				if(heap[i*2+1] != null || heap[i*2+1] != undefined){
 
-					heapPos.push([heap[(i*2)+1], heapPos[i][1] + xDiffR, heapPos[i][2]+70,heapPos[i][3]+1]);
-					addNode(heap[(i*2)+1], heapPos[i][1]+70, heapPos[i][2]+70,"white",heap[i*2+1]);
 
-					xDiffR = xDiffR * heapPos[i*2][3] * 70;
 
-					//console.log(heap[i])
-					//console.log("right: " + heap[i*2+1])
-	
+
+
+
+
+			} else {
+
+				if (heap[i * 2] != null || heap[i * 2] != undefined) {
+
+
+					let diff = xDiff / heapPos[i][3];
+
+
+					heapPos.push([heap[i * 2], heapPos[i][1] - diff, heapPos[i][2] + 70, heapPos[i][3] + 1]);
+					addLine(heapPos[i][1], heapPos[i][2], heapPos[i * 2][1], heapPos[i * 2][2], heapPos[i * 2][0], heapPos[i * 2][0]);
+					addNode(heap[i * 2], heapPos[i][1] - diff, heapPos[i][2] + 70, "white", heap[i * 2]);
+					addNode(heap[i], heapPos[i][1], heapPos[i][2], "white", heap[i]);
+
+
+				}
+
+				if (heap[i * 2 + 1] != null || heap[i * 2 + 1] != undefined) {
+
+
+					let diff = xDiff / heapPos[i][3];
+
+
+
+					heapPos.push([heap[(i * 2) + 1], heapPos[i][1] + diff, heapPos[i][2] + 70, heapPos[i][3] + 1]);
+					addLine(heapPos[i][1], heapPos[i][2], heapPos[i * 2 + 1][1], heapPos[i * 2 + 1][2], heapPos[i * 2 + 1][0], heapPos[i * 2 + 1][0])
+					addNode(heap[(i * 2) + 1], heapPos[i][1] + diff, heapPos[i][2] + 70, "white", heap[i * 2 + 1]);
+					addNode(heap[i], heapPos[i][1], heapPos[i][2], "white", heap[i]);
+
+
 				}
 
 			}
-			
-		}
-			
 
-	
+		}
+
+
+
 	}
 
 };
 
-let MaxHeap = function() {
-	
+let MaxHeap = function () {
+
 	let heap = [null];
-	
+
 	this.print = () => heap;
 
-	this.export = function(){
+	this.export = function () {
 		let exportArray = [];
 		heap.forEach(element => {
-			if(element != null){
+			if (element != null) {
 				exportArray.push(element)
 			}
 		});
 		return exportArray;
 	}
 
-	this.wipe = function(){
+	this.wipe = function () {
 		heap = [];
 	}
 
-	this.insert = function(num) {
+	this.insert = function (num) {
 		heap.push(num);
 		if (heap.length > 2) {
 			let idx = heap.length - 1;
-			while (heap[idx] > heap[Math.floor(idx/2)]) {
+			while (heap[idx] > heap[Math.floor(idx / 2)]) {
 				if (idx >= 1) {
-					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], heap[Math.floor(idx/2)]];
-					if (Math.floor(idx/2) > 1) {
-						idx = Math.floor(idx/2);
+					[heap[Math.floor(idx / 2)], heap[idx]] = [heap[idx], heap[Math.floor(idx / 2)]];
+					if (Math.floor(idx / 2) > 1) {
+						idx = Math.floor(idx / 2);
 					} else {
 						break;
 					};
@@ -273,8 +286,8 @@ let MaxHeap = function() {
 		};
 		this.update();
 	};
-	
-	this.remove = function() {
+
+	this.remove = function () {
 		let smallest = heap[1];
 		if (heap.length > 2) {
 			heap[1] = heap[heap.length - 1];
@@ -307,18 +320,20 @@ let MaxHeap = function() {
 		} else {
 			return null;
 		};
+		this.update();
 		return smallest;
 	};
 
-	this.sort = function() {
+	this.sort = function () {
 		let result = new Array();
 		while (heap.length > 1) {
 			result.push(this.remove());
 		};
+		this.update();
 		return result;
 	};
 
-	this.update = function(){
+	this.update = function () {
 
 		let svg = document.querySelector("#heapSVG");
 
@@ -336,12 +351,12 @@ let MaxHeap = function() {
 			<div class="element listData"><p>Data</p></div>
 			</div>`;
 
-			dataFinish += data;
-		
+		dataFinish += data;
 
-		for (let i = 0; i < heap.length; i++){
 
-			
+		for (let i = 0; i < heap.length; i++) {
+
+
 
 			data = `<div class="heapItem">
 			<div class="index heapItem"><p>${i}</p></div>
@@ -352,26 +367,68 @@ let MaxHeap = function() {
 
 
 		}
-			
-		arrayDiv.innerHTML = dataFinish;
 
+		arrayDiv.innerHTML = dataFinish;
+		xDiff = 200;
+
+		let heapPos = [];
 
 		for (let i = 0; i < heap.length; i++) {
-			
-			if(heap[i*2] != null){
+			if (i == 0) {
+				heapPos.push([null, svgSize.width / 2, 70, 0]);
 
-				console.log(heap[i])
-				console.log("left: " + heap[i*2])
+
+
+			
+				if(heap[1]){
+					heapPos.push([heap[i + 1], heapPos[i][1], heapPos[i][2] + 70, 1]);
+					console.log(heapPos[i][1], heapPos[i][2], heapPos[i + 1][1], heapPos[i + 1][2], heapPos[i + 1][0], heapPos[i + 1][0])
+	
+					addLine(heapPos[i][1], heapPos[i][2], heapPos[i + 1][1], heapPos[i + 1][2], heapPos[i + 1][0], heapPos[i + 1][0])
+					addNode(heap[i + 1], heapPos[i][1], heapPos[i][2] + 70, "white", heap[i + 1]);
+					addNode("Root", svgSize.width / 2, 70, "white", 0)
+
+				}
+
+
+
+
+
+			} else {
+
+				if (heap[i * 2] != null || heap[i * 2] != undefined) {
+
+
+					let diff = xDiff / heapPos[i][3];
+
+
+					heapPos.push([heap[i * 2], heapPos[i][1] - diff, heapPos[i][2] + 70, heapPos[i][3] + 1]);
+					addLine(heapPos[i][1], heapPos[i][2], heapPos[i * 2][1], heapPos[i * 2][2], heapPos[i * 2][0], heapPos[i * 2][0]);
+					addNode(heap[i * 2], heapPos[i][1] - diff, heapPos[i][2] + 70, "white", heap[i * 2]);
+					addNode(heap[i], heapPos[i][1], heapPos[i][2], "white", heap[i]);
+
+
+				}
+
+				if (heap[i * 2 + 1] != null || heap[i * 2 + 1] != undefined) {
+
+
+					let diff = xDiff / heapPos[i][3];
+
+
+
+					heapPos.push([heap[(i * 2) + 1], heapPos[i][1] + diff, heapPos[i][2] + 70, heapPos[i][3] + 1]);
+					addLine(heapPos[i][1], heapPos[i][2], heapPos[i * 2 + 1][1], heapPos[i * 2 + 1][2], heapPos[i * 2 + 1][0], heapPos[i * 2 + 1][0])
+					addNode(heap[(i * 2) + 1], heapPos[i][1] + diff, heapPos[i][2] + 70, "white", heap[i * 2 + 1]);
+					addNode(heap[i], heapPos[i][1], heapPos[i][2], "white", heap[i]);
+
+
+				}
 
 			}
-
-			if(heap[i*2+1] != null){
-				console.log(heap[i])
-				console.log("right: " + heap[i*2+1])
-
-			}
-			
 		}
+
+
 
 
 
@@ -383,20 +440,20 @@ let MaxHeap = function() {
 
 let myMinHeap = new MinHeap();
 myMinHeap.insert(30);
-console.log(myMinHeap.print());
 myMinHeap.insert(26);
-console.log(myMinHeap.print());
 myMinHeap.insert(78);
-console.log(myMinHeap.print());
 myMinHeap.insert(2);
-console.log(myMinHeap.print());
 myMinHeap.insert(10);
-console.log(myMinHeap.print());
 myMinHeap.insert(79);
-console.log(myMinHeap.print());
 myMinHeap.insert(50);
-console.log(myMinHeap.print());
 myMinHeap.insert(7);
+myMinHeap.insert(56);
+myMinHeap.insert(90);
+myMinHeap.insert(16);
+myMinHeap.insert(83);
+myMinHeap.insert(46);
+myMinHeap.insert(1);
+myMinHeap.insert(80);
 console.log(myMinHeap.print());
 
 
@@ -440,7 +497,7 @@ function addNode(value, x, y, colour, ID) {
 
 function addLine(fromX, fromY, toX, toY, ID, value) {
 
-	let svg = document.querySelector("#trieSVG");
+	let svg = document.querySelector("#heapSVG");
 
 	const svgns = "http://www.w3.org/2000/svg";
 	let newLine = document.createElementNS(svgns, "line");
@@ -457,6 +514,69 @@ function addLine(fromX, fromY, toX, toY, ID, value) {
 	svg.appendChild(newLine);
 
 }
+
+let buttons = document.querySelectorAll(".btn");
+buttons.forEach(element => {
+	element.addEventListener("click", function () {
+		switch (this.id) {
+
+			case "insert":
+
+
+				if(value.value == ""){
+					output.innerText = "Please enter a value";
+				}else{
+					if(minChk.checked){
+						myMinHeap.insert(value.value);
+						value.value = "";
+					}else{
+						myMaxHeap.insert(value.value);
+						value.value = "";
+					}
+				}
+				break;
+
+			case "remove":
+
+
+			if(minChk.checked){
+				myMinHeap.remove();
+			}else{
+				myMaxHeap.remove();
+			}
+				break;
+
+			case "sort":
+
+
+				console.log("sort");
+
+				if(minChk.checked){
+					output.innerText = myMinHeap.sort();
+				}else{
+					output.innerText = myMaxHeap.sort();
+				}
+
+
+				break;
+
+			case "print":
+
+			if(minChk.checked){
+
+				output.innerText = myMinHeap.print();
+			}else{
+				output.innerText = myMaxHeap.print();
+			}
+
+
+				break;
+
+
+
+		}
+	})
+});
 
 
 
