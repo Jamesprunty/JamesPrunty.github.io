@@ -1,5 +1,7 @@
 /* Graphs: Breadth-first search */
 
+let graphSize = 6;
+
 function bfs(graph, root) {
     var nodesLen = {};//This is where the key value pairs will be stored
     
@@ -34,14 +36,82 @@ function bfs(graph, root) {
   };
   
   var exBFSGraph = [
-    [0, 1, 1, 1, 0],
-    [0, 0, 1, 0, 0],
-    [1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 0],
-    [0, 1, 0, 0, 0]
+    [0, 1, 1, 1, 0, 1],
+    [0, 0, 1, 0, 0, 1],
+    [1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 1],
+    [0, 1, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 1]
   ];
-  console.log(bfs(exBFSGraph, 1));
-  console.log(bfs(exBFSGraph, 4));
+
+
+let inputSize = document.querySelector("#size");
+let inputIndex = document.querySelector("#index");
+let buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(element => {
+  element.addEventListener("click", function(){ 
+    switch(this.id){
+
+      case "random":
+      if(inputSize.value <= 0){
+
+        outputText.innerText = "Please enter a size";
+
+      }else{
+
+        randomise(inputSize.value);
+
+        inputSize.value = "";
+        
+      }
+
+      break;
+
+      case "bfs":
+        if(inputIndex.value < 0 || inputIndex.value > graphSize){
+
+          outputText.innerText = "Please enter a valid index";
+  
+        }else{
+  
+
+          console.log(exBFSGraph);
+          let bfsArray = bfs(exBFSGraph, inputIndex.value);
+          let arraySize = 0;
+
+
+          let outputMessage = ""
+
+          for (let i = 0; i < graphSize; i++) {
+
+            let add = `[${i}:${bfsArray[i]}]  `;
+            outputMessage += add;
+
+        
+          }
+
+          outputText.innerText = outputMessage;
+          console.log(bfs(exBFSGraph, inputIndex.value))
+  
+          
+          
+        }
+        inputIndex.value = "";
+
+      break;
+
+
+
+    }
+  })
+});
+
+
+
+
+
+
 
   function addNode(value, x, y, colour, ID) {
 
@@ -95,7 +165,6 @@ function bfs(graph, root) {
     svg.appendChild(newLine);
 
     let arrowLength = newLine.getTotalLength();
-    console.log(arrowLength);
     let place1 = newLine.getPointAtLength(arrowLength / 2 - 20);
     let place2 = newLine.getPointAtLength(arrowLength / 2 + 20);
 
@@ -147,9 +216,14 @@ function bfs(graph, root) {
 
   function createGraph(graph){
 
+
+
     let nodeAmount = graph.length;
+    graphSize = graph.length;
 
     let svg = document.querySelector("#graphSVG");
+
+    svg.innerHTML = "";
   
     const svgns = "http://www.w3.org/2000/svg";
     let svgSize = svg.getBoundingClientRect();
@@ -199,11 +273,89 @@ function bfs(graph, root) {
       
     }
 
-
-    
-
-
-
+   createTextArray();
 
   }
+
+
+function randomise(size){
+
+  exBFSGraph = [];
+
+
+for (let i = 0; i < size; i++) {
+
+  let tempArray = [];
+  
+  for (let j = 0; j < size; j++) {
+    let number =  Math.random() < 0.5
+    if(number == true){
+      tempArray.push(1);
+    }else{
+      tempArray.push(0);
+
+    }
+    
+  }
+
+  exBFSGraph.push(tempArray);
+  
+}
+
+console.log(exBFSGraph);
+
+createGraph(exBFSGraph);
+
+
+}
+
+function createTextArray(){
+
+  console.log(graphSize);
+
+  let svg = document.querySelector("#graphSVG");
+
+  const svgns = "http://www.w3.org/2000/svg";
+  let svgSize = svg.getBoundingClientRect();
+
+let test = "test";
+
+for (let i = 0; i < graphSize; i++) {
+
+  let newText = document.createElementNS(svgns, "text");
+  newText.setAttributeNS(null, "y", svgSize.height - 22 * i - 20);
+  newText.setAttributeNS(null, "x", svgSize.width - 11 * graphSize);
+  newText.setAttributeNS(null, "stroke", "white");
+  newText.setAttribute("font-size", "o.1em");
+  newText.setAttribute("stroke-width", "1");
+  newText.setAttributeNS(null, "text-anchor", "middle");
+
+  let row = `[`
+  for (let j = 0; j < exBFSGraph[i].length; j++) {
+    
+    row += `${exBFSGraph[i][j]},`;
+
+    }
+    row += `]`;
+    console.log(row);
+ 
+  var textNode = document.createTextNode(row);
+
+
+  newText.appendChild(textNode);
+  svg.appendChild(newText);
+}
+
+
+
+
+
+
+
+}
+
+  //randomise(5);
+  createTextArray();
+
   createGraph(exBFSGraph);
+
