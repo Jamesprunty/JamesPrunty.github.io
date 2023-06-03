@@ -972,7 +972,7 @@ Console.log(bfs(exBFSGraph, 1)); //This is looking for how far each node is from
 //This function will output an object of key value pairs where the key is the node and the value is the distance from the root.
 
 function bfs(graph, root){
-	var nodesLen = {}; //This is where is will be stored.
+	var nodesLen = {}; //This is where it will be stored.
 	for (var i = 0; i < graph.length; i++{ //Go through the length of the graph
 		nodesLen[i] = Infinity; //Start everything at infinity (Meaning there is no rout to that node)
 	}
@@ -981,7 +981,7 @@ function bfs(graph, root){
 	var current; //This will keep track of the current node we are traversing.
 	while (queue.length != 0){ //Keep traversing nodes until there are no more nodes
 		current = queue.shift(); //Start the loop by popping off the first node in the queue, at the beginning this is the root node which is the only one in the queue.
-	var curConnected = graph[current]; //We look at all the nodes currently connected to the node.Each index of the graph is an array saying which node is connected to that node.
+	var curConnected = graph[current]; //We look at all the nodes currently connected to the node. Each index of the graph is an array saying which node is connected to that node.
 	var neighborIdx = []; //This will keep track of which indexes are connected to this node.
 	var idx = curConnected.indexOf(1); //Gets the first node. This is a "1" because 1 symbolises that the node is connected. If there is no node with index of 1, the idx will be set to -1.
 	while(idx !- -1){ //While it had connected nodes
