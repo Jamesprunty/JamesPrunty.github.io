@@ -4,59 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <title>James Prunty</title>
-    <link rel="stylesheet" href="../Minesweeper/Minesweeper.css">
+    <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
+    <link rel="stylesheet" href="..//Datastructure/Datastructure.css">
+    <link rel="stylesheet" href=".//Minesweeper.css">
+</head>
 
 <body>
 
-<h1>Minesweeper</h1>
-
-<div id="minesweeper">
-    
-</div> 
-
-<div id="controls">
-
-<div id="sizeDiv">
-<input type="number" id="sizeInput" class="input" placeholder="Enter value"></input>
-<input type="button" id="sizeBtn" class="btn" value="Size">
-</div>
-</div>
-
-<div id="minesweeperDiv">
+    <h1>Minesweeper</h1>
 
 
+    <div id="contentContainer">
+
+        <div id="SummaryContainer">
+
+            <p id="summary">
+
+            </p>
+
+        </div>
+
+        <div id="visualContainer">
 
 
+            <div id="controlContainer" class="control">
 
 
+                <div id="input" class="controlBtns">
+                    <input type="number" id="size" placeholder="Row Size">
+                    <div id="randomiseDiv">
+                        <input type="button" class="btn" id="random" value="Random">
+                    </div>
 
-
-
-</div>
-
-
-
-
-</div>
+                </div>
+            </div>
 
 
 
+            <div id="mineMap">
+                <svg id="mineSVG">
 
 
+                </svg>
 
 
+            </div>
 
+            <div id="outputContainer">
 
+                <div id="output">
+                    <p id="outputText"></p>
+                </div>
 
+            </div>
 
-
-
-
-
+        </div>
 
 
 </body>
 
-<script type="application/javascript" src="../Minesweeper/Minesweeper.js"></script>
+<script type="application/javascript" src=".//Minesweeper.js"></script>
 
 </html>
