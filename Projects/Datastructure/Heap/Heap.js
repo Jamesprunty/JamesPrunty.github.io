@@ -540,9 +540,9 @@ buttons.forEach(element => {
 
 
 			if(minChk.checked){
-				myMinHeap.remove();
+				output.innerText = myMinHeap.remove();
 			}else{
-				myMaxHeap.remove();
+				output.innerText = myMaxHeap.remove();
 			}
 				break;
 

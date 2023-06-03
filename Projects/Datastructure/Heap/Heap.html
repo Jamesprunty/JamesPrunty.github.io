@@ -83,12 +83,164 @@
 
             <p id="explination">
 
+                <br>A heap is a specialised binary tree where each node can have a max of 2 child nodes. YOu have two types of heap, a min heap and a max heap<br>
+                A Min heap will have all the parent nodes being smaller than their child nodes. <br>
+                A max heap will have all the parents being larger than the children.<br>
+                It is esentially a prioirty queue.<br><br>
+
+                Heaps can be implemented as an array, the way the heap is structured, is that each index has a relationship to their child nodes.<br><br>
+                If i is the current node:<br>
+                i*2 will be the left child<br>
+                i*2+1 will be the right node<br>
+                i/2 will be the parent node<br><br>
 
             </p>
 
+            <h2>Insert</h2>
 
+            <p>
+                The insert function will start at the end of the tree and work it's way up. It will check if it is bigger or smaller than the parent (depending on a min or max heap).<br>
+                In a min heap, if it is smaller it will swap with the parent.<br>
+                It will do this until it has reached the top or it is bigger than the parent.<br><br>
+            </p>
+
+            <p class="code">
+
+                this.insert = function (num) {<br>
+                <ind />heap.push(num);<br>
+                <ind />if (heap.length > 2) {<br>
+                <ind /><ind />let idx = heap.length - 1;<br>
+                <ind /><ind />while (heap[idx] > heap[Math.floor(idx / 2)]) {<br>
+                <ind /><ind /><ind />if (idx >= 1) {<br>
+                <ind /><ind /><ind /><ind />[heap[Math.floor(idx / 2)], heap[idx]] = [heap[idx], heap[Math.floor(idx / 2)]];<br>
+                <ind /><ind /><ind /><ind />if (Math.floor(idx / 2) > 1) {<br>
+                <ind /><ind /><ind /><ind /><ind />idx = Math.floor(idx / 2);<br>
+                <ind /><ind /><ind /><ind />} else {<br>
+                <ind /><ind /><ind /><ind /><ind />break;<br>
+                <ind /><ind /><ind /><ind />};<br>
+                <ind /><ind /><ind />};<br>
+                <ind /><ind />};<br>
+                <ind />};<br>
+                <ind />this.update();<br>
+                };<br><br>
 
             </p>
+
+            <p>
+
+                The insert function takes in one parameter, which is the number to add.<br>
+                We then put the number at the end of the array.<br>
+                If the heap is smaller than 2, it means there is only one thing in the heap so there isn't any point sorting it.<br>
+                Start the index at the end (which is where we just put the new number).<br>
+                We need to compare this number to the parent node, as we saw earlier the parent node has an index of i/2 (rounded down).<br>
+                In a min heap, if the parent is bigger we will swap it. The only difference between the two heaps is the "<"<br>
+                So while the child is bigger than the parent, we first have to check if the index isn't 0 as we don't want to change with the root. If it is, we break.<br>
+                The next line just swaps the two items around. <br>
+                We check that there is a next parent, if so, the index becomes that parent. If not, it breaks.<br>
+                At the end, we run the update() function to update the map.<br><br>
+
+            </p>
+
+            <h2>Remove</h2>
+
+            <p>
+
+                The Remove() function will remove the smallest (or largest depending on the heap) node, which is at the top.<br>
+                Because this has been removed, we need to find a way of restructuring the tree so that it still works.<br>
+                It starts by making the first node equal the last node. It then removes the last node. So we have right number of nodes with all the right data, but the lowest (or highest) is in the wrong place.<br>
+                The function then tests the node with all of the child nodes to get it into the right place. <br><br>
+
+            </p>
+
+            <p class="code">
+
+                this.remove = function () {<br>
+                <ind />let smallest = heap[1];<br>
+                <ind />if (heap.length > 2) {<br>
+                <ind /><ind />heap[1] = heap[heap.length - 1];<br>
+                <ind /><ind />heap.splice(heap.length - 1);<br>
+                <ind /><ind />if (heap.length == 3) {<br>
+                <ind /><ind /><ind />if (heap[1] > heap[2]) {<br>
+                <ind /><ind /><ind /><ind />[heap[1], heap[2]] = [heap[2], heap[1]];<br>
+                <ind /><ind /><ind />};<br>
+                <ind /><ind /><ind />return smallest;<br>
+                <ind /><ind />};<br><br>
+                <ind /><ind />let i = 1;<br>
+                <ind /><ind />let left = 2 * i;<br>
+                <ind /><ind />let right = 2 * i + 1;<br>
+                <ind /><ind />while (heap[i] >= heap[left] || heap[i] >= heap[right]) {<br>
+                <ind /><ind /><ind />if (heap[left] < heap[right]) {<br>
+                <ind /><ind /><ind /><ind />[heap[i], heap[left]] = [heap[left], heap[i]];<br>
+                <ind /><ind /><ind /><ind />i = 2 * i<br>
+                <ind /><ind /><ind />} else {<br>
+                <ind /><ind /><ind /><ind />[heap[i], heap[right]] = [heap[right], heap[i]];<br>
+                <ind /><ind /><ind /><ind />i = 2 * i + 1;<br>
+                <ind /><ind /><ind />};<br>
+                <ind /><ind /><ind />left = 2 * i;<br>
+                <ind /><ind /><ind />right = 2 * i + 1;<br>
+                <ind /><ind /><ind />if (heap[left] == undefined || heap[right] == undefined) {<br>
+                <ind /><ind /><ind /><ind />break;<br>
+                <ind /><ind /><ind />};<br>
+                <ind /><ind />};<br><br>
+                <ind />} else if (heap.length == 2) {<br>
+                <ind /><ind />heap.splice(1, 1);<br>
+                <ind />} else {<br><br>
+                <ind /><ind />return null;<br>
+                <ind />};<br><br>
+                <ind />this.update();<br>
+                <ind />return smallest;<br>
+                };<br><br>
+
+            </p>
+
+            <p>
+
+                The function starts by setting the "smallest" to the top of the heap.<br>
+                Only carry on if the heasp is larger than two.<br>
+                First, the top of the tree is replaced with the last element in the array, we then splice the last element off the array. So at this point we have removed the top item and have the last position in first.<br>
+                If the heap has only three items in it, Swap if the top is bigger than the next one.<br>
+                Then we return the smallest.<br>
+                We then set up for going through the tree, we set the children as i*2 and i*2+1.<br>
+                We continue going through while the node we are on is larger than either the left or the right. <br>
+                If the left is smaller than the right, swap with the left, and change i to that left node to conitune on.<br>
+                Otherwise, replace with the right side.<br>
+                We then reset left and right.<br>
+                If either the left or right is undefined, break.<br>
+                If the heap is only 2 nodes, remove the top.<br>
+                We then update the visual example and return the smallest.<br><br>
+
+                
+            </p>
+
+            <h2>Sort</h2>
+
+            <p>
+                The sort function() will return the items in order, but also remove them from the array, so the array will be null.<br><br>
+
+            </p>
+
+            <p class="code">
+
+                this.sort = function () {<br>
+                <ind />let result = new Array();<br>
+                <ind />while (heap.length > 1) {<br>
+                <ind /><ind />result.push(this.remove());<br>
+                <ind />};<br>
+                <ind />this.update();<br>
+                <ind />return result;<br><br>
+                };
+
+            </p>
+
+            <p>
+
+                It starts by creating an array to store the information.<br>
+                While the heap has more than one item in it.<br>
+                Push to the result the remove function (which takes the top item off the heap).<br>
+                Update the visual example and return the result.<br><br>
+                
+            </p>
+
 
 
         </div>
