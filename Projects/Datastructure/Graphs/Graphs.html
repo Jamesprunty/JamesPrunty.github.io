@@ -50,7 +50,7 @@
 
                 </svg>
                 <div id="graphArrayDiv">
-                    
+
                 </div>
 
             </div>
@@ -71,23 +71,90 @@
 
             <p id="explination">
 
-               A graph is an array of arrays that tell you how each node interacts with each other.<br>
+               <br><br>A graph is an array of arrays that tell you how each node interacts with each other.<br>
+               Each instance of the array has an array that details which details its relationship to each node.<br><br>
+
 
 
             </p>
 
-            <h2></h2>
+            <h2>BFS</h2>
 
             <p>
               
+                The breadth First search is an algorithm that starts at the root and explores all nodes at the present depth before moving onto the nodes at the next level.<br>
+                This is different to a depth first search where it will go as far as it can first, then track back. 
+
             </p>
 
             <p class="code">
 
+                function bfs(graph, root) {<br>
+                <ind />var nodesLen = {};<br>            
+                   
+                <ind />for (var i = 0; i < graph.length; i++) {<br>
+                <ind /><ind />nodesLen[i] = Infinity;<br>
+                <ind />}<br>
+                <ind />nodesLen[root] = 0;<br>
+                    
+                <ind />var queue = [root];<br>
+                <ind />var current;<br>
+                  
+                <ind />while (queue.length != 0) {<br>
+                <ind /><ind />current = queue.shift();<br>
+                      
+                <ind /><ind />var curConnected = graph[current];<br>
+                <ind /><ind />var neighborIdx = [];<br>
+                <ind /><ind />var idx = curConnected.indexOf(1);<br>
+                <ind /><ind />while (idx != -1) {<br>
+                <ind /><ind /><ind />neighborIdx.push(idx);<br>
+                <ind /><ind /><ind />idx = curConnected.indexOf(1, idx + 1);<br>
+                <ind /><ind />}<br>
+                      
+                <ind /><ind />for (var j = 0; j < neighborIdx.length; j++) {<br>
+                <ind /><ind /><ind />if (nodesLen[neighborIdx[j]] == Infinity) {<br> 
+                <ind /><ind /><ind /><ind />nodesLen[neighborIdx[j]] = nodesLen[current] + 1;<br>
+                <ind /><ind /><ind /><ind />queue.push(neighborIdx[j]);<br>
+                <ind /><ind /><ind /><ind />}<br>
+                <ind /><ind /><ind />}<br>
+                <ind /><ind />}<br>
+                <ind/><ind />return nodesLen;<br>
+                <ind />};<br><ind />
+
 
             </p>
 
             <p>
+
+                The function takes in the graph you want to traverse and the root node you want the info from<br>
+                The "nodesLen" variable, will store the distance from each node.<br>
+                Create an input for each of the nodes in the graph and set each one to "infinity";<br>
+                Set the root's distance to 0 as it takes 0 steps to get to itself.<br>
+                Create a queue which will hold each node to go through, it will start with the root.<br>
+                The current variable will store the current node.<br>
+                While the queue still has things in it, continue to do the following:<br>
+                current is equal to the next node in the queue (this will remove the previous one).<br>
+                The next variable stores the actual array from the graph.<br>
+                NeibourIdx will store all of the current nodes neighbours.<br>
+                The Idx equals the current graph node's firs index.<br>
+                While there are still nodes to look at:<br>
+                Add the index onto the neighbourIdx.<br>
+                The index then becomes the the next index (look at index(1) starting at the currentindex +1)<br>
+                Now we have all of the neighbours in the neighbour list<br><br>
+                Go through each neighbourIdx<br>
+                if the value at the node of neighbourIdx[j] equals infinity, it has not yet been changed.<br>
+                It will be set to the current nodesLen + 1;<br>
+                Then add that neighbour to the queue.<br>
+                Return the nodesLen.<br><br>
+
+
+                Essentially what is happening here, is that it will set everything as infinite at the beginning, it will then go to every neightbour it has and set to current+1 (the root is 0 so if they are direct neightbors it will be 1).<br>
+                It then adds the neighbours to go through the queues and it will set current + 1to any nodes still set to infinite, if it is the neighbour of a neighbour, it will be current (1) + 1(which is two). <br>
+                If it never finds it, then it will stay infinite meaning it will never get there.<br>
+
+
+
+
 
 
             </p>
