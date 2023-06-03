@@ -159,7 +159,7 @@ function bfs(graph, root) {
     newCircle.setAttribute("cy", svgSize.height / 2);
     newCircle.setAttribute("cx", svgSize.width / 2);
     newCircle.setAttribute("r", svgSize.height/2.5);
-    newCircle.setAttribute("stroke", "white");
+    //newCircle.setAttribute("stroke", "white");
     newCircle.setAttribute("id", "path");
   
   
