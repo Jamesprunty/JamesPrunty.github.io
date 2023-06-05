@@ -261,7 +261,7 @@ function createGraph(size) {
 
     createMap(mineMap, size);
 
-    outputText.innerText = `Bombs: ${bombAmount} Flags: ${flags}`;
+    outputText.innerText = `Bombs: ${bombAmount}`;
 
 }
 
@@ -289,7 +289,7 @@ function createMap(mineMap, size) {
             column += boxSizePad * size;
         }
 
-        infoArray[i].push(x, y, 0);
+        infoArray[i].push(x, y, 0, 0);
 
         addNode(i, x, y, "white", i);
         //addText(i , x+12, y+16, i);
@@ -304,50 +304,26 @@ function createMap(mineMap, size) {
 
             if (endGame == false){
 
-            console.log(e.ctrlKey);
-
 
             if (e.ctrlKey == true) {
 
-                
-                
-                console.log(infoArray[this.id]);
 
                 if (infoArray[this.id][4] == 0) {
 
-                    if(flags > 0){
+                  
                    
                     infoArray[this.id][4] = 1;
-                    flags--;
-                    outputText.innerText = `Bombs: ${bombAmount} Flags: ${flags}`;
-                    console.log(flags);
-
-
-
-                    randomArray.forEach(element => {
-                        if (element == this.id){
-                            correct++;
-                            console.log(correct);
-
-
-
-                            if (correct == bombAmount){
-                                outputText.innerText = "YOU WIN!!!!";
-                                endGame = true;
-                            }
-                        }
-                    });
+                    outputText.innerText = `Bombs: ${bombAmount}`;
 
                     addText("F", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");
-                    }
+                    
                 
                 
                 } else {
 
                     infoArray[this.id][4] = 0;
-                    flags++;
-                    outputText.innerText = `Bombs: ${bombAmount} Flags: ${flags}`;
-                    console.log(flags);
+                    
+                    outputText.innerText = `Bombs: ${bombAmount}`;
 
                     let selected = document.querySelector(`.f${this.id}`);
                     selected.remove();
@@ -355,13 +331,14 @@ function createMap(mineMap, size) {
                     randomArray.forEach(element => {
                         if (element == this.id){
                             correct--;
-                            console.log(correct);
                         }
                     });
                 }
 
 
             } else if (!e.ctrlKey && infoArray[this.id][4] != 1) {
+
+                let amountLeft = 0;
 
                 if (infoArray[this.id][1] == 100) {
                     outputText.innerText = "YOU LOSE!!!!!";
@@ -370,6 +347,27 @@ function createMap(mineMap, size) {
                     showAll();
 
                 } else if (infoArray[this.id][1] > 0 && infoArray[this.id][1] < 100) {
+
+                    infoArray.forEach(element => {
+                        if (element[5] == 0){
+                            amountLeft++;
+                            console.log(amountLeft);
+                        }
+
+                    });
+
+                    
+                    if(amountLeft == bombAmount){
+
+                        console.log(amountLeft);
+
+                        outputText.innerText = "YOU WIN!!!!";
+                        showAll();
+                        endGame = true;
+
+                    }
+
+                    infoArray[this.id][5] = 1;
 
 
 
@@ -385,10 +383,24 @@ function createMap(mineMap, size) {
                     }
 
                 } else {
-
-                    console.log(mineMap);
-                    console.log(this.id);
                     revealEmpties(mineMap, this.id);
+
+                    infoArray.forEach(element => {
+                        if (element[5] == 0){
+                            amountLeft++;
+                            console.log(amountLeft);
+                        }
+                       
+                    });
+
+                    if(amountLeft == bombAmount){
+
+                        console.log(amountLeft);
+
+                        outputText.innerText = "YOU WIN!!!!";
+                        endGame = true;
+
+                    }
 
                 }
             }
@@ -524,7 +536,6 @@ function revealEmpties(graph, root) {
         while (idx != -1) {//WHile it has connected nodes.
             // console.log(infoArray[idx][1]);
 
-            console.log(idx);
 
 
             neighborIdx.push(idx); //Push it onto the list of neighbours.
@@ -547,7 +558,6 @@ function revealEmpties(graph, root) {
 
             if (infoArray[nodeId][1] == 0) {
 
-                console.log(infoArray[nodeId] + " IN ARRAY");
                 infoArray[nodeId][1] = "10";
                 queue.push(nodeId);
 
@@ -563,6 +573,7 @@ function revealEmpties(graph, root) {
 
     nodesFree.forEach(element => {
         // console.log("Array");
+        infoArray[element][5] = 1;
 
 
         if (infoArray[element][1] != 10) {
