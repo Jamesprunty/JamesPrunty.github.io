@@ -35,7 +35,7 @@ function createGraph(size) {
 
     //Generate bombs at random
 
-    for (let i = 0; i < nodeAmount / 100 * 10; i++) {
+    for (let i = 0; i < nodeAmount / 100 * 15; i++) {
 
         let random = generateRandom();
 
@@ -441,7 +441,7 @@ function revealEmpties(graph, root) {
 
 
 
-createGraph(10);
+createGraph(20);
 
 
 
