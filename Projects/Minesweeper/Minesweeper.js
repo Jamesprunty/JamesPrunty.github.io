@@ -9,32 +9,44 @@ let randomArray = [];
 let outputText = document.querySelector("#outputText");
 let input = document.querySelector("#size");
 let buttons = document.querySelectorAll(".btn");
+let gridSize = 0;
+
 buttons.forEach(element => {
-    element.addEventListener("click", function() {
-        if(this.id = "random"){
-            if(size.value < 3 || size.value > 25){
+    element.addEventListener("click", function () {
+        if (this.id == "random") {
+           
+            if (input.value < 3 || input.value > 25) {
                 outputText.innerText = "Please enter a number between 3 and 25";
-            }else{
-                reset(size.value);
+            } else {
+                reset(parseInt(input.value));
+
+
             }
+        }else if(this.id == "reset"){
+           
+                reset(parseInt(gridSize));
 
 
-            size.value = "";
+            
+
         }
+
+        input.value = "";
     })
 });
 
 
 
 
-function reset(size){
+function reset(size) {
+
     infoArray = [];
     randomArray = [];
-    mineMap = [];
     svg.innerHTML = ""
     nodeAmount = 0;
     bombAmount = 0;
     nodesFree = [];
+    mineMap = [];
 
 
     createGraph(size);
@@ -49,6 +61,7 @@ function createGraph(size) {
 
     let mineMap = [];
     svg.innerHTML = "";
+    gridSize = size;
 
 
     //Get amount of nodes in the grid
@@ -65,8 +78,8 @@ function createGraph(size) {
 
     //Generate bombs at random
 
-    let bombAmount = nodeAmount / 100 * 15;
-    if(bombAmount < 1){
+    let bombAmount =  Math.ceil(nodeAmount / 100 * 15);
+    if (bombAmount < 1) {
         bombAmount = 1;
     }
 
@@ -84,6 +97,7 @@ function createGraph(size) {
         randomArray.push(random);
     }
 
+    outputText.innerText = `bombs: ${bombAmount}`;
 
     //Set all bombs to 100 in info array
 
@@ -274,7 +288,7 @@ function createMap(mineMap, size) {
             column += boxSizePad * size;
         }
 
-        infoArray[i].push(x, y);
+        infoArray[i].push(x, y, 0);
 
         addNode(i, x, y, "white", i);
         //addText(i , x+12, y+16, i);
@@ -285,8 +299,27 @@ function createMap(mineMap, size) {
 
     let nodes = document.querySelectorAll(".node");
     nodes.forEach(element => {
-        element.addEventListener("click", function () {
+        element.addEventListener("mousedown", function (e) {
 
+            console.log(e.ctrlKey);
+
+
+            if(e.ctrlKey == true){
+
+                console.log(infoArray[this.id]);
+
+                if(infoArray[this.id][4] == 0){
+                    infoArray[this.id][4] = 1;
+                    addText("F", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");
+                }else{
+                    infoArray[this.id][4] = 0;
+                    let selected = document.querySelector(`.f${this.id}`);
+                    selected.remove();
+                }
+
+               
+
+            }else if(!e.ctrlKey && infoArray[this.id][4] != 1){
 
             if (infoArray[this.id][1] == 100) {
                 console.log("BOMB");
@@ -295,27 +328,36 @@ function createMap(mineMap, size) {
 
             } else if (infoArray[this.id][1] > 0 && infoArray[this.id][1] < 100) {
 
-                
-                
-                addNode(infoArray[this.id][1], infoArray[this.id][2], infoArray[this.id][3],"#DCDCDC",infoArray[this.id][1],"#D8D8D8")
-                if(infoArray[this.id][1] == 1){
-                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0],"green");
+
+
+                addNode(infoArray[this.id][1], infoArray[this.id][2], infoArray[this.id][3], "#DCDCDC", infoArray[this.id][1], "#D8D8D8")
+                if (infoArray[this.id][1] == 1) {
+                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "green");
                 }
-                if(infoArray[this.id][1] == 2){
-                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0],"orange");
+                if (infoArray[this.id][1] == 2) {
+                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "orange");
                 }
-                if(infoArray[this.id][1] > 2){
-                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0],"red");
+                if (infoArray[this.id][1] > 2) {
+                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "red");
                 }
 
             } else {
 
+                console.log(mineMap);
+                console.log(this.id);
                 revealEmpties(mineMap, this.id);
 
             }
+        }
+       
 
         })
+
+
+       
     });
+
+
 }
 
 function addNode(value, x, y, colour, ID, fill) {
@@ -379,9 +421,9 @@ function showAll() {
     randomArray.forEach(element => {
 
         // addText("B",element[2] + boxSizePad / 2 - 3, element[3] + boxSizePad/2 + 2, element[0] );
-        
-            addText("!", infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"red");
-        
+
+        addText("!", infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0], "red");
+
 
 
     });
@@ -438,58 +480,68 @@ function revealEmpties(graph, root) {
         var neighborIdx = []; //This will keep track of which indexes are connected to this node. 
         //var nodesFree = [];
         var idx = curConnected.indexOf(1); //This is a "1" because 1 symbolises that the node is connected. If there is no node with index of 1, the idx will be set to -1.
+
         while (idx != -1) {//WHile it has connected nodes.
             // console.log(infoArray[idx][1]);
 
+            console.log(idx);
+
+
             neighborIdx.push(idx); //Push it onto the list of neighbours.
             nodesFree.push(idx);
+
+
             idx = curConnected.indexOf(1, idx + 1); //This searches for the next node. We look in the array after the previous one we found (idx + 1)
 
 
         }
 
+
+        console.log(nodesFree);
+
         for (var j = 0; j < nodesFree.length; j++) {//Loops through to find the distance.
 
             let nodeId = nodesFree[j];
 
-            console.log(nodeId);
+
 
             if (infoArray[nodeId][1] == 0) {
 
                 console.log(infoArray[nodeId] + " IN ARRAY");
                 infoArray[nodeId][1] = "10";
                 queue.push(nodeId);
-                
+
 
                 // revealEmpties(mineMap, nodesFree[j]); //Push the neighbor to the queue. Next time we go through the while loop we will check those neighbors too.
 
             }
         }
     }
+
+    //console.log(nodeId);
+
+
     nodesFree.forEach(element => {
         // console.log("Array");
 
 
-        
+        if (infoArray[element][1] != 10) {
 
-       
-        if(infoArray[element][1] != 10){
+            addNode(infoArray[element][1], infoArray[element][2], infoArray[element][3], "#DCDCDC", infoArray[element][1], "#D8D8D8")
 
-            addNode(infoArray[element][1], infoArray[element][2], infoArray[element][3],"#DCDCDC",infoArray[element][1],"#D8D8D8")
-            
-            if(infoArray[element][1] == 1){
-                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"green");
+            if (infoArray[element][1] == 1) {
+                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0], "green");
             }
-            if(infoArray[element][1] == 2){
-                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"orange");
+            if (infoArray[element][1] == 2) {
+                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0], "orange");
             }
-            if(infoArray[element][1] > 2 && infoArray[element][1] < 100){
-                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"red");
+            if (infoArray[element][1] > 2 && infoArray[element][1] < 100) {
+                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0], "red");
             }
-        }else{
-            addNode(infoArray[element][1], infoArray[element][2], infoArray[element][3],"#DCDCDC",infoArray[element][1],"#E8E8E8")
+        } else {
+            addNode(infoArray[element][1], infoArray[element][2], infoArray[element][3], "#DCDCDC", infoArray[element][1], "#E8E8E8")
         }
-       
+
     });
     //return nodesLen;
 }
@@ -498,7 +550,7 @@ function revealEmpties(graph, root) {
 
 
 
-createGraph(20);
+createGraph(10);
 
 
 
