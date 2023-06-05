@@ -10,11 +10,15 @@ let outputText = document.querySelector("#outputText");
 let input = document.querySelector("#size");
 let buttons = document.querySelectorAll(".btn");
 let gridSize = 0;
+let flagArray = [];
+let correct = 0;
+let bombAmount = 0;
+let flags = 0;
 
 buttons.forEach(element => {
     element.addEventListener("click", function () {
         if (this.id == "random") {
-           
+
             if (input.value < 3 || input.value > 25) {
                 outputText.innerText = "Please enter a number between 3 and 25";
             } else {
@@ -22,12 +26,12 @@ buttons.forEach(element => {
 
 
             }
-        }else if(this.id == "reset"){
-           
-                reset(parseInt(gridSize));
+        } else if (this.id == "reset") {
+
+            reset(parseInt(gridSize));
 
 
-            
+
 
         }
 
@@ -78,7 +82,8 @@ function createGraph(size) {
 
     //Generate bombs at random
 
-    let bombAmount =  Math.ceil(nodeAmount / 100 * 15);
+    bombAmount = Math.ceil(nodeAmount / 100 * 15);
+    flags = bombAmount;
     if (bombAmount < 1) {
         bombAmount = 1;
     }
@@ -219,13 +224,7 @@ function createGraph(size) {
 
 
         }
-
-
-
-
         else {
-
-
             mineMap[i][i] = 1;
             mineMap[i][i - 1] = 1;
             mineMap[i][i + 1] = 1;
@@ -260,7 +259,7 @@ function createGraph(size) {
 
     createMap(mineMap, size);
 
-    outputText.innerText = `Bombs: ${bombAmount}`;
+    outputText.innerText = `Bombs: ${bombAmount} Flags: ${flags}`;
 
 }
 
@@ -304,57 +303,90 @@ function createMap(mineMap, size) {
             console.log(e.ctrlKey);
 
 
-            if(e.ctrlKey == true){
+            if (e.ctrlKey == true) {
 
+                
+                
                 console.log(infoArray[this.id]);
 
-                if(infoArray[this.id][4] == 0){
+                if (infoArray[this.id][4] == 0) {
+
+                    if(flags > 0){
+                   
                     infoArray[this.id][4] = 1;
+                    flags--;
+                    outputText.innerText = `Bombs: ${bombAmount} Flags: ${flags}`;
+                    console.log(flags);
+
+
+
+                    randomArray.forEach(element => {
+                        if (element == this.id){
+                            correct++;
+                            console.log(correct);
+
+
+
+                            if (correct == bombAmount){
+                                outputText.innerText = "YOU WIN!!!!";
+                            }
+                        }
+                    });
+
                     addText("F", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");
-                }else{
+                    }
+                
+                
+                } else {
+
                     infoArray[this.id][4] = 0;
+                    flags++;
+                    outputText.innerText = `Bombs: ${bombAmount} Flags: ${flags}`;
+                    console.log(flags);
+
                     let selected = document.querySelector(`.f${this.id}`);
                     selected.remove();
+
+                    randomArray.forEach(element => {
+                        if (element == this.id){
+                            correct--;
+                            console.log(correct);
+                        }
+                    });
                 }
 
-               
 
-            }else if(!e.ctrlKey && infoArray[this.id][4] != 1){
+            } else if (!e.ctrlKey && infoArray[this.id][4] != 1) {
 
-            if (infoArray[this.id][1] == 100) {
-                console.log("BOMB");
+                if (infoArray[this.id][1] == 100) {
+                    outputText.innerText = "YOU LOSE!!!!!";
 
-                showAll();
+                    showAll();
 
-            } else if (infoArray[this.id][1] > 0 && infoArray[this.id][1] < 100) {
-
+                } else if (infoArray[this.id][1] > 0 && infoArray[this.id][1] < 100) {
 
 
-                addNode(infoArray[this.id][1], infoArray[this.id][2], infoArray[this.id][3], "#DCDCDC", infoArray[this.id][1], "#D8D8D8")
-                if (infoArray[this.id][1] == 1) {
-                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "green");
+
+                    addNode(infoArray[this.id][1], infoArray[this.id][2], infoArray[this.id][3], "#DCDCDC", infoArray[this.id][1], "#D8D8D8")
+                    if (infoArray[this.id][1] == 1) {
+                        addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "green");
+                    }
+                    if (infoArray[this.id][1] == 2) {
+                        addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "orange");
+                    }
+                    if (infoArray[this.id][1] > 2) {
+                        addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "red");
+                    }
+
+                } else {
+
+                    console.log(mineMap);
+                    console.log(this.id);
+                    revealEmpties(mineMap, this.id);
+
                 }
-                if (infoArray[this.id][1] == 2) {
-                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "orange");
-                }
-                if (infoArray[this.id][1] > 2) {
-                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0], "red");
-                }
-
-            } else {
-
-                console.log(mineMap);
-                console.log(this.id);
-                revealEmpties(mineMap, this.id);
-
             }
-        }
-       
-
         })
-
-
-       
     });
 
 
