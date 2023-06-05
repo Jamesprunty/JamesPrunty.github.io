@@ -6,6 +6,7 @@ let boxSize = 25;
 let boxSizePad = 30;
 let infoArray = [];
 let randomArray = [];
+let outputText = document.querySelector("#outputText");
 
 
 
@@ -35,7 +36,12 @@ function createGraph(size) {
 
     //Generate bombs at random
 
-    for (let i = 0; i < nodeAmount / 100 * 15; i++) {
+    let bombAmount = nodeAmount / 100 * 15;
+    if(bombAmount < 1){
+        bombAmount = 1;
+    }
+
+    for (let i = 0; i < bombAmount; i++) {
 
         let random = generateRandom();
 
@@ -211,6 +217,7 @@ function createGraph(size) {
 
     createMap(mineMap, size);
 
+    outputText.innerText = `Bombs: ${bombAmount}`;
 
 }
 
@@ -259,8 +266,18 @@ function createMap(mineMap, size) {
 
             } else if (infoArray[this.id][1] > 0 && infoArray[this.id][1] < 100) {
 
-                addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][1])
-
+                
+                
+                addNode(infoArray[this.id][1], infoArray[this.id][2], infoArray[this.id][3],"#DCDCDC",infoArray[this.id][1],"#D8D8D8")
+                if(infoArray[this.id][1] == 1){
+                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0],"green");
+                }
+                if(infoArray[this.id][1] == 2){
+                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0],"orange");
+                }
+                if(infoArray[this.id][1] > 2){
+                    addText(infoArray[this.id][1], infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, infoArray[this.id][0],"red");
+                }
 
             } else {
 
@@ -272,7 +289,7 @@ function createMap(mineMap, size) {
     });
 }
 
-function addNode(value, x, y, colour, ID) {
+function addNode(value, x, y, colour, ID, fill) {
 
 
 
@@ -281,6 +298,7 @@ function addNode(value, x, y, colour, ID) {
     newRect.setAttribute("y", y);
     newRect.setAttribute("x", x);
     newRect.setAttribute("stroke", colour);
+    newRect.setAttribute("fill", fill);
     newRect.setAttribute("id", value);
     newRect.setAttribute("class", "node");
     newRect.setAttribute("width", boxSize);
@@ -290,12 +308,12 @@ function addNode(value, x, y, colour, ID) {
     svg.appendChild(newRect);
 }
 
-function addText(value, x, y, ID) {
+function addText(value, x, y, ID, colour = "white") {
 
     let newText = document.createElementNS(svgns, "text");
     newText.setAttributeNS(null, "y", y);
     newText.setAttributeNS(null, "x", x);
-    newText.setAttributeNS(null, "stroke", "white");
+    newText.setAttributeNS(null, "stroke", colour);
     newText.setAttributeNS(null, "text-anchor", "middle");
     newText.setAttributeNS(null, "id", value);
     newText.setAttributeNS(null, "class", ID);
@@ -329,10 +347,13 @@ function generateRandom(min = 0, max = nodeAmount) {
 function showAll() {
 
 
-    infoArray.forEach(element => {
+    randomArray.forEach(element => {
 
         // addText("B",element[2] + boxSizePad / 2 - 3, element[3] + boxSizePad/2 + 2, element[0] );
-        addText(element[1], element[2] + boxSizePad / 2 - 3, element[3] + boxSizePad / 2 + 2, element[0]);
+        
+            addText("!", infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"red");
+        
+
 
     });
 
@@ -420,19 +441,28 @@ function revealEmpties(graph, root) {
     }
     nodesFree.forEach(element => {
         // console.log("Array");
-        for (let i = 0; i < graph[element].length; i++) {
 
-            if (graph[element][1] != 0) {
-                if(infoArray[element][1] == 0){
-                // console.log("!!!!");
-                addText(infoArray[i][1], infoArray[i][2] + boxSizePad / 2 - 3, infoArray[i][3] + boxSizePad / 2 + 2, infoArray[i][0]);
+
+        
+
+       
+        if(infoArray[element][1] != 10){
+
+            addNode(infoArray[element][1], infoArray[element][2], infoArray[element][3],"#DCDCDC",infoArray[element][1],"#D8D8D8")
+            
+            if(infoArray[element][1] == 1){
+                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"green");
             }
+            if(infoArray[element][1] == 2){
+                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"orange");
+            }
+            if(infoArray[element][1] > 2 && infoArray[element][1] < 100){
+                addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0],"red");
+            }
+        }else{
+            addNode(infoArray[element][1], infoArray[element][2], infoArray[element][3],"#DCDCDC",infoArray[element][1],"#E8E8E8")
         }
-
-        }
-
-        addText(infoArray[element][1], infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0]);
-
+       
     });
     //return nodesLen;
 }
