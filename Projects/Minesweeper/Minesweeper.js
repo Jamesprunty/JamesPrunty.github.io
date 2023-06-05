@@ -14,13 +14,14 @@ let flagArray = [];
 let correct = 0;
 let bombAmount = 0;
 let flags = 0;
+let endGame = false;
 
 buttons.forEach(element => {
     element.addEventListener("click", function () {
         if (this.id == "random") {
 
-            if (input.value < 3 || input.value > 25) {
-                outputText.innerText = "Please enter a number between 3 and 25";
+            if (input.value < 4 || input.value > 25) {
+                outputText.innerText = "Please enter a number between 4 and 25";
             } else {
                 reset(parseInt(input.value));
 
@@ -51,6 +52,7 @@ function reset(size) {
     bombAmount = 0;
     nodesFree = [];
     mineMap = [];
+    endGame = false;
 
 
     createGraph(size);
@@ -300,6 +302,8 @@ function createMap(mineMap, size) {
     nodes.forEach(element => {
         element.addEventListener("mousedown", function (e) {
 
+            if (endGame == false){
+
             console.log(e.ctrlKey);
 
 
@@ -329,6 +333,7 @@ function createMap(mineMap, size) {
 
                             if (correct == bombAmount){
                                 outputText.innerText = "YOU WIN!!!!";
+                                endGame = true;
                             }
                         }
                     });
@@ -360,6 +365,7 @@ function createMap(mineMap, size) {
 
                 if (infoArray[this.id][1] == 100) {
                     outputText.innerText = "YOU LOSE!!!!!";
+                    endGame = true;
 
                     showAll();
 
@@ -386,8 +392,10 @@ function createMap(mineMap, size) {
 
                 }
             }
+        }
         })
     });
+
 
 
 }
