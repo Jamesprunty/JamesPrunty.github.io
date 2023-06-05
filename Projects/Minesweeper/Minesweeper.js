@@ -85,8 +85,8 @@ function createGraph(size) {
             mineMap[i][i - 1] = 1;
             mineMap[i][i + 1] = 1;
             mineMap[i][i + size] = 1;
-            mineMap[i][i + (size + 1)] = 1;
-            mineMap[i][i + (size - 1)] = 1;
+            mineMap[i][i + size + 1] = 1;
+            mineMap[i][i + size - 1] = 1;
 
 
 
@@ -98,8 +98,8 @@ function createGraph(size) {
             mineMap[i][i - 1] = 1;
             mineMap[i][i + 1] = 1;
             mineMap[i][i - size] = 1;
-            mineMap[i][i - (size + 1)] = 1;
-            mineMap[i][i - (size - 1)] = 1;
+            mineMap[i][i - size + 1] = 1;
+            mineMap[i][i - size - 1] = 1;
 
 
 
@@ -113,8 +113,8 @@ function createGraph(size) {
             mineMap[i][i + 1] = 1;
             mineMap[i][i - size] = 1;
             mineMap[i][i + size] = 1;
-            mineMap[i][i + (size + 1)] = 1;
-            mineMap[i][i - (size + 1)] = 1;
+            mineMap[i][i + size + 1] = 1;
+            mineMap[i][i - size + 1] = 1;
 
         } else if (i % size == size - 1 && i != (size * size - 1) && i != size - 1) {
 
@@ -126,7 +126,7 @@ function createGraph(size) {
             mineMap[i][i - 1] = 1;
             mineMap[i][i - size] = 1;
             mineMap[i][i + size] = 1;
-            mineMap[i][i + (size - 1)] = 1;
+            mineMap[i][i + size - 1] = 1;
             mineMap[i][i - size - 1] = 1;
 
         } else if (i == 0) {
@@ -137,7 +137,7 @@ function createGraph(size) {
             mineMap[i][i] = 1;
             mineMap[i][i + 1] = 1;
             mineMap[i][i + size] = 1;
-            mineMap[i][i + (size + 1)] = 1;
+            mineMap[i][i + size + 1] = 1;
 
 
         } else if (i == size - 1) {
@@ -146,7 +146,7 @@ function createGraph(size) {
             mineMap[i][i] = 1;
             mineMap[i][i - 1] = 1;
             mineMap[i][i + size] = 1;
-            mineMap[i][i + (size - 1)] = 1;
+            mineMap[i][i + size - 1] = 1;
 
 
 
@@ -386,6 +386,7 @@ function revealEmpties(graph, root) {
 
         var curConnected = graph[current];//We look at all the nodes currently connected to the node. Each index of the graph is an array saying which node is connected to that node.
         var neighborIdx = []; //This will keep track of which indexes are connected to this node. 
+        //var nodesFree = [];
         var idx = curConnected.indexOf(1); //This is a "1" because 1 symbolises that the node is connected. If there is no node with index of 1, the idx will be set to -1.
         while (idx != -1) {//WHile it has connected nodes.
             // console.log(infoArray[idx][1]);
@@ -405,8 +406,12 @@ function revealEmpties(graph, root) {
 
             if (infoArray[nodeId][1] == 0) {
 
-                console.log(nodeId + " IN ARRAY");
+
+
+                console.log(infoArray[nodeId] + " IN ARRAY");
+                infoArray[nodeId][1] = "10";
                 queue.push(nodeId);
+                
 
                 // revealEmpties(mineMap, nodesFree[j]); //Push the neighbor to the queue. Next time we go through the while loop we will check those neighbors too.
 
@@ -418,9 +423,11 @@ function revealEmpties(graph, root) {
         for (let i = 0; i < graph[element].length; i++) {
 
             if (graph[element][1] != 0) {
+                if(infoArray[element][1] == 0){
                 // console.log("!!!!");
                 addText(infoArray[i][1], infoArray[i][2] + boxSizePad / 2 - 3, infoArray[i][3] + boxSizePad / 2 + 2, infoArray[i][0]);
             }
+        }
 
         }
 
