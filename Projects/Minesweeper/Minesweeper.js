@@ -7,11 +7,38 @@ let boxSizePad = 30;
 let infoArray = [];
 let randomArray = [];
 let outputText = document.querySelector("#outputText");
+let input = document.querySelector("#size");
+let buttons = document.querySelectorAll(".btn");
+buttons.forEach(element => {
+    element.addEventListener("click", function() {
+        if(this.id = "random"){
+            if(size.value < 3 || size.value > 25){
+                outputText.innerText = "Please enter a number between 3 and 25";
+            }else{
+                reset(size.value);
+            }
+
+
+            size.value = "";
+        }
+    })
+});
 
 
 
 
+function reset(size){
+    infoArray = [];
+    randomArray = [];
+    mineMap = [];
+    svg.innerHTML = ""
+    nodeAmount = 0;
+    bombAmount = 0;
+    nodesFree = [];
 
+
+    createGraph(size);
+}
 
 
 
@@ -20,7 +47,9 @@ function createGraph(size) {
 
 
 
-    mineMap = [];
+    let mineMap = [];
+    svg.innerHTML = "";
+
 
     //Get amount of nodes in the grid
 
@@ -426,8 +455,6 @@ function revealEmpties(graph, root) {
             console.log(nodeId);
 
             if (infoArray[nodeId][1] == 0) {
-
-
 
                 console.log(infoArray[nodeId] + " IN ARRAY");
                 infoArray[nodeId][1] = "10";
