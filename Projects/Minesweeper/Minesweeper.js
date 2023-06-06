@@ -338,7 +338,7 @@ function createMap(mineMap, size) {
 
             } else if (!e.ctrlKey && infoArray[this.id][4] != 1) {
 
-                let amountLeft = 0;
+                amountLeft = 0;
 
                 if (infoArray[this.id][1] == 100) {
                     outputText.innerText = "YOU LOSE!!!!!";
@@ -356,8 +356,11 @@ function createMap(mineMap, size) {
 
                     });
 
+                    console.log(amountLeft -1);
+                    console.log(bombAmount);
+
                     
-                    if(amountLeft == bombAmount){
+                    if(parseInt(amountLeft -1) === parseInt(bombAmount)){
 
                         console.log(amountLeft);
 
