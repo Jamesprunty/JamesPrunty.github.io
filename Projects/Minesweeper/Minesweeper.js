@@ -319,13 +319,24 @@ function createMap(mineMap, size) {
                     
                 
                 
-                } else {
+                } else if(infoArray[this.id][4] == 1){
+
+                    infoArray[this.id][4] = 2;
+                    outputText.innerText = `Bombs: ${bombAmount}`;
+                    let selected = document.querySelector(`.f${this.id}`);
+                    selected.remove();
+
+                    addText("?", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `q${infoArray[this.id][0]}`, "white");
+                    
+                    
+                    
+                }else{
 
                     infoArray[this.id][4] = 0;
                     
                     outputText.innerText = `Bombs: ${bombAmount}`;
 
-                    let selected = document.querySelector(`.f${this.id}`);
+                    let selected = document.querySelector(`.q${this.id}`);
                     selected.remove();
 
                     randomArray.forEach(element => {
