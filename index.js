@@ -54,7 +54,7 @@ const Projects = [
     },
     {
         name: "DataStructures",
-        description: "(Not Done) Working with different types of data structure, visual representations",
+        description: "Working with different types of data structure, visual representations",
         folderName: "Datastructure",
         dir: "../Projects/"
      
@@ -63,6 +63,13 @@ const Projects = [
         name: "Minesweeper",
         description: "(Not Done) MineSweeper game",
         folderName: "Minesweeper",
+        dir: "../Projects/"
+     
+    },  
+    {
+        name: "Conway's game of life",
+        description: "(Not Done) Conway's game of life",
+        folderName: "Conway's game of life",
         dir: "../Projects/"
      
     },  
