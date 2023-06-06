@@ -15,6 +15,7 @@ let correct = 0;
 let bombAmount = 0;
 let flags = 0;
 let endGame = false;
+let firstTurn = true;
 
 buttons.forEach(element => {
     element.addEventListener("click", function () {
@@ -53,6 +54,7 @@ function reset(size) {
     nodesFree = [];
     mineMap = [];
     endGame = false;
+    firstTurn = true;
 
 
     createGraph(size);
@@ -257,6 +259,24 @@ function createGraph(size) {
 
     });
 
+    randomArray.forEach(element => {
+        if (element == 1){
+            let neighbours1 = bfs(mineMap, 1);
+            for (let i = 0; i < nodeAmount; i++) {
+                if (neighbours1[i] == 1) {
+                    if (neighbours1[i] != element)
+                        infoArray[i][1] = infoArray[i][1] + 1;
+                    if (infoArray[i][1] > 100) {
+                        infoArray[i][1] = 100;
+                    }
+                }
+    
+            }
+        }
+    });
+
+    
+
     //Run create map now that all the data is in place
 
     createMap(mineMap, size);
@@ -351,29 +371,45 @@ function createMap(mineMap, size) {
 
                 amountLeft = 0;
 
+
+
                 if (infoArray[this.id][1] == 100) {
+
+                    let id = parseInt(this.id);
+
+                    if(firstTurn){
+                        reset(parseInt(gridSize));
+                        if(infoArray[id][1] != 100){
+                            $(`#id`).trigger("click");
+
+                        }else{
+                            reset(parseInt(gridSize));
+                        }
+                    }else{
+                
+
                     outputText.innerText = "YOU LOSE!!!!!";
                     endGame = true;
 
                     showAll();
+                    }
+                    
 
                 } else if (infoArray[this.id][1] > 0 && infoArray[this.id][1] < 100) {
+
+                    firstTurn = false;
 
                     infoArray.forEach(element => {
                         if (element[5] == 0){
                             amountLeft++;
-                            console.log(amountLeft);
                         }
 
                     });
 
-                    console.log(amountLeft -1);
-                    console.log(bombAmount);
 
                     
                     if(parseInt(amountLeft -1) === parseInt(bombAmount)){
 
-                        console.log(amountLeft);
 
                         outputText.innerText = "YOU WIN!!!!";
                         showAll();
@@ -402,14 +438,12 @@ function createMap(mineMap, size) {
                     infoArray.forEach(element => {
                         if (element[5] == 0){
                             amountLeft++;
-                            console.log(amountLeft);
                         }
                        
                     });
 
                     if(amountLeft == bombAmount){
 
-                        console.log(amountLeft);
 
                         outputText.innerText = "YOU WIN!!!!";
                         endGame = true;
@@ -562,7 +596,6 @@ function revealEmpties(graph, root) {
         }
 
 
-        console.log(nodesFree);
 
         for (var j = 0; j < nodesFree.length; j++) {//Loops through to find the distance.
 
@@ -616,6 +649,7 @@ function revealEmpties(graph, root) {
 
 
 createGraph(10);
+
 
 
 
