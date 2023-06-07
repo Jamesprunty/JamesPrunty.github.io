@@ -339,7 +339,7 @@ function createMap(mineMap, size) {
                     infoArray[this.id][4] = 1;
                     outputText.innerText = `Bombs: ${bombAmount}`;
 
-                    addText("F", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");
+                    addText("🚩", infoArray[this.id][2] + boxSizePad / 2, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");
                     
                 
                 
@@ -350,7 +350,7 @@ function createMap(mineMap, size) {
                     let selected = document.querySelector(`.f${this.id}`);
                     selected.remove();
 
-                    addText("?", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `q${infoArray[this.id][0]}`, "white");
+                    addText("❔", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `q${infoArray[this.id][0]}`, "white");
                     
                     
                     
@@ -395,12 +395,15 @@ function createMap(mineMap, size) {
 
                         }
                     }else{
+
+                        showAll();
                 
 
                     outputText.innerText = "YOU LOSE!!!!!";
+                    
                     endGame = true;
 
-                    showAll();
+                   
                     }
                     
 
@@ -553,7 +556,17 @@ function showAll() {
 
         // addText("B",element[2] + boxSizePad / 2 - 3, element[3] + boxSizePad/2 + 2, element[0] );
 
-        addText("!", infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0], "red");
+        let flags = document.querySelectorAll("#🚩");
+        flags.forEach(element => {
+            element.remove();
+        });
+        
+        let qs = document.querySelectorAll("#❔");
+        qs.forEach(element => {
+            element.remove();
+        });
+
+        addText("💣", infoArray[element][2] + boxSizePad / 2 - 3, infoArray[element][3] + boxSizePad / 2 + 2, infoArray[element][0], "red");
 
 
 
