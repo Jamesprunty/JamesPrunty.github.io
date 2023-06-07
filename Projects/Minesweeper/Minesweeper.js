@@ -106,6 +106,8 @@ function createGraph(size) {
         randomArray.push(random);
     }
 
+    console.log(randomArray);
+
     outputText.innerText = `bombs: ${bombAmount}`;
 
     //Set all bombs to 100 in info array
@@ -533,6 +535,12 @@ function generateRandom(min = 0, max = nodeAmount) {
 
     // add with min value 
     rand = rand + min;
+
+    console.log(rand);
+
+    if (rand == 1){ rand = generateRandom()};
+
+    console.log("AFTER" + rand);
 
 
     return rand;
