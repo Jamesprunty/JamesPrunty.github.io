@@ -322,6 +322,8 @@ function createMap(mineMap, size) {
     nodes.forEach(element => {
         element.addEventListener("mousedown", function (e) {
 
+            console.log("Click has run");
+
             if (endGame == false){
 
 
@@ -380,10 +382,15 @@ function createMap(mineMap, size) {
                     if(firstTurn){
                         reset(parseInt(gridSize));
                         if(infoArray[id][1] != 100){
-                            $(`#id`).trigger("click");
+                            console.log("THIS HAS RUN");
+                            let target = document.getElementById(id);
+                            console.log(target);
+                            target.dispatchEvent(new Event('mousedown'));
+                           
 
                         }else{
                             reset(parseInt(gridSize));
+
                         }
                     }else{
                 
@@ -457,6 +464,22 @@ function createMap(mineMap, size) {
     });
 
 
+
+}
+
+function click(x,y){
+
+    var ev = document.createEvent("MouseEvent");
+    var el = document.elementFromPoint(x,y);
+    ev.initMouseEvent(
+        "click",
+        true /* bubble */, true /* cancelable */,
+        window, null,
+        x, y, 0, 0, /* coordinates */
+        false, false, false, false, /* modifier keys */
+        0 /*left*/, null
+    );
+    el.dispatchEvent(ev);
 
 }
 
