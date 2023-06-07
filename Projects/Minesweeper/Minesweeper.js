@@ -339,10 +339,16 @@ function createMap(mineMap, size) {
                     infoArray[this.id][4] = 1;
                     outputText.innerText = `Bombs: ${bombAmount}`;
 
-                    addText("🚩", infoArray[this.id][2] + boxSizePad / 2, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");
-                    
-                
-                
+                    addText("🚩", infoArray[this.id][2] + boxSizePad / 2, infoArray[this.id][3] + boxSizePad / 2 + 2, `f${infoArray[this.id][0]}`, "green");  
+                    let target = document.querySelector(`.f${this.id}`);
+                    let id = this.id;
+                    target.addEventListener("mousedown", function(e){
+                        console.log("TEST");
+                        console.log(id);
+                        let target2 = document.getElementById(id);
+                        console.log(target2);
+                        target2.dispatchEvent(new Event('mousedown'));})              
+
                 } else if(infoArray[this.id][4] == 1){
 
                     infoArray[this.id][4] = 2;
@@ -351,7 +357,16 @@ function createMap(mineMap, size) {
                     selected.remove();
 
                     addText("❔", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `q${infoArray[this.id][0]}`, "white");
-                    
+                    let target = document.querySelector(`.${this.id}`);
+                    let id = this.id;
+
+                    target.addEventListener("mousedown", function(e){
+                        console.log("TEST");
+                        console.log(id);
+                        let target2 = document.getElementById(id);
+                        console.log(target2);
+                        target2.dispatchEvent(new Event('mousedown'));})              
+
                     
                     
                 }else{
@@ -472,21 +487,7 @@ function createMap(mineMap, size) {
 
 }
 
-function click(x,y){
 
-    var ev = document.createEvent("MouseEvent");
-    var el = document.elementFromPoint(x,y);
-    ev.initMouseEvent(
-        "click",
-        true /* bubble */, true /* cancelable */,
-        window, null,
-        x, y, 0, 0, /* coordinates */
-        false, false, false, false, /* modifier keys */
-        0 /*left*/, null
-    );
-    el.dispatchEvent(ev);
-
-}
 
 function addNode(value, x, y, colour, ID, fill) {
 
