@@ -16,6 +16,19 @@ let bombAmount = 0;
 let flags = 0;
 let endGame = false;
 let firstTurn = true;
+let ctrlDown = false;
+
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey) {
+      ctrlDown = true;
+    }
+  });
+
+  document.addEventListener('keyup', function(event) {
+    if (!event.ctrlKey) {
+      ctrlDown = false;
+    }
+  });
 
 buttons.forEach(element => {
     element.addEventListener("click", function () {
@@ -105,8 +118,6 @@ function createGraph(size) {
 
         randomArray.push(random);
     }
-
-    console.log(randomArray);
 
     outputText.innerText = `bombs: ${bombAmount}`;
 
@@ -324,17 +335,16 @@ function createMap(mineMap, size) {
     nodes.forEach(element => {
         element.addEventListener("mousedown", function (e) {
 
-            console.log("Click has run");
 
             if (endGame == false){
 
 
-            if (e.ctrlKey == true) {
+            if (ctrlDown == true) {
 
 
                 if (infoArray[this.id][4] == 0) {
 
-                  
+                  //ADD EVENT LISTENER FOR CTRL AND THEN JUST MAKE A BOOLIAN TRUE OR FALSE DEPENDING ON IF IT IS UP OR DOWN.
                    
                     infoArray[this.id][4] = 1;
                     outputText.innerText = `Bombs: ${bombAmount}`;
@@ -343,11 +353,11 @@ function createMap(mineMap, size) {
                     let target = document.querySelector(`.f${this.id}`);
                     let id = this.id;
                     target.addEventListener("mousedown", function(e){
-                        console.log("TEST");
-                        console.log(id);
+                        
                         let target2 = document.getElementById(id);
-                        console.log(target2);
-                        target2.dispatchEvent(new Event('mousedown'));})              
+                        target2.dispatchEvent(new Event('mousedown', ));
+                        
+                    })              
 
                 } else if(infoArray[this.id][4] == 1){
 
@@ -361,10 +371,7 @@ function createMap(mineMap, size) {
                     let id = this.id;
 
                     target.addEventListener("mousedown", function(e){
-                        console.log("TEST");
-                        console.log(id);
                         let target2 = document.getElementById(id);
-                        console.log(target2);
                         target2.dispatchEvent(new Event('mousedown'));})              
 
                     
@@ -386,7 +393,7 @@ function createMap(mineMap, size) {
                 }
 
 
-            } else if (!e.ctrlKey && infoArray[this.id][4] != 1) {
+            } else if (ctrlDown == false && infoArray[this.id][4] != 1) {
 
                 amountLeft = 0;
 
@@ -399,9 +406,7 @@ function createMap(mineMap, size) {
                     if(firstTurn){
                         reset(parseInt(gridSize));
                         if(infoArray[id][1] != 100){
-                            console.log("THIS HAS RUN");
                             let target = document.getElementById(id);
-                            console.log(target);
                             target.dispatchEvent(new Event('mousedown'));
                            
 
@@ -540,11 +545,9 @@ function generateRandom(min = 0, max = nodeAmount) {
     // add with min value 
     rand = rand + min;
 
-    console.log(rand);
 
     if (rand == 1){ rand = generateRandom()};
 
-    console.log("AFTER" + rand);
 
 
     return rand;
