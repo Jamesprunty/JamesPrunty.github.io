@@ -357,7 +357,7 @@ function createMap(mineMap, size) {
                     selected.remove();
 
                     addText("❔", infoArray[this.id][2] + boxSizePad / 2 - 3, infoArray[this.id][3] + boxSizePad / 2 + 2, `q${infoArray[this.id][0]}`, "white");
-                    let target = document.querySelector(`.${this.id}`);
+                    let target = document.querySelector(`.q${this.id}`);
                     let id = this.id;
 
                     target.addEventListener("mousedown", function(e){
