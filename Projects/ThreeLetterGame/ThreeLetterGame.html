@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James Prunty</title>
+    <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
+    <link rel="stylesheet" href="..//Datastructure/Datastructure.css">
+    <link rel="stylesheet" href=".//ThreeLetterGame.css">
+</head>
+
+<body>
+
+    <h1>The three letter game</h1>
+
+
+    <div id="contentContainer">
+
+        <div id="SummaryContainer">
+
+            <p id="summary">
+
+              The game is simple, You will be shown 3 letters, you have to come up with the shortest word possible that contain those letters in that order.<br>
+              You can use multiple words, but, additional words will cost you 3 more points.<br>
+              Each letter added to the 3 letters will add one point.<br>
+              you want the least amount of points, with the most amount of words.<br>
+              You score at the end will be calculated based on the amount of words you did and how many points each cost.<br><br>
+
+            </p>
+
+        </div>
+
+        <div id="visualContainer">
+
+
+            <div id="controlContainer" class="control">
+
+
+                <div id="input" class="controlBtns">
+                    <input type="number" id="size" placeholder="Row Size" min="3" max="25">
+                    <div id="randomiseDiv">
+                        <input type="button" class="btn" id="random" value="Set">
+                    </div>
+                    <div id="resetDiv">
+                        <input type="button" class="btn" id="reset" value="Reset">
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div id="mineMap">
+                <svg id="mineSVG">
+
+
+                </svg>
+
+
+            </div>
+
+            <div id="outputContainer">
+
+                <div id="output">
+                    <p id="outputText"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+</body>
+
+<script type="application/javascript" src=".//ThreeLetterGame.js"></script>
+
+</html>
