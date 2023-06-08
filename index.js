@@ -73,6 +73,13 @@ const Projects = [
         dir: "../Projects/"
      
     },  
+    {
+        name: "The three letter game",
+        description: "(Not Done) a simple word game",
+        folderName: "ThreeLetterGame",
+        dir: "../Projects/"
+     
+    },  
 
 
 
