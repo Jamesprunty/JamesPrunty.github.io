@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James Prunty</title>
+    <link rel="stylesheet" href="../../../JS30/GeneralStyle.css">
+    <link rel="stylesheet" href="..//Datastructure/Datastructure.css">
+    <link rel="stylesheet" href=".//Conway's game of life.css">
+</head>
+
+<body>
+
+    <h1>Conway's Game of Life</h1>
+
+
+    <div id="contentContainer">
+
+        <div id="SummaryContainer">
+
+            <p id="summary">
+
+
+            </p>
+
+        </div>
+
+        <div id="visualContainer">
+
+
+            <div id="controlContainer" class="control">
+
+
+                <div id="input" class="controlBtns">
+                    <input type="number" id="size" placeholder="Row Size" min="3" max="25">
+                    <div id="randomiseDiv">
+                        <input type="button" class="btn" id="random" value="Set">
+                    </div>
+                    <div id="resetDiv">
+                        <input type="button" class="btn" id="reset" value="Reset">
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div id="mineMap">
+                <svg id="mineSVG">
+
+
+                </svg>
+
+
+            </div>
+
+            <div id="outputContainer">
+
+                <div id="output">
+                    <p id="outputText"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+</body>
+
+<script type="application/javascript" src=".//Conway's game of life.js"></script>
+
+</html>
