@@ -1,6 +1,8 @@
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 const current = document.querySelector("#current");
+const input = 
 generate(3);
+
 
 
 
