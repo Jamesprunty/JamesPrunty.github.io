@@ -1,6 +1,6 @@
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
-let letters = randomLetters(3);
-console.log(letters);
+const current = document.querySelector("#current");
+generate(3);
 
 
 
@@ -9,6 +9,29 @@ console.log(letters);
 
 
 
+
+
+
+
+function generate(amount){
+
+    let letters = randomLetters(amount);
+    console.log(letters);
+
+    let dataTotal = "";
+    
+
+    for (let i = 0; i < letters.length; i++) {
+        let upperLetter = letters[i].toLocaleUpperCase();
+        let data = `<div id="letter${i}" class="letter"><p id="letter${i}Val">${letters[i].toUpperCase()}</p></div>`
+        dataTotal += data;
+        
+    }
+    console.log(dataTotal);
+
+    current.innerHTML = dataTotal;
+
+}
 
 
 
