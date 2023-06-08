@@ -61,7 +61,7 @@ const Projects = [
     }, 
     {
         name: "Minesweeper",
-        description: "(Not Done) MineSweeper game",
+        description: "MineSweeper game",
         folderName: "Minesweeper",
         dir: "../Projects/"
      
