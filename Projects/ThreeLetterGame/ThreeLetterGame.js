@@ -2,6 +2,7 @@ const alphabet = "abcdefghijklmnopqrstuvwxyz"
 const current = document.querySelector("#current");
 const input = document.querySelector("#input");
 let lettersArr = generate(3);
+let isWord = true;
 
 input.addEventListener("keypress", function(e){
     if(e.key == "Enter"){
@@ -125,14 +126,26 @@ console.log(check);
 
 function dictionaryCheck(words){
 
+    
+
     words.forEach(element => {
-        
-        let api = "https://api.dictionaryapi.dev/api/v2/entries/en/" + element;
-        console.log(api);
 
+        isWord = true;
 
+        let url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + element; 
 
-
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.send();
+        xhr.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data.message);
+            if(data.message == "Sorry pal, we couldn't find definitions for the word you were looking for."){
+                console.log("FAILURE");
+                return false;
+            }
+            
+        }
 
     });
 
