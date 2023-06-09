@@ -1,8 +1,13 @@
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 const current = document.querySelector("#current");
-const input = 
-generate(3);
+const input = document.querySelector("#input");
+let lettersArr = generate(3);
 
+input.addEventListener("keypress", function(e){
+    if(e.key == "Enter"){
+        console.log("ENTER");
+    }
+})
 
 
 
@@ -33,6 +38,8 @@ function generate(amount){
 
     current.innerHTML = dataTotal;
 
+    return letters;
+
 }
 
 
@@ -51,6 +58,13 @@ function randomLetters(amount){
     }
 
     return tempArray;
+
+
+
+}
+
+function wordChecker(lettersArr, input){
+
 
 
 
