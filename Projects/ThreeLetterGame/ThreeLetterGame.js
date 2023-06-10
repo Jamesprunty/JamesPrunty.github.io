@@ -5,10 +5,27 @@ let lettersArr = generate(3);
 let isWord = true;
 let responseData = "";
 let isTrue = true;
+let longEnough = true;
+let letterFirst = true;
+let letterCheck = true;
+let success = true;
+let inputLength = true;
+let test = true;
 
 input.addEventListener("keypress", function (e) {
     if (e.key == "Enter") {
-        wordChecker(lettersArr, input.value);
+
+        longEnough = true;
+        letterFirst = true;
+        isWord = true;
+        letterCheck = true;
+        success = true;
+        inputLength = true;
+
+            console.log(wordChecker(lettersArr, input.value));
+
+        
+        
     }
 })
 
@@ -66,7 +83,9 @@ function randomLetters(amount) {
 
 function wordChecker(letters, input) {
 
+    
 
+    let trueArray = [];
 
 
     // split into words
@@ -77,19 +96,74 @@ function wordChecker(letters, input) {
 
     words.forEach(element => {
         if (element.length <= 2) {
-            return "too Short";
+            longEnough = false;  
         }
     });
+
+    let firstLetters = words[0].split("");
+
+    if(firstLetters[0] == undefined){
+        letterFirst = false;
+    }else{
+        letterFirst = true;
+    }
+
+
+    if(input.length < 4){
+        inputLength = false;
+    }
+
+
+
+
+
+
+
 
 
     //Check if the words are words, if they are not, then return false
 
-    let checked = dictionaryCheck(words);
+    let wordCheckArray = [];
+   
+words.forEach(element => {
+    dictionaryCheck(element).then((responseData) => {
+      wordCheckArray.push(responseData);});
 
-  
-        console.log(checked);
 
+});
+
+setTimeout(() => {
+
+    console.log(wordCheckArray);
+    wordCheckArray.forEach(element => {
+        if(element == false){
+            isWord = false;
+        }
+    });
     
+}, 1000);
+
+
+
+
+/*
+
+console.log(trueArray);
+
+setTimeout(() => {
+
+    trueArray.forEach(element => {
+        if(element.message){
+            return "One of inputs is not a word";
+        }
+    });
+    
+    
+}, 1000);*/
+
+
+
+
 
 
     let check = [];
@@ -109,6 +183,52 @@ function wordChecker(letters, input) {
             checkIdx += 1;
         };
     }
+ 
+
+    check.forEach(element => {
+        if(parseInt(element) == 0){
+            letterCheck = false;
+        }
+    });
+
+
+setTimeout(() => {
+
+    let successCheck = [];
+    let successCheckData = [];
+    successCheck.push(longEnough);
+    successCheckData.push("Long Enough: " + longEnough);
+    successCheck.push(letterFirst);
+    successCheckData.push("Letter First: " + letterFirst);
+    successCheck.push(letterCheck);
+    successCheckData.push("Letter Check: " + letterCheck);
+    successCheck.push(inputLength);
+    successCheckData.push("Input Data: " + inputLength);
+    successCheck.push(isWord);
+    successCheckData.push("Is Word: " + isWord);
+
+    console.log(isWord);
+
+
+
+    successCheck.forEach(element => {
+        if(element == false){
+            success = false;
+        }
+    });
+
+
+    console.log(successCheck);
+
+    if(success == true){
+        console.log("PASSED");
+    }else{
+        console.log("FAILED");
+    }
+
+    
+}, 1000);
+
 
 
 
@@ -118,113 +238,32 @@ function wordChecker(letters, input) {
 
 }
 
-function dictionaryCheck(words) {
-
-    let trueArray = []; 
 
 
 
-    words.forEach(element => {
-
-        isWord = true;
-
-        let url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + element;
-
-
-        const fetchData = () => {
-
-            return new Promise((resolve, reject) => (
-                fetch(url)
-                  .then(res => res.json())
-                  .then(data => resolve(data))
-                  .catch(err => reject(err))
-                ))
-          }
-          
-          async function getData() {
-            const data = await fetchData()
-            console.log(data);
-            return data;
-          }
-
-          getData().then(data => trueArray.push(data.message));
-          
-
-          setTimeout(() => {
-
-            console.log(trueArray);
-
-            console.log(isTrue);
-            
-          }, 1000);
-
-
-          /*if(isTrue){
-            trueArray.push(0);
-          }else{
-            trueArray.push(1);
-          }*/
 
 
 
-      /*async function checkDictionary(url){
-        const response = await fetch(url);
-        console.log(response);
-      }
+async function dictionaryCheck(word) {
 
-checkDictionary(url);*/
-        
 
-/*async function fetchMoviesJSON() {
-    const response = await fetch(url);
-    const words = await response.json();
-    return words;
-  }
-  
-  fetchMoviesJSON().then(words => {
-    words; // fetched movies
-    console.log(words);
+    let url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
 
-    if(words.message){
-        trueArray.push(0);
-        console.log(trueArray);
+
+    return await fetch(url)
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData);
+
+      if(responseData.message){
         return false;
-    }else{
-        trueArray.push(1);
+      }else{
         return true;
-    }
-  });
-
-  if(test){
-    console.log(await fetchMoviesJSON());
-  }else{
-    console.log("This is a not word");
-  }*/
+      }
+    })
+    .catch(error => console.warn(error));
+  }
 
 
-       /*
-    
-        fetchDemo().then(function(result) {
-
-            if(result.message){
-                isTrue = false;
-            }else{
-                trueArray.push(1);
-                console.log(trueArray);
-            }
-
-            console.log(isTrue);
-
-        });
-
-*/
-    });
-
-    console.log(trueArray);
-
-
-  
-
-}
 
 
