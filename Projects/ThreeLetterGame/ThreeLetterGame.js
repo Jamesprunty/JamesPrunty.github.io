@@ -1,7 +1,11 @@
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 const current = document.querySelector("#current");
 const input = document.querySelector("#input");
-let lettersArr = generate(3);
+const previousDiv = document.querySelector("#previousDiv");
+const timerDiv = document.querySelector("#timerDiv");
+
+let number = 3;
+let lettersArr = generate(number);
 let isWord = true;
 let responseData = "";
 let isTrue = true;
@@ -11,6 +15,7 @@ let letterCheck = true;
 let success = true;
 let inputLength = true;
 let test = true;
+let previousArray = [];
 
 input.addEventListener("keypress", function (e) {
     if (e.key == "Enter") {
@@ -24,18 +29,14 @@ input.addEventListener("keypress", function (e) {
 
             console.log(wordChecker(lettersArr, input.value));
 
+           
+
         
         
     }
 })
 
-
-
-
-
-
-
-
+previousArray.push(["Letters", "Words", "Points"]);
 
 
 
@@ -78,7 +79,6 @@ function randomLetters(amount) {
     return tempArray;
 
 
-
 }
 
 function wordChecker(letters, input) {
@@ -114,13 +114,6 @@ function wordChecker(letters, input) {
     }
 
 
-
-
-
-
-
-
-
     //Check if the words are words, if they are not, then return false
 
     let wordCheckArray = [];
@@ -142,27 +135,6 @@ setTimeout(() => {
     });
     
 }, 1000);
-
-
-
-
-/*
-
-console.log(trueArray);
-
-setTimeout(() => {
-
-    trueArray.forEach(element => {
-        if(element.message){
-            return "One of inputs is not a word";
-        }
-    });
-    
-    
-}, 1000);*/
-
-
-
 
 
 
@@ -217,32 +189,114 @@ setTimeout(() => {
         }
     });
 
+    let upperLetters = [];
+
+    for (let i = 0; i < letters.length; i++) {
+        upperLetters.push(letters[i].toLocaleUpperCase()) ;
+
+    }
+
 
     console.log(successCheck);
 
     if(success == true){
-        console.log("PASSED");
+        
+        //Process points
+
+        let points = 0;
+
+        console.log(input);
+
+        let inputData = input.split("");
+
+        inputData.forEach(element => {
+            points++;
+            if(element == " "){
+                points += 5;
+            }
+        });
+
+       
+        input.value = "";
+
+
+
+
+
+        previousArray.push([upperLetters, words, points - 4]);
+        console.log(previousArray);
+
+        let dataFinish = ""
+
+        previousArray.forEach(element => {
+            console.log(element);
+
+            let data = 
+            `<div class="prevContainer">
+            <div class="heading"><p class="lettersContent">${element[0]}</p></div>
+            <div class="heading"><p class="wordsContent">${element[1]}</p></div>
+            <div class="heading"><p class="wordsContent">${element[2]}</p></div>
+            </div>`
+
+        dataFinish += data;
+        let total = 0;
+
+       
+        
+
+        });
+
+
+        console.log(previousDiv);
+        previousDiv.innerHTML = dataFinish;
+
+
+
+
+        if(previousArray.length < 6){
+            
+            reset(number);
+
+        }else{
+           
+            endGame(previousArray);
+            
+        }
+
+        
+
     }else{
-        console.log("FAILED");
+
+        input.value = "";
+        
+
+        //return that there was a problem
+
+        console.log(successCheckData[0]);
+
+        if(successCheck[0] == false){
+            alert("The word must be longer.");
+        }else if(successCheck[1] == false){
+            alert("The first character is not a letter.");
+        }else if(successCheck[2] == false){
+            alert("The words do not contain the letters or are not in the right order.");
+        }else if(successCheck[3] == false){
+            alert("The input must be at least 4 letters in length.");
+        }else if(successCheck[4] == false){
+            alert("One of the words is not a word.");
+        }
+
+
     }
 
     
 }, 1000);
 
 
-
-
-
     //calculate score and add to previous lise, then generate a new set of letters. 
 
 
 }
-
-
-
-
-
-
 
 async function dictionaryCheck(word) {
 
@@ -263,6 +317,46 @@ async function dictionaryCheck(word) {
     })
     .catch(error => console.warn(error));
   }
+
+  function reset(number){
+
+    input.value = "";
+
+        longEnough = true;
+        letterFirst = true;
+        isWord = true;
+        letterCheck = true;
+        success = true;
+        inputLength = true;
+
+        lettersArr = generate(number);
+
+
+  }
+
+  function endGame(){
+
+    let total = 0;
+
+    //SAVE TOP SCORES TO LOCALSTORAGE
+
+
+    for (let i = 1; i < previousArray.length; i++) {
+        console.log(previousArray);
+        total += previousArray[i][2];
+        
+        
+    }
+
+    timerDiv.innerHTML = `<p id="score">Total: ${total}</p>`
+    input.value = "";
+
+  }
+
+
+  //SETUP CONTROLS 
+  //Setup Start
+  
 
 
 

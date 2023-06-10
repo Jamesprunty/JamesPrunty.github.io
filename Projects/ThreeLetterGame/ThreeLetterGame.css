@@ -84,3 +84,30 @@ input{
     width: 400px
 }
 
+.prevContainer{
+
+    display: flex;
+    width: 495px;
+    border: white solid 1px;
+
+}
+
+#previousHeadings{
+    display: flex;
+    width: 495px;
+    border: white solid 1px;
+
+}
+
+.heading{
+    flex: 1;
+    text-align: center;
+    border: white solid 1px;
+    
+}
+
+#score{
+    font-size: xx-large;
+    text-align: center;
+}
+
