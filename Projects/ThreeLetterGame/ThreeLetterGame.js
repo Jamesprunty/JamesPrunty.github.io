@@ -268,7 +268,7 @@ function wordChecker(letters, input) {
 
 
 
-            if (previousArray.length < 2) {
+            if (previousArray.length < 6) {
 
                 reset(number);
 
