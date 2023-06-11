@@ -14,52 +14,97 @@
     <h1>The three letter game</h1>
 
 
-<div id="gameWindow">
-    <div id="gameContainer">
+    <div class="popup">
+        <button id="close">&times;</button>
 
-        <div id="timerDiv">
-            <div id="timer">
+        <div id="popupContent">
+        <h1>Three Letter Game Rules</h1><br><br>
+        
+            <h2>Background</h2>
+            <p>
 
-            </div>
+                I thought of this game when on the road. Most of the UK license plates end in three letters so I started
+                trying to create words out of them. Hope you enjoy this variation.
+            </p>
 
+            <h2>Premise</h2>
+
+            <p>
+                You will be given 5 sets of 3 letters. You must use the letters to make a word / phrase. The points are
+                scored on letter count and spaces will cost 5 extra points so try to keep it to one word if possible.
+            </p>
+
+            <h2>The Rules</h2><br><br>
+
+            <p>
+                1 - Each word must be more than 2 letters long.<br>
+                2 - The total characters must be more than 3 letters (If the prompt is "ear" you could not input "ear",
+                you would have to input "bear").<br>
+                3 - The letters must come in order (they can be repeated). (eg, if your letters are "iec", "rice" would
+                not work but "piece" would)<br>
+
+
+            </p>
+
+            <h3> Hope you have fun! </h3>
         </div>
 
-        <div id="currentDiv">
-            <div id="current">
-                
-                
-            </div>
-
-        </div>
-
-        <div id="previousDiv">
-
-
-            <div class="prevContainer">
-                <div class="heading"><p class="lettersContent">Letters</p></div>
-                <div class="heading"><p class="wordsContent">Words</p></div>
-                <div class="heading"><p class="wordsContent">Points</p></div>
-            </div>
-           
-
-        </div>
-
-        <div id="inputDiv">
-            <div id="inputContainer">
-                <input type="text" id="input" placeholder="word(s)">
-            </div>
-
-        </div>
-
-        <div id="controlDiv">
-            <div id="controls">
-                
-            </div>
-
-        </div>
 
     </div>
-</div>
+
+
+    <div id="gameWindow">
+        <div id="gameContainer">
+
+            <div id="timerDiv">
+                <div id="timer">
+
+                </div>
+
+            </div>
+
+            <div id="currentDiv">
+                <div id="current">
+
+
+                </div>
+
+            </div>
+
+            <div id="previousDiv">
+
+
+                <div class="prevContainer">
+                    <div class="heading">
+                        <p class="lettersContent">Letters</p>
+                    </div>
+                    <div class="heading">
+                        <p class="wordsContent">Words</p>
+                    </div>
+                    <div class="heading">
+                        <p class="wordsContent">Points</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="inputDiv">
+                <div id="inputContainer">
+                    <input type="text" id="input" placeholder="word(s)">
+                </div>
+
+            </div>
+
+            <div id="controlDiv">
+                <div id="controls">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 
 </body>
