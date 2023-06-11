@@ -118,6 +118,38 @@ input{
     text-align: center;
 }
 
+#headerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header{
+    flex: 1;
+    border: black solid 1px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#resetBtn{
+
+    text-align: center;
+    background-color: white;
+    border: black 1px solid;
+    color: black;
+    width: 50%;
+
+}
+
+#previousResults{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 *,
 *:before,
 *:after{

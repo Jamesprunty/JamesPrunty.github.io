@@ -12,12 +12,17 @@ let scoresArray = [];
 
 
 window.addEventListener("load", function () {
+    if(!localStorage.getItem("firstTime")){
+
+   
     setTimeout(
         function open(event) {
             document.querySelector(".popup").style.display = "block";
         },
         1000
     )
+}
+localStorage.setItem("firstTime", true)
 });
 
 
@@ -265,9 +270,6 @@ function wordChecker(letters, input) {
 
             previousDiv.innerHTML = dataFinish;
 
-
-
-
             if (previousArray.length < 6) {
 
                 reset(number);
@@ -334,16 +336,45 @@ async function dictionaryCheck(word) {
 function reset(number) {
 
     input.value = "";
-
     longEnough = true;
     letterFirst = true;
     isWord = true;
     letterCheck = true;
     success = true;
     inputLength = true;
-
+    document.querySelector(".popup").style.display = "none";
     lettersArr = generate(number);
 
+
+}
+
+function fullReset(number){
+
+    previousDiv.innerHTML = 
+    
+    ` <div class="prevContainer">
+    <div class="heading">
+        <p class="lettersContent">Letters</p>
+    </div>
+    <div class="heading">
+        <p class="wordsContent">Words</p>
+    </div>
+    <div class="heading">
+        <p class="wordsContent">Points</p>
+    </div>
+</div>`
+
+    input.value = "";
+    longEnough = true;
+    letterFirst = true;
+    isWord = true;
+    letterCheck = true;
+    success = true;
+    inputLength = true;
+    previousArray = [];
+    previousArray.push(["Letters", "Words", "Points"]);
+    document.querySelector(".popup").style.display = "none";
+    lettersArr = generate(number);
 
 }
 
@@ -415,28 +446,53 @@ function endGame() {
     popupContent.innerHTML = `
         <h1>Results<h1><br>
         <h2> Your score was: ${total}</h2><br><br>
-        <h3>Words used</h3>
-        ${scores};
+
         <h3>Previous Results</h3>
         <div id="highScoresTable">
-        <p>1 - ${localStorage.getItem("highScores0")}</p>
-        <p>2 - ${localStorage.getItem("highScores1")}</p>
-        <p>3 - ${localStorage.getItem("highScores2")}</p>
-        <p>4 - ${localStorage.getItem("highScores3")}</p>
-        <p>5 - ${localStorage.getItem("highScores4")}</p>
+        <div id="headerContainer">
+        <div class="header"><p>Place</p></div>
+        <div class="header"><p>Score</p></div>
+        </div>
+        <div id="headerContainer">
+        <div class="header"><p>1</p></div>
+        <div class="header"><p>${localStorage.getItem("highScores0")}</p></div>
+        </div>
+        <div id="headerContainer">
+        <div class="header"><p>2</p></div>
+        <div class="header"><p>${localStorage.getItem("highScores1")}</p></div>
+        </div>
+        <div id="headerContainer">
+        <div class="header"><p>3</p></div>
+        <div class="header"><p>${localStorage.getItem("highScores2")}</p></div>
+        </div>
+        <div id="headerContainer">
+        <div class="header"><p>4</p></div>
+        <div class="header"><p>${localStorage.getItem("highScores3")}</p></div>
+        </div>
+        <div id="headerContainer">
+        <div class="header"><p>5</p></div>
+        <div class="header"><p>${localStorage.getItem("highScores4")}</p></div>
+        </div>
         <div id="previousResults"></div>
-        <div id="reset"><input type="button" value="reset" id="resetBtn"></input></div>`
+        <div id="reset"><input type="button" value="reset" id="resetBtn"></input>
+        </div>`
 
     //timerDiv.innerHTML = `<p id="score">Total: ${total}</p>`
     input.value = "";
     document.querySelector(".popup").style.display = "block";
 
+    const resetBtn = document.querySelector("#resetBtn");
+    resetBtn.addEventListener("click", function(){
+        console.log("TEST");
+
+        fullReset(number);
+
+    })
+
 }
 
 
-  //SETUP CONTROLS
-  //Setup Start
-  //Setup
+  //Setup reset
 
 
 
