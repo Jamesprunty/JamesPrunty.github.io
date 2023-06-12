@@ -75,7 +75,7 @@ const Projects = [
     },  
     {
         name: "The three letter game",
-        description: "(Not Done) a simple word game",
+        description: "A simple word game",
         folderName: "ThreeLetterGame",
         dir: "../Projects/"
      

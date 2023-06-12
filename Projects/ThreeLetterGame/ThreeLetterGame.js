@@ -7,6 +7,11 @@ const popupContent = document.querySelector("#popupContent");
 const highScoreCount = 5;
 const highScores = 'highScores';
 let scoresArray = [];
+const resetBtnMain = document.querySelector("#resetBtnMain");
+
+resetBtnMain.addEventListener("click", function(){
+    fullReset(number);
+})
 
 
 
@@ -393,11 +398,18 @@ function endGame() {
 
         let tempScores = [];
         let inserted = false;
+        scoresArray = [];
 
      for (let j = 0; j < 6; j++) {
         if(localStorage.getItem("highScores" + j)){
-        scoresArray.push(localStorage.getItem("highScores" + j));
-        }
+
+                scoresArray.push(localStorage.getItem("highScores" + j));
+
+            }else{
+                scoresArray.push(-1);
+            }
+        
+        
      }
 
      console.log(scoresArray);
@@ -412,18 +424,19 @@ function endGame() {
             tempScores.push(total);
             inserted = true;
             tempScores.push(scoresArray[i]);
-        }else if(scoresArray[i + 1] == undefined && inserted == false){
+        }else if(parseInt(scoresArray[i + 1]) < 0 && inserted == false){
 
             tempScores.push(scoresArray[i]);
-            console.log("TESTNIG");
+            console.log(i + " TESTNIG");
             tempScores.push(total);
             inserted = true;
             
 
-        }else{
+        }else if(scoresArray[i] != undefined){
             tempScores.push(scoresArray[i]);
         }
      }
+
 
      console.log(tempScores);
 
@@ -490,9 +503,6 @@ function endGame() {
     })
 
 }
-
-
-  //Setup reset
 
 
 

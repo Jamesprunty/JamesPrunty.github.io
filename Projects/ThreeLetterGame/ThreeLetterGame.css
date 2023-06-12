@@ -134,6 +134,13 @@ input{
     display: flex;
 }
 
+#controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 #resetBtn{
 
     text-align: center;
@@ -142,6 +149,10 @@ input{
     color: black;
     width: 50%;
 
+}
+
+#resetBtnMain{
+    width: 50%;
 }
 
 #previousResults{
