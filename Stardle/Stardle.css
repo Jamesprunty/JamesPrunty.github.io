@@ -15,10 +15,21 @@ h1{
 
 #container{
 
-    width: 50%;
-    
+    min-width: 400px;
+    min-height: 650px;
     border: red 1px solid;
+    
 
+}
+
+#pictureContainer{
+    border: 1px white solid;
+    min-height: 600px;
+}
+
+#picture{
+    min-height: 500px;
+    border: green 1px solid;
 }
 
 .hidden{

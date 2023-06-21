@@ -2,7 +2,7 @@
 
 //Person
 
-let movieName = "The lego movie";
+let movieName = "cars";
 let movieID = "";
 let cast = [];
 let poster = "";
@@ -11,6 +11,7 @@ let releaseDate = "";
 let summary = "";
 let imdbLink = "";
 
+let imageHint = document.querySelector("#imageHint");
 
 
 
@@ -53,7 +54,9 @@ async function getMovie(name){
         .then((responseData) => {
           console.log(responseData);
           console.log(responseData.cast[0].name);
-          getPerson(responseData.cast[0].id);
+          getPerson(responseData.cast[0].id).then((responseData) => {
+            imageHint.src = "http://image.tmdb.org/t/p/w500/" + responseData.profiles[0].file_path;
+          });
           cast.push(responseData.cast[0].id);
           console.log(responseData.cast[1].name);
           getPerson(responseData.cast[1].id);
@@ -114,6 +117,7 @@ async function getMovie(name){
           return await fetch(url, options)
           .then((response) => response.json())
           .then((responseData) => {
+
 
             castImages.push(responseData.profiles[0].file_path);
             console.log(responseData.profiles[0].file_path);
