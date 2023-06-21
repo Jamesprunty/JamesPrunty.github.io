@@ -5,50 +5,54 @@
     <meta charset="UTF-8">
     <title>Stardle</title>
     <link rel="stylesheet" href="Stardle.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../Projects/Datastructure/Datastructure.css">
 </head>
 
 <body>
     <h1>Stardle</h1>
 
-    <div id="container">
+    <div id="appContainer">
+        <div id="container">
 
-        <div id="pictureContainer">
-            <div id="picture">
-                <img id="imageHint" src="">
-                <p id="textHint" class="hidden"></p>
+            <div id="pictureContainer">
+                <div id="picture">
+                    <img id="imageHint" src="">
+                    <p id="textHint" class="hidden"></p>
+                </div>
+                <div>
+                    <p id="hintInfo"></p>
+
+
+
+
+                </div>
+                <div id="Nav">
+
+                    <label for="Hint1"></label>
+                    <input class="hint" type="button" value="1" name="Hint1"></input>
+                    <label for="Hint2"></label>
+                    <input class="hint hidden" type="button" value="2" name="Hint2"></input>
+                    <label for="Hint3"></label>
+                    <input class="hint hidden" type="button" value="3" name="Hint3"></input>
+                    <label for="Hint4"></label>
+                    <input class="hint hidden" type="button" value="4" name="Hint4"></input>
+                    <label for="Hint5"></label>
+                    <input class="hint hidden" type="button" value="5" name="Hint5"></input>
+
+                </div>
             </div>
-            <div>
-                <p id="hintInfo"></p>
 
+            <div id="guessingContainer">
 
-
-
-            </div>
-            <div id="Nav">
-
-                <label for="Hint1"></label>
-                <input class="hint" type="button" value="1" name="Hint1"></input>
-                <label for="Hint2"></label>
-                <input class="hint hidden"  type="button" value="2" name="Hint2"></input>
-                <label for="Hint3"></label>
-                <input class="hint hidden"  type="button" value="3" name="Hint3"></input>
-                <label for="Hint4"></label>
-                <input class="hint hidden"  type="button" value="4" name="Hint4"></input>
-                <label for="Hint5"></label>
-                <input class="hint hidden"  type="button" value="5" name="Hint5"></input>
+                <label for="guess"></label>
+                <input type="input" name="guess" placeholder="Guess"></input>
+                <label for="submit"></label>
+                <input type="button" value="Submit" name="submit"></input>
+                <label for="nextHint"></label>
+                <input class="hint" type="button" value="Next Hint" name="nextHint"></input>
 
             </div>
-        </div>
-
-        <div id="guessingContainer">
-
-            <label for="guess"></label>
-            <input type="input" name="guess" placeholder="Guess"></input>
-            <label for="submit"></label>
-            <input type="button" value="Submit" name="submit"></input>
-            <label for="nextHint"></label>
-            <input class="hint" type="button" value="Next Hint" name="nextHint"></input>
-
         </div>
     </div>
 

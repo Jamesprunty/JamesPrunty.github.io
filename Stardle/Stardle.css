@@ -1,17 +1,24 @@
 h1{
 
     text-align: center;
+    color: white;
+}
+
+#appContainer{
+
+    border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 #container{
 
-    border: 1px black solid;
-}
-
-#pictureContainer{
-
-
+    width: 50%;
+    
     border: red 1px solid;
+
 }
 
 .hidden{
