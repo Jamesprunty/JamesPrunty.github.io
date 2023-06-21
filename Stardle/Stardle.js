@@ -3,15 +3,26 @@
 //Person
 
 let movieName = "cars";
+let movieLower = movieName.toLowerCase();
 let movieID = "";
 let cast = [];
 let poster = "";
+let clues = [];
 let castImages = [];
 let releaseDate = "";
 let summary = "";
 let imdbLink = "";
+let hint = 1;
 
 let imageHint = document.querySelector("#imageHint");
+let textHint = document.querySelector("#textHint");
+let nextHint = document.querySelector("#nextHint");
+
+nextHint.addEventListener('click', function(){
+  controller("next");
+});
+
+
 
 
 
@@ -52,16 +63,12 @@ async function getMovie(name){
           return await fetch(url, options)
         .then((response) => response.json())
         .then((responseData) => {
-          console.log(responseData);
-          console.log(responseData.cast[0].name);
           getPerson(responseData.cast[0].id).then((responseData) => {
             imageHint.src = "http://image.tmdb.org/t/p/w500/" + responseData.profiles[0].file_path;
           });
           cast.push(responseData.cast[0].id);
-          console.log(responseData.cast[1].name);
           getPerson(responseData.cast[1].id);
           cast.push(responseData.cast[1].id);
-          console.log(responseData.cast[2].name);
           getPerson(responseData.cast[2].id);
           cast.push(responseData.cast[2].id);
           
@@ -87,13 +94,11 @@ async function getMovie(name){
         .then((response) => response.json())
         .then((responseData) => {
           poster = responseData.poster_path;
-          console.log(poster);
           releaseDate = responseData.release_date;
-          console.log(releaseDate);
+          clues.push(responseData.release_date);
           summary = responseData.overview;
-          console.log(summary);
+          clues.push(responseData.overview);
           imdbLink = responseData.imdb_id;
-          console.log(imdbLink);
           return responseData})
         .catch(err => console.error(err));
 
@@ -117,16 +122,59 @@ async function getMovie(name){
           return await fetch(url, options)
           .then((response) => response.json())
           .then((responseData) => {
-
-
             castImages.push(responseData.profiles[0].file_path);
-            console.log(responseData.profiles[0].file_path);
-            console.log(castImages);
             return responseData})
           .catch(err => console.error(err));
 
 
             //Person picture http://image.tmdb.org/t/p/w500/ *THE JPG*
+
+
+    }
+
+    function controller(button){
+
+      if(button == "next"){
+
+        
+
+        
+        if(hint <= 2){
+          if(imageHint.classList.contains("hidden")){
+            imageHint.classList.remove("hidden");
+            textHint.classList.add("hidden");
+          }
+          imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[hint];
+          
+          
+        }else{
+
+          if(textHint.classList.contains("hidden")){
+            textHint.classList.remove("hidden");
+            imageHint.classList.add("hidden");
+            
+            console.log(clues);
+            console.log("test");
+            textHint.innerText = "";
+            textHint.innerText = clues[hint - 3];
+            console.log(clues[hint - 3]);
+            
+          
+          }
+
+        }
+
+        hint++;
+
+        
+        
+
+
+       
+      }
+
+
+
 
 
     }
