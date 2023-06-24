@@ -58,3 +58,16 @@ display: none;
     align-items: center;
     margin: 5px;;
 }
+
+#picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 750px;
+    width: 500px;
+}
+
+#textHint{
+    word-wrap: break-word;
+    text-align: center;
+}
