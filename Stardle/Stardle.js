@@ -315,11 +315,19 @@ async function getMovie(name){
 
         }else{
 
+
+
           if(hint == 5){
 
             guesses++;
 
             endGame("lose");
+          }else{
+
+            guesses++;
+
+            nextHint.dispatchEvent(new Event('click', ));
+
           }
 
 
@@ -344,9 +352,21 @@ async function getMovie(name){
 
       console.log(result);
 
-      /*textHint.innerHTML = `
-      <h1> Unlucky!</h1><br><br>
-      <p>Guesses: ${guesses}`*/
+      if(result == "win"){
+
+        if(textHint.classList.contains("hidden")){
+          textHint.classList.remove("hidden");
+          imageHint.classList.add("hidden");
+        }
+
+        textHint.innerHTML = `
+        <h1> Well Done!</h1><br><br>
+        <p>You did it in ${guesses} guesses`
+
+
+      }
+
+
 
       console.log("LOSE PAGE")
 
@@ -890,4 +910,7 @@ async function getMovie(name){
     //Clear text on submit
     //Do lose and win pages
     //ResetGame
-    
+    //Add actor name under the image
+    //Show all hints on win and allow user to get back to win page
+    //Add poster to finish
+
