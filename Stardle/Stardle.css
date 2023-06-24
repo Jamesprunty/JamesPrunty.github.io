@@ -63,6 +63,7 @@ display: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 750px;
     width: 500px;
 }
@@ -70,4 +71,15 @@ display: none;
 #textHint{
     word-wrap: break-word;
     text-align: center;
+}
+
+#poster{
+    width: 333px;
+    height: 500px;
+}
+
+#imageHint{
+    width: 400px;
+    height: 600px;
+    
 }
