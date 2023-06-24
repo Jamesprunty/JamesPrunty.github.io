@@ -236,9 +236,12 @@ async function getMovie(name){
 
       }else if(hint == 5){
         console.log("YOU LOSE");
+        endGame("lose");
       }
       
             hint++;
+
+           
 
         }
 
@@ -302,14 +305,12 @@ async function getMovie(name){
         if(input.value.toLowerCase() == movieLower){
           guesses++;
 
+
+          endGame("win");
+
           console.log("YOU HAD: " + guesses + " GUESSES")
 
           console.log("WIN PAGE");
-
-
-
-
-
 
 
         }else{
@@ -318,18 +319,7 @@ async function getMovie(name){
 
             guesses++;
 
-            console.log("LOSE PAGE")
-
-
-          }else{
-
-            
-          guesses++;
-
-          nextHint.dispatchEvent(new Event('click', ));
-
-          console.log(guesses);
-
+            endGame("lose");
           }
 
 
@@ -348,6 +338,19 @@ async function getMovie(name){
 
       
     });
+
+
+    function endGame(result){
+
+      console.log(result);
+
+      /*textHint.innerHTML = `
+      <h1> Unlucky!</h1><br><br>
+      <p>Guesses: ${guesses}`*/
+
+      console.log("LOSE PAGE")
+
+    }
 
     function generateMovie(){
 
@@ -880,3 +883,11 @@ async function getMovie(name){
 
 
     }
+
+
+
+    //Enter to submit
+    //Clear text on submit
+    //Do lose and win pages
+    //ResetGame
+    
