@@ -141,7 +141,6 @@ async function getMovieCast(id) {
         //imageHint.src = "http://image.tmdb.org/t/p/w500/" + responseData.profiles[0].file_path;
       });*/
 
-      console.log(responseData.cast[0]);
       castNames.push(responseData.cast[0].name);
       castImages.push(responseData.cast[0].profile_path);
       cast.push(responseData.cast[0].id);
@@ -187,9 +186,6 @@ async function getMovieDetails(id) {
 
       let releaseDateFormat = releaseDate.split("-");
       releaseDate = releaseDateFormat[2] + "/" + releaseDateFormat[1] + "/" + releaseDateFormat[0];
-      console.log(releaseDate);
-
-      console.log(releaseDateFormat);
       clues.push(releaseDate);
 
 
@@ -197,7 +193,6 @@ async function getMovieDetails(id) {
       summary = responseData.overview;
       clues.push(responseData.overview);
       imdbLink = responseData.imdb_id;
-      console.log(imdbLink);
       return responseData
     })
     .catch(err => console.error(err));
@@ -207,43 +202,11 @@ async function getMovieDetails(id) {
 
 }
 
-/*async function getPerson(id) {
-
-  let url = "https://api.themoviedb.org/3/person/" + id + "/images";
-
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzI4YWM0OTljNmZlMjk2MmY1YTkyYTdkZGI3OTZjNyIsInN1YiI6IjY0OTE4MGZmYzJmZjNkMDBmZmJkNDZhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.j5a_itJxBFkx802Y3tIk2BLJx0MuLWNJXbdTbFXKZVE'
-    }
-  };
-
-  return await fetch(url, options)
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log(responseData);
-      //castImages.push(responseData.profiles[0].file_path);
-      //imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[0];
-      console.log(castNames);
-      
-      return responseData
-
-    })
-    .catch(err => console.error(err));
-
-
-  //Person picture http://image.tmdb.org/t/p/w500/ *THE JPG*
-
-
-}*/
 
 function controller(button) {
 
 
 
-
-  console.log(button);
 
   if (button == "next") {
 
@@ -257,10 +220,6 @@ function controller(button) {
         textHintDiv.classList.add("min");
         textHintDiv.classList.remove("max");
       }
-      console.log(imageHint);
-
-      console.log(castImages);
-      console.log(cast);
 
       imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[1];
       hintName.innerText = castNames[1];
@@ -273,10 +232,6 @@ function controller(button) {
         textHintDiv.classList.add("min");
         textHintDiv.classList.remove("max");
       }
-      console.log(imageHint);
-
-      console.log(castImages);
-      console.log(cast);
       imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[2];
       hintName.innerText = castNames[2];
 
@@ -289,8 +244,6 @@ function controller(button) {
         imageHint.classList.add("hidden");
       }
 
-      console.log(clues);
-      console.log("test");
       textHint.innerText = "";
 
       textHint.innerText = clues[hint - 3];
@@ -306,8 +259,6 @@ function controller(button) {
         
       }
 
-      console.log(clues);
-      console.log("test");
       textHint.innerText = "";
 
       clues[1] = clues[1].substring(0, 100) + "...";
@@ -320,7 +271,6 @@ function controller(button) {
 
 
     } else if (hint == 5) {
-      console.log("YOU LOSE");
       endGame("lose");
     }
 
@@ -339,8 +289,6 @@ function controller(button) {
       textHintDiv.classList.remove("max");
     }
 
-    console.log(castImages);
-    console.log(cast);
 
     imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[0];
     hintName.innerText = castNames[0];
@@ -411,11 +359,13 @@ function controller(button) {
       }
   
       textHint.innerHTML = `
-          <h1> Well Done!</h1><br>
-          <h2>You guessed "${movieName}" correctly</h2>
+          <h2> Well Done!</h2><br>
+          <h3>You guessed "${movieName}" correctly</h3>
           <p>You did it in ${guesses} guesse(s)</p>
           <img id="poster" src="http://image.tmdb.org/t/p/w500/${poster}"</img>
           `
+
+          hintName.innerText = "";
 
 
     }else{
@@ -428,11 +378,11 @@ function controller(button) {
       }
   
       textHint.innerHTML = `
-          <h1> Unlucky!</h1>
-          <h2>The movie was "${movieName}"</h2>
+          <h2> Unlucky!</h2>
+          <h3>The movie was "${movieName}"</h3>
           <img id="poster" src="http://image.tmdb.org/t/p/w500/${poster}"</img>
           `
-
+          hintName.innerText = "";
 
 
     }
@@ -452,10 +402,6 @@ function controller(button) {
 
 
       endGame("win");
-
-      console.log("YOU HAD: " + guesses + " GUESSES")
-
-      console.log("WIN PAGE");
 
 
     } else {
@@ -496,8 +442,6 @@ getMovie(movieName).then(response => {
 
 
 function endGame(result) {
-
-  console.log(result);
 
   resultbtn.classList.remove("hidden");
 
@@ -567,7 +511,6 @@ function endGame(result) {
 
 
   }
-  console.log("LOSE PAGE")
 
 }
 
@@ -1045,23 +988,13 @@ function generateMovie() {
   ]
 
 
-  console.log(movies.length);
-
-
-
   let randomNum = Math.floor(Math.random() * movies.length);
-  console.log(randomNum);
-  console.log(movies[randomNum]);
-
   return movies[randomNum][0];
 
 
 }
 
 function reset() {
-
-  console.log("TESTSTETSTSET")
-
 
    movieName = generateMovie();
    movieLower = movieName.toLowerCase();
@@ -1173,12 +1106,5 @@ submit.addEventListener('click', function () {
 
 
 }
-
-
-
-
-    
-    //Do welcome popup
-    //Add highlight to selected hint
 
 

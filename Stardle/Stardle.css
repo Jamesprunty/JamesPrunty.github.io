@@ -6,7 +6,6 @@ h1{
 
 #appContainer{
 
-    border: 1px white solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +16,7 @@ h1{
 
     min-width: 400px;
     min-height: 650px;
-    border: red 1px solid;
+    border: 1px white solid;
     
 
 }
@@ -29,7 +28,7 @@ h1{
 
 #picture{
     min-height: 450px;
-    border: green 1px solid;
+    border: 1px white solid;
 }
 
 .hidden{
@@ -45,7 +44,6 @@ display: none;
     margin: 0;
     padding: 0;
 
-    border: yellow solid 1px;
 }
 
 .hint{
@@ -113,6 +111,13 @@ display: none;
     box-sizing: border-box;
 }
 
+p{
+    font-size: medium;
+}
+h2{
+    font-size: large;
+}
+
 .popup{
     color: black;
     background-color: #ffffff;
@@ -144,17 +149,7 @@ display: none;
     margin: 20px 0;
     line-height: 25px;
 }
-a{
-    display: block;
-    width: 150px;
-    position: relative;
-    margin: 10px auto;
-    text-align: center;
-    background-color: #0f72e5;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 5px 0;
-}
+
 
 #popupTitle{
     color: black;
