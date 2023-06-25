@@ -168,6 +168,7 @@ async function getMovieDetails(id) {
       summary = responseData.overview;
       clues.push(responseData.overview);
       imdbLink = responseData.imdb_id;
+      console.log(imdbLink);
       return responseData
     })
     .catch(err => console.error(err));
@@ -525,7 +526,7 @@ function endGame(result) {
     textHint.innerHTML = `
         <h1> Unlucky!</h1>
         <h2>The movie was "${movieName}"</h2>
-        <img id="poster" src="http://image.tmdb.org/t/p/w500/${poster}"</img>
+        <a href="https://www.imdb.com/title/${imdbLink}"><img id="poster" src="http://image.tmdb.org/t/p/w500/${poster}"</img>
         `
     guessingContainer.innerHTML = `<input type="button" id="restart" value="Restart">`
     
@@ -1084,7 +1085,7 @@ function reset() {
     textHintDiv.classList.remove("max");
   }
 
-  imageHint.src = "";
+  imageHint.src = "https://unsplash.com/photos/jKZdHpGFpjc";
 
   imageHint = document.querySelector("#imageHint");
 textHint = document.querySelector("#textHint");
@@ -1147,9 +1148,7 @@ submit.addEventListener('click', function () {
 
 
 
-    //Change text format and size
     //Reformat date
-    //Make poster clickable
     //Fix text hint formatting
     //Do welcome popup
     //Add highlight to selected hint
