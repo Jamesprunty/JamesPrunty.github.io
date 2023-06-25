@@ -23,6 +23,7 @@ let win = 0;
 
 let imageHint = document.querySelector("#imageHint");
 let textHint = document.querySelector("#textHint");
+let textHintDiv = document.querySelector("#textHintDiv");
 let nextHint = document.querySelector("#nextHint");
 let hintName = document.querySelector("#hintName");
 let hint1 = document.querySelector("#hint1");
@@ -116,18 +117,28 @@ async function getMovieCast(id) {
   return await fetch(url, options)
     .then((response) => response.json())
     .then((responseData) => {
-      getPerson(responseData.cast[0].id).then((responseData) => {
+      /*getPerson(responseData.cast[0].id).then((responseData) => {
         //imageHint.src = "http://image.tmdb.org/t/p/w500/" + responseData.profiles[0].file_path;
-      });
+      });*/
+
       console.log(responseData.cast[0]);
       castNames.push(responseData.cast[0].name);
+      castImages.push(responseData.cast[0].profile_path);
       cast.push(responseData.cast[0].id);
-      getPerson(responseData.cast[1].id);
+      //getPerson(responseData.cast[1].id);
       cast.push(responseData.cast[1].id);
       castNames.push(responseData.cast[1].name);
-      getPerson(responseData.cast[2].id);
+      castImages.push(responseData.cast[1].profile_path);
+      //getPerson(responseData.cast[2].id);
       cast.push(responseData.cast[2].id);
       castNames.push(responseData.cast[2].name);
+      castImages.push(responseData.cast[2].profile_path);
+
+      hintName.innerText = castNames[0];
+      imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[0];
+
+
+     
 
       return responseData
     })
@@ -162,11 +173,11 @@ async function getMovieDetails(id) {
     .catch(err => console.error(err));
 
 
-  //Poster    http://image.tmdb.org/t/p/w500/*JPG FILEPATH*
+  //Poster    http://image.tmdb.org/t/p/w500/yHRAgKCRESvnLN72L32BUwXLHIT.jpg FILEPATH*
 
 }
 
-async function getPerson(id) {
+/*async function getPerson(id) {
 
   let url = "https://api.themoviedb.org/3/person/" + id + "/images";
 
@@ -181,10 +192,13 @@ async function getPerson(id) {
   return await fetch(url, options)
     .then((response) => response.json())
     .then((responseData) => {
-      castImages.push(responseData.profiles[0].file_path);
-      imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[0];
-      hintName.innerText = castNames[0];
+      console.log(responseData);
+      //castImages.push(responseData.profiles[0].file_path);
+      //imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[0];
+      console.log(castNames);
+      
       return responseData
+
     })
     .catch(err => console.error(err));
 
@@ -192,7 +206,7 @@ async function getPerson(id) {
   //Person picture http://image.tmdb.org/t/p/w500/ *THE JPG*
 
 
-}
+}*/
 
 function controller(button) {
 
@@ -205,10 +219,13 @@ function controller(button) {
 
 
     if (hint == 1) {
+
       hint2.classList.remove("hidden");
       if (imageHint.classList.contains("hidden")) {
         imageHint.classList.remove("hidden");
         textHint.classList.add("hidden");
+        textHintDiv.classList.add("min");
+        textHintDiv.classList.remove("max");
       }
       console.log(imageHint);
 
@@ -223,6 +240,8 @@ function controller(button) {
       if (imageHint.classList.contains("hidden")) {
         imageHint.classList.remove("hidden");
         textHint.classList.add("hidden");
+        textHintDiv.classList.add("min");
+        textHintDiv.classList.remove("max");
       }
       console.log(imageHint);
 
@@ -234,6 +253,8 @@ function controller(button) {
     } else if (hint == 3) {
       hint4.classList.remove("hidden");
       if (textHint.classList.contains("hidden")) {
+        textHintDiv.classList.remove("min");
+        textHintDiv.classList.add("max");
         textHint.classList.remove("hidden");
         imageHint.classList.add("hidden");
       }
@@ -249,7 +270,10 @@ function controller(button) {
       hint5.classList.remove("hidden");
       if (textHint.classList.contains("hidden")) {
         textHint.classList.remove("hidden");
+        textHintDiv.classList.remove("min");
+        textHintDiv.classList.add("max");
         imageHint.classList.add("hidden");
+        
       }
 
       console.log(clues);
@@ -281,6 +305,8 @@ function controller(button) {
     if (imageHint.classList.contains("hidden")) {
       imageHint.classList.remove("hidden");
       textHint.classList.add("hidden");
+      textHintDiv.classList.add("min");
+      textHintDiv.classList.remove("max");
     }
 
     console.log(castImages);
@@ -294,6 +320,8 @@ function controller(button) {
     if (imageHint.classList.contains("hidden")) {
       imageHint.classList.remove("hidden");
       textHint.classList.add("hidden");
+      textHintDiv.classList.add("min");
+      textHintDiv.classList.remove("max");
     }
 
     imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[1];
@@ -304,6 +332,8 @@ function controller(button) {
     if (imageHint.classList.contains("hidden")) {
       imageHint.classList.remove("hidden");
       textHint.classList.add("hidden");
+      textHintDiv.classList.add("min");
+      textHintDiv.classList.remove("max");
     }
 
     imageHint.src = "http://image.tmdb.org/t/p/w500/" + castImages[2];
@@ -313,6 +343,8 @@ function controller(button) {
 
     if (textHint.classList.contains("hidden")) {
       textHint.classList.remove("hidden");
+      textHintDiv.classList.remove("min");
+      textHintDiv.classList.add("max");
       imageHint.classList.add("hidden");
     }
 
@@ -325,6 +357,8 @@ function controller(button) {
 
     if (textHint.classList.contains("hidden")) {
       textHint.classList.remove("hidden");
+      textHintDiv.classList.remove("min");
+      textHintDiv.classList.add("max");
       imageHint.classList.add("hidden");
     }
 
@@ -341,12 +375,14 @@ function controller(button) {
 
       if (textHint.classList.contains("hidden")) {
         textHint.classList.remove("hidden");
+        textHintDiv.classList.remove("min");
+        textHintDiv.classList.add("max");
         imageHint.classList.add("hidden");
       }
   
       textHint.innerHTML = `
           <h1> Well Done!</h1><br>
-          <h2>You guessed "${movieName}" correclty</h2>
+          <h2>You guessed "${movieName}" correctly</h2>
           <p>You did it in ${guesses} guesse(s)</p>
           <img id="poster" src="http://image.tmdb.org/t/p/w500/${poster}"</img>
           `
@@ -356,6 +392,8 @@ function controller(button) {
 
       if (textHint.classList.contains("hidden")) {
         textHint.classList.remove("hidden");
+        textHintDiv.classList.remove("min");
+        textHintDiv.classList.add("max");
         imageHint.classList.add("hidden");
       }
   
@@ -437,8 +475,12 @@ function endGame(result) {
 
     if (textHint.classList.contains("hidden")) {
       textHint.classList.remove("hidden");
+      textHintDiv.classList.remove("min");
+      textHintDiv.classList.add("max");
       imageHint.classList.add("hidden");
     }
+
+    hintName.innerText = "";
 
     textHint.innerHTML = `
         <h1> Well Done!</h1><br>
@@ -473,8 +515,12 @@ function endGame(result) {
     
     if (textHint.classList.contains("hidden")) {
       textHint.classList.remove("hidden");
+      textHintDiv.classList.remove("min");
+      textHintDiv.classList.add("max");
       imageHint.classList.add("hidden");
     }
+
+    hintName.innerText = "";
 
     textHint.innerHTML = `
         <h1> Unlucky!</h1>
@@ -651,7 +697,6 @@ function generateMovie() {
     ["Mirror Mirror"],
     ["The Sixth Sense"],
     ["Despicable Me 2"],
-    ["Les MisÃ©rables"],
     ["Gladiator"],
     ["Moonrise Kingdom"],
     ["The Giant Mechanical Man"],
@@ -951,8 +996,6 @@ function generateMovie() {
     ["Eternals"],
     ["Ferris Bueller's Day Off"],
     ["The Great Mouse Detective"],
-    ["Loki"],
-    ["WandaVision"],
     ["The Legend of Tarzan"],
     ["Emma."],
     ["Spider-Man: Across the Spider-Verse"],
@@ -1037,7 +1080,11 @@ function reset() {
    if (imageHint.classList.contains("hidden")) {
     imageHint.classList.remove("hidden");
     textHint.classList.add("hidden");
+    textHintDiv.classList.add("min");
+    textHintDiv.classList.remove("max");
   }
+
+  imageHint.src = "";
 
   imageHint = document.querySelector("#imageHint");
 textHint = document.querySelector("#textHint");
@@ -1104,7 +1151,7 @@ submit.addEventListener('click', function () {
     //Reformat date
     //Make poster clickable
     //Fix text hint formatting
-    //Remove text hint when on results page
-    //The names are the wrong way round
+    //Do welcome popup
+    //Add highlight to selected hint
 
 

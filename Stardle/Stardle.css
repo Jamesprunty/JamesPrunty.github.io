@@ -68,10 +68,32 @@ display: none;
     width: 500px;
 }
 
+#textHintDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.min{
+    height: 0px;
+    width: 0px;
+
+}
+
+.max{
+    
+    height: 600px;
+    width: 400px;
+}
+
 #textHint{
     word-wrap: break-word;
     text-align: center;
 }
+
+
 
 #poster{
     width: 333px;
