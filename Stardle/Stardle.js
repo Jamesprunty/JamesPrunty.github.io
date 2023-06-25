@@ -36,6 +36,7 @@ let submit = document.querySelector("#submit");
 let input = document.querySelector("#input");
 let guessingContainer = document.querySelector("#guessingContainer");
 let nav = document.querySelector("#nav");
+const popupContent = document.querySelector("#popupContent");
 
 input.addEventListener("keypress", function (e) {
   if (e.key == "Enter") {
@@ -43,6 +44,25 @@ input.addEventListener("keypress", function (e) {
     submit.dispatchEvent(new Event('click',));
 
   }
+});
+
+window.addEventListener("load", function () {
+  if(!localStorage.getItem("firstTime")){
+
+ 
+  setTimeout(
+      function open(event) {
+          document.querySelector(".popup").style.display = "block";
+      },
+      1000
+  )
+}
+localStorage.setItem("firstTime", true)
+});
+
+
+document.querySelector("#close").addEventListener("click", function () {
+  document.querySelector(".popup").style.display = "none";
 });
 
 nextHint.addEventListener('click', function () {
@@ -164,7 +184,16 @@ async function getMovieDetails(id) {
     .then((responseData) => {
       poster = responseData.poster_path;
       releaseDate = responseData.release_date;
-      clues.push(responseData.release_date);
+
+      let releaseDateFormat = releaseDate.split("-");
+      releaseDate = releaseDateFormat[2] + "/" + releaseDateFormat[1] + "/" + releaseDateFormat[0];
+      console.log(releaseDate);
+
+      console.log(releaseDateFormat);
+      clues.push(releaseDate);
+
+
+
       summary = responseData.overview;
       clues.push(responseData.overview);
       imdbLink = responseData.imdb_id;
@@ -1148,8 +1177,7 @@ submit.addEventListener('click', function () {
 
 
 
-    //Reformat date
-    //Fix text hint formatting
+    
     //Do welcome popup
     //Add highlight to selected hint
 
